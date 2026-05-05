@@ -1,7 +1,10 @@
+using AjamaGhouligan.AjamaGhouliganCode.CardPiles;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Context;
+using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Nodes.Combat;
+using MegaCrit.Sts2.Core.Nodes.Screens;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Patches;
 
@@ -33,5 +36,19 @@ public static class NCombatUiActivatePatch
         var cargoPile = container.GetNodeOrNull<NBuryPile>("_BuryPile");
         var player = LocalContext.GetMe(state);
         cargoPile?.Initialize(player!);
+    }
+}
+
+[HarmonyPatch(typeof(NCardPileScreen), "_Ready")]
+public static class NCardPileScreenPatch
+{
+    [HarmonyPostfix]
+    public static void ReadyPostfix(NCardPileScreen __instance)
+    {
+        if (__instance.Pile.Type == SepulchrePile.PileType)
+        {
+            __instance._bottomLabel.Visible = true;
+            __instance._bottomLabel.Text = "[center]" + new LocString("gameplay_ui", "SEPULCHRE_PILE_INFO").GetFormattedText();
+        }
     }
 }

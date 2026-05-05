@@ -14,11 +14,13 @@ using MegaCrit.Sts2.Core.Nodes.HoverTips;
 
 public partial class NBuryPile : NCombatCardPile
 {
-    protected override PileType Pile => BuryPile.BuryPileType;
+    protected override PileType Pile => SepulchrePile.PileType;
     
     private const float HideOffsetX = 150f;
     private const float TooltipOffsetY = -300f;
-    
+
+    public static readonly Vector2 PilePosition = new Vector2(1826, 900);
+
     private static readonly string _scenePath = "res://AjamaGhouligan/scenes/bury_pile.tscn";
     private const string MegaLabelFont = "res://themes/kreon_bold_glyph_space_one.tres";
 
@@ -26,7 +28,7 @@ public partial class NBuryPile : NCombatCardPile
     {
         var buryPileButton = ResourceLoader.Load<PackedScene>(_scenePath).Instantiate<NBuryPile>();
         buryPileButton.Name = "%BuryPile";
-        buryPileButton.Position = new Vector2(1826, 900);
+        buryPileButton.Position = PilePosition;
 
         var background = buryPileButton.GetNode<TextureRect>("CountContainer/Background");
         background.Texture = ResourceLoader.Load<Texture2D>("res://images/packed/combat_ui/pile_button_count.png");
@@ -43,14 +45,14 @@ public partial class NBuryPile : NCombatCardPile
     public override void _Ready()
     {
         ConnectSignals();
-        _emptyPileMessage = new LocString("combat_messages", "OPEN_EMPTY_BURY");
+        _emptyPileMessage = new LocString("combat_messages", "OPEN_EMPTY_SEPULCHRE");
 
-        _hoverTip = new HoverTip(new LocString("static_hover_tips", "BURY_PILE.title"),
-            new LocString("static_hover_tips", "BURY_PILE.description"));
+        _hoverTip = new HoverTip(new LocString("static_hover_tips", "SEPULCHRE_PILE.title"),
+            new LocString("static_hover_tips", "SEPULCHRE_PILE.description"));
 
-        // Visible = false;
+        Visible = false;
         SetAnimInOutPositions();
-        // Disable();
+        Disable();
     }
     
     protected override void SetAnimInOutPositions()
@@ -64,6 +66,8 @@ public partial class NBuryPile : NCombatCardPile
         _localPlayer = player;
         _pile = Pile.GetPile(_localPlayer);
         _pile.ContentsChanged += HandleContentsChanged;
+        _pile.CardAddFinished += AddCard;
+        _pile.CardRemoveFinished += RemoveCard;
 
         _currentCount = _pile.Cards.Count;
         _countLabel.SetTextAutoSize(_currentCount.ToString());
@@ -76,8 +80,8 @@ public partial class NBuryPile : NCombatCardPile
     private void HandleContentsChanged()
     {
         _currentCount = _pile!.Cards.Count;
-        _countLabel.SetTextAutoSize(_currentCount.ToString());
-
+        // _countLabel.SetTextAutoSize(_currentCount.ToString());
+        HandleVisibility();
     }
     
     protected override void OnFocus()
@@ -90,9 +94,29 @@ public partial class NBuryPile : NCombatCardPile
         _bumpTween.TweenProperty(_icon, "scale", new Vector2(1.25f, 1.25f), 0.05);
     }
 
+    protected override void AddCard()
+    {
+        base.AddCard();
+        HandleVisibility();
+    }
+
     public override void AnimIn()
     {
         base.AnimIn();
         Visible = true;
+    }
+
+    private void HandleVisibility()
+    {
+        if (_currentCount > 0)
+        {
+            AnimIn();
+            Enable();
+        }
+        else if (_currentCount == 0 && _localPlayer!.Character is not Ghouligan)
+        {
+            AnimOut();
+            Disable();
+        }
     }
 }

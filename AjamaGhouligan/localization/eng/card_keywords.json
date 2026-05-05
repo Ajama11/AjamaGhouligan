@@ -1,3 +1,8 @@
 {
-  
+  "AJAMAGHOULIGAN-HAUNTED.title": "Haunted",
+  "AJAMAGHOULIGAN-HAUNTED.description": "At the start of your turn, if this is in your [gold]Sepulchre Pile[/gold], play it.",
+  "AJAMAGHOULIGAN-BURY.title": "Bury",
+  "AJAMAGHOULIGAN-BURY.description": "Put this card into your [gold]Sepulchre Pile[/gold].",
+  "AJAMAGHOULIGAN-BURIED.title": "Buried",
+  "AJAMAGHOULIGAN-BURIED.description": "This card can be [gold]Exhumed[/gold] back into your hand."
 }

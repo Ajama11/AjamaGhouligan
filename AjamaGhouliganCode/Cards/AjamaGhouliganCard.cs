@@ -1,8 +1,10 @@
-﻿using BaseLib.Abstracts;
+﻿using AjamaGhouligan.AjamaGhouliganCode.CardPiles;
+using BaseLib.Abstracts;
 using BaseLib.Extensions;
 using BaseLib.Utils;
 using AjamaGhouligan.AjamaGhouliganCode.Character;
 using AjamaGhouligan.AjamaGhouliganCode.Extensions;
+using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards;
@@ -23,4 +25,12 @@ public abstract class AjamaGhouliganCard(int cost, CardType type, CardRarity rar
     //Uses card_portraits/card_name.png as image path. These should be smaller images.
     public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
     public override string BetaPortraitPath => $"beta/{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
+    
+    protected override PileType GetResultPileType()
+    {
+        if (!Keywords.Contains(GhouliganEnums.Bury) || Type == CardType.Power) return base.GetResultPileType();
+
+        PileType result = base.GetResultPileType();
+        return result == PileType.Exhaust ? result : SepulchrePile.PileType;
+    }
 }
