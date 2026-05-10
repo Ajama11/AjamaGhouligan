@@ -3,9 +3,12 @@ using BaseLib.Abstracts;
 using BaseLib.Extensions;
 using BaseLib.Utils;
 using AjamaGhouligan.AjamaGhouliganCode.Character;
+using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Extensions;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards;
 
@@ -26,11 +29,35 @@ public abstract class AjamaGhouliganCard(int cost, CardType type, CardRarity rar
     public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
     public override string BetaPortraitPath => $"beta/{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
     
-    protected override PileType GetResultPileType()
+    public virtual IEnumerable<CardKeyword> MyCanonicalKeywords => [];
+    public virtual HashSet<CardTag> MyCanonicalTags => [];
+    public virtual IEnumerable<IHoverTip> MyHoverTips => [];
+    
+    protected override IEnumerable<IHoverTip> ExtraHoverTips
     {
-        if (!Keywords.Contains(GhouliganEnums.Bury) || Type == CardType.Power) return base.GetResultPileType();
+        get
+        {
+            IEnumerable<IHoverTip> result = [..MyHoverTips];
+            
+            if (DynamicVars.ContainsKey(SummonVar.defaultName))
+            {
+                result = [..result, HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon)];
+            }
 
-        PileType result = base.GetResultPileType();
+            // if (DynamicVars.ContainsKey(HauntVar.Key))
+            // {
+            //     result = [..result, HoverTipFactory.FromKeyword(GhouliganEnums.Haunted)];
+            // }
+
+            return result;
+        }
+    }
+    
+    protected override PileType GetResultPileTypeForCardPlay()
+    {
+        if (!Keywords.Contains(MyEnums.Bury) || Type == CardType.Power) return base.GetResultPileTypeForCardPlay();
+
+        PileType result = base.GetResultPileTypeForCardPlay();
         return result == PileType.Exhaust ? result : SepulchrePile.PileType;
     }
 }

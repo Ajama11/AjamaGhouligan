@@ -1,4 +1,6 @@
 {
-  "SEPULCHRE_PILE.description": "Haunted cards are automatically played from here at the start of your turn.\n\nClick to view cards in your sepulchre pile.",
-  "SEPULCHRE_PILE.title": "Sepulchre Pile"
+  "AJAMAGHOULIGAN-SEPULCHRE_PILE.title": "Sepulchre Pile",
+  "AJAMAGHOULIGAN-SEPULCHRE_PILE.description": "Haunted cards are automatically played from here at the start of your turn.\n\nClick to view cards in your sepulchre pile.",
+  "AJAMAGHOULIGAN-HAUNT.title": "Haunt",
+  "AJAMAGHOULIGAN-HAUNT.description": "Add [gold]Haunted[/gold] to a card."
 }

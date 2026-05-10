@@ -45,10 +45,10 @@ public partial class NBuryPile : NCombatCardPile
     public override void _Ready()
     {
         ConnectSignals();
-        _emptyPileMessage = new LocString("combat_messages", "OPEN_EMPTY_SEPULCHRE");
+        _emptyPileMessage = new LocString("combat_messages", "AJAMAGHOULIGAN-OPEN_EMPTY_SEPULCHRE");
 
-        _hoverTip = new HoverTip(new LocString("static_hover_tips", "SEPULCHRE_PILE.title"),
-            new LocString("static_hover_tips", "SEPULCHRE_PILE.description"));
+        _hoverTip = new HoverTip(new LocString("static_hover_tips", "AJAMAGHOULIGAN-SEPULCHRE_PILE.title"),
+            new LocString("static_hover_tips", "AJAMAGHOULIGAN-SEPULCHRE_PILE.description"));
 
         Visible = false;
         SetAnimInOutPositions();

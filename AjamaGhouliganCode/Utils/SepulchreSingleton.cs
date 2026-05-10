@@ -16,7 +16,7 @@ public class SepulchreSingleton() : CustomSingletonModel(true, false)
     {
         foreach (var card in CardPile.Get(SepulchrePile.PileType, player)!.Cards.ToList())
         {
-            if (card.Keywords.Contains(GhouliganEnums.Haunted))
+            if (card.Keywords.Contains(MyEnums.Haunted))
             {
                 await CardCmd.AutoPlay(choiceContext, card, null);
             }
@@ -30,14 +30,14 @@ public class SepulchreSingleton() : CustomSingletonModel(true, false)
         if (card.Pile!.Type != SepulchrePile.PileType && 
             card.Pile!.Type != PileType.Play && 
             card.Pile!.Type != PileType.None &&
-            card.Keywords.Contains(GhouliganEnums.Buried))
+            card.Keywords.Contains(MyEnums.Buried))
         {
-            CardCmd.RemoveKeyword(card, GhouliganEnums.Buried);
+            CardCmd.RemoveKeyword(card, MyEnums.Buried);
         }
 
         if (card.Pile!.Type == SepulchrePile.PileType)
         {
-            CardCmd.ApplyKeyword(card, GhouliganEnums.Buried);
+            CardCmd.ApplyKeyword(card, MyEnums.Buried);
         }
 
         return Task.CompletedTask;
@@ -47,7 +47,7 @@ public class SepulchreSingleton() : CustomSingletonModel(true, false)
     {
         if (cardPlay.Card is not AjamaGhouliganCard && 
             cardPlay.Card.Type != CardType.Power &&
-            cardPlay.Card.Keywords.Contains(GhouliganEnums.Bury) &&
+            cardPlay.Card.Keywords.Contains(MyEnums.Bury) &&
             !cardPlay.Card.Keywords.Contains(CardKeyword.Exhaust) &&
             cardPlay.IsLastInSeries)
         {

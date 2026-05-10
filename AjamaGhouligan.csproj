@@ -64,11 +64,21 @@
     </ItemGroup>
 
     <ItemGroup>
+        <Folder Include="AjamaGhouliganCode\Cards\Ancient\" />
+        <Folder Include="AjamaGhouliganCode\Cards\Common\" />
+        <Folder Include="AjamaGhouliganCode\Cards\Multiplayer\" />
+        <Folder Include="AjamaGhouliganCode\Cards\Rare\" />
+        <Folder Include="AjamaGhouliganCode\Cards\Token\" />
+        <Folder Include="AjamaGhouliganCode\Cards\Uncommon\" />
         <Folder Include="AjamaGhouliganCode\Scenes\" />
         <Folder Include="AjamaGhouligan\images\card_portraits\big\"/>
         <Folder Include="AjamaGhouligan\images\powers\big\"/>
         <Folder Include="AjamaGhouligan\images\relics\big\"/>
         <Folder Include="AjamaGhouligan\scenes\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="cardloc-presets.json" />
     </ItemGroup>
 
     <Target Name="CheckDependencyPaths">

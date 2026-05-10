@@ -3,7 +3,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Utils;
 
-public class GhouliganEnums
+public class MyEnums
 {
     [CustomEnum, KeywordProperties(AutoKeywordPosition.Before)]
     public static CardKeyword Haunted;

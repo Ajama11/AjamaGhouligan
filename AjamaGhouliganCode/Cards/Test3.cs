@@ -18,7 +18,7 @@ public class Test3() : AjamaGhouliganCard(0,
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => 
     [
-        GhouliganEnums.Haunted
+        MyEnums.Haunted
     ];
 
     protected override async Task OnPlay(
@@ -27,12 +27,12 @@ public class Test3() : AjamaGhouliganCard(0,
     {
         await CreatureCmd.Heal(Owner.Creature, 2);
 
-        CardModel? card = await CommonActions.SelectSingleCard(this, SepulchrePile.SelectionPrompt.BuryAndHaunt, choiceContext, PileType.Draw);
+        CardModel? card = await CommonActions.SelectSingleCard(this, SepulchrePile.SelectionPrompt.HauntAndBury, choiceContext, PileType.Draw);
 
         if (card != null)
         {
-            CardCmd.ApplyKeyword(card, GhouliganEnums.Haunted);
-            CardCmd.ApplyKeyword(card, GhouliganEnums.Bury);
+            CardCmd.ApplyKeyword(card, MyEnums.Haunted);
+            CardCmd.ApplyKeyword(card, MyEnums.Bury);
         }
     }
 

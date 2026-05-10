@@ -17,9 +17,9 @@ public class SepulchrePile() : CustomPile(PileType)
     
     public struct SelectionPrompt
     {
-        public static LocString Bury => new LocString("card_selection", "TO_SEPULCHRE");
-        public static LocString Exhume => new LocString("card_selection", "FROM_SEPULCHRE");
-        public static LocString BuryAndHaunt => new LocString("card_selection", "TO_SEPULCHRE_HAUNT");
-        public static LocString Haunt => new LocString("card_selection", "TO_HAUNT");
+        public static LocString Haunt => new LocString("card_selection", "AJAMAGHOULIGAN-TO_HAUNT");
+        public static LocString Bury => new LocString("card_selection", "AJAMAGHOULIGAN-TO_SEPULCHRE");
+        public static LocString Disinter => new LocString("card_selection", "AJAMAGHOULIGAN-FROM_SEPULCHRE");
+        public static LocString HauntAndBury => new LocString("card_selection", "AJAMAGHOULIGAN-TO_SEPULCHRE_HAUNT");
     }
 }
