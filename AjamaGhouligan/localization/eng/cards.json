@@ -1,4 +1,6 @@
 {
+  "AJAMAGHOULIGAN-AJAMA_GHOULIGAN_CARD.title": "",
+  "AJAMAGHOULIGAN-AJAMA_GHOULIGAN_CARD.description": "",
   "AJAMAGHOULIGAN-TEST.title": "Test",
   "AJAMAGHOULIGAN-TEST.description": "a",
   "AJAMAGHOULIGAN-TEST2.title": "Test 2",
@@ -6,5 +8,11 @@
   "AJAMAGHOULIGAN-TEST3.title": "Test 3",
   "AJAMAGHOULIGAN-TEST3.description": "a",
   "AJAMAGHOULIGAN-YOINK.title": "Yoink",
-  "AJAMAGHOULIGAN-YOINK.description": "#[gold]Summon[/gold] !Summon!."
+  "AJAMAGHOULIGAN-YOINK.description": "#[gold]Summon[/gold] !Summon!.",
+  "AJAMAGHOULIGAN-TEMP_BASIC.title": "TEMP Basic",
+  "AJAMAGHOULIGAN-TEMP_BASIC.description": "#[gold]Osty[/gold] deals !CD! damage to a random enemy.",
+  "AJAMAGHOULIGAN-STRIKE.title": "Strike",
+  "AJAMAGHOULIGAN-STRIKE.description": "#Deal !D! damage.",
+  "AJAMAGHOULIGAN-DEFEND.title": "Defend",
+  "AJAMAGHOULIGAN-DEFEND.description": "#Gain !B! [gold]Block[/gold]."
 }

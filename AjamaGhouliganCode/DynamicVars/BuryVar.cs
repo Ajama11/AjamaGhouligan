@@ -1,10 +1,16 @@
+using BaseLib.Extensions;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 
-public class BuryVar(decimal baseValue) : DynamicVar(Key, baseValue)
+public class BuryVar : DynamicVar
 {
     public const string Key = "Bury";
+    
+    public BuryVar(decimal baseValue) : base(Key, baseValue)
+    {
+        this.WithTooltip();
+    }
 }
 
 public static class BuryVarDynamicVarSetExtensions

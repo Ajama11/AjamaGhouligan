@@ -2,5 +2,9 @@
   "AJAMAGHOULIGAN-SEPULCHRE_PILE.title": "Sepulchre Pile",
   "AJAMAGHOULIGAN-SEPULCHRE_PILE.description": "Haunted cards are automatically played from here at the start of your turn.\n\nClick to view cards in your sepulchre pile.",
   "AJAMAGHOULIGAN-HAUNT.title": "Haunt",
-  "AJAMAGHOULIGAN-HAUNT.description": "Add [gold]Haunted[/gold] to a card."
+  "AJAMAGHOULIGAN-HAUNT.description": "Add [gold]Haunted[/gold] to a card.",
+  "AJAMAGHOULIGAN-BURY.title": "Bury",
+  "AJAMAGHOULIGAN-BURY.description": "Put the specified amount of cards into your [gold]Sepulchre Pile[/gold].",
+  "AJAMAGHOULIGAN-DISINTER.title": "Disinter",
+  "AJAMAGHOULIGAN-DISINTER.description": "Put the specified amount of cards from your [gold]Sepulchre Pile[/gold] into your [gold]Hand[/gold]."
 }

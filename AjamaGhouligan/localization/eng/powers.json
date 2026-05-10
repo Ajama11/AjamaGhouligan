@@ -1,3 +1,5 @@
 {
-  
+  "AJAMAGHOULIGAN-MISFORTUNE_POWER.title": "Misfortune",
+  "AJAMAGHOULIGAN-MISFORTUNE_POWER.description": "Takes additional damage from [gold]Unfortunate[/gold] Attacks.\nHalves at the end of the enemy turn.",
+  "AJAMAGHOULIGAN-MISFORTUNE_POWER.smartDescription": "Takes [blue]{Amount}[/blue] additional damage from [gold]Unfortunate[/gold] Attacks.\nHalves at the end of the enemy turn."
 }

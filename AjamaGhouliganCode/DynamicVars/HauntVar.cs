@@ -1,10 +1,16 @@
+using BaseLib.Extensions;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 
-public class HauntVar(decimal baseValue) : DynamicVar(Key, baseValue)
+public class HauntVar : DynamicVar
 {
     public const string Key = "Haunt";
+    
+    public HauntVar(decimal baseValue) : base(Key, baseValue)
+    {
+        this.WithTooltip();
+    }
 }
 
 public static class HauntVarDynamicVarSetExtensions

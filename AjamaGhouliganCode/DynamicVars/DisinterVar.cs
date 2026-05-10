@@ -1,10 +1,16 @@
+using BaseLib.Extensions;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 
-public class DisinterVar(decimal baseValue) : DynamicVar(Key, baseValue)
+public class DisinterVar : DynamicVar
 {
     public const string Key = "Disinter";
+    
+    public DisinterVar(decimal baseValue) : base(Key, baseValue)
+    {
+        this.WithTooltip();
+    }
 }
 
 public static class DisinterVarDynamicVarSetExtensions

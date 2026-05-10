@@ -1,4 +1,5 @@
-﻿using BaseLib.Abstracts;
+﻿using AjamaGhouligan.AjamaGhouliganCode.Cards.Basic;
+using BaseLib.Abstracts;
 using BaseLib.Utils.NodeFactories;
 using AjamaGhouligan.AjamaGhouliganCode.Extensions;
 using Godot;
@@ -12,6 +13,8 @@ namespace AjamaGhouligan.AjamaGhouliganCode.Character;
 public class Ghouligan : PlaceholderCharacterModel
 {
     public const string CharacterId = "AjamaGhouligan";
+    
+    public override string PlaceholderID => "necrobinder";
 
     public static readonly Color Color = new("33cbb9");
 
@@ -22,20 +25,14 @@ public class Ghouligan : PlaceholderCharacterModel
     public override IEnumerable<CardModel> StartingDeck =>
     [
         ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
         ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>()
+        ModelDb.Card<Yoink>(),
+        ModelDb.Card<TempBasic>()
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>
     [
-        ModelDb.Relic<BurningBlood>(),
+        ModelDb.Relic<BoundPhylactery>(),
         ModelDb.Relic<PrismaticGem>()
     ];
 

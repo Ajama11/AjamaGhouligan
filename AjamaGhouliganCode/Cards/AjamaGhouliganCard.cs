@@ -32,7 +32,22 @@ public abstract class AjamaGhouliganCard(int cost, CardType type, CardRarity rar
     public virtual IEnumerable<CardKeyword> MyCanonicalKeywords => [];
     public virtual HashSet<CardTag> MyCanonicalTags => [];
     public virtual IEnumerable<IHoverTip> MyHoverTips => [];
-    
+
+    protected override HashSet<CardTag> CanonicalTags
+    {
+        get
+        {
+            HashSet<CardTag> result = [..MyCanonicalTags];
+
+            if (DynamicVars.ContainsKey(OstyDamageVar.defaultName) || (DynamicVars.ContainsKey(CalculatedDamageVar.defaultName) && DynamicVars.CalculatedDamage.IsFromOsty))
+            {
+                result = [..result, CardTag.OstyAttack];
+            }
+            
+            return result;
+        }
+    }
+
     protected override IEnumerable<IHoverTip> ExtraHoverTips
     {
         get
@@ -52,7 +67,9 @@ public abstract class AjamaGhouliganCard(int cost, CardType type, CardRarity rar
             return result;
         }
     }
-    
+
+    protected override bool ShouldGlowRedInternal => CanonicalTags.Contains(CardTag.OstyAttack) && Owner.IsOstyMissing;
+
     protected override PileType GetResultPileTypeForCardPlay()
     {
         if (!Keywords.Contains(MyEnums.Bury) || Type == CardType.Power) return base.GetResultPileTypeForCardPlay();
