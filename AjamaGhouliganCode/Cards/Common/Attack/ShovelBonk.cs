@@ -1,0 +1,67 @@
+using AjamaGhouligan.AjamaGhouliganCode.CardPiles;
+using AjamaGhouligan.AjamaGhouliganCode.Cards;
+using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
+using AjamaGhouligan.AjamaGhouliganCode.Utils;
+using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Monsters;
+using MegaCrit.Sts2.Core.ValueProps;
+
+namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Common.Attack;
+
+public class ShovelBonk() : AjamaGhouliganCard(1,
+    CardType.Attack, CardRarity.Common,
+    TargetType.AnyEnemy)
+{
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new DamageVar(7, ValueProp.Move),
+        new BuryVar(1)
+    ];
+
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+
+    ];
+
+    public override HashSet<CardTag> MyCanonicalTags =>
+    [
+
+    ];
+
+    public override IEnumerable<IHoverTip> MyHoverTips =>
+    [
+        
+    ];
+
+    protected override async Task OnPlay(
+        PlayerChoiceContext choiceContext,
+        CardPlay play)
+    {
+        ArgumentNullException.ThrowIfNull(play.Target);
+
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+            .FromCard(this)
+            .Targeting(play.Target)
+            .WithHitFx("vfx/vfx_attack_blunt", tmpSfx: "blunt_attack.mp3")
+            .Execute(choiceContext);
+
+        List<CardModel> possibleCards =
+            CardPile.GetCards(Owner, 
+                [PileType.Draw, PileType.Discard, PileType.Hand]).ToList();
+
+        List<CardModel> cards = MyActions.GetRandomCardsFromList(Owner, possibleCards, c => c.Keywords.Contains(MyEnums.Haunted),
+            DynamicVars.Bury().IntValue);
+
+        await MyActions.BurySpecific(cards);
+    }
+
+    protected override void OnUpgrade()
+    {
+        DynamicVars.Bury().UpgradeValueBy(1);
+    }
+}

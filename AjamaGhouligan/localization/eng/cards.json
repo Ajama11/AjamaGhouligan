@@ -2,11 +2,11 @@
   "AJAMAGHOULIGAN-AJAMA_GHOULIGAN_CARD.title": "",
   "AJAMAGHOULIGAN-AJAMA_GHOULIGAN_CARD.description": "",
   "AJAMAGHOULIGAN-TEST.title": "Test",
-  "AJAMAGHOULIGAN-TEST.description": "a",
+  "AJAMAGHOULIGAN-TEST.description": "Swap Sepulchre and Hand",
   "AJAMAGHOULIGAN-TEST2.title": "Test 2",
-  "AJAMAGHOULIGAN-TEST2.description": "a",
+  "AJAMAGHOULIGAN-TEST2.description": "[gold]Heal[/gold] 1 HP.",
   "AJAMAGHOULIGAN-TEST3.title": "Test 3",
-  "AJAMAGHOULIGAN-TEST3.description": "a",
+  "AJAMAGHOULIGAN-TEST3.description": "Choose a card in your [gold]Draw Pile[/gold]. It gains [gold]Haunted[/gold] and [gold]Bury[/gold].",
   "AJAMAGHOULIGAN-YOINK.title": "Yoink",
   "AJAMAGHOULIGAN-YOINK.description": "#[gold]Summon[/gold] !Summon!.",
   "AJAMAGHOULIGAN-TEMP_BASIC.title": "TEMP Basic",
@@ -14,5 +14,9 @@
   "AJAMAGHOULIGAN-STRIKE.title": "Strike",
   "AJAMAGHOULIGAN-STRIKE.description": "#Deal !D! damage.",
   "AJAMAGHOULIGAN-DEFEND.title": "Defend",
-  "AJAMAGHOULIGAN-DEFEND.description": "#Gain !B! [gold]Block[/gold]."
+  "AJAMAGHOULIGAN-DEFEND.description": "#Gain !B! [gold]Block[/gold].",
+  "AJAMAGHOULIGAN-DOUBLE_POKE.title": "Double Poke",
+  "AJAMAGHOULIGAN-DOUBLE_POKE.description": "#[gold]Osty[/gold] deals !OstyDamage! damage !Repeat! times.",
+  "AJAMAGHOULIGAN-SHOVEL_BONK.title": "Shovel Bonk",
+  "AJAMAGHOULIGAN-SHOVEL_BONK.description": "#Deal !D! damage.\n[gold]Bury[/gold] {Bury:plural:a|{}} random [gold]Haunted[/gold] {Bury:plural:card|cards} from your [gold]Draw Pile[/gold], [gold]Discard Pile[/gold], or [gold]Hand[/gold]."
 }

@@ -27,7 +27,7 @@ public class Test3() : AjamaGhouliganCard(0,
     {
         await CreatureCmd.Heal(Owner.Creature, 2);
 
-        CardModel? card = await CommonActions.SelectSingleCard(this, SepulchrePile.SelectionPrompt.HauntAndBury, choiceContext, PileType.Draw);
+        CardModel? card = await CommonActions.SelectSingleCard(this, MySelectionPrompts.GainsHauntedAndBury, choiceContext, PileType.Draw);
 
         if (card != null)
         {

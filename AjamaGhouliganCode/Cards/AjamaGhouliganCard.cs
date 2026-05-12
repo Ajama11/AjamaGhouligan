@@ -29,9 +29,19 @@ public abstract class AjamaGhouliganCard(int cost, CardType type, CardRarity rar
     public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
     public override string BetaPortraitPath => $"beta/{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
     
-    public virtual IEnumerable<CardKeyword> MyCanonicalKeywords => [];
+    // public virtual IEnumerable<CardKeyword> MyCanonicalKeywords => [];
     public virtual HashSet<CardTag> MyCanonicalTags => [];
     public virtual IEnumerable<IHoverTip> MyHoverTips => [];
+    
+    // public override IEnumerable<CardKeyword> CanonicalKeywords
+    // {
+    //     get
+    //     {
+    //         IEnumerable<CardKeyword> result = [..MyCanonicalKeywords];
+    //
+    //         return result;
+    //     }
+    // }
 
     protected override HashSet<CardTag> CanonicalTags
     {

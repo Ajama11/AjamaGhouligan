@@ -2,5 +2,6 @@
   "AJAMAGHOULIGAN-TO_SEPULCHRE": "Choose {Amount:plural:a card|[blue]{}[/blue] cards} to [gold]Bury[/gold].",
   "AJAMAGHOULIGAN-FROM_SEPULCHRE": "Choose {Amount:plural:a card|[blue]{}[/blue] cards} to [gold]Exhume[/gold].",
   "AJAMAGHOULIGAN-TO_SEPULCHRE_HAUNT": "Choose {Amount:plural:a card|[blue]{}[/blue] cards} to [gold]Bury[/gold] and [gold]Haunt[/gold].",
-  "AJAMAGHOULIGAN-TO_HAUNT": "Choose {Amount:plural:a card|[blue]{}[/blue] cards} to [gold]Haunt[/gold]."
+  "AJAMAGHOULIGAN-TO_HAUNT": "Choose {Amount:plural:a card|[blue]{}[/blue] cards} to [gold]Haunt[/gold].",
+  "AJAMAGHOULIGAN-GAINS_HAUNTED_AND_BURY": "Choose {Amount:plural:a card|[blue]{}[/blue] cards}. {Amount:plural:It gains|They gain} [gold]Haunted[/gold] and [gold]Bury[/gold]."
 }

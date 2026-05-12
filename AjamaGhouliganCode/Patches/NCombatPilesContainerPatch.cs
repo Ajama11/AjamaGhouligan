@@ -33,9 +33,9 @@ public static class NCombatUiActivatePatch
     public static void ActivatePostfix(NCombatUi __instance, CombatState state)
     {
         var container = __instance.GetNode<NCombatPilesContainer>("%CombatPileContainer");
-        var cargoPile = container.GetNodeOrNull<NBuryPile>("_BuryPile");
+        var buryPile = container.GetNodeOrNull<NBuryPile>("_BuryPile");
         var player = LocalContext.GetMe(state);
-        cargoPile?.Initialize(player!);
+        buryPile?.Initialize(player!);
     }
 }
 

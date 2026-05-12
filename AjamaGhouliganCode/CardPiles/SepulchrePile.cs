@@ -4,6 +4,8 @@ using Godot;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Nodes.Combat;
+using MegaCrit.Sts2.Core.Nodes.Rooms;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.CardPiles;
 
@@ -13,13 +15,17 @@ public class SepulchrePile() : CustomPile(PileType)
 
     public override bool CardShouldBeVisible(CardModel card) => false;
 
-    public override Vector2 GetTargetPosition(CardModel model, Vector2 size) => NBuryPile.PilePosition + new Vector2(40, 55);
-    
-    public struct SelectionPrompt
+    public override Vector2 GetTargetPosition(CardModel model, Vector2 size)
     {
-        public static LocString Haunt => new LocString("card_selection", "AJAMAGHOULIGAN-TO_HAUNT");
-        public static LocString Bury => new LocString("card_selection", "AJAMAGHOULIGAN-TO_SEPULCHRE");
-        public static LocString Disinter => new LocString("card_selection", "AJAMAGHOULIGAN-FROM_SEPULCHRE");
-        public static LocString HauntAndBury => new LocString("card_selection", "AJAMAGHOULIGAN-TO_SEPULCHRE_HAUNT");
+        // ReSharper disable once InvertIf
+        if (NCombatRoom.Instance != null)
+        {
+            var container = NCombatRoom.Instance.Ui.GetNode<NCombatPilesContainer>("%CombatPileContainer");
+            NBuryPile? pile = container.GetNodeOrNull<NBuryPile>("_BuryPile");
+
+            if (pile != null) return pile.GlobalPosition + pile.Size * 0.5f;
+        }
+        
+        return NBuryPile.PilePosition + new Vector2(40, 55);
     }
 }

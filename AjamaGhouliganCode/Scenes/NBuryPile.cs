@@ -108,7 +108,7 @@ public partial class NBuryPile : NCombatCardPile
 
     private void HandleVisibility()
     {
-        if (_currentCount > 0)
+        if (_currentCount > 0 && !Visible)
         {
             AnimIn();
             Enable();
