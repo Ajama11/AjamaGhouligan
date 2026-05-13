@@ -18,5 +18,9 @@
   "AJAMAGHOULIGAN-DOUBLE_POKE.title": "Double Poke",
   "AJAMAGHOULIGAN-DOUBLE_POKE.description": "#[gold]Osty[/gold] deals !OstyDamage! damage !Repeat! times.",
   "AJAMAGHOULIGAN-SHOVEL_BONK.title": "Shovel Bonk",
-  "AJAMAGHOULIGAN-SHOVEL_BONK.description": "#Deal !D! damage.\n[gold]Bury[/gold] {Bury:plural:a|{}} random [gold]Haunted[/gold] {Bury:plural:card|cards} from your [gold]Draw Pile[/gold], [gold]Discard Pile[/gold], or [gold]Hand[/gold]."
+  "AJAMAGHOULIGAN-SHOVEL_BONK.description": "#Deal !D! damage.\n[gold]Bury[/gold] {Bury:plural:a|{}} random [gold]Haunted[/gold] {Bury:plural:card|cards} from your [gold]Draw Pile[/gold], [gold]Discard Pile[/gold], or [gold]Hand[/gold].",
+  "AJAMAGHOULIGAN-OOPSIES.title": "Oopsies",
+  "AJAMAGHOULIGAN-OOPSIES.description": "#Deal !CD! damage.\nApply !MisfortunePower! [gold]Misfortune[/gold].",
+  "AJAMAGHOULIGAN-SAFE_KEEPING.title": "Safe Keeping",
+  "AJAMAGHOULIGAN-SAFE_KEEPING.description": "#Gain !B! [gold]Block[/gold].\n[gold]Bury[/gold] !Bury! card(s)."
 }

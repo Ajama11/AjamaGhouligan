@@ -5,6 +5,7 @@ using BaseLib.Utils;
 using AjamaGhouligan.AjamaGhouliganCode.Character;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Extensions;
+using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.HoverTips;
@@ -32,6 +33,7 @@ public abstract class AjamaGhouliganCard(int cost, CardType type, CardRarity rar
     // public virtual IEnumerable<CardKeyword> MyCanonicalKeywords => [];
     public virtual HashSet<CardTag> MyCanonicalTags => [];
     public virtual IEnumerable<IHoverTip> MyHoverTips => [];
+    public virtual bool MyShouldGlowGoldInternal => false;
     
     // public override IEnumerable<CardKeyword> CanonicalKeywords
     // {
@@ -68,6 +70,11 @@ public abstract class AjamaGhouliganCard(int cost, CardType type, CardRarity rar
             {
                 result = [..result, HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon)];
             }
+            
+            if (DynamicVars.ContainsKey(nameof(MisfortunePower)) || Keywords.Contains(MyEnums.Unfortunate))
+            {
+                result = [..result, HoverTipFactory.FromPower<MisfortunePower>()];
+            }
 
             // if (DynamicVars.ContainsKey(HauntVar.Key))
             // {
@@ -77,6 +84,12 @@ public abstract class AjamaGhouliganCard(int cost, CardType type, CardRarity rar
             return result;
         }
     }
+
+    protected override bool ShouldGlowGoldInternal => !ShouldGlowRedInternal && (MyShouldGlowGoldInternal ||
+        (Pile != null &&
+         Pile.Type == SepulchrePile.PileType &&
+         Keywords.Contains(MyEnums.Haunted) &&
+         Keywords.Contains(MyEnums.Buried)));
 
     protected override bool ShouldGlowRedInternal => CanonicalTags.Contains(CardTag.OstyAttack) && Owner.IsOstyMissing;
 

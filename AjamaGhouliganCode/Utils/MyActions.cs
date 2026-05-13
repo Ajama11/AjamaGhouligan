@@ -222,9 +222,9 @@ public class MyActions
     {
         CardSelectorPrefs prefs = new CardSelectorPrefs(selectionScreenPrompt, amount);
 
-        CardModel? card = (await CardSelectCmd.FromSimpleGrid(choiceContext, from.GetPile(sourceCard.Owner).Cards, sourceCard.Owner, prefs)).FirstOrDefault();
+        List<CardModel> cards = (await CardSelectCmd.FromSimpleGrid(choiceContext, from.GetPile(sourceCard.Owner).Cards, sourceCard.Owner, prefs)).ToList();
 
-        if (card != null) await CardPileCmd.Add(card, to, position);
+        if (cards.Count != 0) await CardPileCmd.Add(cards, to, position);
     }
     
     public static async Task PutSelectFiltered(AjamaGhouliganCard sourceCard, PlayerChoiceContext choiceContext, PileType from, PileType to, LocString selectionScreenPrompt, Func<CardModel, bool> filter,
@@ -232,9 +232,9 @@ public class MyActions
     {
         CardSelectorPrefs prefs = new CardSelectorPrefs(selectionScreenPrompt, amount);
 
-        CardModel? card = (await CardSelectCmd.FromSimpleGrid(choiceContext, from.GetPile(sourceCard.Owner).Cards.Where(filter).ToList(), sourceCard.Owner, prefs)).FirstOrDefault();
+        List<CardModel> cards = (await CardSelectCmd.FromSimpleGrid(choiceContext, from.GetPile(sourceCard.Owner).Cards.Where(filter).ToList(), sourceCard.Owner, prefs)).ToList();
 
-        if (card != null) await CardPileCmd.Add(card, to, position);
+        if (cards.Count != 0) await CardPileCmd.Add(cards, to, position);
     }
 
     public static List<CardModel> GetRandomCards(AjamaGhouliganCard sourceCard, PileType from, Func<CardModel, bool> filter, int amount = 1)
@@ -260,5 +260,29 @@ public class MyActions
             .ToList();
         
         return selectedCards;
+    }
+    
+    public static async Task SelectForBury(AjamaGhouliganCard sourceCard, PlayerChoiceContext choiceContext, PileType from = PileType.Hand, int amountOverride = -1)
+    {
+        int amount = amountOverride == -1 ? sourceCard.DynamicVars.Bury().IntValue : amountOverride;
+        
+        CardSelectorPrefs prefs = new CardSelectorPrefs(MySelectionPrompts.Bury, amount)
+        {
+            ShouldGlowGold = c => c.Keywords.Contains(MyEnums.Haunted)
+        };
+
+        List<CardModel> cards;
+
+        // ReSharper disable once ConvertIfStatementToConditionalTernaryExpression
+        if (from == PileType.Hand)
+        {
+            cards = (await CardSelectCmd.FromHand(choiceContext, sourceCard.Owner, prefs, _ => true, sourceCard)).ToList();
+        }
+        else
+        {
+            cards = (await CardSelectCmd.FromSimpleGrid(choiceContext, from.GetPile(sourceCard.Owner).Cards, sourceCard.Owner, prefs)).ToList();
+        }
+
+        await BurySpecific(cards);
     }
 }
