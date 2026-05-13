@@ -5,7 +5,7 @@ namespace AjamaGhouligan.AjamaGhouliganCode.Utils;
 
 public class MyEnums
 {
-    [CustomEnum, KeywordProperties(AutoKeywordPosition.Before)]
+    [CustomEnum, KeywordProperties(AutoKeywordPosition.None)]
     public static CardKeyword Haunted;
     
     [CustomEnum, KeywordProperties(AutoKeywordPosition.After)]

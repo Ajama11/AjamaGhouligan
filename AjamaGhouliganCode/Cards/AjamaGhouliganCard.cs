@@ -33,7 +33,6 @@ public abstract class AjamaGhouliganCard(int cost, CardType type, CardRarity rar
     // public virtual IEnumerable<CardKeyword> MyCanonicalKeywords => [];
     public virtual HashSet<CardTag> MyCanonicalTags => [];
     public virtual IEnumerable<IHoverTip> MyHoverTips => [];
-    public virtual bool MyShouldGlowGoldInternal => false;
     
     // public override IEnumerable<CardKeyword> CanonicalKeywords
     // {
@@ -84,12 +83,6 @@ public abstract class AjamaGhouliganCard(int cost, CardType type, CardRarity rar
             return result;
         }
     }
-
-    protected override bool ShouldGlowGoldInternal => !ShouldGlowRedInternal && (MyShouldGlowGoldInternal ||
-        (Pile != null &&
-         Pile.Type == SepulchrePile.PileType &&
-         Keywords.Contains(MyEnums.Haunted) &&
-         Keywords.Contains(MyEnums.Buried)));
 
     protected override bool ShouldGlowRedInternal => CanonicalTags.Contains(CardTag.OstyAttack) && Owner.IsOstyMissing;
 

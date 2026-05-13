@@ -1,5 +1,7 @@
 {
   "AJAMAGHOULIGAN-HAUNTED.title": "Haunted",
+  "AJAMAGHOULIGAN-HAUNTED.title_fancy": "[gold]Haunted[/gold].",
+  "AJAMAGHOULIGAN-HAUNTED.title_fancy_buried": "[sine][pulse freq=1.0 color=#ffffff40 ease=-2.0][gold]Haunted[/gold].[/pulse][/sine]",
   "AJAMAGHOULIGAN-HAUNTED.description": "At the start of your turn, if this is in your [gold]Sepulchre Pile[/gold], play it.",
   "AJAMAGHOULIGAN-BURY.title": "Bury",
   "AJAMAGHOULIGAN-BURY.description": "This card goes to the [gold]Sepulchre Pile[/gold] when played.",
