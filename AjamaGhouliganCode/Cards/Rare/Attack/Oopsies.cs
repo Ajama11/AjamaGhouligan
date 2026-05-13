@@ -28,7 +28,7 @@ public class Oopsies() : AjamaGhouliganCard(0,
         new CalculatedDamageVar(ValueProp.Move)
             .WithMultiplier((card, creature) =>
                 creature?.GetPowerAmount<MisfortunePower>() ?? 0),
-        new PowerVar<MisfortunePower>(7)
+        new PowerVar<MisfortunePower>(6)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
