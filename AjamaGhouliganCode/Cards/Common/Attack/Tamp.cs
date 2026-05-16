@@ -1,8 +1,8 @@
+using AjamaGhouligan.AjamaGhouliganCode.CardPiles;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
-using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -14,53 +14,54 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Common.Attack;
 
-public class NeckSnap() : AjamaGhouliganCard(1,
+public class Tamp() : AjamaGhouliganCard(2,
     CardType.Attack, CardRarity.Common,
     TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new OstyDamageVar(6, ValueProp.Move)
+        new OstyDamageVar(12, ValueProp.Move),
+        new BuryVar(99),
+        new HauntVar(1, true)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
+        CardKeyword.Retain,
         MyEnums.Unfortunate
     ];
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
-    [
-        HoverTipFactory.FromKeyword(CardKeyword.Retain)
-    ];
-
+    IsUpgraded ? [HoverTipFactory.Static(MyEnums.Haunt)] : [];
+    
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
         ArgumentNullException.ThrowIfNull(play.Target);
-
+        
         if (!Osty.CheckMissingWithAnim(Owner))
         {
             await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue)
                 .FromOsty(Owner.Osty!, this)
                 .Targeting(play.Target)
-                .WithAttackerAnim("attack_poke", 0.3f)
                 .WithHitFx("vfx/vfx_attack_blunt", tmpSfx: "blunt_attack.mp3")
                 .Execute(choiceContext);
         }
-
-        CardSelectorPrefs prefs = new CardSelectorPrefs(SelectionScreenPrompt, 1);
-
-        CardModel? card = (await CardSelectCmd.FromHand(choiceContext, Owner, prefs, 
-                c => !c.Keywords.Contains(CardKeyword.Retain),
-                this))
-            .FirstOrDefault();
         
-        if (card != null) CardCmd.ApplyKeyword(card, CardKeyword.Retain);
-    }
+        foreach (CardModel card in PileType.Hand.GetPile(Owner).Cards.ToList())
+        {
+            await MyActions.BurySpecific(card);
+        }
 
-    protected override void OnUpgrade()
-    {
-        EnergyCost.UpgradeBy(-1);
+        if (IsUpgraded)
+        {
+            await Cmd.Wait(0.33f);
+            
+            await MyActions.HauntAndPossiblyBury(this, 
+                [SepulchrePile.PileType], 
+                false, true, choiceContext, 
+                c => !c.Keywords.Contains(MyEnums.Haunted));
+        }
     }
 }

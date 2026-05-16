@@ -7,9 +7,9 @@ public class HauntVar : DynamicVar
 {
     public const string Key = "Haunt";
     
-    public HauntVar(decimal baseValue) : base(Key, baseValue)
+    public HauntVar(decimal baseValue, bool skipTooltip = false) : base(Key, baseValue)
     {
-        this.WithTooltip();
+        if (!skipTooltip) this.WithTooltip();
     }
 }
 

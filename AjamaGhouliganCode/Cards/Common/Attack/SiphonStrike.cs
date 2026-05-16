@@ -21,22 +21,7 @@ public class SiphonStrike() : AjamaGhouliganCard(1,
         new DamageVar(8, ValueProp.Move),
         new LoseDoomVar(3)
     ];
-
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-
-    ];
-
-    public override HashSet<CardTag> MyCanonicalTags =>
-    [
-
-    ];
-
-    public override IEnumerable<IHoverTip> MyHoverTips =>
-    [
-
-    ];
-
+    
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)

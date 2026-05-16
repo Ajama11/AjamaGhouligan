@@ -26,14 +26,20 @@
   "AJAMAGHOULIGAN-AWOO.title": "Awoo",
   "AJAMAGHOULIGAN-AWOO.description": "#Deal !D! damage to ALL enemies.\nApply !MisfortunePower! [gold]Misfortune[/gold] to ALL enemies.",
   "AJAMAGHOULIGAN-BOOGEYMAN.title": "Boogeyman",
-  "AJAMAGHOULIGAN-BOOGEYMAN.description": "#Deal !D! damage.\n{IfUpgraded:show:Draw !C! card(s).\\n|}[gold]Haunt[/gold] ALL cards in your [gold]Hand[/gold].",
+  "AJAMAGHOULIGAN-BOOGEYMAN.description": "#Deal !D! damage.\n{IfUpgraded:show:Draw !C! card(s).\n|}[gold]Haunt[/gold] ALL cards in your [gold]Hand[/gold].",
   "AJAMAGHOULIGAN-CURSED_BOOMERANG.title": "Cursed Boomerang",
   "AJAMAGHOULIGAN-CURSED_BOOMERANG.description": "#Deal !D! damage !Repeat! times to a random enemy.\nAt the start of your next turn, return this to your [gold]Hand[/gold].",
   "AJAMAGHOULIGAN-NECK_SNAP.title": "Neck Snap",
-  "AJAMAGHOULIGAN-NECK_SNAP.description": "#Osty deals !OstyDamage! damage.\nAdd [gold]Retain[/gold] to a card in your [gold]Hand[/gold].",
+  "AJAMAGHOULIGAN-NECK_SNAP.description": "#[gold]Osty[/gold] deals !OstyDamage! damage.\nAdd [gold]Retain[/gold] to a card in your [gold]Hand[/gold].",
   "AJAMAGHOULIGAN-NECK_SNAP.selectionScreenPrompt": "Select a card to add [gold]Retain[/gold] to.",
   "AJAMAGHOULIGAN-SOULWICK.title": "Soulwick",
   "AJAMAGHOULIGAN-SOULWICK.description": "#Apply !DoomPower! [gold]Doom[/gold] to yourself.\nGain [E?].",
   "AJAMAGHOULIGAN-SIPHON_STRIKE.title": "Siphon Strike",
-  "AJAMAGHOULIGAN-SIPHON_STRIKE.description": "#Deal !D! damage.\nLose !LoseDoom! [gold]Doom[/gold]."
+  "AJAMAGHOULIGAN-SIPHON_STRIKE.description": "#Deal !D! damage.\nLose !LoseDoom! [gold]Doom[/gold].",
+  "AJAMAGHOULIGAN-SLAM.title": "Slam",
+  "AJAMAGHOULIGAN-SLAM.description": "#[gold]Osty[/gold] deals !OstyDamage! damage to ALL enemies.\nApply !WeakPower! [gold]Weak[/gold] to ALL enemies.",
+  "AJAMAGHOULIGAN-SPIRIT_FIRE.title": "Spirit Fire",
+  "AJAMAGHOULIGAN-SPIRIT_FIRE.description": "#Deal !D! damage !Repeat! times.",
+  "AJAMAGHOULIGAN-TAMP.title": "Tamp",
+  "AJAMAGHOULIGAN-TAMP.description": "#[gold]Osty[/gold] deals !OstyDamage! damage.\n[gold]Bury[/gold] ALL cards in your [gold]Hand[/gold].{IfUpgraded:show:\n[gold]Haunt[/gold] a card in your [gold]Sepulchre Pile[/gold].|}"
 }

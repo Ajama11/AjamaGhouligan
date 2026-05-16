@@ -25,21 +25,6 @@ public class Boogeyman() : AjamaGhouliganCard(1,
         new HauntVar(99)
     ];
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-        
-    ];
-
-    public override HashSet<CardTag> MyCanonicalTags =>
-    [
-
-    ];
-
-    public override IEnumerable<IHoverTip> MyHoverTips =>
-    [
-
-    ];
-
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
@@ -54,7 +39,7 @@ public class Boogeyman() : AjamaGhouliganCard(1,
 
         if (IsUpgraded) await CommonActions.Draw(this, choiceContext);
 
-        foreach (CardModel card in PileType.Hand.GetPile(Owner).Cards)
+        foreach (CardModel card in PileType.Hand.GetPile(Owner).Cards.ToList())
         {
             MyActions.HauntSpecific(card);
         }

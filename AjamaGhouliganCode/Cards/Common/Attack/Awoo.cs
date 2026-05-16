@@ -24,21 +24,6 @@ public class Awoo() : AjamaGhouliganCard(1,
         new PowerVar<MisfortunePower>(4)
     ];
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-        
-    ];
-
-    public override HashSet<CardTag> MyCanonicalTags =>
-    [
-
-    ];
-
-    public override IEnumerable<IHoverTip> MyHoverTips =>
-    [
-
-    ];
-
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)

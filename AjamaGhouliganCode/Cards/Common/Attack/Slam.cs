@@ -2,65 +2,61 @@ using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
-using MegaCrit.Sts2.Core.CardSelection;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Monsters;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Common.Attack;
 
-public class NeckSnap() : AjamaGhouliganCard(1,
+public class Slam() : AjamaGhouliganCard(1,
     CardType.Attack, CardRarity.Common,
-    TargetType.AnyEnemy)
+    TargetType.AllEnemies)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new OstyDamageVar(6, ValueProp.Move)
+        new OstyDamageVar(6, ValueProp.Move),
+        new PowerVar<WeakPower>(1)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        MyEnums.Unfortunate
+        CardKeyword.Retain,
+        MyEnums.Haunted
     ];
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
-        HoverTipFactory.FromKeyword(CardKeyword.Retain)
+        HoverTipFactory.FromPower<WeakPower>()
     ];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        ArgumentNullException.ThrowIfNull(play.Target);
-
         if (!Osty.CheckMissingWithAnim(Owner))
         {
             await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue)
                 .FromOsty(Owner.Osty!, this)
-                .Targeting(play.Target)
-                .WithAttackerAnim("attack_poke", 0.3f)
+                .TargetingAllOpponents(CombatState!)
                 .WithHitFx("vfx/vfx_attack_blunt", tmpSfx: "blunt_attack.mp3")
                 .Execute(choiceContext);
         }
-
-        CardSelectorPrefs prefs = new CardSelectorPrefs(SelectionScreenPrompt, 1);
-
-        CardModel? card = (await CardSelectCmd.FromHand(choiceContext, Owner, prefs, 
-                c => !c.Keywords.Contains(CardKeyword.Retain),
-                this))
-            .FirstOrDefault();
         
-        if (card != null) CardCmd.ApplyKeyword(card, CardKeyword.Retain);
+        foreach (Creature enemy in CombatState!.HittableEnemies)
+        {
+            await CommonActions.Apply<WeakPower>(choiceContext, enemy, this);
+        }
     }
 
     protected override void OnUpgrade()
     {
-        EnergyCost.UpgradeBy(-1);
+        DynamicVars.OstyDamage.UpgradeValueBy(3);
     }
 }

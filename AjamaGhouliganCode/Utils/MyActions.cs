@@ -26,7 +26,7 @@ namespace AjamaGhouligan.AjamaGhouliganCode.Utils;
 public class MyActions
 {
     /// If player chooses, don't use this for only grabbing from Hand.
-    public static async Task HauntAndPossiblyBury(AjamaGhouliganCard sourceCard, List<PileType> fromPiles, bool andBury = false, bool playerChooses = false, PlayerChoiceContext? choiceContext = null)
+    public static async Task HauntAndPossiblyBury(AjamaGhouliganCard sourceCard, List<PileType> fromPiles, bool andBury = false, bool playerChooses = false, PlayerChoiceContext? choiceContext = null, Func<CardModel, bool>? filter = null)
     {
         List<CardModel> possibleCards = [];
         List<CardModel> selectedCards;
@@ -34,6 +34,16 @@ public class MyActions
         foreach (var pile in fromPiles)
         {
             possibleCards = [..possibleCards, ..pile.GetPile(sourceCard.Owner).Cards];
+        }
+
+        if (filter != null)
+        {
+            possibleCards = possibleCards.Where(filter).ToList();
+        }
+
+        if (possibleCards.Count == 0)
+        {
+            return;
         }
 
         if (playerChooses)
@@ -65,10 +75,20 @@ public class MyActions
         }
     }
     
-    public static async Task HauntAndPossiblyBuryFromHand(AjamaGhouliganCard sourceCard, bool andBury = false, bool playerChooses = false, PlayerChoiceContext? choiceContext = null)
+    public static async Task HauntAndPossiblyBuryFromHand(AjamaGhouliganCard sourceCard, bool andBury = false, bool playerChooses = false, PlayerChoiceContext? choiceContext = null, Func<CardModel, bool>? filter = null)
     {
         List<CardModel> possibleCards = PileType.Hand.GetPile(sourceCard.Owner).Cards.ToList();
         List<CardModel> selectedCards;
+        
+        if (filter != null)
+        {
+            possibleCards = possibleCards.Where(filter).ToList();
+        }
+        
+        if (possibleCards.Count == 0)
+        {
+            return;
+        }
 
         if (playerChooses)
         {
