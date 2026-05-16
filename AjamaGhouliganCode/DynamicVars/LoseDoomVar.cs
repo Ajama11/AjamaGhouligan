@@ -3,14 +3,9 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 
-public class LoseDoomVar : DynamicVar
+public class LoseDoomVar(decimal baseValue) : DynamicVar(Key, baseValue)
 {
     public const string Key = "LoseDoom";
-    
-    public LoseDoomVar(decimal baseValue) : base(Key, baseValue)
-    {
-        this.WithTooltip();
-    }
 }
 
 public static class LoseDoomVarDynamicVarSetExtensions

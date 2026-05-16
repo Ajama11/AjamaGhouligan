@@ -47,6 +47,11 @@
           "name": "smartDescription",
           "file": "powers.json",
           "optional": false
+        },
+        {
+          "name": "selectionScreenPrompt",
+          "file": "powers.json",
+          "optional": true
         }
       ]
     },
@@ -129,5 +134,7 @@
         }
       ]
     }
-  ]
+  ],
+  "pinnedColors": [],
+  "customTags": []
 }

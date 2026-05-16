@@ -32,8 +32,6 @@ public partial class MainFile : Node
         
         DescriptionOverrides.CustomizeDescriptionPost += (CardModel card, Creature? _, ref string description) =>
         {
-            if (card is not AjamaGhouliganCard) { return; }
-            
             if (LocString.GetIfExists("card_keywords", "AJAMAGHOULIGAN-HAUNTED.title_fancy") == null) { return; }
 
             if (card.Keywords.Contains(MyEnums.Haunted))

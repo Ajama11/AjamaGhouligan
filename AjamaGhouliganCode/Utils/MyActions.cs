@@ -1,17 +1,22 @@
+using System.Buffers;
 using System.Diagnostics.CodeAnalysis;
 using AjamaGhouligan.AjamaGhouliganCode.CardPiles;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
+using BaseLib.Extensions;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Extensions;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Monsters;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Nodes.Combat;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 
@@ -284,5 +289,32 @@ public class MyActions
         }
 
         await BurySpecific(cards);
+    }
+
+    public static async Task SelfDoom(PlayerChoiceContext choiceContext, AjamaGhouliganCard sourceCard)
+    {
+        await SelfDoom(sourceCard.Owner.Creature, sourceCard.DynamicVars.Power<DoomPower>().IntValue, choiceContext, sourceCard);
+    }
+
+    public static async Task SelfDoom(Creature playerCreature, int amount, PlayerChoiceContext? choiceContext = null, CardModel? sourceCard = null)
+    {
+        choiceContext ??= new ThrowingPlayerChoiceContext();
+
+        await PowerCmd.Apply<DoomPower>(choiceContext, playerCreature, amount, playerCreature, sourceCard);
+    }
+    
+    public static async Task LoseDoom(PlayerChoiceContext choiceContext, AjamaGhouliganCard sourceCard)
+    {
+        await LoseDoom(sourceCard.Owner.Creature, sourceCard.DynamicVars.LoseDoom().IntValue, choiceContext, sourceCard);
+    }
+
+    public static async Task LoseDoom(Creature playerCreature, int amount, PlayerChoiceContext? choiceContext = null, CardModel? sourceCard = null)
+    {
+        choiceContext ??= new ThrowingPlayerChoiceContext();
+        
+        DoomPower? doom = playerCreature.GetPower<DoomPower>();
+        if (doom == null) return;
+        
+        await PowerCmd.ModifyAmount(choiceContext, doom, -1 * amount, playerCreature, sourceCard);
     }
 }

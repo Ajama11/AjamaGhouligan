@@ -2,35 +2,30 @@ using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
-using BaseLib.Utils;
-using Godot;
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Monsters;
-using MegaCrit.Sts2.Core.Nodes.Rooms;
-using MegaCrit.Sts2.Core.Nodes.Vfx.Cards;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Rare.Attack;
+namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Common.Attack;
 
-public class Oopsies() : AjamaGhouliganCard(0,
-    CardType.Attack, CardRarity.Rare,
-    TargetType.AnyEnemy)
+public class CursedBoomerang() : AjamaGhouliganCard(1,
+    CardType.Attack, CardRarity.Common,
+    TargetType.RandomEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(0, ValueProp.Move),
-        new PowerVar<MisfortunePower>(6)
+        new DamageVar(2, ValueProp.Move),
+        new RepeatVar(3)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        MyEnums.Haunted,
-        MyEnums.Bury,
         MyEnums.Unfortunate
     ];
 
@@ -48,21 +43,30 @@ public class Oopsies() : AjamaGhouliganCard(0,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        ArgumentNullException.ThrowIfNull(play.Target);
-        
-        NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(NSpikeSplashVfx.Create(play.Target));
-
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(this)
-            .Targeting(play.Target)
-            .WithHitFx("vfx/vfx_attack_blunt", tmpSfx: "blunt_attack.mp3")
+            .TargetingRandomOpponents(CombatState!)
+            .WithHitCount(DynamicVars.Repeat.IntValue)
+            .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
+    }
 
-        await CommonActions.Apply<MisfortunePower>(choiceContext, play.Target, this);
+    public override async Task BeforeHandDraw(Player player, PlayerChoiceContext choiceContext, ICombatState combatState)
+    {
+        if (player != Owner || 
+            !CombatManager.Instance.History.CardPlaysFinished.Any(e => 
+                e.RoundNumber == CombatState!.RoundNumber - 1 && 
+                e.CardPlay.Card == this)) 
+            return;
+
+        if (Pile is not { Type: PileType.Hand })
+        {
+            await CardPileCmd.Add(this, PileType.Hand);
+        }
     }
 
     protected override void OnUpgrade()
     {
-        AddKeyword(CardKeyword.Innate);
+        DynamicVars.Repeat.UpgradeValueBy(1);
     }
 }

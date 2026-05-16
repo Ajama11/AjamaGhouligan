@@ -27,7 +27,7 @@ public class Ghouligan : PlaceholderCharacterModel
         ModelDb.Card<StrikeIronclad>(),
         ModelDb.Card<DefendIronclad>(),
         ModelDb.Card<Yoink>(),
-        ModelDb.Card<TempBasic>()
+        ModelDb.Card<Boop>()
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>
