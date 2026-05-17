@@ -41,5 +41,9 @@
   "AJAMAGHOULIGAN-SPIRIT_FIRE.title": "Spirit Fire",
   "AJAMAGHOULIGAN-SPIRIT_FIRE.description": "#Deal !D! damage !Repeat! times.",
   "AJAMAGHOULIGAN-TAMP.title": "Tamp",
-  "AJAMAGHOULIGAN-TAMP.description": "#[gold]Osty[/gold] deals !OstyDamage! damage.\n[gold]Bury[/gold] ALL cards in your [gold]Hand[/gold].{IfUpgraded:show:\n[gold]Haunt[/gold] a card in your [gold]Sepulchre Pile[/gold].|}"
+  "AJAMAGHOULIGAN-TAMP.description": "#[gold]Osty[/gold] deals !OstyDamage! damage.\n[gold]Bury[/gold] ALL cards in your [gold]Hand[/gold].{IfUpgraded:show:\n[gold]Haunt[/gold] a card in your [gold]Sepulchre Pile[/gold].|}",
+  "AJAMAGHOULIGAN-DISCORDANT_DITTY.title": "Discordant Ditty",
+  "AJAMAGHOULIGAN-DISCORDANT_DITTY.description": "#Apply !MisfortunePower! [gold]Misfortune[/gold] to ALL enemies.",
+  "AJAMAGHOULIGAN-DUB_THEE_SIR_BONESY.title": "Dub Thee Sir Bonesy",
+  "AJAMAGHOULIGAN-DUB_THEE_SIR_BONESY.description": "#Apply !DoomPower! [gold]Doom[/gold] to yourself.\n[gold]Summon[/gold] !Summon!."
 }

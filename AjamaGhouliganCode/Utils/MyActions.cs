@@ -204,7 +204,7 @@ public class MyActions
         await BurySpecific(card);
     }
 
-    public static async Task Summon(AjamaGhouliganCard sourceCard, PlayerChoiceContext choiceContext)
+    public static async Task Summon(PlayerChoiceContext choiceContext, AjamaGhouliganCard sourceCard)
     {
         await OstyCmd.Summon(choiceContext, sourceCard.Owner, sourceCard.DynamicVars.Summon.BaseValue, sourceCard);
     }
@@ -336,5 +336,52 @@ public class MyActions
         if (doom == null) return;
         
         await PowerCmd.ModifyAmount(choiceContext, doom, -1 * amount, playerCreature, sourceCard);
+    }
+
+    public static void HauntRandomInPile(PileType pile, AjamaGhouliganCard sourceCard)
+    {
+        HauntRandomInPile(pile, sourceCard.Owner, sourceCard.DynamicVars.Haunt().IntValue);
+    }
+    
+    public static void HauntRandomInPile(PileType pile, Player player, int amount)
+    {
+        List<CardModel> chosenCards = GetRandomCards(player, pile,
+            c => !c.Keywords.Contains(MyEnums.Haunted), amount);
+
+        foreach (CardModel card in chosenCards)
+        {
+            HauntSpecific(card);
+        }
+    }
+    
+    public static async Task BuryRandomInPile(PileType pile, AjamaGhouliganCard sourceCard, MyEnums.RandomBuryTargeting targeting = MyEnums.RandomBuryTargeting.PrioritizeHaunted)
+    {
+        await BuryRandomInPile(pile, sourceCard.Owner, sourceCard.DynamicVars.Bury().IntValue, targeting);
+    }
+    
+    public static async Task BuryRandomInPile(PileType pile, Player player, int amount, MyEnums.RandomBuryTargeting targeting = MyEnums.RandomBuryTargeting.PrioritizeHaunted)
+    {
+        Func<CardModel, bool> filter = targeting switch
+        {
+            MyEnums.RandomBuryTargeting.All => 
+                _ => true,
+            
+            MyEnums.RandomBuryTargeting.NotHaunted => 
+                c => !c.Keywords.Contains(MyEnums.Haunted),
+            
+            MyEnums.RandomBuryTargeting.PrioritizeHaunted or MyEnums.RandomBuryTargeting.OnlyHaunted => 
+                c => c.Keywords.Contains(MyEnums.Haunted),
+            
+            _ => throw new ArgumentOutOfRangeException(nameof(targeting), targeting, null)
+        };
+
+        List<CardModel> chosenCards = GetRandomCards(player, pile, filter, amount);
+
+        if (chosenCards.Count == 0 && targeting == MyEnums.RandomBuryTargeting.PrioritizeHaunted)
+        {
+            chosenCards = GetRandomCards(player, pile, _ => true, amount);
+        }
+
+        await BurySpecific(chosenCards);
     }
 }

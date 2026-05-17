@@ -20,4 +20,12 @@ public class MyEnums
 
     [CustomEnum]
     public static StaticHoverTip Haunt;
+
+    public enum RandomBuryTargeting
+    {
+        All,
+        NotHaunted,
+        PrioritizeHaunted,
+        OnlyHaunted
+    }
 }
