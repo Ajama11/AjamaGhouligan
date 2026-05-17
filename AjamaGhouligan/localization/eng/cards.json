@@ -45,5 +45,17 @@
   "AJAMAGHOULIGAN-DISCORDANT_DITTY.title": "Discordant Ditty",
   "AJAMAGHOULIGAN-DISCORDANT_DITTY.description": "#Apply !MisfortunePower! [gold]Misfortune[/gold] to ALL enemies.",
   "AJAMAGHOULIGAN-DUB_THEE_SIR_BONESY.title": "Dub Thee Sir Bonesy",
-  "AJAMAGHOULIGAN-DUB_THEE_SIR_BONESY.description": "#Apply !DoomPower! [gold]Doom[/gold] to yourself.\n[gold]Summon[/gold] !Summon!."
+  "AJAMAGHOULIGAN-DUB_THEE_SIR_BONESY.description": "#Apply !DoomPower! [gold]Doom[/gold] to yourself.\n[gold]Summon[/gold] !Summon!.",
+  "AJAMAGHOULIGAN-FRIGHTEN.title": "Frighten",
+  "AJAMAGHOULIGAN-FRIGHTEN.description": "#Apply !VulnerablePower! [gold]Vulnerable[/gold].\nApply !MisfortunePower! [gold]Misfortune[/gold].",
+  "AJAMAGHOULIGAN-GET_SILLY.title": "Get Silly",
+  "AJAMAGHOULIGAN-GET_SILLY.description": "#[gold]Summon[/gold] !Summon!.\nGain !GoofPower! [gold]Goof[/gold].",
+  "AJAMAGHOULIGAN-GOOFY_PUMPKIN.title": "Goofy Pumpkin",
+  "AJAMAGHOULIGAN-GOOFY_PUMPKIN.description": "#[gold]Haunt[/gold] !Haunt! random cards in your [gold]Draw Pile[/gold].\nGain !GoofPower! [gold]Goof[/gold].",
+  "AJAMAGHOULIGAN-LIMITLESS_BONES.title": "Limitless Bones",
+  "AJAMAGHOULIGAN-LIMITLESS_BONES.description": "#[gold]Summon[/gold] !Summon!.",
+  "AJAMAGHOULIGAN-VANISH.title": "Vanish",
+  "AJAMAGHOULIGAN-VANISH.description": "#Gain !B! [gold]Block[/gold].\n[gold]Exhaust[/gold] a card in your [gold]Discard Pile[/gold].",
+  "AJAMAGHOULIGAN-WISPY_EXHUME.title": "Wispy Exhume",
+  "AJAMAGHOULIGAN-WISPY_EXHUME.description": "#Gain [E?].\n[gold]Disinter[/gold] a card."
 }

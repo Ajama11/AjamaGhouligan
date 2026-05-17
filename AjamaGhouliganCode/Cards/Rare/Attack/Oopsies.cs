@@ -58,7 +58,7 @@ public class Oopsies() : AjamaGhouliganCard(0,
             .WithHitFx("vfx/vfx_attack_blunt", tmpSfx: "blunt_attack.mp3")
             .Execute(choiceContext);
 
-        await CommonActions.Apply<MisfortunePower>(choiceContext, play.Target, this);
+        await MyActions.Misfortune(choiceContext, play.Target, this);
     }
 
     protected override void OnUpgrade()

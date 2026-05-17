@@ -3,6 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using AjamaGhouligan.AjamaGhouliganCode.CardPiles;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
+using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using BaseLib.Extensions;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.CardSelection;
@@ -242,7 +243,7 @@ public class MyActions
         return cards;
     }
     
-    public static async Task PutSelect(AjamaGhouliganCard sourceCard, PlayerChoiceContext choiceContext, PileType from, PileType to, LocString selectionScreenPrompt,
+    public static async Task PutSelect(PlayerChoiceContext choiceContext, AjamaGhouliganCard sourceCard, PileType from, PileType to, LocString selectionScreenPrompt,
         CardPilePosition position = CardPilePosition.Bottom, int amount = 1)
     {
         CardSelectorPrefs prefs = new CardSelectorPrefs(selectionScreenPrompt, amount);
@@ -383,5 +384,30 @@ public class MyActions
         }
 
         await BurySpecific(chosenCards);
+    }
+
+    public static async Task Goof(PlayerChoiceContext choiceContext, CardModel sourceCard)
+    {
+        await CommonActions.ApplySelf<GoofPower>(choiceContext, sourceCard);
+    }
+
+    public static async Task Misfortune(PlayerChoiceContext choiceContext, Creature target, DynamicVarSource dynVarSource)
+    {
+        await CommonActions.Apply<MisfortunePower>(choiceContext, target, dynVarSource);
+    }
+    
+    public static async Task Misfortune(PlayerChoiceContext choiceContext, IEnumerable<Creature> targets, DynamicVarSource dynVarSource)
+    {
+        await CommonActions.Apply<MisfortunePower>(choiceContext, targets, dynVarSource);
+    }
+
+    public static async Task OstyHeal(AjamaGhouliganCard sourceCard)
+    {
+        await CreatureCmd.Heal(sourceCard.Owner.Osty!, sourceCard.DynamicVars.Heal.BaseValue);
+    }
+
+    public static async Task Disinter(PlayerChoiceContext choiceContext, AjamaGhouliganCard sourceCard)
+    {
+        await PutSelect(choiceContext, sourceCard, SepulchrePile.PileType, PileType.Hand, MySelectionPrompts.Disinter, CardPilePosition.Bottom, sourceCard.DynamicVars.Disinter().IntValue);
     }
 }

@@ -2,10 +2,8 @@ using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
-using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -14,18 +12,30 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Common.Skill;
 
-public class DiscordantDitty() : AjamaGhouliganCard(0,
+public class WispyExhume() : AjamaGhouliganCard(0,
     CardType.Skill, CardRarity.Common,
-    TargetType.AllEnemies)
+    TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<MisfortunePower>(2)
+        new EnergyVar(1),
+        new DisinterVar(1)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        MyEnums.Haunted
+        CardKeyword.Retain,
+        CardKeyword.Exhaust
+    ];
+
+    public override HashSet<CardTag> MyCanonicalTags =>
+    [
+
+    ];
+
+    public override IEnumerable<IHoverTip> MyHoverTips =>
+    [
+
     ];
 
     protected override async Task OnPlay(
@@ -34,11 +44,13 @@ public class DiscordantDitty() : AjamaGhouliganCard(0,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 
-        await MyActions.Misfortune(choiceContext, CombatState!.HittableEnemies, this);
+        await PlayerCmd.GainEnergy(DynamicVars.Energy.IntValue, Owner);
+
+        await MyActions.Disinter(choiceContext, this);
     }
 
     protected override void OnUpgrade()
     {
-        AddKeyword(MyEnums.Bury);
+        RemoveKeyword(CardKeyword.Exhaust);
     }
 }

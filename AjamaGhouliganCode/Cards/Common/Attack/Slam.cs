@@ -49,10 +49,7 @@ public class Slam() : AjamaGhouliganCard(1,
                 .Execute(choiceContext);
         }
         
-        foreach (Creature enemy in CombatState!.HittableEnemies)
-        {
-            await CommonActions.Apply<WeakPower>(choiceContext, enemy, this);
-        }
+        await CommonActions.Apply<WeakPower>(choiceContext, CombatState!.HittableEnemies, this);
     }
 
     protected override void OnUpgrade()

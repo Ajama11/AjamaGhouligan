@@ -1,5 +1,8 @@
 {
   "AJAMAGHOULIGAN-MISFORTUNE_POWER.title": "Misfortune",
   "AJAMAGHOULIGAN-MISFORTUNE_POWER.description": "Takes additional damage from [gold]Unfortunate[/gold] Attacks.\nHalves at the end of the enemy turn.",
-  "AJAMAGHOULIGAN-MISFORTUNE_POWER.smartDescription": "Takes [blue]{Amount}[/blue] additional damage from [gold]Unfortunate[/gold] Attacks.\nHalves at the end of the enemy turn."
+  "AJAMAGHOULIGAN-MISFORTUNE_POWER.smartDescription": "Takes [blue]{Amount}[/blue] additional damage from [gold]Unfortunate[/gold] Attacks.\nHalves at the end of the enemy turn.",
+  "AJAMAGHOULIGAN-GOOF_POWER.title": "Goof",
+  "AJAMAGHOULIGAN-GOOF_POWER.description": "When you obtain [blue]10[/blue] or more [gold]Goof[/gold], lose [blue]10[/blue] [gold]Goof[/gold], gain {energyPrefix:energyIcons(3)}, and Draw [blue]2[/blue] cards.",
+  "AJAMAGHOULIGAN-GOOF_POWER.smartDescription": "When you obtain [blue]10[/blue] or more [gold]Goof[/gold], lose [blue]10[/blue] [gold]Goof[/gold], gain {Energy:energyIcons()}, and Draw [blue]2[/blue] cards.\n([blue]{Amount}[/blue]/[blue]10[/blue] obtained.)"
 }

@@ -34,10 +34,7 @@ public class Awoo() : AjamaGhouliganCard(1,
             .WithHitFx("vfx/vfx_attack_blunt", tmpSfx: "blunt_attack.mp3")
             .Execute(choiceContext);
 
-        foreach (Creature enemy in CombatState!.HittableEnemies)
-        {
-            await CommonActions.Apply<MisfortunePower>(choiceContext, enemy, this);
-        }
+        await MyActions.Misfortune(choiceContext, CombatState!.HittableEnemies, this);
     }
 
     protected override void OnUpgrade()
