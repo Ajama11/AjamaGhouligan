@@ -4,9 +4,9 @@
   "AJAMAGHOULIGAN-HAUNTED.title_fancy_buried": "[sine][pulse freq=1.0 color=#ffffff40 ease=-2.0][gold]Haunted[/gold].[/pulse][/sine]",
   "AJAMAGHOULIGAN-HAUNTED.description": "At the start of your turn, if this is in your [gold]Sepulchre Pile[/gold], play it.",
   "AJAMAGHOULIGAN-BURY.title": "Bury",
-  "AJAMAGHOULIGAN-BURY.description": "This card goes to the [gold]Sepulchre Pile[/gold] when played.",
+  "AJAMAGHOULIGAN-BURY.description": "Goes to the [gold]Sepulchre Pile[/gold] when played.",
   "AJAMAGHOULIGAN-BURIED.title": "Buried",
-  "AJAMAGHOULIGAN-BURIED.description": "This card can be [gold]Disinterred[/gold] back into your hand.",
+  "AJAMAGHOULIGAN-BURIED.description": "Can be [gold]Disinterred[/gold] back into your hand.",
   "AJAMAGHOULIGAN-UNFORTUNATE.title": "Unfortunate",
   "AJAMAGHOULIGAN-UNFORTUNATE.description": "Deals additional damage based on the enemy's [gold]Misfortune[/gold]."
 }
