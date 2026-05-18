@@ -13,18 +13,25 @@ using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Common.Skill;
+namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Uncommon.Attack;
 
-public class Frighten() : AjamaGhouliganCard(1,
-    CardType.Skill, CardRarity.Common,
+public class ThinkFast() : AjamaGhouliganCard(0,
+    CardType.Attack, CardRarity.Uncommon,
     TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
+        new DamageVar(8, ValueProp.Move),
         new PowerVar<VulnerablePower>(1),
-        new PowerVar<MisfortunePower>(2)
+        new PowerVar<MisfortunePower>(3)
     ];
-    
+
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        CardKeyword.Innate,
+        CardKeyword.Exhaust
+    ];
+
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
         HoverTipFactory.FromPower<VulnerablePower>()
@@ -36,13 +43,18 @@ public class Frighten() : AjamaGhouliganCard(1,
     {
         ArgumentNullException.ThrowIfNull(play.Target);
 
+        await CommonActions.CardAttack(this, play,
+                1,
+                "vfx/vfx_attack_slash")
+            .Execute(choiceContext);
+
         await CommonActions.Apply<VulnerablePower>(choiceContext, play.Target, this);
-        
+
         await MyActions.Misfortune(choiceContext, play.Target, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Power<VulnerablePower>().UpgradeValueBy(1);
+        DynamicVars.Damage.UpgradeValueBy(3);
     }
 }

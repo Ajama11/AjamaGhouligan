@@ -20,14 +20,21 @@ public class Ghouligan : PlaceholderCharacterModel
 
     public override Color NameColor => Color;
     public override CharacterGender Gender => CharacterGender.Feminine;
-    public override int StartingHp => 70;
+    public override int StartingHp => 69;
 
     public override IEnumerable<CardModel> StartingDeck =>
     [
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
+        ModelDb.Card<Strike>(),
+        // ModelDb.Card<Strike>(),
+        // ModelDb.Card<Strike>(),
+        // ModelDb.Card<Strike>(),
+        ModelDb.Card<Defend>(),
+        // ModelDb.Card<Defend>(),
+        // ModelDb.Card<Defend>(),
+        // ModelDb.Card<Defend>(),
         ModelDb.Card<Yoink>(),
-        ModelDb.Card<Boop>()
+        ModelDb.Card<Boop>(),
+        ..CardPool.AllCards
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>

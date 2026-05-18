@@ -57,5 +57,15 @@
   "AJAMAGHOULIGAN-VANISH.title": "Vanish",
   "AJAMAGHOULIGAN-VANISH.description": "#Gain !B! [gold]Block[/gold].\n[gold]Exhaust[/gold] a card in your [gold]Discard Pile[/gold].",
   "AJAMAGHOULIGAN-WISPY_EXHUME.title": "Wispy Exhume",
-  "AJAMAGHOULIGAN-WISPY_EXHUME.description": "#Gain [E?].\n[gold]Disinter[/gold] a card."
+  "AJAMAGHOULIGAN-WISPY_EXHUME.description": "#Gain [E?].\n[gold]Disinter[/gold] a card.",
+  "AJAMAGHOULIGAN-BOO.title": "BOO!",
+  "AJAMAGHOULIGAN-BOO.description": "#Deal !D! damage !Repeat! times.\n[gold]Bury[/gold] !Bury! random card(s) in your [gold]Draw Pile[/gold], prioritizing [gold]Haunted[/gold] ones.",
+  "AJAMAGHOULIGAN-PIANO_DROP.title": "Piano Drop",
+  "AJAMAGHOULIGAN-PIANO_DROP.description": "#Deal !D! damage.\nApply !MisfortunePower! [gold]Misfortune[/gold].",
+  "AJAMAGHOULIGAN-SPIT.title": "Spit",
+  "AJAMAGHOULIGAN-SPIT.description": "#Deal !D! damage to the enemy (or enemies) with the lowest HP.\nIf you applied [gold]Doom[/gold] this turn, hits !Repeat! times.",
+  "AJAMAGHOULIGAN-THINK_FAST.title": "Think Fast",
+  "AJAMAGHOULIGAN-THINK_FAST.description": "#Deal !D! damage.\nApply !VulnerablePower! [gold]Vulnerable[/gold].\nApply !MisfortunePower! [gold]Misfortune[/gold].",
+  "AJAMAGHOULIGAN-THUMB_WAR.title": "Thumb War",
+  "AJAMAGHOULIGAN-THUMB_WAR.description": "#Deal !D! damage !Repeat! times.\nGain !GoofPower! [gold]Goof[/gold].\nWhenever you or [gold]Osty[/gold] hit this enemy this turn, [gold]Summon[/gold] !ThumbWarPower!."
 }

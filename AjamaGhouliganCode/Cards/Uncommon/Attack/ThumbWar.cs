@@ -10,24 +10,20 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Monsters;
-using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Common.Skill;
+namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Uncommon.Attack;
 
-public class Frighten() : AjamaGhouliganCard(1,
-    CardType.Skill, CardRarity.Common,
+public class ThumbWar() : AjamaGhouliganCard(1,
+    CardType.Attack, CardRarity.Uncommon,
     TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<VulnerablePower>(1),
-        new PowerVar<MisfortunePower>(2)
-    ];
-    
-    public override IEnumerable<IHoverTip> MyHoverTips =>
-    [
-        HoverTipFactory.FromPower<VulnerablePower>()
+        new DamageVar(4, ValueProp.Move),
+        new RepeatVar(2),
+        new PowerVar<GoofPower>(3),
+        new PowerVar<ThumbWarPower>(2)
     ];
 
     protected override async Task OnPlay(
@@ -36,13 +32,20 @@ public class Frighten() : AjamaGhouliganCard(1,
     {
         ArgumentNullException.ThrowIfNull(play.Target);
 
-        await CommonActions.Apply<VulnerablePower>(choiceContext, play.Target, this);
-        
-        await MyActions.Misfortune(choiceContext, play.Target, this);
+        await CommonActions.CardAttack(this, play,
+                DynamicVars.Repeat.IntValue,
+                "vfx/vfx_attack_blunt",
+                null,
+                "blunt_attack.mp3")
+            .Execute(choiceContext);
+
+        await MyActions.Goof(choiceContext, this);
+
+        await CommonActions.Apply<ThumbWarPower>(choiceContext, play.Target, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Power<VulnerablePower>().UpgradeValueBy(1);
+        DynamicVars.Power<ThumbWarPower>().UpgradeValueBy(1);
     }
 }
