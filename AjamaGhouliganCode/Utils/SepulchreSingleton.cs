@@ -23,26 +23,6 @@ public class SepulchreSingleton() : CustomSingletonModel(true, false)
         }
     }
 
-    public override Task AfterCardChangedPiles(CardModel card, PileType oldPileType, AbstractModel? source)
-    {
-        if (card.HasBeenRemovedFromState || card.Pile == null) return Task.CompletedTask;
-
-        if (card.Pile!.Type != SepulchrePile.PileType && 
-            card.Pile!.Type != PileType.Play && 
-            card.Pile!.Type != PileType.None &&
-            card.Keywords.Contains(MyEnums.Buried))
-        {
-            CardCmd.RemoveKeyword(card, MyEnums.Buried);
-        }
-
-        if (card.Pile!.Type == SepulchrePile.PileType)
-        {
-            CardCmd.ApplyKeyword(card, MyEnums.Buried);
-        }
-
-        return Task.CompletedTask;
-    }
-
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         if (cardPlay.Card is not AjamaGhouliganCard && 

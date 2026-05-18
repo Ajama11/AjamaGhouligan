@@ -14,9 +14,6 @@ public class MyEnums
     
     [CustomEnum, KeywordProperties(AutoKeywordPosition.Before)]
     public static CardKeyword Unfortunate;
-    
-    [CustomEnum, KeywordProperties(AutoKeywordPosition.None)]
-    public static CardKeyword Buried;
 
     [CustomEnum]
     public static StaticHoverTip Haunt;
