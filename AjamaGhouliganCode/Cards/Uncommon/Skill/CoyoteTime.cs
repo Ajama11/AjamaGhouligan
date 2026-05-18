@@ -9,36 +9,36 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Monsters;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Rare.Skill;
+namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Uncommon.Skill;
 
-public class EndlessNight() : AjamaGhouliganCard(3,
-    CardType.Skill, CardRarity.Rare,
+public class CoyoteTime() : AjamaGhouliganCard(0,
+    CardType.Skill, CardRarity.Uncommon,
     TargetType.Self)
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        CardKeyword.Exhaust
-    ];
-
-    public override IEnumerable<IHoverTip> MyHoverTips =>
-    [
-        HoverTipFactory.FromKeyword(MyEnums.Haunted),
-        HoverTipFactory.FromKeyword(MyEnums.Bury)
+        new BlockVar(10, ValueProp.Move),
+        new CardsVar(1),
+        new PowerVar<DoomNextTurnPower>(10)
     ];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        MyActions.GainsHauntedAndBury(PileType.Hand.GetPile(Owner).Cards.ToList());
+        await CommonActions.CardBlock(this, play);
+
+        await CommonActions.Draw(this, choiceContext);
+
+        await CommonActions.ApplySelf<DoomNextTurnPower>(choiceContext, this);
     }
 
     protected override void OnUpgrade()
     {
-        AddKeyword(CardKeyword.Retain);
+        DynamicVars.Cards.UpgradeValueBy(1);
     }
 }

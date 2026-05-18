@@ -2,7 +2,9 @@
 using BaseLib.Abstracts;
 using BaseLib.Utils.NodeFactories;
 using AjamaGhouligan.AjamaGhouliganCode.Extensions;
+using AjamaGhouligan.AjamaGhouliganCode.Relics;
 using Godot;
+using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Characters;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
@@ -34,12 +36,12 @@ public class Ghouligan : PlaceholderCharacterModel
         // ModelDb.Card<Defend>(),
         ModelDb.Card<Yoink>(),
         ModelDb.Card<Boop>(),
-        ..CardPool.AllCards
+        ..CardPool.AllCards.Where(c => c.Rarity != CardRarity.Basic)
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>
     [
-        ModelDb.Relic<BoundPhylactery>(),
+        ModelDb.Relic<StolenPhylactery>(),
         ModelDb.Relic<PrismaticGem>()
     ];
 

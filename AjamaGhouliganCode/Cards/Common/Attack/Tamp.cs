@@ -61,7 +61,7 @@ public class Tamp() : AjamaGhouliganCard(2,
             await MyActions.HauntAndPossiblyBury(this, 
                 [SepulchrePile.PileType], 
                 false, true, choiceContext, 
-                c => !c.Keywords.Contains(MyEnums.Haunted));
+                c => !c.Keywords.Contains(MyEnums.Haunted) && !c.Keywords.Contains(CardKeyword.Unplayable));
         }
     }
 }

@@ -122,8 +122,26 @@ public class MyActions
     
     public static void HauntSpecific(CardModel card, bool preview = true)
     {
+        if (card.Keywords.Contains(CardKeyword.Unplayable)) return;
+        
         card.AddKeyword(MyEnums.Haunted);
         if (preview && card.Pile!.Type != PileType.Hand) CardCmd.Preview(card);
+    }
+    
+    public static void HauntSpecific(List<CardModel> cards, bool preview = true)
+    {
+        List<CardModel> cardsToPreview = [];
+        
+        foreach (CardModel card in cards)
+        {
+            if (card.Keywords.Contains(CardKeyword.Unplayable)) continue;
+            
+            card.AddKeyword(MyEnums.Haunted);
+            if (preview && card.Pile!.Type != PileType.Hand)
+                cardsToPreview = [..cardsToPreview, card];
+        }
+        
+        if (cardsToPreview.Count > 0) CardCmd.Preview(cardsToPreview);
     }
 
     public static async Task BurySpecific(CardModel card)
@@ -203,6 +221,12 @@ public class MyActions
     {
         HauntSpecific(card, false);
         await BurySpecific(card);
+    }
+    
+    public static async Task HauntAndBurySpecific(List<CardModel> cards)
+    {
+        HauntSpecific(cards, false);
+        await BurySpecific(cards);
     }
 
     public static async Task Summon(PlayerChoiceContext choiceContext, AjamaGhouliganCard sourceCard)
@@ -288,7 +312,7 @@ public class MyActions
         return selectedCards;
     }
     
-    public static async Task SelectForBury(AjamaGhouliganCard sourceCard, PlayerChoiceContext choiceContext, PileType from = PileType.Hand, int amountOverride = -1)
+    public static async Task SelectForBury(PlayerChoiceContext choiceContext, AjamaGhouliganCard sourceCard, PileType from = PileType.Hand, int amountOverride = -1)
     {
         int amount = amountOverride == -1 ? sourceCard.DynamicVars.Bury().IntValue : amountOverride;
         
@@ -347,7 +371,7 @@ public class MyActions
     public static void HauntRandomInPile(PileType pile, Player player, int amount)
     {
         List<CardModel> chosenCards = GetRandomCards(player, pile,
-            c => !c.Keywords.Contains(MyEnums.Haunted), amount);
+            c => !c.Keywords.Contains(MyEnums.Haunted) && !c.Keywords.Contains(CardKeyword.Unplayable), amount);
 
         foreach (CardModel card in chosenCards)
         {
@@ -411,5 +435,24 @@ public class MyActions
     public static async Task Disinter(PlayerChoiceContext choiceContext, AjamaGhouliganCard sourceCard)
     {
         await PutSelect(choiceContext, sourceCard, SepulchrePile.PileType, PileType.Hand, MySelectionPrompts.Disinter, CardPilePosition.Bottom, sourceCard.DynamicVars.Disinter().IntValue);
+    }
+
+    public static void GainsHauntedAndBury(CardModel card)
+    {
+        HauntSpecific(card);
+        
+        if (!card.Keywords.Contains(CardKeyword.Exhaust))
+            card.AddKeyword(MyEnums.Bury);
+    }
+
+    public static void GainsHauntedAndBury(List<CardModel> cards)
+    {
+        HauntSpecific(cards);
+
+        foreach (CardModel card in cards)
+        {
+            if (!card.Keywords.Contains(CardKeyword.Exhaust) && !card.Keywords.Contains(CardKeyword.Unplayable))
+                card.AddKeyword(MyEnums.Bury);
+        }
     }
 }

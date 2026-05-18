@@ -73,5 +73,17 @@
   "AJAMAGHOULIGAN-ZOMBIE_BUDDY.title": "Zombie Buddy",
   "AJAMAGHOULIGAN-ZOMBIE_BUDDY.description": "#Deal !CD! damage.\nDeals !ExtraDamage! additional damage for each card in your [gold]Sepulchre Pile[/gold].\nAdd a copy of this card into your [gold]Discard Pile[/gold].",
   "AJAMAGHOULIGAN-ENDLESS_NIGHT.title": "Endless Night",
-  "AJAMAGHOULIGAN-ENDLESS_NIGHT.description": "#ALL cards in your Hand gain [gold]Haunted[/gold] and [gold]Bury[/gold]."
+  "AJAMAGHOULIGAN-ENDLESS_NIGHT.description": "#ALL cards in your Hand gain [gold]Haunted[/gold] and [gold]Bury[/gold].",
+  "AJAMAGHOULIGAN-BELOVED_THINGIES.title": "Beloved Thingies",
+  "AJAMAGHOULIGAN-BELOVED_THINGIES.description": "#Apply !DoomPower! [gold]Doom[/gold] to yourself.\nChoose !C! card(s) in your [gold]Draw Pile[/gold] to [gold]Haunt[/gold] and [gold]Bury[/gold]. ",
+  "AJAMAGHOULIGAN-COYOTE_TIME.title": "Coyote Time",
+  "AJAMAGHOULIGAN-COYOTE_TIME.description": "#Gain !B! [gold]Block[/gold].\nDraw !C! card(s).\nNext turn, apply !DoomNextTurnPower! [gold]Doom[/gold] to yourself. ",
+  "AJAMAGHOULIGAN-ETERNAL_SOULWICK.title": "Eternal Soulwick",
+  "AJAMAGHOULIGAN-ETERNAL_SOULWICK.description": "#Apply !DoomPower! [gold]Doom[/gold] to yourself.\nGain [E?].",
+  "AJAMAGHOULIGAN-EXCHANGE.title": "Exchange",
+  "AJAMAGHOULIGAN-EXCHANGE.description": "#[gold]Disinter[/gold] !Disinter! card(s).\n[gold]Bury[/gold] !Bury! card(s).",
+  "AJAMAGHOULIGAN-FOUL_TEA_PARTY.title": "Foul Tea Party",
+  "AJAMAGHOULIGAN-FOUL_TEA_PARTY.description": "ALL enemies gain [gold]Poison[/gold] equal to their [gold]Misfortune[/gold].",
+  "AJAMAGHOULIGAN-LATER_PROBLEM.title": "Later Problem",
+  "AJAMAGHOULIGAN-LATER_PROBLEM.description": "#Gain !B! [gold]Block[/gold].\nAdd !C! Burns into your [gold]{IfUpgraded:show:Discard|Draw} Pile[/gold]."
 }

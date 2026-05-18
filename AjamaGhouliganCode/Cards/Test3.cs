@@ -31,8 +31,7 @@ public class Test3() : AjamaGhouliganCard(0,
 
         if (card != null)
         {
-            CardCmd.ApplyKeyword(card, MyEnums.Haunted);
-            CardCmd.ApplyKeyword(card, MyEnums.Bury);
+            MyActions.GainsHauntedAndBury(card);
         }
     }
 

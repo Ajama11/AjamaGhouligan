@@ -76,7 +76,7 @@ public abstract class AjamaGhouliganCard(int cost, CardType type, CardRarity rar
                 result = [..result, HoverTipFactory.FromPower<MisfortunePower>()];
             }
 
-            if (DynamicVars.ContainsKey(nameof(DoomPower)) || DynamicVars.ContainsKey(LoseDoomVar.Key))
+            if (DynamicVars.ContainsKey(nameof(DoomPower)) || DynamicVars.ContainsKey(LoseDoomVar.Key) || DynamicVars.ContainsKey(nameof(DoomNextTurnPower)))
             {
                 result = [..result, HoverTipFactory.FromPower<DoomPower>()];
             }

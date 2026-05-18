@@ -8,5 +8,11 @@
   "AJAMAGHOULIGAN-THUMB_WAR_POWER.title": "Thumb War",
   "AJAMAGHOULIGAN-THUMB_WAR_POWER.description": "Whenever you or [gold]Osty[/gold] hit this enemy this turn, [gold]Summon[/gold] [blue]2[/blue].",
   "AJAMAGHOULIGAN-THUMB_WAR_POWER.smartDescription": "Whenever you or [gold]Osty[/gold] hit this enemy this turn, [gold]Summon[/gold] [blue]{Amount}[/blue].",
-  "AJAMAGHOULIGAN-THUMB_WAR_POWER.remoteDescription": "Whenever [gold]{Applier}[/gold] or [gold]Osty[/gold] hit this enemy this turn, [gold]Summon[/gold] [blue]{Amount}[/blue]."
+  "AJAMAGHOULIGAN-THUMB_WAR_POWER.remoteDescription": "Whenever [gold]{Applier}[/gold] or [gold]Osty[/gold] hit this enemy this turn, [gold]Summon[/gold] [blue]{Amount}[/blue].",
+  "AJAMAGHOULIGAN-DOOM_NEXT_TURN_POWER.title": "Doom Next Turn",
+  "AJAMAGHOULIGAN-DOOM_NEXT_TURN_POWER.description": "At the start of your next turn, apply [gold]Doom[/gold] to yourself.",
+  "AJAMAGHOULIGAN-DOOM_NEXT_TURN_POWER.smartDescription": "At the start of your next turn, apply [blue]{Amount}[/blue] [gold]Doom[/gold] to yourself.",
+  "AJAMAGHOULIGAN-AJAMA_GHOULIGAN_POWER.title": "",
+  "AJAMAGHOULIGAN-AJAMA_GHOULIGAN_POWER.description": "",
+  "AJAMAGHOULIGAN-AJAMA_GHOULIGAN_POWER.smartDescription": ""
 }

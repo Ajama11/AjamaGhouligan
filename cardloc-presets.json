@@ -138,6 +138,29 @@
           "optional": false
         }
       ]
+    },
+    {
+      "id": "relic",
+      "markers": [
+        "AjamaGhouliganRelic"
+      ],
+      "fields": [
+        {
+          "name": "title",
+          "file": "relics.json",
+          "optional": false
+        },
+        {
+          "name": "description",
+          "file": "relics.json",
+          "optional": false
+        },
+        {
+          "name": "flavor",
+          "file": "relics.json",
+          "optional": false
+        }
+      ]
     }
   ],
   "pinnedColors": [],

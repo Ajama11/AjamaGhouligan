@@ -24,21 +24,6 @@ public class Soulwick() : AjamaGhouliganCard(0,
         new EnergyVar(2)
     ];
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-
-    ];
-
-    public override HashSet<CardTag> MyCanonicalTags =>
-    [
-
-    ];
-
-    public override IEnumerable<IHoverTip> MyHoverTips =>
-    [
-
-    ];
-
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
@@ -46,6 +31,8 @@ public class Soulwick() : AjamaGhouliganCard(0,
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 
         await MyActions.SelfDoom(choiceContext, this);
+
+        await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);
     }
 
     protected override void OnUpgrade()

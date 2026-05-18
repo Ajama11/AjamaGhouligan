@@ -69,7 +69,6 @@
         <Folder Include="AjamaGhouliganCode\Cards\Rare\Power\" />
         <Folder Include="AjamaGhouliganCode\Cards\Token\" />
         <Folder Include="AjamaGhouliganCode\Cards\Uncommon\Power\" />
-        <Folder Include="AjamaGhouliganCode\Cards\Uncommon\Skill\" />
         <Folder Include="AjamaGhouliganCode\Scenes\" />
         <Folder Include="AjamaGhouligan\images\card_portraits\big\"/>
         <Folder Include="AjamaGhouligan\images\powers\big\"/>

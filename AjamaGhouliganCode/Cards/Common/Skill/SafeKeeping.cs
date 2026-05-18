@@ -44,7 +44,7 @@ public class SafeKeeping() : AjamaGhouliganCard(1,
     {
         await CommonActions.CardBlock(this, play);
 
-        await MyActions.SelectForBury(this, choiceContext);
+        await MyActions.SelectForBury(choiceContext, this);
     }
 
     protected override void OnUpgrade()
