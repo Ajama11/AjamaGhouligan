@@ -29,16 +29,6 @@ public class Boop() : AjamaGhouliganCard(0,
         MyEnums.Unfortunate
     ];
 
-    public override HashSet<CardTag> MyCanonicalTags =>
-    [
-
-    ];
-
-    public override IEnumerable<IHoverTip> MyHoverTips =>
-    [
-
-    ];
-
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)

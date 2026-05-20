@@ -17,11 +17,6 @@ public class Yoink() : AjamaGhouliganCard(1,
         new SummonVar(5)
     ];
 
-    public override IEnumerable<IHoverTip> MyHoverTips =>
-    [
-
-    ];
-
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)

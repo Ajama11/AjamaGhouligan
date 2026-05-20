@@ -6,6 +6,7 @@ using AjamaGhouligan.AjamaGhouliganCode.Relics;
 using Godot;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Characters;
+using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Relics;
@@ -67,4 +68,8 @@ public class Ghouligan : PlaceholderCharacterModel
     public override string CustomCharacterSelectIconPath => "char_select_char_name.png".CharacterUiPath();
     public override string CustomCharacterSelectLockedIconPath => "char_select_char_name_locked.png".CharacterUiPath();
     public override string CustomMapMarkerPath => "map_marker_char_name.png".CharacterUiPath();
+    
+    public override string CustomTrailPath => SceneHelper.GetScenePath("vfx/card_trail_defect");
+
+    public override string CharacterTransitionSfx => "event:/sfx/ui/wipe_ironclad";
 }

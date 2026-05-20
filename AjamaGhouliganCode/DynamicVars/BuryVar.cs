@@ -7,9 +7,9 @@ public class BuryVar : DynamicVar
 {
     public const string Key = "Bury";
     
-    public BuryVar(decimal baseValue) : base(Key, baseValue)
+    public BuryVar(decimal baseValue, bool skipTooltip = false) : base(Key, baseValue)
     {
-        this.WithTooltip();
+        if (!skipTooltip) this.WithTooltip();
     }
 }
 

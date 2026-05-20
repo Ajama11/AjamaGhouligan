@@ -67,7 +67,7 @@
   "AJAMAGHOULIGAN-THINK_FAST.title": "Think Fast",
   "AJAMAGHOULIGAN-THINK_FAST.description": "#Deal !D! damage.\nApply !VulnerablePower! [gold]Vulnerable[/gold].\nApply !MisfortunePower! [gold]Misfortune[/gold].",
   "AJAMAGHOULIGAN-THUMB_WAR.title": "Thumb War",
-  "AJAMAGHOULIGAN-THUMB_WAR.description": "#Deal !D! damage !Repeat! times.\nGain !GoofPower! [gold]Goof[/gold].\nWhenever you or [gold]Osty[/gold] hit this enemy this turn, [gold]Summon[/gold] !ThumbWarPower!.",
+  "AJAMAGHOULIGAN-THUMB_WAR.description": "#[gold]Osty[/gold] deals !OstyDamage! damage !Repeat! times.\nGain !GoofPower! [gold]Goof[/gold].\nWhenever you or [gold]Osty[/gold] hit this enemy this turn, [gold]Summon[/gold] !ThumbWarPower!.",
   "AJAMAGHOULIGAN-PAINTED_TUNNEL.title": "Painted Tunnel",
   "AJAMAGHOULIGAN-PAINTED_TUNNEL.description": "#Deal !D! damage !Repeat! times to a random enemy.\nWith each hit, apply !MisfortunePower! [gold]Misfortune[/gold].",
   "AJAMAGHOULIGAN-ZOMBIE_BUDDY.title": "Zombie Buddy",
@@ -85,5 +85,11 @@
   "AJAMAGHOULIGAN-FOUL_TEA_PARTY.title": "Foul Tea Party",
   "AJAMAGHOULIGAN-FOUL_TEA_PARTY.description": "ALL enemies gain [gold]Poison[/gold] equal to their [gold]Misfortune[/gold].",
   "AJAMAGHOULIGAN-LATER_PROBLEM.title": "Later Problem",
-  "AJAMAGHOULIGAN-LATER_PROBLEM.description": "#Gain !B! [gold]Block[/gold].\nAdd !C! Burns into your [gold]{IfUpgraded:show:Discard|Draw} Pile[/gold]."
+  "AJAMAGHOULIGAN-LATER_PROBLEM.description": "#Gain !B! [gold]Block[/gold].\nAdd !C! Burns into your [gold]{IfUpgraded:show:Discard|Draw} Pile[/gold].",
+  "AJAMAGHOULIGAN-CROWS_GIFT.title": "Crow's Gift",
+  "AJAMAGHOULIGAN-CROWS_GIFT.description": "#Apply !DoomPower! [gold]Doom[/gold] to yourself.\nChoose 1 of 3 random{IfUpgraded:show: [gold]Upgraded[/gold]|} Colorless cards to add into your [gold]Hand[/gold].\nIt gains [gold]Retain[/gold] and [gold]Haunted[/gold].",
+  "AJAMAGHOULIGAN-GIMME_A_HAND.title": "Gimme a Hand",
+  "AJAMAGHOULIGAN-GIMME_A_HAND.description": "#[gold]Summon[/gold] !Summon!.\n[gold]Osty[/gold] deals !OstyDamage! damage.{IfUpgraded:show:\nLose !LoseDoom! [gold]Doom[/gold].|}",
+  "AJAMAGHOULIGAN-MIMIC_BINDY.title": "Mimic Bindy",
+  "AJAMAGHOULIGAN-MIMIC_BINDY.description": "#Apply !DoomPower! [gold]Doom[/gold] to yourself.\nChoose 1 of 3 random Necrobinder Powers to add into your [gold]Hand[/gold]. It's free to play this turn."
 }

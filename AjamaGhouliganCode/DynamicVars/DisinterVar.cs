@@ -7,9 +7,9 @@ public class DisinterVar : DynamicVar
 {
     public const string Key = "Disinter";
     
-    public DisinterVar(decimal baseValue) : base(Key, baseValue)
+    public DisinterVar(decimal baseValue, bool skipTooltip = false) : base(Key, baseValue)
     {
-        this.WithTooltip();
+        if (!skipTooltip) this.WithTooltip();
     }
 }
 

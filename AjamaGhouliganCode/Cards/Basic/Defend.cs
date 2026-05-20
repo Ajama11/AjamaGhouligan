@@ -20,12 +20,7 @@ public class Defend() : AjamaGhouliganCard(1,
 
     public override HashSet<CardTag> MyCanonicalTags =>
     [
-
-    ];
-
-    public override IEnumerable<IHoverTip> MyHoverTips =>
-    [
-
+        CardTag.Defend
     ];
 
     protected override async Task OnPlay(

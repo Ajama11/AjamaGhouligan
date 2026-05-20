@@ -10,46 +10,42 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Monsters;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Uncommon.Attack;
 
-public class ThumbWar() : AjamaGhouliganCard(1,
+public class GimmeAHand() : AjamaGhouliganCard(1,
     CardType.Attack, CardRarity.Uncommon,
     TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new OstyDamageVar(4, ValueProp.Move),
-        new RepeatVar(2),
-        new PowerVar<GoofPower>(3),
-        new PowerVar<ThumbWarPower>(2)
+        new SummonVar(5),
+        new OstyDamageVar(9, ValueProp.Move),
+        new LoseDoomVar(3, true)
     ];
+    
+    public override IEnumerable<IHoverTip> MyHoverTips =>
+        IsUpgraded ? [HoverTipFactory.FromPower<DoomPower>()] : [];
+
+    protected override bool ShouldGlowRedInternal => false;
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        ArgumentNullException.ThrowIfNull(play.Target);
+        await MyActions.Summon(choiceContext, this);
 
-        if (!Osty.CheckMissingWithAnim(Owner))
+        if (!Osty.CheckMissingWithAnim(Owner) && play.Target != null)
         {
             await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue)
                 .FromOsty(Owner.Osty!, this)
                 .Targeting(play.Target)
-                .WithHitCount(DynamicVars.Repeat.IntValue)
-                .WithAttackerAnim("attack_poke", 0.3f)
                 .WithHitFx("vfx/vfx_attack_blunt", tmpSfx: "blunt_attack.mp3")
                 .Execute(choiceContext);
         }
 
-        await MyActions.Goof(choiceContext, this);
-
-        await CommonActions.Apply<ThumbWarPower>(choiceContext, play.Target, this);
-    }
-
-    protected override void OnUpgrade()
-    {
-        DynamicVars.Power<ThumbWarPower>().UpgradeValueBy(1);
+        if (IsUpgraded) await MyActions.LoseDoom(choiceContext, this);
     }
 }
