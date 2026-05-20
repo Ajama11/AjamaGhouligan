@@ -67,7 +67,6 @@
         <Folder Include="AjamaGhouliganCode\Cards\Ancient\" />
         <Folder Include="AjamaGhouliganCode\Cards\Multiplayer\" />
         <Folder Include="AjamaGhouliganCode\Cards\Rare\Power\" />
-        <Folder Include="AjamaGhouliganCode\Cards\Token\" />
         <Folder Include="AjamaGhouliganCode\Cards\Uncommon\Power\" />
         <Folder Include="AjamaGhouliganCode\Scenes\" />
         <Folder Include="AjamaGhouligan\images\card_portraits\big\"/>

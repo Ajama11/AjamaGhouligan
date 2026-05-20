@@ -18,6 +18,7 @@ using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.Nodes;
 using MegaCrit.Sts2.Core.Nodes.Combat;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 
@@ -437,17 +438,17 @@ public class MyActions
         await PutSelect(choiceContext, sourceCard, SepulchrePile.PileType, PileType.Hand, MySelectionPrompts.Disinter, CardPilePosition.Bottom, sourceCard.DynamicVars.Disinter().IntValue);
     }
 
-    public static void GainsHauntedAndBury(CardModel card)
+    public static void GainsHauntedAndBury(CardModel card, bool preview = true)
     {
-        HauntSpecific(card);
+        HauntSpecific(card, preview);
         
         if (!card.Keywords.Contains(CardKeyword.Exhaust))
             card.AddKeyword(MyEnums.Bury);
     }
 
-    public static void GainsHauntedAndBury(List<CardModel> cards)
+    public static void GainsHauntedAndBury(List<CardModel> cards, bool preview = true)
     {
-        HauntSpecific(cards);
+        HauntSpecific(cards, preview);
 
         foreach (CardModel card in cards)
         {

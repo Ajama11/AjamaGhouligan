@@ -91,5 +91,9 @@
   "AJAMAGHOULIGAN-GIMME_A_HAND.title": "Gimme a Hand",
   "AJAMAGHOULIGAN-GIMME_A_HAND.description": "#[gold]Summon[/gold] !Summon!.\n[gold]Osty[/gold] deals !OstyDamage! damage.{IfUpgraded:show:\nLose !LoseDoom! [gold]Doom[/gold].|}",
   "AJAMAGHOULIGAN-MIMIC_BINDY.title": "Mimic Bindy",
-  "AJAMAGHOULIGAN-MIMIC_BINDY.description": "#Apply !DoomPower! [gold]Doom[/gold] to yourself.\nChoose 1 of 3 random Necrobinder Powers to add into your [gold]Hand[/gold]. It's free to play this turn."
+  "AJAMAGHOULIGAN-MIMIC_BINDY.description": "#Apply !DoomPower! [gold]Doom[/gold] to yourself.\nChoose 1 of 3 random Necrobinder Powers to add into your [gold]Hand[/gold]. It's free to play this turn.",
+  "AJAMAGHOULIGAN-POSSESS_ASCENDER.title": "Possess Ascender",
+  "AJAMAGHOULIGAN-POSSESS_ASCENDER.description": "#Choose 1 of 3 random{IfUpgraded:show: [gold]Upgraded[/gold]|} Skills from another character to add into your [gold]Sepulchre Pile[/gold].\nIt gains [gold]Haunted[/gold] and [gold]Bury[/gold].",
+  "AJAMAGHOULIGAN-CAVORT.title": "Cavort",
+  "AJAMAGHOULIGAN-CAVORT.description": "#Gain !GoofPower! [gold]Goof[/gold].\nLose !LoseDoom! [gold]Doom[/gold]."
 }
