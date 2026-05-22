@@ -178,6 +178,13 @@ public class MyActions
         pile._currentCount = pile._pile!.Cards.Count;
         pile._countLabel.SetTextAutoSize(pile._currentCount.ToString());
         pile._countLabel.PivotOffset = pile._countLabel.Size * 0.5F;
+        
+        foreach (var model in card.CombatState!.IterateHookListeners())
+        {
+            if (model is not IOnBury onBuryModel) continue;
+            await onBuryModel.OnBury(card);
+            model.InvokeExecutionFinished();
+        }
     }
     
     public static async Task BurySpecific(List<CardModel> cards)
@@ -185,17 +192,13 @@ public class MyActions
         if (cards.Count == 0) return;
 
         List<CardModel> cardsInHand = cards.Where(c => c.Pile!.Type == PileType.Hand).ToList();
+        List<CardModel> cardsOutsideHand = cards.Where(c => c.Pile!.Type != PileType.Hand).ToList();
 
-        foreach (CardModel cardInHand in cardsInHand)
-        {
-            cards.Remove(cardInHand);
-        }
-
-        bool drawPileAffected = cards.Any(c => c.Pile!.Type == PileType.Draw);
-        bool discardPileAffected = cards.Any(c => c.Pile!.Type == PileType.Discard);
+        bool drawPileAffected = cardsOutsideHand.Any(c => c.Pile!.Type == PileType.Draw);
+        bool discardPileAffected = cardsOutsideHand.Any(c => c.Pile!.Type == PileType.Discard);
 
         await CardPileCmd.Add(cardsInHand, SepulchrePile.PileType);
-        CardCmd.PreviewCardPileAdd(await CardPileCmd.Add(cards, SepulchrePile.PileType, CardPilePosition.Bottom, null, true));
+        CardCmd.PreviewCardPileAdd(await CardPileCmd.Add(cardsOutsideHand, SepulchrePile.PileType, CardPilePosition.Bottom, null, true));
         
         if (drawPileAffected)
         {
@@ -215,6 +218,20 @@ public class MyActions
             pile._currentCount = pile._pile!.Cards.Count;
             pile._countLabel.SetTextAutoSize(pile._currentCount.ToString());
             pile._countLabel.PivotOffset = pile._countLabel.Size * 0.5F;
+        }
+        
+        foreach (var model in cards.First().CombatState!.IterateHookListeners())
+        {
+            MainFile.Logger.Info("AAAAAA");
+            if (model is not IOnBury onBuryModel) continue;
+
+            foreach (CardModel card in cards)
+            {
+                MainFile.Logger.Info(nameof(card));
+                await onBuryModel.OnBury(card);
+            }
+            
+            model.InvokeExecutionFinished();
         }
     }
 
@@ -430,7 +447,12 @@ public class MyActions
 
     public static async Task OstyHeal(AjamaGhouliganCard sourceCard)
     {
-        await CreatureCmd.Heal(sourceCard.Owner.Osty!, sourceCard.DynamicVars.Heal.BaseValue);
+        await OstyHeal(sourceCard.Owner, sourceCard.DynamicVars.Heal.BaseValue);
+    }
+    
+    public static async Task OstyHeal(Player player, decimal amount)
+    {
+        await CreatureCmd.Heal(player.Osty!, amount);
     }
 
     public static async Task Disinter(PlayerChoiceContext choiceContext, AjamaGhouliganCard sourceCard)

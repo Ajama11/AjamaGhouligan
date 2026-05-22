@@ -96,12 +96,4 @@ public abstract class AjamaGhouliganCard(int cost, CardType type, CardRarity rar
     }
 
     protected override bool ShouldGlowRedInternal => CanonicalTags.Contains(CardTag.OstyAttack) && Owner.IsOstyMissing;
-
-    protected override PileType GetResultPileTypeForCardPlay()
-    {
-        if (!Keywords.Contains(MyEnums.Bury) || Type == CardType.Power) return base.GetResultPileTypeForCardPlay();
-
-        PileType result = base.GetResultPileTypeForCardPlay();
-        return result == PileType.Exhaust ? result : SepulchrePile.PileType;
-    }
 }

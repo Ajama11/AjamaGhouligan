@@ -85,7 +85,7 @@
   "AJAMAGHOULIGAN-FOUL_TEA_PARTY.title": "Foul Tea Party",
   "AJAMAGHOULIGAN-FOUL_TEA_PARTY.description": "ALL enemies gain [gold]Poison[/gold] equal to their [gold]Misfortune[/gold].",
   "AJAMAGHOULIGAN-LATER_PROBLEM.title": "Later Problem",
-  "AJAMAGHOULIGAN-LATER_PROBLEM.description": "#Gain !B! [gold]Block[/gold].\nAdd !C! Burns into your [gold]{IfUpgraded:show:Discard|Draw} Pile[/gold].",
+  "AJAMAGHOULIGAN-LATER_PROBLEM.description": "#Gain !B! [gold]Block[/gold].\nAdd !C! [gold]Burns[/gold] into your [gold]{IfUpgraded:show:Discard|Draw} Pile[/gold].",
   "AJAMAGHOULIGAN-CROWS_GIFT.title": "Crow's Gift",
   "AJAMAGHOULIGAN-CROWS_GIFT.description": "#Apply !DoomPower! [gold]Doom[/gold] to yourself.\nChoose 1 of 3 random{IfUpgraded:show: [gold]Upgraded[/gold]|} Colorless cards to add into your [gold]Hand[/gold].\nIt gains [gold]Retain[/gold] and [gold]Haunted[/gold].",
   "AJAMAGHOULIGAN-GIMME_A_HAND.title": "Gimme a Hand",
@@ -97,5 +97,9 @@
   "AJAMAGHOULIGAN-CAVORT.title": "Cavort",
   "AJAMAGHOULIGAN-CAVORT.description": "#Gain !GoofPower! [gold]Goof[/gold].\nLose !LoseDoom! [gold]Doom[/gold].",
   "AJAMAGHOULIGAN-ECLIPSE.title": "Eclipse",
-  "AJAMAGHOULIGAN-ECLIPSE.description": "[gold]Haunted[/gold] cards in your [gold]Sepulchre Pile[/gold] are also played at the end of your turn."
+  "AJAMAGHOULIGAN-ECLIPSE.description": "[gold]Haunted[/gold] cards in your [gold]Sepulchre Pile[/gold] are also played at the end of your turn.",
+  "AJAMAGHOULIGAN-BLEH.title": "Bleh",
+  "AJAMAGHOULIGAN-BLEH.description": "The first time each turn you draw a Status card, [gold]Bury[/gold] it and draw 1 card.{IfUpgraded:show:\nDraw !C! card(s).|}",
+  "AJAMAGHOULIGAN-BONE_VIGIL.title": "Bone Vigil",
+  "AJAMAGHOULIGAN-BONE_VIGIL.description": "!Whenever a card is [gold]Buried[/gold], [gold]Osty[/gold] heals !BoneVigilPower! HP."
 }

@@ -49,10 +49,7 @@ public class Tamp() : AjamaGhouliganCard(2,
                 .Execute(choiceContext);
         }
         
-        foreach (CardModel card in PileType.Hand.GetPile(Owner).Cards.ToList())
-        {
-            await MyActions.BurySpecific(card);
-        }
+        await MyActions.BurySpecific(PileType.Hand.GetPile(Owner).Cards.ToList());
 
         if (IsUpgraded)
         {

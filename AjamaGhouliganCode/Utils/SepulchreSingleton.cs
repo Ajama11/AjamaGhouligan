@@ -31,13 +31,19 @@ public class SepulchreSingleton() : CustomSingletonModel(HookType.Combat)
 
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (cardPlay.Card is not AjamaGhouliganCard && 
-            cardPlay.Card.Type != CardType.Power &&
+        if (cardPlay.Card.Type != CardType.Power &&
             cardPlay.Card.Keywords.Contains(MyEnums.Bury) &&
             !cardPlay.Card.Keywords.Contains(CardKeyword.Exhaust) &&
             cardPlay.IsLastInSeries)
         {
             await CardPileCmd.Add(cardPlay.Card, SepulchrePile.PileType);
+            
+            foreach (var model in cardPlay.Card.CombatState!.IterateHookListeners())
+            {
+                if (model is not IOnBury onBuryModel) continue;
+                await onBuryModel.OnBury(cardPlay.Card);
+                model.InvokeExecutionFinished();
+            }
         }
     }
 }

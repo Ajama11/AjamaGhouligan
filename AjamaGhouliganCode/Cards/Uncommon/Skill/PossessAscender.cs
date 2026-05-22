@@ -47,7 +47,7 @@ public class PossessAscender() : AjamaGhouliganCard(1,
         
         MyActions.GainsHauntedAndBury(list, false);
 
-        CardModel? selectedCard = await CardSelectCmd.FromChooseACardScreen(choiceContext, list, Owner);
+        CardModel? selectedCard = await CardSelectCmd.FromChooseACardScreen(choiceContext, list, Owner, true);
 
         if (selectedCard != null)
         {
