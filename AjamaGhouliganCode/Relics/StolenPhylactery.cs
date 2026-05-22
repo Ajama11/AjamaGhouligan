@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Relics;
 
@@ -37,6 +38,7 @@ public class StolenPhylactery : AjamaGhouliganRelic
     public override async Task AfterPlayerTurnStartLate(PlayerChoiceContext choiceContext, Player player)
     {
         if (player != Owner) return;
+        if (!player.Creature.HasPower<DoomPower>()) return;
         
         Flash();
 

@@ -6,7 +6,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Utils;
 
-public class UnfortunateSingleton() : CustomSingletonModel(true, false)
+public class UnfortunateSingleton() : CustomSingletonModel(HookType.Combat)
 {
     public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer,
         CardModel? cardSource)

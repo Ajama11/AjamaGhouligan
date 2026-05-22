@@ -7,12 +7,18 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Utils;
 
-public class SepulchreSingleton() : CustomSingletonModel(true, false)
+public class SepulchreSingleton() : CustomSingletonModel(HookType.Combat)
 {
     public override async Task AfterAutoPrePlayPhaseEntered(PlayerChoiceContext choiceContext, Player player)
+    {
+        await PlayHauntedCardsInSepulchrePile(choiceContext, player);
+    }
+
+    public static async Task PlayHauntedCardsInSepulchrePile(PlayerChoiceContext choiceContext, Player player)
     {
         foreach (var card in CardPile.Get(SepulchrePile.PileType, player)!.Cards.ToList())
         {
