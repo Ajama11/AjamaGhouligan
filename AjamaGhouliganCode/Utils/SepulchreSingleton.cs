@@ -28,6 +28,14 @@ public class SepulchreSingleton() : CustomSingletonModel(HookType.Combat)
             }
         }
     }
+    
+    public static async Task PlayAllCardsInSepulchrePile(PlayerChoiceContext choiceContext, Player player)
+    {
+        foreach (var card in CardPile.Get(SepulchrePile.PileType, player)!.Cards.ToList())
+        {
+            await CardCmd.AutoPlay(choiceContext, card, null);
+        }
+    }
 
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

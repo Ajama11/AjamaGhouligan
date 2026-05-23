@@ -35,14 +35,10 @@ public class ShovelBonk() : AjamaGhouliganCard(1,
             .WithHitFx("vfx/vfx_attack_blunt", tmpSfx: "blunt_attack.mp3")
             .Execute(choiceContext);
 
-        List<CardModel> possibleCards =
-            CardPile.GetCards(Owner, 
-                [PileType.Draw, PileType.Discard, PileType.Hand]).ToList();
-
-        List<CardModel> cards = MyActions.GetRandomCardsFromList(Owner, possibleCards, c => c.Keywords.Contains(MyEnums.Haunted),
-            DynamicVars.Bury().IntValue);
-
-        await MyActions.BurySpecific(cards);
+        await MyActions.BuryRandomInPiles(
+            [PileType.Draw, PileType.Discard, PileType.Hand], 
+            this,
+            MyEnums.RandomBuryTargeting.OnlyHaunted);
     }
 
     protected override void OnUpgrade()

@@ -222,12 +222,10 @@ public class MyActions
         
         foreach (var model in cards.First().CombatState!.IterateHookListeners())
         {
-            MainFile.Logger.Info("AAAAAA");
             if (model is not IOnBury onBuryModel) continue;
 
             foreach (CardModel card in cards)
             {
-                MainFile.Logger.Info(nameof(card));
                 await onBuryModel.OnBury(card);
             }
             
@@ -404,6 +402,16 @@ public class MyActions
     
     public static async Task BuryRandomInPile(PileType pile, Player player, int amount, MyEnums.RandomBuryTargeting targeting = MyEnums.RandomBuryTargeting.All)
     {
+        await BuryRandomInPiles([pile], player, amount, targeting);
+    }
+    
+    public static async Task BuryRandomInPiles(List<PileType> piles, AjamaGhouliganCard sourceCard, MyEnums.RandomBuryTargeting targeting = MyEnums.RandomBuryTargeting.All)
+    {
+        await BuryRandomInPiles(piles, sourceCard.Owner, sourceCard.DynamicVars.Bury().IntValue, targeting);
+    }
+    
+    public static async Task BuryRandomInPiles(List<PileType> piles, Player player, int amount, MyEnums.RandomBuryTargeting targeting = MyEnums.RandomBuryTargeting.All)
+    {
         Func<CardModel, bool> filter = targeting switch
         {
             MyEnums.RandomBuryTargeting.All => 
@@ -418,13 +426,20 @@ public class MyActions
             _ => throw new ArgumentOutOfRangeException(nameof(targeting), targeting, null)
         };
 
-        List<CardModel> chosenCards = GetRandomCards(player, pile, filter, amount);
+        List<CardModel> cardsInPiles = [];
+
+        foreach (PileType pile in piles)
+        {
+            cardsInPiles = [..cardsInPiles, ..pile.GetPile(player).Cards];
+        }
+
+        List<CardModel> chosenCards = GetRandomCardsFromList(player, cardsInPiles, filter, amount);
 
         if (chosenCards.Count < amount && targeting == MyEnums.RandomBuryTargeting.PrioritizeHaunted)
         {
             List<CardModel> snapshottedChosenCards = [..chosenCards];
             
-            chosenCards = [..chosenCards, ..GetRandomCards(player, pile, c => !snapshottedChosenCards.Contains(c), amount - chosenCards.Count)];
+            chosenCards = [..chosenCards, ..GetRandomCardsFromList(player, cardsInPiles, c => !snapshottedChosenCards.Contains(c), amount - chosenCards.Count)];
         }
 
         await BurySpecific(chosenCards);
@@ -462,10 +477,7 @@ public class MyActions
 
     public static void GainsHauntedAndBury(CardModel card, bool preview = true)
     {
-        HauntSpecific(card, preview);
-        
-        if (!card.Keywords.Contains(CardKeyword.Exhaust))
-            card.AddKeyword(MyEnums.Bury);
+        GainsHauntedAndBury([card], preview);
     }
 
     public static void GainsHauntedAndBury(List<CardModel> cards, bool preview = true)
@@ -477,5 +489,23 @@ public class MyActions
             if (!card.Keywords.Contains(CardKeyword.Exhaust) && !card.Keywords.Contains(CardKeyword.Unplayable))
                 card.AddKeyword(MyEnums.Bury);
         }
+    }
+    
+    public static void GainsBury(CardModel card, bool preview = true)
+    {
+        GainsBury([card], preview);
+    }
+    
+    public static void GainsBury(List<CardModel> cards, bool preview = true)
+    { 
+        foreach (CardModel card in cards)
+        {
+            if (!card.Keywords.Contains(CardKeyword.Exhaust) && !card.Keywords.Contains(CardKeyword.Unplayable))
+            {
+                card.AddKeyword(MyEnums.Bury);
+            }
+        }
+        
+        if (preview) CardCmd.Preview(cards);
     }
 }

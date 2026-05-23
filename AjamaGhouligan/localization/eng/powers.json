@@ -23,5 +23,11 @@
   "AJAMAGHOULIGAN-BLEH_POWER.smartDescription": "#The first time each turn you draw a Status card, [gold]Bury[/gold] it and draw [blue]{Amount}[/blue] card(s).",
   "AJAMAGHOULIGAN-BONE_VIGIL_POWER.title": "Bone Vigil",
   "AJAMAGHOULIGAN-BONE_VIGIL_POWER.description": "Whenever a card is [gold]Buried[/gold], [gold]Osty[/gold] heals [blue]2[/blue] HP.",
-  "AJAMAGHOULIGAN-BONE_VIGIL_POWER.smartDescription": "Whenever a card is [gold]Buried[/gold], [gold]Osty[/gold] heals [blue]{Amount}[/blue] HP."
+  "AJAMAGHOULIGAN-BONE_VIGIL_POWER.smartDescription": "Whenever a card is [gold]Buried[/gold], [gold]Osty[/gold] heals [blue]{Amount}[/blue] HP.",
+  "AJAMAGHOULIGAN-BLACK_CAT_POWER.title": "Black Cat",
+  "AJAMAGHOULIGAN-BLACK_CAT_POWER.description": "Whenever a card is created, [gold]Bury[/gold] [blue]1[/blue] random [gold]Haunted[/gold] card from your [gold]Draw Pile[/gold] or [gold]Discard Pile[/gold].",
+  "AJAMAGHOULIGAN-BLACK_CAT_POWER.smartDescription": "#Whenever a card is created, [gold]Bury[/gold] [blue]{Amount}[/blue] random [gold]Haunted[/gold] card(s) from your [gold]Draw Pile[/gold] or [gold]Discard Pile[/gold].",
+  "AJAMAGHOULIGAN-JESTER_POWER.title": "Jester",
+  "AJAMAGHOULIGAN-JESTER_POWER.description": "Whenever you gain [gold]Goof[/gold], add [blue]1[/blue] random card from another character into your [gold]Sepulchre Pile[/gold]. It gains [gold]Bury[/gold].",
+  "AJAMAGHOULIGAN-JESTER_POWER.smartDescription": "#Whenever you gain [gold]Goof[/gold], add [blue]{Amount}[/blue] random card(s) from another character into your [gold]Sepulchre Pile[/gold]. {Amount:plural:It gains|They gain} [gold]Bury[/gold]."
 }

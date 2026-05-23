@@ -101,5 +101,19 @@
   "AJAMAGHOULIGAN-BLEH.title": "Bleh",
   "AJAMAGHOULIGAN-BLEH.description": "The first time each turn you draw a Status card, [gold]Bury[/gold] it and draw 1 card.{IfUpgraded:show:\nDraw !C! card(s).|}",
   "AJAMAGHOULIGAN-BONE_VIGIL.title": "Bone Vigil",
-  "AJAMAGHOULIGAN-BONE_VIGIL.description": "!Whenever a card is [gold]Buried[/gold], [gold]Osty[/gold] heals !BoneVigilPower! HP."
+  "AJAMAGHOULIGAN-BONE_VIGIL.description": "!Whenever a card is [gold]Buried[/gold], [gold]Osty[/gold] heals !BoneVigilPower! HP.",
+  "AJAMAGHOULIGAN-BLACK_CAT.title": "Black Cat",
+  "AJAMAGHOULIGAN-BLACK_CAT.description": "#Apply !DoomPower! [gold]Doom[/gold] to yourself.\nWhenever a card is created, [gold]Bury[/gold] a random [gold]Haunted[/gold] card from your [gold]Draw Pile[/gold] or [gold]Discard Pile[/gold].",
+  "AJAMAGHOULIGAN-LIVING_ARMOR.title": "Living Armor",
+  "AJAMAGHOULIGAN-LIVING_ARMOR.description": "#Gain !PlatingPower! [gold]Plating[/gold].",
+  "AJAMAGHOULIGAN-TIT_FOR_TAT.title": "Tit for Tat",
+  "AJAMAGHOULIGAN-TIT_FOR_TAT.description": "#Apply the amount of [gold]Doom[/gold] you have to an enemy.{InCombat:\n(Apply !CalculatedDoom! [gold]Doom[/gold].)}",
+  "AJAMAGHOULIGAN-ENCORE.title": "Encore",
+  "AJAMAGHOULIGAN-ENCORE.description": "#Play ALL cards in your [gold]Sepulchre Pile[/gold].",
+  "AJAMAGHOULIGAN-SPECTRE_STRIKE.title": "Spectre Strike",
+  "AJAMAGHOULIGAN-SPECTRE_STRIKE.description": "#Deal !D! damage.\nAdd [gold]Ethereal[/gold] to a random card in your [gold]Draw Pile[/gold].\n[gold]Haunt[/gold] and [gold]Bury[/gold] ALL [gold]Ethereal[/gold] cards from anywhere.",
+  "AJAMAGHOULIGAN-LEASHED.title": "Leashed",
+  "AJAMAGHOULIGAN-LEASHED.description": "#Apply !DoomPower! [gold]Doom[/gold] to yourself.\n[gold]Osty[/gold] deals !CD! damage.\nDeals additional damage equal to [gold]Osty's[/gold] current HP.",
+  "AJAMAGHOULIGAN-JESTER.title": "Jester",
+  "AJAMAGHOULIGAN-JESTER.description": "Whenever you gain [gold]Goof[/gold], add a random card from another character into your [gold]Sepulchre Pile[/gold].\nIt gains [gold]Bury[/gold]."
 }
