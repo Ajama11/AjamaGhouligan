@@ -137,5 +137,10 @@
   "AJAMAGHOULIGAN-SPONTANEITY.description": "#Choose 1 of 3 random {IfUpgraded:show:[gold]Upgraded[/gold]|} cards to [gold]Haunt[/gold] and add into your [gold]Sepulchre Pile[/gold].",
   "AJAMAGHOULIGAN-TAKE_BACKSIES.title": "Take Backsies",
   "AJAMAGHOULIGAN-TAKE_BACKSIES.description": "#Put !C! cards from your [gold]Discard Pile[/gold] into your [gold]Hand[/gold] and [gold]Haunt[/gold] them.",
-  "AJAMAGHOULIGAN-TAKE_BACKSIES.selectionScreenPrompt": "Choose {Amount} {Amount:plural:card|cards} to put into your [gold]Hand[/gold]."
+  "AJAMAGHOULIGAN-TAKE_BACKSIES.selectionScreenPrompt": "Choose {Amount} {Amount:plural:card|cards} to put into your [gold]Hand[/gold].",
+  "AJAMAGHOULIGAN-DENSE_FOG.title": "Dense Fog",
+  "AJAMAGHOULIGAN-DENSE_FOG.description": "#Apply !DoomPower! [gold]Doom[/gold] to yourself.\nALL enemies lose !StrengthPower! [gold]Strength[/gold].",
+  "AJAMAGHOULIGAN-CONJURING.title": "Conjuring",
+  "AJAMAGHOULIGAN-CONJURING.description": "#Play a card in your [gold]Sepulchre Pile[/gold] X{IfUpgraded:show:+1|} times.",
+  "AJAMAGHOULIGAN-CONJURING.selectionScreenPrompt": "Choose a card to play."
 }
