@@ -1,5 +1,6 @@
 {
   "AJAMAGHOULIGAN-TO_SEPULCHRE": "Choose {Amount:plural:a card|[blue]{}[/blue] cards} to [gold]Bury[/gold].",
+  "AJAMAGHOULIGAN-TO_SEPULCHRE_UP_TO": "Choose up to [blue]{Amount}[/blue] {Amount:plural:card|cards} to [gold]Bury[/gold].",
   "AJAMAGHOULIGAN-FROM_SEPULCHRE": "Choose {Amount:plural:a card|[blue]{}[/blue] cards} to [gold]Disinter[/gold].",
   "AJAMAGHOULIGAN-TO_SEPULCHRE_HAUNT": "Choose {Amount:plural:a card|[blue]{}[/blue] cards} to [gold]Haunt[/gold] and [gold]Bury[/gold].",
   "AJAMAGHOULIGAN-TO_HAUNT": "Choose {Amount:plural:a card|[blue]{}[/blue] cards} to [gold]Haunt[/gold].",

@@ -153,7 +153,7 @@ public class MyActions
             return;
         }
 
-        NCombatCardPile pile;
+        NCombatCardPile? pile = null;
 
         switch (card.Pile.Type)
         {
@@ -169,12 +169,12 @@ public class MyActions
             case PileType.Play:
             case PileType.Deck:
             default:
-                throw new ArgumentOutOfRangeException();
+                break;
         }
         
         CardCmd.PreviewCardPileAdd(await CardPileCmd.Add(card, SepulchrePile.PileType, CardPilePosition.Bottom, null, true));
-        
-        if (pile._pile == null) return;
+
+        if (pile?._pile == null) return;
         pile._currentCount = pile._pile!.Cards.Count;
         pile._countLabel.SetTextAutoSize(pile._currentCount.ToString());
         pile._countLabel.PivotOffset = pile._countLabel.Size * 0.5F;
@@ -283,7 +283,7 @@ public class MyActions
         return cards;
     }
     
-    public static async Task PutSelect(PlayerChoiceContext choiceContext, AjamaGhouliganCard sourceCard, PileType from, PileType to, LocString selectionScreenPrompt,
+    public static async Task<List<CardModel>> PutSelect(PlayerChoiceContext choiceContext, AjamaGhouliganCard sourceCard, PileType from, PileType to, LocString selectionScreenPrompt,
         CardPilePosition position = CardPilePosition.Bottom, int amount = 1)
     {
         CardSelectorPrefs prefs = new CardSelectorPrefs(selectionScreenPrompt, amount);
@@ -291,6 +291,8 @@ public class MyActions
         List<CardModel> cards = (await CardSelectCmd.FromSimpleGrid(choiceContext, from.GetPile(sourceCard.Owner).Cards, sourceCard.Owner, prefs)).ToList();
 
         if (cards.Count != 0) await CardPileCmd.Add(cards, to, position);
+
+        return cards;
     }
     
     public static async Task PutSelectFiltered(AjamaGhouliganCard sourceCard, PlayerChoiceContext choiceContext, PileType from, PileType to, LocString selectionScreenPrompt, Func<CardModel, bool> filter,
@@ -328,14 +330,14 @@ public class MyActions
         return selectedCards;
     }
     
-    public static async Task SelectForBury(PlayerChoiceContext choiceContext, AjamaGhouliganCard sourceCard, PileType from = PileType.Hand, int amountOverride = -1)
+    public static async Task SelectForBury(PlayerChoiceContext choiceContext, AjamaGhouliganCard sourceCard, PileType from = PileType.Hand, bool upTo = false, int amountOverride = -1)
     {
         int amount = amountOverride == -1 ? sourceCard.DynamicVars.Bury().IntValue : amountOverride;
-        
-        CardSelectorPrefs prefs = new CardSelectorPrefs(MySelectionPrompts.Bury, amount)
-        {
-            ShouldGlowGold = c => c.Keywords.Contains(MyEnums.Haunted)
-        };
+
+        CardSelectorPrefs prefs = upTo ?
+            new CardSelectorPrefs(MySelectionPrompts.BuryUpTo, 0, amount) :
+            new CardSelectorPrefs(MySelectionPrompts.Bury, amount);
+        prefs.ShouldGlowGold = c => c.Keywords.Contains(MyEnums.Haunted);
 
         List<CardModel> cards;
 
