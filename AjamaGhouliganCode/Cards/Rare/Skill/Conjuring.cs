@@ -35,8 +35,6 @@ public class Conjuring() : AjamaGhouliganCard(0,
             this, SelectionScreenPrompt, choiceContext, SepulchrePile.PileType);
         
         if (card == null) return;
-
-        await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         
         int xValue = ResolveEnergyXValue();
 

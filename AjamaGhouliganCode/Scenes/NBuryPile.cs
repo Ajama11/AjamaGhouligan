@@ -24,6 +24,8 @@ public partial class NBuryPile : NCombatCardPile
     private static readonly string _scenePath = "res://AjamaGhouligan/scenes/bury_pile.tscn";
     private const string MegaLabelFont = "res://themes/kreon_bold_glyph_space_one.tres";
 
+    public bool IsShowing { get; set; }
+
     public static AddedNode<NCombatPilesContainer, NBuryPile> _ = new(container =>
     {
         var buryPileButton = ResourceLoader.Load<PackedScene>(_scenePath).Instantiate<NBuryPile>();
@@ -51,6 +53,7 @@ public partial class NBuryPile : NCombatCardPile
             new LocString("static_hover_tips", "AJAMAGHOULIGAN-SEPULCHRE_PILE.description"));
 
         Visible = false;
+        IsShowing = false;
         SetAnimInOutPositions();
         Disable();
     }
@@ -74,6 +77,7 @@ public partial class NBuryPile : NCombatCardPile
 
         if (_pile.Cards.Count <= 0 && player.Character is not Ghouligan) return;
         Visible = true;
+        IsShowing = true;
         Enable();
     }
 
@@ -104,11 +108,12 @@ public partial class NBuryPile : NCombatCardPile
     {
         base.AnimIn();
         Visible = true;
+        IsShowing = true;
     }
 
     private void HandleVisibility()
     {
-        if (_currentCount > 0 && !Visible)
+        if (_currentCount > 0 && !IsShowing)
         {
             AnimIn();
             Enable();
@@ -117,6 +122,7 @@ public partial class NBuryPile : NCombatCardPile
         {
             AnimOut();
             Disable();
+            IsShowing = false;
         }
     }
 }
