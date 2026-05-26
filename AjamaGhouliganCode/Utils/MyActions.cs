@@ -334,6 +334,11 @@ public class MyActions
     {
         int amount = amountOverride == -1 ? sourceCard.DynamicVars.Bury().IntValue : amountOverride;
 
+        await SelectForBury(sourceCard, choiceContext, sourceCard.Owner, amount, from, upTo);
+    }
+    
+    public static async Task SelectForBury(AbstractModel sourceModel, PlayerChoiceContext choiceContext, Player player, int amount, PileType from = PileType.Hand, bool upTo = false)
+    {
         CardSelectorPrefs prefs = upTo ?
             new CardSelectorPrefs(MySelectionPrompts.BuryUpTo, 0, amount) :
             new CardSelectorPrefs(MySelectionPrompts.Bury, amount);
@@ -344,11 +349,11 @@ public class MyActions
         // ReSharper disable once ConvertIfStatementToConditionalTernaryExpression
         if (from == PileType.Hand)
         {
-            cards = (await CardSelectCmd.FromHand(choiceContext, sourceCard.Owner, prefs, _ => true, sourceCard)).ToList();
+            cards = (await CardSelectCmd.FromHand(choiceContext, player, prefs, _ => true, sourceModel)).ToList();
         }
         else
         {
-            cards = (await CardSelectCmd.FromSimpleGrid(choiceContext, from.GetPile(sourceCard.Owner).Cards, sourceCard.Owner, prefs)).ToList();
+            cards = (await CardSelectCmd.FromSimpleGrid(choiceContext, from.GetPile(player).Cards, player, prefs)).ToList();
         }
 
         await BurySpecific(cards);

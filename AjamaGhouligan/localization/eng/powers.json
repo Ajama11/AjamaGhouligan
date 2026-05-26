@@ -29,5 +29,18 @@
   "AJAMAGHOULIGAN-BLACK_CAT_POWER.smartDescription": "#Whenever a card is created, [gold]Bury[/gold] [blue]{Amount}[/blue] random [gold]Haunted[/gold] card(s) from your [gold]Draw Pile[/gold] or [gold]Discard Pile[/gold].",
   "AJAMAGHOULIGAN-JESTER_POWER.title": "Jester",
   "AJAMAGHOULIGAN-JESTER_POWER.description": "Whenever you gain [gold]Goof[/gold], add [blue]1[/blue] random card from another character into your [gold]Sepulchre Pile[/gold]. It gains [gold]Bury[/gold].",
-  "AJAMAGHOULIGAN-JESTER_POWER.smartDescription": "#Whenever you gain [gold]Goof[/gold], add [blue]{Amount}[/blue] random card(s) from another character into your [gold]Sepulchre Pile[/gold]. {Amount:plural:It gains|They gain} [gold]Bury[/gold]."
+  "AJAMAGHOULIGAN-JESTER_POWER.smartDescription": "#Whenever you gain [gold]Goof[/gold], add [blue]{Amount}[/blue] random card(s) from another character into your [gold]Sepulchre Pile[/gold]. {Amount:plural:It gains|They gain} [gold]Bury[/gold].",
+  "AJAMAGHOULIGAN-SPORK_ANTICS_POWER.title": "Spork Antics",
+  "AJAMAGHOULIGAN-SPORK_ANTICS_POWER.description": "Whenever you apply [gold]Doom[/gold], gain [blue]1[/blue] [gold]Dexterity[/gold] this turn.",
+  "AJAMAGHOULIGAN-SPORK_ANTICS_POWER.smartDescription": "Whenever you apply [gold]Doom[/gold], gain [blue]{Amount}[/blue] [gold]Dexterity[/gold] this turn.",
+  "AJAMAGHOULIGAN-SPORKS_POWER.title": "Sporks",
+  "AJAMAGHOULIGAN-BACK_IN_YOU_GO_POWER.title": "Back In You Go",
+  "AJAMAGHOULIGAN-BACK_IN_YOU_GO_POWER.description": "At the start of your turn, [gold]Haunt[/gold] and [gold]Bury[/gold] [blue]1[/blue] random card in your [gold]Discard Pile[/gold].",
+  "AJAMAGHOULIGAN-BACK_IN_YOU_GO_POWER.smartDescription": "#At the start of your turn, [gold]Haunt[/gold] and [gold]Bury[/gold] [blue]{Amount}[/blue] random card(s) in your [gold]Discard Pile[/gold].",
+  "AJAMAGHOULIGAN-RECIPROCATION_POWER.title": "Reciprocation",
+  "AJAMAGHOULIGAN-RECIPROCATION_POWER.description": "Whenever you apply [gold]Doom[/gold], apply [gold]Misfortune[/gold] to ALL enemies.",
+  "AJAMAGHOULIGAN-RECIPROCATION_POWER.smartDescription": "Whenever you apply [gold]Doom[/gold], apply [blue]{Amount}[/blue] [gold]Misfortune[/gold] to ALL enemies.",
+  "AJAMAGHOULIGAN-TOPSY_TURVY_POWER.title": "Topsy Turvy",
+  "AJAMAGHOULIGAN-TOPSY_TURVY_POWER.description": "At the end of your turn, [gold]Bury[/gold] up to [blue]1[/blue] card in your [gold]Hand[/gold].",
+  "AJAMAGHOULIGAN-TOPSY_TURVY_POWER.smartDescription": "At the end of your turn, [gold]Bury[/gold] up to [blue]{Amount}[/blue] card(s) in your [gold]Hand[/gold]."
 }

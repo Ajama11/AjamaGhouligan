@@ -134,7 +134,7 @@
   "AJAMAGHOULIGAN-SHOW_GOES_ON.title": "Show Goes On",
   "AJAMAGHOULIGAN-SHOW_GOES_ON.description": "#Apply !DoomPower! [gold]Doom[/gold] to yourself.\nChoose !C! cards in your [gold]Sepulchre Pile[/gold]. They gain [gold]Haunted[/gold] and [gold]Bury[/gold].",
   "AJAMAGHOULIGAN-SPONTANEITY.title": "Spontaneity",
-  "AJAMAGHOULIGAN-SPONTANEITY.description": "#Choose 1 of 3 random {IfUpgraded:show:[gold]Upgraded[/gold]|} cards to [gold]Haunt[/gold] and add into your [gold]Sepulchre Pile[/gold].",
+  "AJAMAGHOULIGAN-SPONTANEITY.description": "#Choose 1 of 3 random {IfUpgraded:show:[gold]Upgraded [/gold]|}cards to [gold]Haunt[/gold] and add into your [gold]Sepulchre Pile[/gold].",
   "AJAMAGHOULIGAN-TAKE_BACKSIES.title": "Take Backsies",
   "AJAMAGHOULIGAN-TAKE_BACKSIES.description": "#Put !C! cards from your [gold]Discard Pile[/gold] into your [gold]Hand[/gold] and [gold]Haunt[/gold] them.",
   "AJAMAGHOULIGAN-TAKE_BACKSIES.selectionScreenPrompt": "Choose {Amount} {Amount:plural:card|cards} to put into your [gold]Hand[/gold].",
@@ -142,5 +142,13 @@
   "AJAMAGHOULIGAN-DENSE_FOG.description": "#Apply !DoomPower! [gold]Doom[/gold] to yourself.\nALL enemies lose !StrengthPower! [gold]Strength[/gold].",
   "AJAMAGHOULIGAN-CONJURING.title": "Conjuring",
   "AJAMAGHOULIGAN-CONJURING.description": "#Play a card in your [gold]Sepulchre Pile[/gold] X{IfUpgraded:show:+1|} times.",
-  "AJAMAGHOULIGAN-CONJURING.selectionScreenPrompt": "Choose a card to play."
+  "AJAMAGHOULIGAN-CONJURING.selectionScreenPrompt": "Choose a card to play.",
+  "AJAMAGHOULIGAN-SPORK_ANTICS.title": "Spork Antics",
+  "AJAMAGHOULIGAN-SPORK_ANTICS.description": "#Whenever you apply [gold]Doom[/gold], gain !SporkAnticsPower! [gold]Dexterity[/gold] this turn.",
+  "AJAMAGHOULIGAN-BACK_IN_YOU_GO.title": "Back In You Go",
+  "AJAMAGHOULIGAN-BACK_IN_YOU_GO.description": "#At the start of your turn, [gold]Haunt[/gold] and [gold]Bury[/gold] !BackInYouGoPower! random card(s) in your [gold]Discard Pile[/gold].",
+  "AJAMAGHOULIGAN-RECIPROCATION.title": "Reciprocation",
+  "AJAMAGHOULIGAN-RECIPROCATION.description": "#Whenever you apply [gold]Doom[/gold], apply !ReciprocationPower! [gold]Misfortune[/gold] to ALL enemies.",
+  "AJAMAGHOULIGAN-TOPSY_TURVY.title": "Topsy Turvy",
+  "AJAMAGHOULIGAN-TOPSY_TURVY.description": "#At the end of your turn, [gold]Bury[/gold] up to !TopsyTurvyPower! card(s) in your [gold]Hand[/gold]."
 }

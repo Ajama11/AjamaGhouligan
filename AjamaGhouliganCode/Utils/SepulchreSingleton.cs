@@ -1,5 +1,6 @@
 using AjamaGhouligan.AjamaGhouliganCode.CardPiles;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
+using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using BaseLib.Abstracts;
 using BaseLib.Extensions;
 using MegaCrit.Sts2.Core.Commands;
@@ -16,6 +17,34 @@ public class SepulchreSingleton() : CustomSingletonModel(HookType.Combat)
     public override async Task AfterAutoPrePlayPhaseEntered(PlayerChoiceContext choiceContext, Player player)
     {
         await PlayHauntedCardsInSepulchrePile(choiceContext, player);
+
+        CardModel? someCard = player.PlayerCombatState!.AllCards.FirstOrDefault();
+        if (someCard == null) return;
+        
+        foreach (var model in someCard.CombatState!.IterateHookListeners())
+        {
+            if (model is not IAfterSepulchreAutoplayOnTurnStart afterAutoplayModel) continue;
+            await afterAutoplayModel.AfterSepulchreAutoplayOnTurnStart(choiceContext, player);
+            model.InvokeExecutionFinished();
+        }
+    }
+    
+    public override async Task AfterAutoPostPlayPhaseEntered(PlayerChoiceContext choiceContext, Player player)
+    {
+        CardModel? someCard = player.PlayerCombatState!.AllCards.FirstOrDefault();
+        if (someCard == null) return;
+        
+        foreach (var model in someCard.CombatState!.IterateHookListeners())
+        {
+            if (model is not IBeforeSepulchreAutoplayOnTurnEnd beforeAutoplayModel) continue;
+            await beforeAutoplayModel.BeforeSepulchreAutoplayOnTurnEnd(choiceContext, player);
+            model.InvokeExecutionFinished();
+        }
+        
+        if (player.Creature.HasPower<EclipsePower>())
+        {
+            await PlayHauntedCardsInSepulchrePile(choiceContext, player);
+        }
     }
 
     public static async Task PlayHauntedCardsInSepulchrePile(PlayerChoiceContext choiceContext, Player player)
