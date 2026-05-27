@@ -22,6 +22,11 @@ public class PossessAscender() : AjamaGhouliganCard(1,
     CardType.Skill, CardRarity.Uncommon,
     TargetType.Self)
 {
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        CardKeyword.Exhaust
+    ];
+    
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
         HoverTipFactory.FromKeyword(MyEnums.Haunted),

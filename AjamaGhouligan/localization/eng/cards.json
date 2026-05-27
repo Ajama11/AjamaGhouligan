@@ -158,5 +158,15 @@
   "AJAMAGHOULIGAN-HELPING_HAND.description": "#Choose a card. Add a copy of that card into your [gold]Sepulchre Pile[/gold].\nThe copy gains [gold]Haunted[/gold] and [gold]Bury[/gold].",
   "AJAMAGHOULIGAN-HELPING_HAND.selectionScreenPrompt": "Choose a card to copy into your [gold]Sepulchre Pile[/gold]. It gains [gold]Haunted[/gold] and [gold]Bury[/gold].",
   "AJAMAGHOULIGAN-BONES_OF_A_FEATHER.title": "Bones of a Feather",
-  "AJAMAGHOULIGAN-BONES_OF_A_FEATHER.description": "#ALL players [gold]Summon[/gold] !Summon!."
+  "AJAMAGHOULIGAN-BONES_OF_A_FEATHER.description": "#ALL players [gold]Summon[/gold] !Summon!.",
+  "AJAMAGHOULIGAN-FEAST.title": "Feast",
+  "AJAMAGHOULIGAN-FEAST.description_backup_because_the_plugin_keeps_deleting_it": "#{AlreadyPlayed:[color=DIM_GRAY]|}If this is the first time this card has been played this turn, and the enemy is not a minion, apply !TastySoulPower! {AlreadyPlayed:|[gold]}Tasty Soul{AlreadyPlayed:|[/gold]}.{AlreadyPlayed:[/color]|}\nDeal !D! damage.",
+  "AJAMAGHOULIGAN-FEAST.description": "#{AlreadyPlayed:[color=DIM_GRAY]|}If this is the first time this card has been played this turn, and the enemy is not a minion, apply !TastySoulPower! {AlreadyPlayed:|[gold]}Tasty Soul{AlreadyPlayed:|[/gold]}.{AlreadyPlayed:[/color]|}\nDeal !D! damage.",
+  "AJAMAGHOULIGAN-HAND_OFF.title": "Hand Off",
+  "AJAMAGHOULIGAN-HAND_OFF.description": "#[gold]Osty[/gold] deals !OstyDamage! damage to ALL enemies.\nIf [gold]Osty[/gold] is alive, gain !StrengthPower! [gold]Strength[/gold], and [gold]Osty[/gold] dies.",
+  "AJAMAGHOULIGAN-DOPPELGANGER.title": "Doppelganger",
+  "AJAMAGHOULIGAN-DOPPELGANGER.description": "#Choose a card in your [gold]Sepulchre Pile[/gold]. Add a copy of it into your [gold]Hand[/gold].",
+  "AJAMAGHOULIGAN-DOPPELGANGER.selectionScreenPrompt": "Choose a card to copy into your [gold]Hand[/gold].",
+  "AJAMAGHOULIGAN-ASHES_TO_ASHES.title": "Ashes to Ashes",
+  "AJAMAGHOULIGAN-ASHES_TO_ASHES.description": "#Add [gold]Ethereal[/gold] to !C! random card(s) in your [gold]Draw Pile[/gold] or [gold]Discard Pile[/gold].\nLose !LoseDoom! [gold]Doom[/gold]."
 }
