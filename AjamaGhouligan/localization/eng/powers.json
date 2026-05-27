@@ -42,5 +42,5 @@
   "AJAMAGHOULIGAN-RECIPROCATION_POWER.smartDescription": "Whenever you apply [gold]Doom[/gold], apply [blue]{Amount}[/blue] [gold]Misfortune[/gold] to ALL enemies.",
   "AJAMAGHOULIGAN-TOPSY_TURVY_POWER.title": "Topsy Turvy",
   "AJAMAGHOULIGAN-TOPSY_TURVY_POWER.description": "At the end of your turn, [gold]Bury[/gold] up to [blue]1[/blue] card in your [gold]Hand[/gold].",
-  "AJAMAGHOULIGAN-TOPSY_TURVY_POWER.smartDescription": "At the end of your turn, [gold]Bury[/gold] up to [blue]{Amount}[/blue] card(s) in your [gold]Hand[/gold]."
+  "AJAMAGHOULIGAN-TOPSY_TURVY_POWER.smartDescription": "#At the end of your turn, [gold]Bury[/gold] up to [blue]{Amount}[/blue] card(s) in your [gold]Hand[/gold]."
 }

@@ -4,7 +4,9 @@ using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using BaseLib.Abstracts;
 using BaseLib.Extensions;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Multiplayer;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
@@ -17,11 +19,8 @@ public class SepulchreSingleton() : CustomSingletonModel(HookType.Combat)
     public override async Task AfterAutoPrePlayPhaseEntered(PlayerChoiceContext choiceContext, Player player)
     {
         await PlayHauntedCardsInSepulchrePile(choiceContext, player);
-
-        CardModel? someCard = player.PlayerCombatState!.AllCards.FirstOrDefault();
-        if (someCard == null) return;
         
-        foreach (var model in someCard.CombatState!.IterateHookListeners())
+        foreach (var model in player.Creature.CombatState!.IterateHookListeners())
         {
             if (model is not IAfterSepulchreAutoplayOnTurnStart afterAutoplayModel) continue;
             await afterAutoplayModel.AfterSepulchreAutoplayOnTurnStart(choiceContext, player);
@@ -31,10 +30,7 @@ public class SepulchreSingleton() : CustomSingletonModel(HookType.Combat)
     
     public override async Task AfterAutoPostPlayPhaseEntered(PlayerChoiceContext choiceContext, Player player)
     {
-        CardModel? someCard = player.PlayerCombatState!.AllCards.FirstOrDefault();
-        if (someCard == null) return;
-        
-        foreach (var model in someCard.CombatState!.IterateHookListeners())
+        foreach (var model in player.Creature.CombatState!.IterateHookListeners())
         {
             if (model is not IBeforeSepulchreAutoplayOnTurnEnd beforeAutoplayModel) continue;
             await beforeAutoplayModel.BeforeSepulchreAutoplayOnTurnEnd(choiceContext, player);

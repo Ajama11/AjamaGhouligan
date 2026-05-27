@@ -474,7 +474,8 @@ public class MyActions
     
     public static async Task OstyHeal(Player player, decimal amount)
     {
-        await CreatureCmd.Heal(player.Osty!, amount);
+        if (!Osty.CheckMissingWithAnim(player))
+            await CreatureCmd.Heal(player.Osty!, amount);
     }
 
     public static async Task Disinter(PlayerChoiceContext choiceContext, AjamaGhouliganCard sourceCard)
