@@ -34,6 +34,8 @@ public class EndlessNight() : AjamaGhouliganCard(3,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
+        await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
+        
         MyActions.GainsHauntedAndBury(PileType.Hand.GetPile(Owner).Cards.ToList());
     }
 
