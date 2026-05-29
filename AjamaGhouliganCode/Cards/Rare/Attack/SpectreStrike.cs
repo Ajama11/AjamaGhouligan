@@ -37,8 +37,8 @@ public class SpectreStrike() : AjamaGhouliganCard(1,
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
         HoverTipFactory.FromKeyword(CardKeyword.Ethereal),
-        HoverTipFactory.FromKeyword(MyEnums.Haunted),
-        HoverTipFactory.FromKeyword(MyEnums.Bury)
+        HoverTipFactory.Static(MyEnums.Haunt),
+        HoverTipFactory.Static(MyEnums.BuryOther)
     ];
 
     protected override async Task OnPlay(
@@ -65,7 +65,9 @@ public class SpectreStrike() : AjamaGhouliganCard(1,
 
         List<CardModel> etherealCards = Owner.PlayerCombatState!.AllCards
             .Where(c => 
-                c.Keywords.Contains(CardKeyword.Ethereal))
+                c.Keywords.Contains(CardKeyword.Ethereal) &&
+                c.Pile != null &&
+                c.Pile.Type != PileType.Exhaust)
             .ToList();
 
         await MyActions.HauntAndBurySpecific(etherealCards);

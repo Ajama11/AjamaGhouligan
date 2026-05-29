@@ -17,6 +17,9 @@ public class MyEnums
 
     [CustomEnum]
     public static StaticHoverTip Haunt;
+    
+    [CustomEnum]
+    public static StaticHoverTip BuryOther;
 
     public enum RandomBuryTargeting
     {

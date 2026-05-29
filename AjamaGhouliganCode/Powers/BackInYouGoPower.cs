@@ -19,7 +19,7 @@ public class BackInYouGoPower : AjamaGhouliganPower, IAfterSepulchreAutoplayOnTu
     [
         HoverTipFactory.Static(MyEnums.Haunt),
         HoverTipFactory.FromKeyword(MyEnums.Haunted),
-        HoverTipFactory.FromKeyword(MyEnums.Bury)
+        HoverTipFactory.Static(MyEnums.BuryOther)
     ];
 
     public async Task AfterSepulchreAutoplayOnTurnStart(PlayerChoiceContext choiceContext, Player player)

@@ -25,7 +25,7 @@ public class TopsyTurvy() : AjamaGhouliganCard(1,
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
-        HoverTipFactory.FromKeyword(MyEnums.Bury)
+        HoverTipFactory.Static(MyEnums.BuryOther)
     ];
 
     protected override async Task OnPlay(

@@ -19,7 +19,7 @@ public class TopsyTurvyPower : AjamaGhouliganPower, IBeforeSepulchreAutoplayOnTu
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromKeyword(MyEnums.Bury)
+        HoverTipFactory.Static(MyEnums.BuryOther)
     ];
 
     public async Task BeforeSepulchreAutoplayOnTurnEnd(PlayerChoiceContext choiceContext, Player player)

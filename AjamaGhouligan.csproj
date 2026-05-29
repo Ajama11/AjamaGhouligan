@@ -65,7 +65,6 @@
 
     <ItemGroup>
         <Folder Include="AjamaGhouliganCode\Cards\Ancient\" />
-        <Folder Include="AjamaGhouliganCode\Scenes\" />
         <Folder Include="AjamaGhouligan\images\card_portraits\big\"/>
         <Folder Include="AjamaGhouligan\images\powers\big\"/>
         <Folder Include="AjamaGhouligan\images\relics\big\"/>

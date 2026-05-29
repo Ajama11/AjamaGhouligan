@@ -14,7 +14,7 @@ public class BlackCatPower : AjamaGhouliganPower
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromKeyword(MyEnums.Bury),
+        HoverTipFactory.Static(MyEnums.BuryOther),
         HoverTipFactory.FromKeyword(MyEnums.Haunted)
     ];
 

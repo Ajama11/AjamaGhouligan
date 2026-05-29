@@ -88,7 +88,12 @@ public abstract class AjamaGhouliganCard(int cost, CardType type, CardRarity rar
 
             if (DynamicVars.ContainsKey(HauntVar.Key))
             {
-                result = [..result, HoverTipFactory.FromKeyword(MyEnums.Haunted)];
+                result = [..result, HoverTipFactory.Static(MyEnums.Haunt), HoverTipFactory.FromKeyword(MyEnums.Haunted)];
+            }
+            
+            if (DynamicVars.ContainsKey(BuryVar.Key))
+            {
+                result = [..result, HoverTipFactory.Static(MyEnums.BuryOther)];
             }
 
             return result;

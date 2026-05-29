@@ -2,6 +2,7 @@ using Godot;
 using System;
 using AjamaGhouligan.AjamaGhouliganCode.CardPiles;
 using AjamaGhouligan.AjamaGhouliganCode.Character;
+using AjamaGhouligan.AjamaGhouliganCode.Scenes;
 using BaseLib.Utils;
 using MegaCrit.Sts2.addons.mega_text;
 using MegaCrit.Sts2.Core.Assets;

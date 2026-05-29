@@ -27,7 +27,7 @@ public class BlackCat() : AjamaGhouliganCard(0,
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
-        HoverTipFactory.FromKeyword(MyEnums.Bury),
+        HoverTipFactory.Static(MyEnums.BuryOther),
         HoverTipFactory.FromKeyword(MyEnums.Haunted)
     ];
 

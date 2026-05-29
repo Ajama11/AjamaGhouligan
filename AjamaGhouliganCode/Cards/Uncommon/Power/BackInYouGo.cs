@@ -31,7 +31,8 @@ public class BackInYouGo() : AjamaGhouliganCard(2,
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
         HoverTipFactory.Static(MyEnums.Haunt),
-        HoverTipFactory.FromKeyword(MyEnums.Bury)
+        HoverTipFactory.FromKeyword(MyEnums.Haunted),
+        HoverTipFactory.Static(MyEnums.BuryOther)
     ];
 
     protected override async Task OnPlay(

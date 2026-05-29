@@ -25,7 +25,7 @@ public class BoneVigil() : AjamaGhouliganCard(2,
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
-        HoverTipFactory.FromKeyword(MyEnums.Bury)
+        HoverTipFactory.Static(MyEnums.BuryOther)
     ];
 
     protected override async Task OnPlay(
