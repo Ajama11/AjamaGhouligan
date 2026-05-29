@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bcmhgwsmwg7e7"]
+[gd_scene load_steps=7 format=3 uid="uid://bcmhgwsmwg7e7"]
 
 [ext_resource type="Texture2D" uid="uid://dvy4vylsw8nyi" path="res://AjamaGhouligan/images/energy_counter/ghouligan_orb_layer_1.png" id="1_pkrx2"]
+[ext_resource type="Script" uid="uid://lsoqal3ibnaj" path="res://AjamaGhouliganCode/Scenes/GhouliganNEnergyCounter.cs" id="1_sl1tv"]
+[ext_resource type="Script" uid="uid://c2uhm1xsvx2wn" path="res://AjamaGhouliganCode/Scenes/GhouliganNParticlesContainer.cs" id="2_327al"]
 [ext_resource type="Texture2D" uid="uid://v4t30pde0muu" path="res://AjamaGhouligan/images/energy_counter/ghouligan_orb_layer_2.png" id="2_u0hkx"]
 [ext_resource type="Texture2D" uid="uid://ea1fbwyfb5ut" path="res://AjamaGhouligan/images/energy_counter/ghouligan_orb_layer_3.png" id="3_sl1tv"]
+[ext_resource type="Script" uid="uid://uywfopdbhd3v" path="res://AjamaGhouliganCode/Scenes/GhouliganMegaLabel.cs" id="5_2bdft"]
 
 [node name="GhouliganEnergyCounter" type="Control"]
 layout_mode = 3
@@ -10,12 +13,16 @@ anchors_preset = 0
 offset_right = 128.0
 offset_bottom = 128.0
 pivot_offset = Vector2(64, 64)
+script = ExtResource("1_sl1tv")
 metadata/_edit_lock_ = true
 
 [node name="EnergyVfxBack" type="Node2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(64, 64)
+script = ExtResource("2_327al")
 
 [node name="Layers" type="Control" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -37,6 +44,7 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="RotationLayers" type="Control" parent="Layers"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -70,7 +78,9 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="EnergyVfxFront" type="Node2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(64, 64)
+script = ExtResource("2_327al")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -88,3 +98,6 @@ theme_override_font_sizes/font_size = 36
 text = "3/3"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("5_2bdft")
+MinFontSize = 32
+MaxFontSize = 36
