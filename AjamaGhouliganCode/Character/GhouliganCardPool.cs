@@ -1,6 +1,8 @@
 ﻿using BaseLib.Abstracts;
 using AjamaGhouligan.AjamaGhouliganCode.Extensions;
 using Godot;
+using MegaCrit.Sts2.Core.Assets;
+using MegaCrit.Sts2.Core.Entities.Cards;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Character;
 
@@ -10,25 +12,46 @@ public class GhouliganCardPool : CustomCardPoolModel
 
     public override string BigEnergyIconPath => "charui/big_energy.png".ImagePath();
     public override string TextEnergyIconPath => "charui/text_energy.png".ImagePath();
-
-
+    
+    public override bool IsColorless => false;
+    
     /* These HSV values will determine the color of your card back.
     They are applied as a shader onto an already colored image,
     so it may take some experimentation to find a color you like.
     Generally they should be values between 0 and 1. */
-    public override float H => 0.51f; //Hue; changes the color.
+    public override float H => 1f; //Hue; changes the color.
     public override float S => 1f; //Saturation
     public override float V => 1f; //Brightness
 
     //Alternatively, leave these values at 1 and provide a custom frame image.
-    /*public override Texture2D CustomFrame(CustomCardModel card)
+    public override Texture2D CustomFrame(CustomCardModel card)
     {
-        //This will attempt to load AjamaGhouligan/images/cards/frame.png
-        return PreloadManager.Cache.GetTexture2D("cards/frame.png".ImagePath());
-    }*/
+        CardType cardType;
+        
+        switch (card.Type)
+        {
+            case CardType.None:
+            case CardType.Status:
+            case CardType.Curse:
+            case CardType.Quest:
+                cardType = CardType.Skill;
+                break;
+            case CardType.Attack:
+            case CardType.Skill:
+            case CardType.Power:
+                cardType = card.Type;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+
+        string imageName = "card_frames/" + cardType.ToString().ToLower() + ".png";
+        
+        return PreloadManager.Cache.GetTexture2D(imageName.ImagePath());
+    }
 
     //Color of small card icons
-    public override Color DeckEntryCardColor => new("33cbb9");
-
-    public override bool IsColorless => false;
+    public override Color DeckEntryCardColor => new("54cba2");
+    
+    public override Color EnergyOutlineColor => new("803D0E");
 }

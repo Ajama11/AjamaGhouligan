@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfxasxomlg28y"]
+
+[ext_resource type="PackedScene" uid="uid://c7hswx0s0jk15" path="res://AjamaGhouligan/scenes/ghouligan.tscn" id="1_lgpwp"]
+
+[node name="Ghouligan" instance=ExtResource("1_lgpwp")]
+
+[node name="Visuals" parent="." index="0"]
+scale = Vector2(1.5, 1.5)

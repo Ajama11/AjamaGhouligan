@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp15cakvb726a"
-path="res://.godot/imported/character_icon_char_name.png-72e2ba78869fefb870e6f233da9d1528.ctex"
+uid="uid://cfrqjdl107suf"
+path="res://.godot/imported/char_select_ghouligan.png-715151e301457a82d5c9ebde5bd9b78a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://AjamaGhouligan/images/charui/character_icon_char_name.png"
-dest_files=["res://.godot/imported/character_icon_char_name.png-72e2ba78869fefb870e6f233da9d1528.ctex"]
+source_file="res://AjamaGhouligan/images/charui/char_select_ghouligan.png"
+dest_files=["res://.godot/imported/char_select_ghouligan.png-715151e301457a82d5c9ebde5bd9b78a.ctex"]
 
 [params]
 

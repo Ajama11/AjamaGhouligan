@@ -1,4 +1,5 @@
-﻿using AjamaGhouligan.AjamaGhouliganCode.Cards.Basic;
+﻿using System.Diagnostics.CodeAnalysis;
+using AjamaGhouligan.AjamaGhouliganCode.Cards.Basic;
 using BaseLib.Abstracts;
 using BaseLib.Utils.NodeFactories;
 using AjamaGhouligan.AjamaGhouliganCode.Extensions;
@@ -14,6 +15,7 @@ using MegaCrit.Sts2.Core.Nodes.Combat;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Character;
 
+[SuppressMessage("Localization", "STS001:Symbol missing localization")]
 public class Ghouligan : PlaceholderCharacterModel
 {
     public const string CharacterId = "AjamaGhouligan";
@@ -22,9 +24,10 @@ public class Ghouligan : PlaceholderCharacterModel
 
     public static readonly Color Color = new("54cba2");
 
-    public override Color MapDrawingColor => Color;
-
+    public override Color MapDrawingColor => new("3f9979");
+    public override Color DialogueColor => MapDrawingColor;
     public override Color NameColor => Color;
+    
     public override CharacterGender Gender => CharacterGender.Feminine;
     public override int StartingHp => 69;
 
@@ -57,12 +60,19 @@ public class Ghouligan : PlaceholderCharacterModel
         override all the other methods that define those assets.
         These are just some of the simplest assets, given some placeholders to differentiate your character with.
         You don't have to, but you're suggested to rename these images. */
-    
+
+    public override string CustomEnergyCounterPath => "res://AjamaGhouligan/scenes/energy_counter.tscn";
+    public override Color EnergyLabelOutlineColor => new("803D0E");
+
     public override NCreatureVisuals CreateCustomVisuals()
     {
         return NodeFactory<NCreatureVisuals>.CreateFromScene("res://AjamaGhouligan/scenes/ghouligan.tscn");
     }
-    
+
+    public override string CustomMerchantAnimPath => "res://AjamaGhouligan/scenes/ghouligan_merchant.tscn";
+
+    public override string CustomRestSiteAnimPath => "res://AjamaGhouligan/scenes/ghouligan_rest_site.tscn";
+
     public override Control CustomIcon
     {
         get
@@ -74,7 +84,8 @@ public class Ghouligan : PlaceholderCharacterModel
     }
 
     public override string CustomIconTexturePath => "character_icon_ghouligan.png".CharacterUiPath();
-    public override string CustomCharacterSelectIconPath => "char_select_char_name.png".CharacterUiPath();
+    public override string? CustomIconOutlineTexturePath => "character_icon_ghouligan_outline.png".CharacterUiPath();
+    public override string CustomCharacterSelectIconPath => "char_select_ghouligan.png".CharacterUiPath();
     public override string CustomCharacterSelectLockedIconPath => "char_select_char_name_locked.png".CharacterUiPath();
     public override string CustomMapMarkerPath => "map_marker_ghouligan.png".CharacterUiPath();
     

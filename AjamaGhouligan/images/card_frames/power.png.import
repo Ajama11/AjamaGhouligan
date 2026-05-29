@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxbx0war723cv"
-path="res://.godot/imported/map_marker_char_name.png-3b9da6860eece959c8a7679091d50e19.ctex"
+uid="uid://d01jk24ew42hr"
+path="res://.godot/imported/power.png-13947f2f84f60ff3b231cb40c10eea7b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://AjamaGhouligan/images/charui/map_marker_char_name.png"
-dest_files=["res://.godot/imported/map_marker_char_name.png-3b9da6860eece959c8a7679091d50e19.ctex"]
+source_file="res://AjamaGhouligan/images/card_frames/power.png"
+dest_files=["res://.godot/imported/power.png-13947f2f84f60ff3b231cb40c10eea7b.ctex"]
 
 [params]
 

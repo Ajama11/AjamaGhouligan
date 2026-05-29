@@ -1,6 +1,22 @@
 {
-  "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.0-0r.char": "I am angry at the architect",
-  "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.0-0r.next": "Continue",
-  "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.0-1r.ancient": "You die",
-  "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.0-attack": "Both"
+  "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.0-0.ancient": "You?! I thought you...",
+  "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.0-0.next": "Continue",
+  "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.0-1.char": "You knew my past life?",
+  "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.0-1.next": "Continue",
+  "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.0-2.ancient": "I see. A pity.",
+  "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.0-attack": "Architect",
+  "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.1-0r.char": "What do you know about my past?",
+  "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.1-0r.next": "Continue",
+  "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.1-1r.ancient": "Too much.",
+  "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.1-attack": "Architect",
+  "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.2-0r.char": "Why won't anyone tell me who I was?!",
+  "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.2-attack": "Architect",
+  "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.3-0r.ancient": "So much potential wasted.",
+  "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.3-0r.next": "Continue",
+  "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.3-1r.char": "Stop with this vagueness, just tell me!",
+  "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.3-attack": "Architect",
+  "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.4-0r.char": "Who was I in the past?",
+  "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.4-0r.next": "Continue",
+  "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.4-1r.ancient": "Promising. And yet...",
+  "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.4-attack": "Architect"
 }

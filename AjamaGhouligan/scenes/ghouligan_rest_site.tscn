@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=3 uid="uid://iagwmp2rno7j"]
+
+[ext_resource type="Texture2D" uid="uid://tbwyux4h4cvt" path="res://AjamaGhouligan/images/character/GhouliganIdle.png" id="1_4bjvv"]
+
+[node name="GhouliganRestSite" type="Node2D"]
+position = Vector2(-2, 42)
+scale = Vector2(0.76, 0.76)
+
+[node name="ControlRoot" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Hitbox" type="Control" parent="ControlRoot"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -200.0
+offset_top = -344.0
+offset_right = 134.0
+offset_bottom = 141.0
+
+[node name="ThoughtBubbleRight" type="Control" parent="ControlRoot"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = 211.8421
+offset_top = -310.0
+offset_right = 211.8421
+offset_bottom = -310.0
+
+[node name="ThoughtBubbleLeft" type="Control" parent="ControlRoot"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -197.36842
+offset_top = -310.0
+offset_right = -197.36842
+offset_bottom = -310.0
+
+[node name="Sprite2D" type="Sprite2D" parent="ControlRoot"]
+scale = Vector2(1.66, 1.66)
+texture = ExtResource("1_4bjvv")
+offset = Vector2(-11, -65)

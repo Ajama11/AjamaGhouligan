@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dm1junv2uu1de"
-path="res://.godot/imported/char_select_char_name.png-3e9d39e4af6543b1af7d6610f6f977fa.ctex"
+uid="uid://b112wx8xhyjbc"
+path="res://.godot/imported/skill.png-9916da81da7096b0fb5ab0d9e5961c0e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://AjamaGhouligan/images/charui/char_select_char_name.png"
-dest_files=["res://.godot/imported/char_select_char_name.png-3e9d39e4af6543b1af7d6610f6f977fa.ctex"]
+source_file="res://AjamaGhouligan/images/card_frames/skill.png"
+dest_files=["res://.godot/imported/skill.png-9916da81da7096b0fb5ab0d9e5961c0e.ctex"]
 
 [params]
 
