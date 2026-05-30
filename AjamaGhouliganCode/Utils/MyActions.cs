@@ -474,8 +474,11 @@ public class MyActions
     
     public static async Task OstyHeal(Player player, decimal amount)
     {
-        if (!Osty.CheckMissingWithAnim(player))
+        if (player.IsOstyAlive)
             await CreatureCmd.Heal(player.Osty!, amount);
+        else
+            Osty.CheckMissingWithAnim(player);
+            // The shake was happening even if Osty's alive, so I'm just using this Check for the shake if Osty's dead
     }
 
     public static async Task Disinter(PlayerChoiceContext choiceContext, AjamaGhouliganCard sourceCard)

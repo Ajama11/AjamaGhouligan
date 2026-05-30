@@ -22,23 +22,9 @@ public class BelovedThingies() : AjamaGhouliganCard(2,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<DoomPower>(8),
-        new CardsVar(2)
-    ];
-
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-
-    ];
-
-    public override HashSet<CardTag> MyCanonicalTags =>
-    [
-
-    ];
-
-    public override IEnumerable<IHoverTip> MyHoverTips =>
-    [
-
+        new PowerVar<DoomPower>(8), 
+        new HauntVar(2),
+        new BuryVar(2)
     ];
 
     protected override async Task OnPlay(
@@ -47,14 +33,12 @@ public class BelovedThingies() : AjamaGhouliganCard(2,
     {
         await MyActions.SelfDoom(choiceContext, this);
         
-        List<CardModel> cards = (await CommonActions.SelectCards(this, MySelectionPrompts.HauntAndBury, choiceContext, PileType.Draw,
-            DynamicVars.Cards.IntValue)).ToList();
-        
-        await MyActions.HauntAndBurySpecific(cards);
+        await MyActions.HauntAndPossiblyBury(this, [PileType.Draw], true, true, choiceContext);
     }
 
     protected override void OnUpgrade()
     {
-
+        DynamicVars.Haunt().UpgradeValueBy(1);
+        DynamicVars.Bury().UpgradeValueBy(1);
     }
 }

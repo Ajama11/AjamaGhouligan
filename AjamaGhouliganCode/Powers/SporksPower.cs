@@ -14,6 +14,6 @@ public class SporksPower : CustomTemporaryPowerModelWrapper<SporkAnticsPower, De
 
     public override LocString Title => new ("powers", "AJAMAGHOULIGAN-SPORKS_POWER.title");
 
-    // public override string CustomPackedIconPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".PowerImagePath();
-    // public override string CustomBigIconPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".BigPowerImagePath();
+    public override string CustomPackedIconPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".PowerImagePath();
+    public override string CustomBigIconPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".BigPowerImagePath();
 }

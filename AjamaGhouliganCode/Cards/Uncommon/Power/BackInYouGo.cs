@@ -30,8 +30,8 @@ public class BackInYouGo() : AjamaGhouliganCard(2,
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
-        HoverTipFactory.Static(MyEnums.Haunt),
         HoverTipFactory.FromKeyword(MyEnums.Haunted),
+        HoverTipFactory.Static(MyEnums.Haunt),
         HoverTipFactory.Static(MyEnums.BuryOther)
     ];
 

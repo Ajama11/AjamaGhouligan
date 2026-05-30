@@ -15,13 +15,6 @@ public class BackInYouGoPower : AjamaGhouliganPower, IAfterSepulchreAutoplayOnTu
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-    [
-        HoverTipFactory.Static(MyEnums.Haunt),
-        HoverTipFactory.FromKeyword(MyEnums.Haunted),
-        HoverTipFactory.Static(MyEnums.BuryOther)
-    ];
-
     public async Task AfterSepulchreAutoplayOnTurnStart(PlayerChoiceContext choiceContext, Player player)
     {
         if (player != Owner.Player) return;

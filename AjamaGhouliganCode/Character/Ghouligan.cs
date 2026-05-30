@@ -34,22 +34,21 @@ public class Ghouligan : PlaceholderCharacterModel
     public override IEnumerable<CardModel> StartingDeck =>
     [
         ModelDb.Card<Strike>(),
-        // ModelDb.Card<Strike>(),
-        // ModelDb.Card<Strike>(),
-        // ModelDb.Card<Strike>(),
+        ModelDb.Card<Strike>(),
+        ModelDb.Card<Strike>(),
+        ModelDb.Card<Strike>(),
         ModelDb.Card<Defend>(),
-        // ModelDb.Card<Defend>(),
-        // ModelDb.Card<Defend>(),
-        // ModelDb.Card<Defend>(),
+        ModelDb.Card<Defend>(),
+        ModelDb.Card<Defend>(),
+        ModelDb.Card<Defend>(),
         ModelDb.Card<Yoink>(),
         ModelDb.Card<Boop>(),
-        ..CardPool.AllCards.Where(c => c.Rarity != CardRarity.Basic)
+        // ..CardPool.AllCards.Where(c => c.Rarity != CardRarity.Basic)
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>
     [
-        ModelDb.Relic<StolenPhylactery>(),
-        ModelDb.Relic<PrismaticGem>()
+        ModelDb.Relic<StolenPhylactery>()
     ];
 
     public override CardPoolModel CardPool => ModelDb.CardPool<GhouliganCardPool>();

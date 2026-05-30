@@ -9,7 +9,7 @@ public class BuryVar : DynamicVar
     
     public BuryVar(decimal baseValue, bool skipTooltip = false) : base(Key, baseValue)
     {
-        if (!skipTooltip) this.WithTooltip();
+        if (!skipTooltip) this.WithTooltip("AJAMAGHOULIGAN-BURY_OTHER");
     }
 }
 

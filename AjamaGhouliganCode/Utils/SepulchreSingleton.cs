@@ -74,7 +74,7 @@ public class SepulchreSingleton() : CustomSingletonModel(HookType.Combat)
             foreach (var model in cardPlay.Card.CombatState!.IterateHookListeners())
             {
                 if (model is not IOnBury onBuryModel) continue;
-                await onBuryModel.OnBury(cardPlay.Card);
+                await onBuryModel.OnBury(cardPlay.Card, cardPlay);
                 model.InvokeExecutionFinished();
             }
         }

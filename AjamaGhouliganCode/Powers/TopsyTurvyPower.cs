@@ -17,11 +17,6 @@ public class TopsyTurvyPower : AjamaGhouliganPower, IBeforeSepulchreAutoplayOnTu
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-    [
-        HoverTipFactory.Static(MyEnums.BuryOther)
-    ];
-
     public async Task BeforeSepulchreAutoplayOnTurnEnd(PlayerChoiceContext choiceContext, Player player)
     {
         if (player.Creature != Owner) return;

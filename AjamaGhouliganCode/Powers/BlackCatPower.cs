@@ -12,12 +12,6 @@ public class BlackCatPower : AjamaGhouliganPower
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-    [
-        HoverTipFactory.Static(MyEnums.BuryOther),
-        HoverTipFactory.FromKeyword(MyEnums.Haunted)
-    ];
-
     public override async Task AfterCardGeneratedForCombat(CardModel card, Player? creator)
     {
         if (card.Owner.Creature != Owner) return;

@@ -13,7 +13,7 @@ public class MisfortunePower : AjamaGhouliganPower
     public override PowerType Type => PowerType.Debuff;
     public override PowerStackType StackType => PowerStackType.Counter;
     
-    public override Color AmountLabelColor => _normalAmountLabelColor;
+    // public override Color AmountLabelColor => _normalAmountLabelColor;
     
     public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
     {

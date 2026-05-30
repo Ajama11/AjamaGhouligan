@@ -11,7 +11,7 @@ public class UnfortunateSingleton() : CustomSingletonModel(HookType.Combat)
     public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer,
         CardModel? cardSource)
     {
-        if (cardSource == null) return 0; // or not Necro Mockery
+        if (cardSource == null) return 0;
         if (target == null) return 0;
         if (!cardSource.Keywords.Contains(MyEnums.Unfortunate)) return 0;
 
