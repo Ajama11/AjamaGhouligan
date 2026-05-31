@@ -1,16 +1,20 @@
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
+using AjamaGhouligan.AjamaGhouliganCode.Cards.Ancient;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
+using BaseLib.Abstracts;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Basic;
 
 public class Yoink() : AjamaGhouliganCard(1,
     CardType.Skill, CardRarity.Basic,
-    TargetType.Self)
+    TargetType.Self),
+    ITranscendenceCard
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
@@ -29,5 +33,10 @@ public class Yoink() : AjamaGhouliganCard(1,
     protected override void OnUpgrade()
     {
         DynamicVars.Summon.UpgradeValueBy(2);
+    }
+    
+    public CardModel GetTranscendenceTransformedCard()
+    {
+        return ModelDb.Card<Yoinkadoo>();
     }
 }

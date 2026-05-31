@@ -42,7 +42,10 @@ public class Conjuring() : AjamaGhouliganCard(0,
 
         for (int i = 0; i < xValue; ++i)
         {
-            await CardCmd.AutoPlay(choiceContext, card, null);
+            CardModel cardToPlay = card.Type == CardType.Power && i < xValue - 1 ?
+                card.CreateDupe() : card;
+
+            await CardCmd.AutoPlay(choiceContext, cardToPlay, null);
         }
     }
 }

@@ -19,6 +19,8 @@ public class BonesOfAFeather() : AjamaGhouliganCard(2,
     CardType.Skill, CardRarity.Uncommon,
     TargetType.AllAllies)
 {
+    public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
+    
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new SummonVar(4)
