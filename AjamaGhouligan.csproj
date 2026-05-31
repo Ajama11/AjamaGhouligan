@@ -64,8 +64,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="AjamaGhouligan\images\card_portraits\big\"/>
-        <Folder Include="AjamaGhouligan\images\relics\big\"/>
         <Folder Include="AjamaGhouligan\scenes\" />
     </ItemGroup>
 

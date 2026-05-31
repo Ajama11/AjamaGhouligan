@@ -6,6 +6,7 @@ using AjamaGhouligan.AjamaGhouliganCode.Scenes;
 using BaseLib.Utils;
 using MegaCrit.Sts2.addons.mega_text;
 using MegaCrit.Sts2.Core.Assets;
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.HoverTips;
@@ -119,7 +120,9 @@ public partial class NBuryPile : NCombatCardPile
 			AnimIn();
 			Enable();
 		}
-		else if (_currentCount == 0 && _localPlayer!.Character is not Ghouligan)
+		else if (_currentCount == 0 && 
+		         (_localPlayer!.Character is not Ghouligan ||
+		          CombatManager.Instance.IsOverOrEnding))
 		{
 			AnimOut();
 			Disable();

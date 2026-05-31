@@ -25,7 +25,8 @@ public class Jester() : AjamaGhouliganCard(1,
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
-        HoverTipFactory.FromPower<GoofPower>()
+        HoverTipFactory.FromPower<GoofPower>(),
+        HoverTipFactory.FromKeyword(MyEnums.Bury)
     ];
 
     protected override async Task OnPlay(
