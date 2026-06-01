@@ -48,8 +48,8 @@ public class ShowGoesOn() : AjamaGhouliganCard(1,
                 MySelectionPrompts.GainsHauntedAndBury, choiceContext,
                 SepulchrePile.PileType,
                 c =>
-                    !c.Keywords.Contains(MyEnums.Haunted) &&
-                    !c.Keywords.Contains(MyEnums.Bury),
+                    !(c.Keywords.Contains(MyEnums.Haunted) &&
+                      c.Keywords.Contains(MyEnums.Bury)),
                 DynamicVars.Cards.IntValue))
             .ToList());
     }

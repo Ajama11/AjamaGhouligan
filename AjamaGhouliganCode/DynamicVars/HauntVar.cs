@@ -6,9 +6,11 @@ namespace AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 public class HauntVar : DynamicVar
 {
     public const string Key = "Haunt";
+    public bool SkipTooltip;
     
     public HauntVar(decimal baseValue, bool skipTooltip = false) : base(Key, baseValue)
     {
+        SkipTooltip = skipTooltip;
         if (!skipTooltip) this.WithTooltip();
     }
 }

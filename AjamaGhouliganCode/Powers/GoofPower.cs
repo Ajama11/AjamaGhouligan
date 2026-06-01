@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
@@ -28,6 +29,10 @@ public class GoofPower : AjamaGhouliganPower
         if (Owner.Player is null) return;
 
         Flash();
+
+        MySounds.GoofPop.Play();
+        
+        VfxCmd.PlayFullScreenInCombat("vfx/vfx_dramatic_entrance_fullscreen", Owner);
 
         await PlayerCmd.GainEnergy(DynamicVars.Energy.IntValue, Owner.Player);
 

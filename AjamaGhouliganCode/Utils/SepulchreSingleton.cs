@@ -58,6 +58,7 @@ public class SepulchreSingleton() : CustomSingletonModel(HookType.Combat)
     {
         foreach (var card in CardPile.Get(SepulchrePile.PileType, player)!.Cards.ToList())
         {
+            if (card.Keywords.Contains(CardKeyword.Unplayable)) continue;
             await CardCmd.AutoPlay(choiceContext, card, null);
         }
     }

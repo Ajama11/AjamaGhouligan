@@ -67,7 +67,8 @@ public class SpectreStrike() : AjamaGhouliganCard(1,
             .Where(c => 
                 c.Keywords.Contains(CardKeyword.Ethereal) &&
                 c.Pile != null &&
-                c.Pile.Type != PileType.Exhaust)
+                c.Pile.Type != PileType.Exhaust &&
+                c.Pile.Type != PileType.Play)
             .ToList();
 
         await MyActions.HauntAndBurySpecific(etherealCards);
