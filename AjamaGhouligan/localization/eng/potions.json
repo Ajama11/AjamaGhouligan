@@ -1,0 +1,9 @@
+{
+  "AJAMAGHOULIGAN-JUICE_BARREL.title": "Juice Barrel",
+  "AJAMAGHOULIGAN-JUICE_BARREL.description": "Gain [blue]{GoofPower}[/blue] [gold]Goof[/gold].",
+  "AJAMAGHOULIGAN-CHOCCY_MILK.title": "Choccy Milk",
+  "AJAMAGHOULIGAN-CHOCCY_MILK.description": "[gold]Summon[/gold] [blue]{Summon}[/blue].\nGain [blue]{DexterityPower}[/blue] [gold]Dexterity[/gold].",
+  "AJAMAGHOULIGAN-FIZZY_COCKTAIL.title": "Fizzy Cocktail",
+  "AJAMAGHOULIGAN-FIZZY_COCKTAIL.description": "Choose a card in your [gold]Draw Pile[/gold] to [gold]Bury[/gold]. It gains [gold]Haunted[/gold] and [gold]Bury[/gold].",
+  "AJAMAGHOULIGAN-FIZZY_COCKTAIL.selectionScreenPrompt": "Choose a card to [gold]Bury[/gold]. It gains [gold]Haunted[/gold] and [gold]Bury[/gold]."
+}

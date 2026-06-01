@@ -39,5 +39,12 @@ public class GoofPower : AjamaGhouliganPower
         await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.IntValue, Owner.Player);
 
         await PowerCmd.ModifyAmount(new ThrowingPlayerChoiceContext(), this, -Threshold, Owner.Player.Creature, null);
+        
+        foreach (var model in Owner.Player.Creature.CombatState!.IterateHookListeners())
+        {
+            if (model is not IOnGoofPop goofPopModel) continue;
+            await goofPopModel.OnGoofPop(choiceContext, Owner.Player);
+            model.InvokeExecutionFinished();
+        }
     }
 }
