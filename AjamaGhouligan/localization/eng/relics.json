@@ -8,5 +8,14 @@
   "SEA_GLASS.AJAMAGHOULIGAN.title": "Spectre Glass",
   "AJAMAGHOULIGAN-FUNNY_BONE.title": "Funny Bone",
   "AJAMAGHOULIGAN-FUNNY_BONE.description": "Whenever you obtain [blue]10[/blue] or more [gold]Goof[/gold], [gold]Summon[/gold] [blue]{Summon}[/blue].",
-  "AJAMAGHOULIGAN-FUNNY_BONE.flavor": "It's quite humerus!"
+  "AJAMAGHOULIGAN-FUNNY_BONE.flavor": "It's quite humerus!",
+  "AJAMAGHOULIGAN-PAGE_SCRAP.title": "Page Scrap",
+  "AJAMAGHOULIGAN-PAGE_SCRAP.description": "Card rewards from combats gain an additional [gold]Necrobinder[/gold] card.",
+  "AJAMAGHOULIGAN-PAGE_SCRAP.flavor": "Silly Bindy, always leaving these things everywhere.",
+  "AJAMAGHOULIGAN-WARDED_BRACELET.title": "Warded Bracelet",
+  "AJAMAGHOULIGAN-WARDED_BRACELET.description": "Whenever you apply [gold]Doom[/gold] to yourself, lose [blue]{LoseDoom}[/blue] [gold]Doom[/gold].",
+  "AJAMAGHOULIGAN-WARDED_BRACELET.flavor": "It kinda stings, but it's weirdly soothing too!",
+  "AJAMAGHOULIGAN-CREEPY_DOLL.title": "Creepy Doll",
+  "AJAMAGHOULIGAN-CREEPY_DOLL.description": "#At the start of your turn, [gold]Haunt[/gold] [blue]{Haunt}[/blue] random card(s) in your [gold]Draw Pile[/gold].",
+  "AJAMAGHOULIGAN-CREEPY_DOLL.flavor": "It's literally so cutes, but I swear I saw it move earlier..."
 }

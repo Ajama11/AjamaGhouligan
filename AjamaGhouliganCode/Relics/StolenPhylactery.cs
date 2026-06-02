@@ -27,7 +27,8 @@ public class StolenPhylactery : AjamaGhouliganRelic
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon)
+        HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon),
+        HoverTipFactory.FromPower<DoomPower>()
     ];
 
     public override async Task BeforeCombatStart()
