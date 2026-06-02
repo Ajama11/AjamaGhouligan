@@ -23,7 +23,7 @@ public class PaintedTunnel() : AjamaGhouliganCard(2,
     [
         new DamageVar(2, ValueProp.Move),
         new RepeatVar(4),
-        new PowerVar<MisfortunePower>(2)
+        new PowerVar<MisfortunePower>(1)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
