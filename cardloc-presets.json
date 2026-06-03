@@ -184,6 +184,24 @@
           "optional": true
         }
       ]
+    },
+    {
+      "id": "enchantment",
+      "markers": [
+        "CustomEnchantmentModel"
+      ],
+      "fields": [
+        {
+          "name": "title",
+          "file": "enchantments.json",
+          "optional": false
+        },
+        {
+          "name": "description",
+          "file": "enchantments.json",
+          "optional": false
+        }
+      ]
     }
   ],
   "pinnedColors": [],

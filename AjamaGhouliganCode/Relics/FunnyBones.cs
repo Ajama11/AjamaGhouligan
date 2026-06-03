@@ -9,7 +9,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Relics;
 
-public class FunnyBone() : AjamaGhouliganRelic, IOnGoofPop
+public class FunnyBones() : AjamaGhouliganRelic, IOnGoofPop
 {
     public override RelicRarity Rarity =>
         RelicRarity.Rare;
