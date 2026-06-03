@@ -284,9 +284,11 @@ public class MyActions
     }
     
     public static async Task<List<CardModel>> PutSelect(PlayerChoiceContext choiceContext, AjamaGhouliganCard sourceCard, PileType from, PileType to, LocString selectionScreenPrompt,
-        CardPilePosition position = CardPilePosition.Bottom, int amount = 1)
+        CardPilePosition position = CardPilePosition.Bottom, int amount = 1, bool upTo = false)
     {
-        CardSelectorPrefs prefs = new CardSelectorPrefs(selectionScreenPrompt, amount);
+        CardSelectorPrefs prefs = upTo ? 
+            new CardSelectorPrefs(selectionScreenPrompt, 0, amount) :
+            new CardSelectorPrefs(selectionScreenPrompt, amount);
 
         List<CardModel> cards = (await CardSelectCmd.FromSimpleGrid(choiceContext, from.GetPile(sourceCard.Owner).Cards, sourceCard.Owner, prefs)).ToList();
 
@@ -481,9 +483,9 @@ public class MyActions
             // The shake was happening even if Osty's alive, so I'm just using this Check for the shake if Osty's dead
     }
 
-    public static async Task Disinter(PlayerChoiceContext choiceContext, AjamaGhouliganCard sourceCard)
+    public static async Task Disinter(PlayerChoiceContext choiceContext, AjamaGhouliganCard sourceCard, bool upTo = false)
     {
-        await PutSelect(choiceContext, sourceCard, SepulchrePile.PileType, PileType.Hand, MySelectionPrompts.Disinter, CardPilePosition.Bottom, sourceCard.DynamicVars.Disinter().IntValue);
+        await PutSelect(choiceContext, sourceCard, SepulchrePile.PileType, PileType.Hand, MySelectionPrompts.Disinter, CardPilePosition.Bottom, sourceCard.DynamicVars.Disinter().IntValue, upTo);
     }
 
     public static void GainsHauntedAndBury(CardModel card, bool preview = true)

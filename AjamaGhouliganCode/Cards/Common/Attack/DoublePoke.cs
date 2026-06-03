@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -15,7 +16,8 @@ public class DoublePoke() : AjamaGhouliganCard(1,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new OstyDamageVar(4, ValueProp.Move),
-        new RepeatVar(2)
+        new RepeatVar(2),
+        new DisinterVar(2)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
@@ -29,15 +31,18 @@ public class DoublePoke() : AjamaGhouliganCard(1,
     {
         ArgumentNullException.ThrowIfNull(play.Target);
 
-        if (Osty.CheckMissingWithAnim(Owner)) return;
+        if (!Osty.CheckMissingWithAnim(Owner))
+        {
+            await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue)
+                .FromOsty(Owner.Osty!, this)
+                .Targeting(play.Target)
+                .WithHitCount(DynamicVars.Repeat.IntValue)
+                .WithAttackerAnim("attack_poke", 0.3f)
+                .WithHitFx("vfx/vfx_attack_blunt", tmpSfx: "blunt_attack.mp3")
+                .Execute(choiceContext);
+        }
 
-        await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue)
-            .FromOsty(Owner.Osty!, this)
-            .Targeting(play.Target)
-            .WithHitCount(DynamicVars.Repeat.IntValue)
-            .WithAttackerAnim("attack_poke", 0.3f)
-            .WithHitFx("vfx/vfx_attack_blunt", tmpSfx: "blunt_attack.mp3")
-            .Execute(choiceContext);
+        await MyActions.Disinter(choiceContext, this, true);
     }
 
     protected override void OnUpgrade()

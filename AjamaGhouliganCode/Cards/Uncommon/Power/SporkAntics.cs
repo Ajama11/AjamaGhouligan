@@ -15,7 +15,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Uncommon.Power;
 
-public class SporkAntics() : AjamaGhouliganCard(2,
+public class SporkAntics() : AjamaGhouliganCard(1,
     CardType.Power, CardRarity.Uncommon,
     TargetType.Self)
 {

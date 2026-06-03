@@ -19,7 +19,7 @@ public class SiphonStrike() : AjamaGhouliganCard(1,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(8, ValueProp.Move),
-        new LoseDoomVar(3)
+        new LoseDoomVar(4)
     ];
 
     public override HashSet<CardTag> MyCanonicalTags =>

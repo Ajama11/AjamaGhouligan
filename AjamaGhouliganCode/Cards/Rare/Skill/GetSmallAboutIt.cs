@@ -15,24 +15,23 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Rare.Skill;
 
-public class DenseFog() : AjamaGhouliganCard(1,
+public class GetSmallAboutIt() : AjamaGhouliganCard(1,
     CardType.Skill, CardRarity.Rare,
-    TargetType.AllEnemies)
+    TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<StrengthPower>(1),
-        new PowerVar<DoomPower>(8)
+        new PowerVar<ShrinkPower>(2)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        CardKeyword.Ethereal
+        CardKeyword.Exhaust
     ];
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
-        HoverTipFactory.FromPower<StrengthPower>()
+        HoverTipFactory.FromPower<ShrinkPower>()
     ];
 
     protected override async Task OnPlay(
@@ -40,17 +39,14 @@ public class DenseFog() : AjamaGhouliganCard(1,
         CardPlay play)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
+        
+        await CommonActions.Apply<ShrinkPower>(choiceContext, this, play);
 
-        await MyActions.SelfDoom(choiceContext, this);
-
-        await PowerCmd.Apply<StrengthPower>(choiceContext,
-            CombatState!.HittableEnemies, 
-            -1 * DynamicVars.Power<StrengthPower>().BaseValue,
-            Owner.Creature, this);
+        await CommonActions.ApplySelf<ShrinkPower>(choiceContext, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Doom.UpgradeValueBy(-2);
+        DynamicVars.Power<ShrinkPower>().UpgradeValueBy(1);
     }
 }

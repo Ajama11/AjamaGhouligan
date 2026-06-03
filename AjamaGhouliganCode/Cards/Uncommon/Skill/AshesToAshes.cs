@@ -22,7 +22,7 @@ public class AshesToAshes() : AjamaGhouliganCard(0,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new CardsVar(3),
-        new LoseDoomVar(4)
+        new LoseDoomVar(5)
     ];
 
     public override IEnumerable<IHoverTip> MyHoverTips =>

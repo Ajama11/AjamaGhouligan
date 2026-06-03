@@ -16,7 +16,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Uncommon.Skill;
 
-public class FoulTeaParty() : AjamaGhouliganCard(2,
+public class FoulTeaParty() : AjamaGhouliganCard(1,
     CardType.Skill, CardRarity.Uncommon,
     TargetType.AllEnemies)
 {

@@ -16,7 +16,7 @@
   "AJAMAGHOULIGAN-DEFEND.title": "Defend",
   "AJAMAGHOULIGAN-DEFEND.description": "#Gain !B! [gold]Block[/gold].",
   "AJAMAGHOULIGAN-DOUBLE_POKE.title": "Double Poke",
-  "AJAMAGHOULIGAN-DOUBLE_POKE.description": "#[gold]Osty[/gold] deals !OstyDamage! damage !Repeat! times.",
+  "AJAMAGHOULIGAN-DOUBLE_POKE.description": "#[gold]Osty[/gold] deals !OstyDamage! damage !Repeat! times.\n[gold]Disinter[/gold] up to !Disinter! card(s).",
   "AJAMAGHOULIGAN-SHOVEL_BONK.title": "Shovel Bonk",
   "AJAMAGHOULIGAN-SHOVEL_BONK.description": "#Deal !D! damage.\n[gold]Bury[/gold] {Bury:plural:a|{}} random [gold]Haunted[/gold] {Bury:plural:card|cards} from your [gold]Draw Pile[/gold], [gold]Discard Pile[/gold], or [gold]Hand[/gold].",
   "AJAMAGHOULIGAN-OOPSIES.title": "Oopsies",
@@ -188,5 +188,11 @@
   "AJAMAGHOULIGAN-OVERLOAD.title": "Overload",
   "AJAMAGHOULIGAN-OVERLOAD.description": "Whenever a [gold]Haunted[/gold] card is [gold]Buried[/gold], it gains [gold]Bury[/gold].",
   "AJAMAGHOULIGAN-NECRO_MOCKERY.title": "Necro Mockery",
-  "AJAMAGHOULIGAN-NECRO_MOCKERY.description": "Whenever [gold]Osty[/gold] loses HP, a random enemy takes that much damage [gold]Unfortunately[/gold]."
+  "AJAMAGHOULIGAN-NECRO_MOCKERY.description": "Whenever [gold]Osty[/gold] loses HP, a random enemy takes that much damage [gold]Unfortunately[/gold].",
+  "AJAMAGHOULIGAN-PARAPHERNALIA.title": "Paraphernalia",
+  "AJAMAGHOULIGAN-PARAPHERNALIA.description": "#ALL cards in your [gold]Sepulchre Pile[/gold] gain [gold]Haunted[/gold] and [gold]Bury[/gold].\n[gold]Disinter[/gold] ALL cards in your [gold]Sepulchre Pile[/gold].",
+  "AJAMAGHOULIGAN-GET_SMALL_ABOUT_IT.title": "Get Small About It",
+  "AJAMAGHOULIGAN-GET_SMALL_ABOUT_IT.description": "#Apply !ShrinkPower! [gold]Shrink[/gold] to the enemy and yourself.",
+  "AJAMAGHOULIGAN-OSSIFICATION.title": "Ossification",
+  "AJAMAGHOULIGAN-OSSIFICATION.description": "#[gold]Osty[/gold] deals !CD! damage.\nDeals an additional !ExtraDamage! damage for every time he has hit an enemy this combat."
 }

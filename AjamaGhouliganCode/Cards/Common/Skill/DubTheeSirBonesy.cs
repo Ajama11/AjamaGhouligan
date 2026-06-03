@@ -25,8 +25,7 @@ public class DubTheeSirBonesy() : AjamaGhouliganCard(1,
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        MyEnums.Haunted,
-        CardKeyword.Exhaust
+        MyEnums.Haunted
     ];
 
     protected override async Task OnPlay(
