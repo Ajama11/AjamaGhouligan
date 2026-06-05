@@ -107,7 +107,7 @@
   "AJAMAGHOULIGAN-LIVING_ARMOR.title": "Living Armor",
   "AJAMAGHOULIGAN-LIVING_ARMOR.description": "#Gain !PlatingPower! [gold]Plating[/gold].",
   "AJAMAGHOULIGAN-TIT_FOR_TAT.title": "Tit for Tat",
-  "AJAMAGHOULIGAN-TIT_FOR_TAT.description": "#Apply the amount of [gold]Doom[/gold] you have to an enemy.{InCombat:\n(Apply !CalculatedDoom! [gold]Doom[/gold].)}",
+  "AJAMAGHOULIGAN-TIT_FOR_TAT.description": "#Apply the amount of [gold]Doom[/gold] you have +{CalculatedDoomBase} to an enemy.{InCombat:\n(Apply !CalculatedDoom! [gold]Doom[/gold].)}",
   "AJAMAGHOULIGAN-ENCORE.title": "Encore",
   "AJAMAGHOULIGAN-ENCORE.description": "#Play ALL cards in your [gold]Sepulchre Pile[/gold].",
   "AJAMAGHOULIGAN-SPECTRE_STRIKE.title": "Spectre Strike",

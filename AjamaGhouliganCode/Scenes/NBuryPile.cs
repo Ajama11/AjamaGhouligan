@@ -28,6 +28,8 @@ public partial class NBuryPile : NCombatCardPile
 
 	public bool IsShowing { get; set; }
 
+	private HoverTip _hoverTip;
+
 	public static AddedNode<NCombatPilesContainer, NBuryPile> _ = new(container =>
 	{
 		var buryPileButton = ResourceLoader.Load<PackedScene>(_scenePath).Instantiate<NBuryPile>();

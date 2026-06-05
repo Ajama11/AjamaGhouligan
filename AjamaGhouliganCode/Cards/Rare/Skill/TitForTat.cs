@@ -21,7 +21,7 @@ public class TitForTat() : AjamaGhouliganCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        ..MakeCalculatedVar("CalculatedDoom", 0, (card, _) => card.Owner.Creature.GetPowerAmount<DoomPower>())
+        ..MakeCalculatedVar("CalculatedDoom", 10, (card, _) => card.Owner.Creature.GetPowerAmount<DoomPower>())
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
@@ -41,7 +41,7 @@ public class TitForTat() : AjamaGhouliganCard(1,
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 
         await PowerCmd.Apply<DoomPower>(choiceContext, play.Target!,
-            Owner.Creature.GetPowerAmount<DoomPower>(), 
+            ((CalculatedVar) DynamicVars["CalculatedDoom"]).Calculate(play.Target), 
             Owner.Creature, this);
     }
 
