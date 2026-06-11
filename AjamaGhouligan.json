@@ -1,6 +1,6 @@
 {
   "id": "AjamaGhouligan",
-  "name": "The Ghouligan",
+  "name": "Ghouligan",
   "author": "Ajama",
   "description": "Slay the Spire 2 character mod created from a template for use with BaseLib.\n\nSome icons from Lorc at game-icons.net",
   "version": "v0.1.0",
@@ -9,7 +9,7 @@
   "min_game_version": "0.106.1",
   "dependencies":
   [
-    {"id": "BaseLib", "min_version": "3.1.8"}
+    {"id": "BaseLib", "min_version": "3.2.1"}
   ],
   "affects_gameplay": true
 }

@@ -9,6 +9,8 @@ namespace AjamaGhouligan.AjamaGhouliganCode.Character;
 public class GhouliganCardPool : CustomCardPoolModel
 {
     public override string Title => Ghouligan.CharacterId; //This is not a display name.
+    
+    public override bool SeenByDefault => true;
 
     public override string BigEnergyIconPath => "charui/big_energy.png".ImagePath();
     public override string TextEnergyIconPath => "charui/text_energy.png".ImagePath();

@@ -23,5 +23,8 @@
   "AJAMAGHOULIGAN-SUSPICIOUS_SIGIL.flavor": "The person who left this behind could be anyone amongst the Spire's denizens...",
   "AJAMAGHOULIGAN-JARED.title": "Jared",
   "AJAMAGHOULIGAN-JARED.description": "#Every [blue]{Turns}[/blue] turns, add a random Attack into your [gold]Sepulchre Pile[/gold]. It gains [gold]Haunted[/gold] and [gold]Bury[/gold].",
-  "AJAMAGHOULIGAN-JARED.flavor": "I'm glad this old soul's still hanging around!"
+  "AJAMAGHOULIGAN-JARED.flavor": "I'm glad this old soul's still hanging around!",
+  "AJAMAGHOULIGAN-CRACKED_BONE_FLUTE.title": "Cracked Bone Flute",
+  "AJAMAGHOULIGAN-CRACKED_BONE_FLUTE.description": "Whenever [gold]Osty[/gold] attacks, [gold]Summon[/gold] [blue]{Summon}[/blue] for each hit.",
+  "AJAMAGHOULIGAN-CRACKED_BONE_FLUTE.flavor": "It shouldn't have too much of an effect on the sound... hopefully..."
 }
