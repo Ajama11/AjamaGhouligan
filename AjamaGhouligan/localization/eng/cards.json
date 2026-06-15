@@ -170,7 +170,7 @@
   "AJAMAGHOULIGAN-ASHES_TO_ASHES.title": "Ashes to Ashes",
   "AJAMAGHOULIGAN-ASHES_TO_ASHES.description": "#Add [gold]Ethereal[/gold] to !C! random card(s) in your [gold]Draw Pile[/gold] or [gold]Discard Pile[/gold].\nLose !LoseDoom! [gold]Doom[/gold].",
   "AJAMAGHOULIGAN-EEK.title": "EEK!",
-  "AJAMAGHOULIGAN-EEK.description": "#Deal !D! damage to all enemies who intend to attack.\nApply !DebilitatePower! [gold]Debilitate[/gold] to those enemies.\nWhen this card is [gold]Buried[/gold], it plays immediately.",
+  "AJAMAGHOULIGAN-EEK.description": "#Deal !D! damage to ALL enemies who intend to attack.\nApply !DebilitatePower! [gold]Debilitate[/gold] to those enemies.\nWhen this card is [gold]Buried[/gold], it plays immediately.",
   "AJAMAGHOULIGAN-ALL_HALLOWS_EVE.title": "All Hallows' Eve",
   "AJAMAGHOULIGAN-ALL_HALLOWS_EVE.description": "#[gold]Bury[/gold] ALL [gold]Haunted[/gold] cards in your [gold]Draw Pile[/gold].",
   "AJAMAGHOULIGAN-TOMBSTONE.title": "Tombstone",
