@@ -22,7 +22,7 @@ public class BelovedThingies() : AjamaGhouliganCard(2,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<DoomPower>(8), 
+        new PowerVar<DoomPower>(12), 
         new HauntVar(2),
         new BuryVar(2)
     ];

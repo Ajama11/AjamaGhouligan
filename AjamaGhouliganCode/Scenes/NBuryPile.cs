@@ -122,9 +122,9 @@ public partial class NBuryPile : NCombatCardPile
 			AnimIn();
 			Enable();
 		}
-		else if (_currentCount == 0 && 
-		         (_localPlayer!.Character is not Ghouligan ||
-		          CombatManager.Instance.IsOverOrEnding))
+		else if (_currentCount == 0 &&
+				 (_localPlayer!.Character is not Ghouligan ||
+				  CombatManager.Instance.IsOverOrEnding))
 		{
 			AnimOut();
 			Disable();

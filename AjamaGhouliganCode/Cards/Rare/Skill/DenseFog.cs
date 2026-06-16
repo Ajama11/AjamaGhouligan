@@ -21,7 +21,7 @@ public class DenseFog() : AjamaGhouliganCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<StrengthPower>(1),
+        new PowerVar<StrengthPower>(2),
         new PowerVar<DoomPower>(8)
     ];
 

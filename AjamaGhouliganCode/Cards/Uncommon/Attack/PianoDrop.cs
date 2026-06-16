@@ -20,8 +20,8 @@ public class PianoDrop() : AjamaGhouliganCard(2,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(13, ValueProp.Move),
-        new PowerVar<MisfortunePower>(5)
+        new DamageVar(14, ValueProp.Move),
+        new PowerVar<MisfortunePower>(6)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>

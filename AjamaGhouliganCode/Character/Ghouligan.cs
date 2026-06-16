@@ -92,5 +92,8 @@ public class Ghouligan : PlaceholderCharacterModel
 
     public override string CharacterTransitionSfx => "event:/sfx/ui/wipe_ironclad";
 
+    public override string CustomCharacterSelectBg =>
+        "res://AjamaGhouligan/scenes/character_select.tscn";
+
     public override float DeathAnimTime => 2f;
 }

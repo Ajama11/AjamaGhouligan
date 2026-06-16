@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqrt8p7kxyybm"
-path="res://.godot/imported/spit.png-3af7d84dddf69406f0f56936c49ef235.ctex"
+uid="uid://cfgdytsmc1rgo"
+path="res://.godot/imported/bucket_door.png-a786696c8798cb9ed17077a92f4b3fa1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://AjamaGhouligan/images/card_portraits/big/beta/spit.png"
-dest_files=["res://.godot/imported/spit.png-3af7d84dddf69406f0f56936c49ef235.ctex"]
+source_file="res://AjamaGhouligan/images/card_portraits/big/beta/bucket_door.png"
+dest_files=["res://.godot/imported/bucket_door.png-a786696c8798cb9ed17077a92f4b3fa1.ctex"]
 
 [params]
 

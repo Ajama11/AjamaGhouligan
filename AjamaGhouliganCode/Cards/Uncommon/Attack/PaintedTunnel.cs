@@ -22,14 +22,13 @@ public class PaintedTunnel() : AjamaGhouliganCard(2,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(2, ValueProp.Move),
-        new RepeatVar(4),
+        new RepeatVar(5),
         new PowerVar<MisfortunePower>(1)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        MyEnums.Bury,
-        MyEnums.Unfortunate
+        MyEnums.Bury
     ];
 
     protected override async Task OnPlay(

@@ -47,5 +47,10 @@ public class Conjuring() : AjamaGhouliganCard(0,
 
             await CardCmd.AutoPlay(choiceContext, cardToPlay, null);
         }
+
+        if (xValue > 1)
+        {
+            await CardCmd.Exhaust(choiceContext, this);
+        }
     }
 }

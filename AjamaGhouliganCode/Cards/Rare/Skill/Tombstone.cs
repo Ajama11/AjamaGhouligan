@@ -21,7 +21,7 @@ public class Tombstone() : AjamaGhouliganCard(2,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        ..MakeCalculatedBlock(9, (card, _) => SepulchrePile.PileType.GetPile(card.Owner).Cards.Count)
+        ..MakeCalculatedBlock(10, (card, _) => SepulchrePile.PileType.GetPile(card.Owner).Cards.Count)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>

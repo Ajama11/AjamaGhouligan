@@ -18,7 +18,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Uncommon.Attack;
 
-public class Spit() : AjamaGhouliganCard(0,
+public class BucketDoor() : AjamaGhouliganCard(0,
     CardType.Attack, CardRarity.Uncommon,
     CustomTargetType.AllLowestHpEnemies)
 {

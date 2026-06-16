@@ -14,7 +14,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Rare.Power;
 
-public class PranksterForm() : AjamaGhouliganCard(1,
+public class PranksterForm() : AjamaGhouliganCard(2,
     CardType.Power, CardRarity.Rare,
     TargetType.Self)
 {

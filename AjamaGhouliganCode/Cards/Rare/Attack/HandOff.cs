@@ -21,8 +21,8 @@ public class HandOff() : AjamaGhouliganCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new OstyDamageVar(16, ValueProp.Move),
-        new PowerVar<StrengthPower>(2)
+        new OstyDamageVar(19, ValueProp.Move),
+        new PowerVar<StrengthPower>(3)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>

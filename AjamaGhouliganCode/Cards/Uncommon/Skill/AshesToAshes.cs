@@ -22,7 +22,7 @@ public class AshesToAshes() : AjamaGhouliganCard(0,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new CardsVar(3),
-        new LoseDoomVar(5)
+        new LoseDoomVar(6)
     ];
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
@@ -72,6 +72,6 @@ public class AshesToAshes() : AjamaGhouliganCard(0,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.LoseDoom().UpgradeValueBy(2);
+        DynamicVars.LoseDoom().UpgradeValueBy(3);
     }
 }

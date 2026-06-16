@@ -20,8 +20,8 @@ public class ThumbWar() : AjamaGhouliganCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new OstyDamageVar(3, ValueProp.Move),
-        new RepeatVar(3),
+        new OstyDamageVar(2, ValueProp.Move),
+        new RepeatVar(4),
         new PowerVar<GoofPower>(3),
         new PowerVar<ThumbWarPower>(2)
     ];
