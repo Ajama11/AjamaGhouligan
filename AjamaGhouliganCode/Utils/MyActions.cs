@@ -2,6 +2,7 @@ using System.Buffers;
 using System.Diagnostics.CodeAnalysis;
 using AjamaGhouligan.AjamaGhouliganCode.CardPiles;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
+using AjamaGhouligan.AjamaGhouliganCode.Cards.Token.Treats;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using BaseLib.Extensions;
@@ -520,5 +521,50 @@ public class MyActions
         }
         
         if (preview) CardCmd.Preview(cards);
+    }
+
+    public static readonly List<CardModel> CanonicalTreats =
+    [
+        ModelDb.Card<Bubblegum>(),
+        ModelDb.Card<GummyWorm>(),
+        ModelDb.Card<HomemadeCookie>(),
+        ModelDb.Card<Licorice>(),
+        ModelDb.Card<Lollipop>(),
+        ModelDb.Card<MilkChocolate>(),
+    ];
+    
+    public static CardModel CreateRandomTreatWithoutAddingToPile(Player owner, ICombatState combatState)
+    {
+        return combatState.CreateCard(owner.RunState.Rng.CombatCardGeneration.NextItem(CanonicalTreats)!, owner);
+    }
+    
+    public static async Task<List<CardModel>> CreateTreats(int amount,
+        AjamaGhouliganCard sourceCard, PileType pile = PileType.Hand,
+        CardPilePosition position = CardPilePosition.Bottom)
+    {
+        return await CreateTreats(amount, sourceCard.Owner, sourceCard.CombatState!, pile, position);
+    }
+
+    public static async Task<List<CardModel>> CreateTreats(int amount,
+        Player owner, ICombatState combatState, PileType pile = PileType.Hand,
+        CardPilePosition position = CardPilePosition.Bottom)
+    {
+        if (amount == 0 || CombatManager.Instance.IsOverOrEnding)
+        {
+            return [];
+        }
+        
+        List<CardModel> cards = [];
+        
+        for (int i = 0; i < amount; i++)
+        {
+            cards.Add(combatState.CreateCard(owner.RunState.Rng.CombatCardGeneration.NextItem(CanonicalTreats)!, owner));
+        }
+        
+        IReadOnlyList<CardPileAddResult> results = await CardPileCmd.AddGeneratedCardsToCombat(cards, pile, owner, position);
+
+        if (pile != PileType.Hand) CardCmd.PreviewCardPileAdd(results);
+
+        return cards;
     }
 }

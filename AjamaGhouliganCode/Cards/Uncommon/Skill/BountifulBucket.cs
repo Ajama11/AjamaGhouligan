@@ -12,15 +12,22 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Uncommon.Power;
+namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Uncommon.Skill;
 
-public class Bleh() : AjamaGhouliganCard(1,
-    CardType.Power, CardRarity.Uncommon,
+public class BountifulBucket() : AjamaGhouliganCard(0,
+    CardType.Skill, CardRarity.Uncommon,
     TargetType.Self)
 {
+    protected override bool HasEnergyCostX => true;
+    
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<BlehPower>(1)
+        
+    ];
+
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        CardKeyword.Exhaust
     ];
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
@@ -34,11 +41,11 @@ public class Bleh() : AjamaGhouliganCard(1,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 
-        await CommonActions.ApplySelf<BlehPower>(choiceContext, this);
+        await MyActions.CreateTreats(ResolveEnergyXValue() + 1, this);
     }
-    
+
     protected override void OnUpgrade()
     {
-        EnergyCost.UpgradeBy(-1);
+        RemoveKeyword(CardKeyword.Exhaust);
     }
 }

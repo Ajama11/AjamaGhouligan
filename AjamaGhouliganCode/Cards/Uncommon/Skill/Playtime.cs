@@ -33,7 +33,7 @@ public class Playtime() : AjamaGhouliganCard(0,
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
-        HoverTipFactory.FromCard<Cavort>()
+        ..MyEnums.TreatHovers()
     ];
 
     protected override async Task OnPlay(
@@ -48,7 +48,7 @@ public class Playtime() : AjamaGhouliganCard(0,
 
         foreach (CardModel card in cards)
         {
-            await CardCmd.TransformTo<Cavort>(card);
+            await CardCmd.Transform(card, MyActions.CreateRandomTreatWithoutAddingToPile(Owner, CombatState!));
         }
     }
 

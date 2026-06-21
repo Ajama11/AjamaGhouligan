@@ -18,7 +18,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Uncommon.Skill;
 
-public class PossessAscender() : AjamaGhouliganCard(1,
+public class PossessAscender() : AjamaGhouliganCard(2,
     CardType.Skill, CardRarity.Uncommon,
     TargetType.Self)
 {

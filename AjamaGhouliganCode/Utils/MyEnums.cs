@@ -1,6 +1,8 @@
+using AjamaGhouligan.AjamaGhouliganCode.Cards.Token.Treats;
 using BaseLib.Patches.Content;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Models;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Utils;
 
@@ -20,6 +22,12 @@ public class MyEnums
     
     [CustomEnum]
     public static StaticHoverTip BuryOther;
+    
+    [CustomEnum]
+    public static StaticHoverTip Treats;
+
+    [CustomEnum]
+    public static CardTag Treat;
 
     public enum RandomBuryTargeting
     {
@@ -27,5 +35,14 @@ public class MyEnums
         NotHaunted,
         PrioritizeHaunted,
         OnlyHaunted
+    }
+    
+    public static IEnumerable<IHoverTip> TreatHovers()
+    {
+        return
+        [
+            new CycleHoverTip(MyActions.CanonicalTreats),
+            HoverTipFactory.Static(Treats)
+        ];
     }
 }

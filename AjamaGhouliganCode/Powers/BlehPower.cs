@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Powers;
@@ -14,31 +15,44 @@ public class BlehPower : AjamaGhouliganPower
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        ..MyEnums.TreatHovers()
+    ];
+
     public override async Task AfterCardDrawn(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw)
     {
-        if (card.Owner.Creature != Owner || card.Type != CardType.Status) return;
+        if (card.Owner.Creature != Owner || card.Type is not (CardType.Status or CardType.Curse)) return;
 
-        int statusesDrawnThisTurn = CombatManager.Instance.History.Entries.OfType<CardDrawnEntry>()
-            .Count(e =>
-            e.HappenedThisTurn(CombatState) && 
-            e.Actor == Owner && 
-            e.Card.Type == CardType.Status);
+        List<CardDrawnEntry> entries = CombatManager.Instance.History.Entries
+            .OfType<CardDrawnEntry>()
+            .ToList();
+        
+        int statusesOrCursesDrawnThisTurn = entries
+            .Count(IsStatusOrCurse);
 
-        if (statusesDrawnThisTurn <= 1)
+        if (statusesOrCursesDrawnThisTurn <= Amount)
         {
             Flash();
 
-            CardModel? status = CombatManager.Instance.History.Entries
-                .OfType<CardDrawnEntry>()
-                .FirstOrDefault(e => 
-                    e.HappenedThisTurn(CombatState) && 
-                    e.Actor == Owner && 
-                    e.Card.Type == CardType.Status)
+            CardModel? statusOrCurse = entries
+                .Where(IsStatusOrCurse)
+                .ElementAtOrDefault(statusesOrCursesDrawnThisTurn - 1)
                 ?.Card;
 
-            if (status != null) await MyActions.BurySpecific(status);
-            
-            await CardPileCmd.Draw(choiceContext, Amount, Owner.Player!);
+            if (statusOrCurse != null)
+            {
+                await CardCmd.Transform(
+                    statusOrCurse, 
+                    MyActions.CreateRandomTreatWithoutAddingToPile(Owner.Player!, CombatState));
+            }
         }
+    }
+
+    private bool IsStatusOrCurse(CardDrawnEntry e)
+    {
+        return e.HappenedThisTurn(CombatState) && 
+            e.Actor == Owner &&
+            e.Card.Type is CardType.Status or CardType.Curse;
     }
 }

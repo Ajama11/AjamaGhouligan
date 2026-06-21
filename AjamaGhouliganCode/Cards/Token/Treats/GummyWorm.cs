@@ -9,23 +9,38 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Monsters;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Uncommon.Power;
+namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Token.Treats;
 
-public class Bleh() : AjamaGhouliganCard(1,
-    CardType.Power, CardRarity.Uncommon,
+[Pool(typeof(TokenCardPool))]
+public class GummyWorm() : AjamaGhouliganCard(0,
+    CardType.Skill, CardRarity.Token,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<BlehPower>(1)
+        new PowerVar<GoofPower>(2),
+        new PowerVar<StrengthPower>(1)
+    ];
+
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        CardKeyword.Exhaust
+    ];
+    
+    public override HashSet<CardTag> MyCanonicalTags =>
+    [
+        MyEnums.Treat
     ];
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
-        ..MyEnums.TreatHovers()
+        HoverTipFactory.FromPower<GoofPower>(),
+        HoverTipFactory.FromPower<StrengthPower>()
     ];
 
     protected override async Task OnPlay(
@@ -33,12 +48,14 @@ public class Bleh() : AjamaGhouliganCard(1,
         CardPlay play)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-
-        await CommonActions.ApplySelf<BlehPower>(choiceContext, this);
+        
+        await MyActions.Goof(choiceContext, this);
+        
+        await CommonActions.ApplySelf<StrengthPower>(choiceContext, this);
     }
-    
+
     protected override void OnUpgrade()
     {
-        EnergyCost.UpgradeBy(-1);
+        DynamicVars.Power<GoofPower>().UpgradeValueBy(1);
     }
 }

@@ -6,5 +6,7 @@
   "AJAMAGHOULIGAN-BURY_OTHER.title": "Bury",
   "AJAMAGHOULIGAN-BURY_OTHER.description": "Put cards into your [gold]Sepulchre Pile[/gold].",
   "AJAMAGHOULIGAN-DISINTER.title": "Disinter",
-  "AJAMAGHOULIGAN-DISINTER.description": "Put cards from your [gold]Sepulchre Pile[/gold] into your [gold]Hand[/gold]."
+  "AJAMAGHOULIGAN-DISINTER.description": "Put cards from your [gold]Sepulchre Pile[/gold] into your [gold]Hand[/gold].",
+  "AJAMAGHOULIGAN-TREATS.title": "Treats",
+  "AJAMAGHOULIGAN-TREATS.description": "[gold]Bubblegum[/gold], [gold]Gummy Worm[/gold], [gold]Homemade Cookie[/gold], [gold]Licorice[/gold], [gold]Lollipop[/gold], or [gold]Milk Chocolate[/gold]."
 }

@@ -9,23 +9,31 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Uncommon.Power;
+namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Token.Treats;
 
-public class Bleh() : AjamaGhouliganCard(1,
-    CardType.Power, CardRarity.Uncommon,
+[Pool(typeof(TokenCardPool))]
+public class HomemadeCookie() : AjamaGhouliganCard(0,
+    CardType.Skill, CardRarity.Token,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<BlehPower>(1)
+        new EnergyVar(1),
+        new CardsVar(1)
     ];
 
-    public override IEnumerable<IHoverTip> MyHoverTips =>
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        ..MyEnums.TreatHovers()
+        CardKeyword.Exhaust
+    ];
+    
+    public override HashSet<CardTag> MyCanonicalTags =>
+    [
+        MyEnums.Treat
     ];
 
     protected override async Task OnPlay(
@@ -33,12 +41,14 @@ public class Bleh() : AjamaGhouliganCard(1,
         CardPlay play)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
+        
+        await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);
 
-        await CommonActions.ApplySelf<BlehPower>(choiceContext, this);
+        await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
     }
-    
+
     protected override void OnUpgrade()
     {
-        EnergyCost.UpgradeBy(-1);
+        DynamicVars.Energy.UpgradeValueBy(1);
     }
 }
