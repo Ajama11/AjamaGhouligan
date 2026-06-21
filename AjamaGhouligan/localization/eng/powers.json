@@ -63,5 +63,8 @@
   "AJAMAGHOULIGAN-NECRO_MOCKERY_POWER.smartDescription": "Whenever [gold]Osty[/gold] loses HP, a random enemy takes {Amount:plural:|[blue]{Amount}[/blue] times }that much damage [gold]Unfortunately[/gold].",
   "AJAMAGHOULIGAN-OVERLOAD_POWER.title": "Overload",
   "AJAMAGHOULIGAN-OVERLOAD_POWER.description": "Whenever a [gold]Haunted[/gold] card is [gold]Buried[/gold], it gains [gold]Bury[/gold].",
-  "AJAMAGHOULIGAN-OVERLOAD_POWER.smartDescription": "Whenever a [gold]Haunted[/gold] card is [gold]Buried[/gold], it gains [gold]Bury[/gold]."
+  "AJAMAGHOULIGAN-OVERLOAD_POWER.smartDescription": "Whenever a [gold]Haunted[/gold] card is [gold]Buried[/gold], it gains [gold]Bury[/gold].",
+  "AJAMAGHOULIGAN-SLAPSTICK_POWER.title": "Slapstick",
+  "AJAMAGHOULIGAN-SLAPSTICK_POWER.description": "At the start of your turn, add [blue]1[/blue] [gold]Surprise[/gold] into your [gold]Draw Pile[/gold].",
+  "AJAMAGHOULIGAN-SLAPSTICK_POWER.smartDescription": "#At the start of your turn, add [blue]{Amount}[/blue] [gold]Surprise(s)[/gold] into your [gold]Draw Pile[/gold]."
 }

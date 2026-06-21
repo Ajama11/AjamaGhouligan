@@ -1,4 +1,5 @@
 ﻿using AjamaGhouligan.AjamaGhouliganCode.CardPiles;
+using AjamaGhouligan.AjamaGhouliganCode.Cards.Token;
 using BaseLib.Abstracts;
 using BaseLib.Extensions;
 using BaseLib.Utils;
@@ -99,6 +100,16 @@ public abstract class AjamaGhouliganCard(int cost, CardType type, CardRarity rar
             if (DynamicVars.ContainsKey(BuryVar.Key))
             {
                 result = [..result, HoverTipFactory.Static(MyEnums.BuryOther)];
+            }
+            
+            if (DynamicVars.ContainsKey(SurpriseVar.Key) && !((SurpriseVar) DynamicVars.Surprise()).SkipTooltip)
+            {
+                result = [..result, HoverTipFactory.FromCard<Surprise>()];
+            }
+            
+            if (DynamicVars.ContainsKey(TreatVar.Key) && !((TreatVar) DynamicVars.Treat()).SkipTooltip)
+            {
+                result = [..result, ..MyEnums.TreatHovers()];
             }
 
             return result;

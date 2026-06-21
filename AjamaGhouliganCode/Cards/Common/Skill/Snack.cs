@@ -12,27 +12,20 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Uncommon.Skill;
+namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Common.Skill;
 
-public class BountifulBucket() : AjamaGhouliganCard(0,
-    CardType.Skill, CardRarity.Uncommon,
+public class Snack() : AjamaGhouliganCard(1,
+    CardType.Skill, CardRarity.Common,
     TargetType.Self)
 {
-    protected override bool HasEnergyCostX => true;
-    
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        
+        new TreatVar(2)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
         CardKeyword.Exhaust
-    ];
-
-    public override IEnumerable<IHoverTip> MyHoverTips =>
-    [
-        ..MyEnums.TreatHovers()
     ];
 
     protected override async Task OnPlay(
@@ -41,11 +34,11 @@ public class BountifulBucket() : AjamaGhouliganCard(0,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 
-        await MyActions.CreateTreats(this, PileType.Hand, CardPilePosition.Bottom, ResolveEnergyXValue() + 1);
+        await MyActions.CreateTreats(this);
     }
 
     protected override void OnUpgrade()
     {
-        RemoveKeyword(CardKeyword.Exhaust);
+        DynamicVars.Treat().UpgradeValueBy(1);
     }
 }

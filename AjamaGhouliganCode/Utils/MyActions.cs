@@ -2,6 +2,7 @@ using System.Buffers;
 using System.Diagnostics.CodeAnalysis;
 using AjamaGhouligan.AjamaGhouliganCode.CardPiles;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
+using AjamaGhouligan.AjamaGhouliganCode.Cards.Token;
 using AjamaGhouligan.AjamaGhouliganCode.Cards.Token.Treats;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
@@ -538,14 +539,18 @@ public class MyActions
         return combatState.CreateCard(owner.RunState.Rng.CombatCardGeneration.NextItem(CanonicalTreats)!, owner);
     }
     
-    public static async Task<List<CardModel>> CreateTreats(int amount,
+    public static async Task<IEnumerable<CardModel>> CreateTreats(
         AjamaGhouliganCard sourceCard, PileType pile = PileType.Hand,
-        CardPilePosition position = CardPilePosition.Bottom)
+        CardPilePosition position = CardPilePosition.Bottom, int amountOverride = -1)
     {
+        int amount = amountOverride == -1 ? 
+            sourceCard.DynamicVars.Treat().IntValue :
+            amountOverride;
+        
         return await CreateTreats(amount, sourceCard.Owner, sourceCard.CombatState!, pile, position);
     }
 
-    public static async Task<List<CardModel>> CreateTreats(int amount,
+    public static async Task<IEnumerable<CardModel>> CreateTreats(int amount,
         Player owner, ICombatState combatState, PileType pile = PileType.Hand,
         CardPilePosition position = CardPilePosition.Bottom)
     {
@@ -566,5 +571,23 @@ public class MyActions
         if (pile != PileType.Hand) CardCmd.PreviewCardPileAdd(results);
 
         return cards;
+    }
+
+    public static async Task<IEnumerable<CardModel>> CreateSurprises(
+        AjamaGhouliganCard sourceCard, PileType pile = PileType.Draw,
+        CardPilePosition position = CardPilePosition.Random, int amountOverride = -1)
+    {
+        int amount = amountOverride == -1 ? 
+            sourceCard.DynamicVars.Surprise().IntValue :
+            amountOverride;
+        
+        return await CreateSurprises(amount, sourceCard.Owner, sourceCard.CombatState!, pile, position);
+    }
+
+    public static async Task<IEnumerable<CardModel>> CreateSurprises(int amount,
+        Player owner, ICombatState combatState, PileType pile = PileType.Draw,
+        CardPilePosition position = CardPilePosition.Random)
+    {
+        return await CreateCards(ModelDb.Card<Surprise>(), amount, owner, combatState, pile, position);
     }
 }

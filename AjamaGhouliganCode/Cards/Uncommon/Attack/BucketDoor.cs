@@ -18,43 +18,38 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Uncommon.Attack;
 
-public class BucketDoor() : AjamaGhouliganCard(0,
+public class BucketDoor() : AjamaGhouliganCard(1,
     CardType.Attack, CardRarity.Uncommon,
-    CustomTargetType.AllLowestHpEnemies)
+    TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
+        new PowerVar<DoomPower>(5),
         new DamageVar(4, ValueProp.Move),
-        new RepeatVar(2)
+        new SurpriseVar(2)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        MyEnums.Unfortunate
+        
     ];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
+        await MyActions.SelfDoom(choiceContext, this);
+        
         await CommonActions.CardAttack(this, play,
-                WasDoomAppliedThisTurn ? DynamicVars.Repeat.IntValue : 1,
+                1,
                 "vfx/vfx_attack_slash")
             .Execute(choiceContext);
-    }
-    
-    public bool WasDoomAppliedThisTurn =>
-        CombatManager.Instance.History.Entries
-            .OfType<PowerReceivedEntry>()
-            .Any((Func<PowerReceivedEntry, bool>) (e => 
-                e.HappenedThisTurn(CombatState) && 
-                e.Power is DoomPower && 
-                e.Applier == Owner.Creature));
 
-    protected override bool ShouldGlowGoldInternal => WasDoomAppliedThisTurn;
+        await MyActions.CreateSurprises(this, PileType.Draw, CardPilePosition.Top);
+    }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Repeat.UpgradeValueBy(1);
+        DynamicVars.Power<DoomPower>().UpgradeValueBy(-1);
     }
 }

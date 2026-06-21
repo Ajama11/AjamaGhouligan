@@ -9,43 +9,31 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Uncommon.Skill;
+namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Rare.Skill;
 
-public class BountifulBucket() : AjamaGhouliganCard(0,
-    CardType.Skill, CardRarity.Uncommon,
+public class Switcheroo() : AjamaGhouliganCard(0,
+    CardType.Skill, CardRarity.Rare,
     TargetType.Self)
 {
-    protected override bool HasEnergyCostX => true;
-    
-    protected override IEnumerable<DynamicVar> CanonicalVars =>
-    [
-        
-    ];
-
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-        CardKeyword.Exhaust
-    ];
-
-    public override IEnumerable<IHoverTip> MyHoverTips =>
-    [
-        ..MyEnums.TreatHovers()
-    ];
-
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 
-        await MyActions.CreateTreats(this, PileType.Hand, CardPilePosition.Bottom, ResolveEnergyXValue() + 1);
+        List<CardModel> snapshottedDrawPile = CardPile.GetCards(Owner, PileType.Draw).ToList();
+
+        await CardPileCmd.Shuffle(choiceContext, Owner);
+
+        await CardPileCmd.Add(snapshottedDrawPile, PileType.Discard, CardPilePosition.Random);
     }
 
     protected override void OnUpgrade()
     {
-        RemoveKeyword(CardKeyword.Exhaust);
+        AddKeyword(CardKeyword.Retain);
     }
 }
