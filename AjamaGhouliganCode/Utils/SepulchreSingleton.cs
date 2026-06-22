@@ -3,6 +3,7 @@ using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using BaseLib.Abstracts;
 using BaseLib.Extensions;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -42,12 +43,21 @@ public class SepulchreSingleton() : CustomSingletonModel(HookType.Combat)
             await PlayHauntedCardsInSepulchrePile(choiceContext, player);
         }
     }
+    
+    public static readonly SpireField<CardModel, bool> RemoveFromCurrentAutoplay = new(() => false);
 
     public static async Task PlayHauntedCardsInSepulchrePile(PlayerChoiceContext choiceContext, Player player)
     {
-        foreach (var card in CardPile.Get(SepulchrePile.PileType, player)!.Cards.ToList())
+        List<CardModel> snapshottedSepulchreCards = CardPile.Get(SepulchrePile.PileType, player)!.Cards.ToList();
+
+        foreach (var card in snapshottedSepulchreCards)
         {
-            if (card.Keywords.Contains(MyEnums.Haunted))
+            RemoveFromCurrentAutoplay.Set(card, false);
+        }
+        
+        foreach (var card in snapshottedSepulchreCards)
+        {
+            if (card.Keywords.Contains(MyEnums.Haunted) && !RemoveFromCurrentAutoplay.Get(card))
             {
                 await CardCmd.AutoPlay(choiceContext, card, null);
             }

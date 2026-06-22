@@ -487,7 +487,17 @@ public class MyActions
 
     public static async Task Disinter(PlayerChoiceContext choiceContext, AjamaGhouliganCard sourceCard, bool upTo = false)
     {
-        await PutSelect(choiceContext, sourceCard, SepulchrePile.PileType, PileType.Hand, MySelectionPrompts.Disinter, CardPilePosition.Bottom, sourceCard.DynamicVars.Disinter().IntValue, upTo);
+        List<CardModel> disinterredCards = await PutSelect(choiceContext, sourceCard, 
+            SepulchrePile.PileType, PileType.Hand, 
+            MySelectionPrompts.Disinter, 
+            CardPilePosition.Bottom, 
+            sourceCard.DynamicVars.Disinter().IntValue, 
+            upTo);
+
+        foreach (var card in disinterredCards)
+        {
+            SepulchreSingleton.RemoveFromCurrentAutoplay.Set(card, true);
+        }
     }
 
     public static void GainsHauntedAndBury(CardModel card, bool preview = true)

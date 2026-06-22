@@ -43,6 +43,11 @@ public class Paraphernalia() : AjamaGhouliganCard(1,
         List<CardModel> cards = CardPile.Get(SepulchrePile.PileType, Owner)!.Cards.ToList();
         
         MyActions.GainsHauntedAndBury(cards);
+        
+        foreach (var card in cards)
+        {
+            SepulchreSingleton.RemoveFromCurrentAutoplay.Set(card, true);
+        }
 
         await CardPileCmd.Add(cards, PileType.Hand);
     }
