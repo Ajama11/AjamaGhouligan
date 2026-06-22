@@ -21,12 +21,8 @@ public class Rejuvenate() : AjamaGhouliganCard(2,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new HealVar(8),
-        new LoseDoomVar(8)
-    ];
-
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-        
+        new LoseDoomVar(8),
+        new TreatVar(2)
     ];
 
     protected override async Task OnPlay(
@@ -38,6 +34,8 @@ public class Rejuvenate() : AjamaGhouliganCard(2,
         await MyActions.OstyHeal(this);
 
         await MyActions.LoseDoom(choiceContext, this);
+
+        await MyActions.CreateTreats(this);
     }
 
     protected override void OnUpgrade()

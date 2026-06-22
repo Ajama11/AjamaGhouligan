@@ -124,7 +124,7 @@
   "AJAMAGHOULIGAN-PLAYTIME.description": "#Choose up to !C! card(s) in your [gold]Draw Pile[/gold] to [gold]Transform[/gold] into random [gold]Treats[/gold].",
   "AJAMAGHOULIGAN-PLAYTIME.selectionScreenPrompt": "Choose up to {Amount} {Amount:plural:card|cards} to [gold]Transform[/gold] into {Amount:plural:a random [gold]Treat[/gold]|random [gold]Treats[/gold]}.",
   "AJAMAGHOULIGAN-REJUVENATE.title": "Rejuvenate",
-  "AJAMAGHOULIGAN-REJUVENATE.description": "#[gold]Osty[/gold] heals !H! HP.\nLose !LoseDoom! [gold]Doom[/gold].",
+  "AJAMAGHOULIGAN-REJUVENATE.description": "#[gold]Osty[/gold] heals !H! HP.\nLose !LoseDoom! [gold]Doom[/gold].\nAdd !Treat! random [gold]Treat(s)[/gold] into your [gold]Hand[/gold].",
   "AJAMAGHOULIGAN-TRICK_AND_TREAT.title": "Trick and Treat",
   "AJAMAGHOULIGAN-TRICK_AND_TREAT.description": "#Apply !MisfortunePower! [gold]Misfortune[/gold] X times to ALL enemies.\n[gold]Summon[/gold] !Summon! X times.",
   "AJAMAGHOULIGAN-REVELRY.title": "Revelry",
@@ -212,7 +212,7 @@
   "AJAMAGHOULIGAN-BOUNTIFUL_BUCKET.title": "Bountiful Bucket",
   "AJAMAGHOULIGAN-BOUNTIFUL_BUCKET.description": "#Add X+1 random [gold]Treats[/gold] into your [gold]Hand[/gold].",
   "AJAMAGHOULIGAN-SNACK.title": "Snack",
-  "AJAMAGHOULIGAN-SNACK.description": "#Add !Treat! [gold]Treat(s)[/gold] into your [gold]Hand[/gold].",
+  "AJAMAGHOULIGAN-SNACK.description": "#Add !Treat! random [gold]Treat(s)[/gold] into your [gold]Hand[/gold].",
   "AJAMAGHOULIGAN-SHAVING_CREAM.title": "Shaving Cream",
   "AJAMAGHOULIGAN-SHAVING_CREAM.description": "#Gain !B! [gold]Block[/gold].\nAdd !Surprise! [gold]Surprise(s)[/gold] into your [gold]Draw Pile[/gold].",
   "AJAMAGHOULIGAN-SLAPSTICK.title": "Slapstick",
@@ -227,6 +227,6 @@
   "AJAMAGHOULIGAN-SUGAR_RUSH.description": "#Deal !D! damage.\nDraw !C! card(s).\nChoose {Treat:plural:a card|!Treat! cards} in your [gold]Hand[/gold] to [gold]Transform[/gold] into {Treat:plural:a random [gold]Treat[/gold]|random [gold]Treats[/gold]}.",
   "AJAMAGHOULIGAN-SUGAR_RUSH.selectionScreenPrompt": "Choose {Amount:plural:a card|{} cards} to [gold]Transform[/gold] into {Amount:plural:a random [gold]Treat[/gold]|random [gold]Treats[/gold]}.",
   "AJAMAGHOULIGAN-CANDIED_HIJINKS.title": "Candied Hijinks",
-  "AJAMAGHOULIGAN-CANDIED_HIJINKS.description": "#{TreatPlayed:|[color=DIM_GRAY]}If you've played a Treat this turn, add !Surprise! {TreatPlayed:[gold]|}{Surprise:plural:Surprise|Surprises}{TreatPlayed:[/gold]|} into your {TreatPlayed:[gold]|}Draw Pile{TreatPlayed:[/gold]|}.{TreatPlayed:|[/color]}\n{SurprisePlayed:|[color=DIM_GRAY]}If you've played a {SurprisePlayed:[gold]|}Surprise{SurprisePlayed:[/gold]|} this turn, add !Treat! random {SurprisePlayed:[gold]|}{Treat:plural:Treat|Treats}{SurprisePlayed:[/gold]|} into your {SurprisePlayed:[gold]|}Hand{SurprisePlayed:[/gold]|}.{SurprisePlayed:|[/color]}",
-  "AJAMAGHOULIGAN-CANDIED_HIJINKS.description_backup_because_the_plugin_keeps_deleting_it": "#{TreatPlayed:|[color=DIM_GRAY]}If you've played a Treat this turn, add !Surprise! {TreatPlayed:[gold]|}{Surprise:plural:Surprise|Surprises}{TreatPlayed:[/gold]|} into your {TreatPlayed:[gold]|}Draw Pile{TreatPlayed:[/gold]|}.{TreatPlayed:|[/color]}\n{SurprisePlayed:|[color=DIM_GRAY]}If you've played a {SurprisePlayed:[gold]|}Surprise{SurprisePlayed:[/gold]|} this turn, add !Treat! random {SurprisePlayed:[gold]|}{Treat:plural:Treat|Treats}{SurprisePlayed:[/gold]|} into your {SurprisePlayed:[gold]|}Hand{SurprisePlayed:[/gold]|}.{SurprisePlayed:|[/color]}"
+  "AJAMAGHOULIGAN-CANDIED_HIJINKS.description": "#{TreatPlayed:|[color=DIM_GRAY]}If you played a {TreatPlayed:[gold]|}Treat{TreatPlayed:[/gold]|} this turn, add !Surprise! {TreatPlayed:[gold]|}{Surprise:plural:Surprise|Surprises}{TreatPlayed:[/gold]|} into your {TreatPlayed:[gold]|}Draw Pile{TreatPlayed:[/gold]|}.{TreatPlayed:|[/color]}\n{SurprisePlayed:|[color=DIM_GRAY]}If you played a {SurprisePlayed:[gold]|}Surprise{SurprisePlayed:[/gold]|} this turn, add !Treat! random {SurprisePlayed:[gold]|}{Treat:plural:Treat|Treats}{SurprisePlayed:[/gold]|} into your {SurprisePlayed:[gold]|}Hand{SurprisePlayed:[/gold]|}.{SurprisePlayed:|[/color]}",
+  "AJAMAGHOULIGAN-CANDIED_HIJINKS.description_backup_because_the_plugin_keeps_deleting_it": "#{TreatPlayed:|[color=DIM_GRAY]}If you played a {TreatPlayed:[gold]|}Treat{TreatPlayed:[/gold]|} this turn, add !Surprise! {TreatPlayed:[gold]|}{Surprise:plural:Surprise|Surprises}{TreatPlayed:[/gold]|} into your {TreatPlayed:[gold]|}Draw Pile{TreatPlayed:[/gold]|}.{TreatPlayed:|[/color]}\n{SurprisePlayed:|[color=DIM_GRAY]}If you played a {SurprisePlayed:[gold]|}Surprise{SurprisePlayed:[/gold]|} this turn, add !Treat! random {SurprisePlayed:[gold]|}{Treat:plural:Treat|Treats}{SurprisePlayed:[/gold]|} into your {SurprisePlayed:[gold]|}Hand{SurprisePlayed:[/gold]|}.{SurprisePlayed:|[/color]}"
 }
