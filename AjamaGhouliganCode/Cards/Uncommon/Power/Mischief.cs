@@ -1,4 +1,5 @@
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
+using AjamaGhouligan.AjamaGhouliganCode.Cards.Token;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
@@ -12,15 +13,20 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Rare.Skill;
+namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Uncommon.Power;
 
-public class TickingClock() : AjamaGhouliganCard(2,
-    CardType.Skill, CardRarity.Rare,
+public class Mischief() : AjamaGhouliganCard(1,
+    CardType.Power, CardRarity.Uncommon,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new SurpriseVar(8)
+        new PowerVar<MischiefPower>(4)
+    ];
+
+    public override IEnumerable<IHoverTip> MyHoverTips =>
+    [
+        HoverTipFactory.FromCard<Surprise>()
     ];
 
     protected override async Task OnPlay(
@@ -29,11 +35,11 @@ public class TickingClock() : AjamaGhouliganCard(2,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 
-        await MyActions.CreateSurprises(this, PileType.Draw, CardPilePosition.Bottom);
+        await CommonActions.ApplySelf<MischiefPower>(choiceContext, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Surprise().UpgradeValueBy(2);
+        DynamicVars.Power<MischiefPower>().UpgradeValueBy(3);
     }
 }

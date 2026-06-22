@@ -65,7 +65,7 @@
   "AJAMAGHOULIGAN-BUCKET_DOOR.title": "Bucket Door",
   "AJAMAGHOULIGAN-BUCKET_DOOR.description": "#Apply !DoomPower! [gold]Doom[/gold] to yourself.\nDeal !D! damage.\nAdd !Surprise! [gold]Surprise(s)[/gold] on top of your [gold]Draw Pile[/gold].",
   "AJAMAGHOULIGAN-THINK_FAST.title": "Think Fast",
-  "AJAMAGHOULIGAN-THINK_FAST.description": "#Deal !D! damage.\nApply !VulnerablePower! [gold]Vulnerable[/gold].\nApply !MisfortunePower! [gold]Misfortune[/gold].",
+  "AJAMAGHOULIGAN-THINK_FAST.description": "#Add {Surprise:plural:a [gold]Surprise[/gold]|{} [gold]Surprises[/gold]} on top of your [gold]Draw Pile[/gold].\nAdd {MoreSurprises:plural:a [gold]Surprise[/gold]|{} [gold]Surprises[/gold]} into your [gold]Draw Pile[/gold].\nDraw !C! card(s).",
   "AJAMAGHOULIGAN-THUMB_WAR.title": "Thumb War",
   "AJAMAGHOULIGAN-THUMB_WAR.description": "#[gold]Osty[/gold] deals !OstyDamage! damage !Repeat! times.\nGain !GoofPower! [gold]Goof[/gold].\nWhenever you or [gold]Osty[/gold] hit this enemy this turn, [gold]Summon[/gold] !ThumbWarPower!.",
   "AJAMAGHOULIGAN-PAINTED_TUNNEL.title": "Painted Tunnel",
@@ -196,7 +196,7 @@
   "AJAMAGHOULIGAN-OSSIFICATION.title": "Ossification",
   "AJAMAGHOULIGAN-OSSIFICATION.description": "#[gold]Osty[/gold] deals !CD! damage.\nDeals an additional !ExtraDamage! damage for every time he has hit an enemy this combat.",
   "AJAMAGHOULIGAN-SURPRISE.title": "Surprise",
-  "AJAMAGHOULIGAN-SURPRISE.description": "#Deal !D! damage to ALL enemies.\nDraw !C! card(s).",
+  "AJAMAGHOULIGAN-SURPRISE.description": "#Deal !D! damage to ALL enemies.\nDraw !C! card(s)\nWhenever you draw this card, immediately play it.",
   "AJAMAGHOULIGAN-MILK_CHOCOLATE.title": "Milk Chocolate",
   "AJAMAGHOULIGAN-MILK_CHOCOLATE.description": "#Gain !B! [gold]Block[/gold].\n[gold]Summon[/gold] !Summon!.",
   "AJAMAGHOULIGAN-GUMMY_WORM.title": "Gummy Worm",
@@ -220,5 +220,13 @@
   "AJAMAGHOULIGAN-TICKING_CLOCK.title": "Ticking Clock",
   "AJAMAGHOULIGAN-TICKING_CLOCK.description": "#Add !Surprise! [gold]Surprise(s)[/gold] to the bottom of your [gold]Draw Pile[/gold].",
   "AJAMAGHOULIGAN-SWITCHEROO.title": "Switcheroo",
-  "AJAMAGHOULIGAN-SWITCHEROO.description": "Swap and shuffle your [gold]Draw Pile[/gold] and [gold]Discard Pile[/gold]."
+  "AJAMAGHOULIGAN-SWITCHEROO.description": "Swap and shuffle your [gold]Draw Pile[/gold] and [gold]Discard Pile[/gold].",
+  "AJAMAGHOULIGAN-MISCHIEF.title": "Mischief",
+  "AJAMAGHOULIGAN-MISCHIEF.description": "#Whenever you play a [gold]Surprise[/gold], gain !MischiefPower! [gold]Block[/gold].",
+  "AJAMAGHOULIGAN-SUGAR_RUSH.title": "Sugar Rush",
+  "AJAMAGHOULIGAN-SUGAR_RUSH.description": "#Deal !D! damage.\nDraw !C! card(s).\nChoose {Treat:plural:a card|!Treat! cards} in your [gold]Hand[/gold] to [gold]Transform[/gold] into {Treat:plural:a random [gold]Treat[/gold]|random [gold]Treats[/gold]}.",
+  "AJAMAGHOULIGAN-SUGAR_RUSH.selectionScreenPrompt": "Choose {Amount:plural:a card|{} cards} to [gold]Transform[/gold] into {Amount:plural:a random [gold]Treat[/gold]|random [gold]Treats[/gold]}.",
+  "AJAMAGHOULIGAN-CANDIED_HIJINKS.title": "Candied Hijinks",
+  "AJAMAGHOULIGAN-CANDIED_HIJINKS.description": "#{TreatPlayed:|[color=DIM_GRAY]}If you've played a Treat this turn, add !Surprise! {TreatPlayed:[gold]|}{Surprise:plural:Surprise|Surprises}{TreatPlayed:[/gold]|} into your {TreatPlayed:[gold]|}Draw Pile{TreatPlayed:[/gold]|}.{TreatPlayed:|[/color]}\n{SurprisePlayed:|[color=DIM_GRAY]}If you've played a {SurprisePlayed:[gold]|}Surprise{SurprisePlayed:[/gold]|} this turn, add !Treat! random {SurprisePlayed:[gold]|}{Treat:plural:Treat|Treats}{SurprisePlayed:[/gold]|} into your {SurprisePlayed:[gold]|}Hand{SurprisePlayed:[/gold]|}.{SurprisePlayed:|[/color]}",
+  "AJAMAGHOULIGAN-CANDIED_HIJINKS.description_backup_because_the_plugin_keeps_deleting_it": "#{TreatPlayed:|[color=DIM_GRAY]}If you've played a Treat this turn, add !Surprise! {TreatPlayed:[gold]|}{Surprise:plural:Surprise|Surprises}{TreatPlayed:[/gold]|} into your {TreatPlayed:[gold]|}Draw Pile{TreatPlayed:[/gold]|}.{TreatPlayed:|[/color]}\n{SurprisePlayed:|[color=DIM_GRAY]}If you've played a {SurprisePlayed:[gold]|}Surprise{SurprisePlayed:[/gold]|} this turn, add !Treat! random {SurprisePlayed:[gold]|}{Treat:plural:Treat|Treats}{SurprisePlayed:[/gold]|} into your {SurprisePlayed:[gold]|}Hand{SurprisePlayed:[/gold]|}.{SurprisePlayed:|[/color]}"
 }

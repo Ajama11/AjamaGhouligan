@@ -66,5 +66,8 @@
   "AJAMAGHOULIGAN-OVERLOAD_POWER.smartDescription": "Whenever a [gold]Haunted[/gold] card is [gold]Buried[/gold], it gains [gold]Bury[/gold].",
   "AJAMAGHOULIGAN-SLAPSTICK_POWER.title": "Slapstick",
   "AJAMAGHOULIGAN-SLAPSTICK_POWER.description": "At the start of your turn, add [blue]1[/blue] [gold]Surprise[/gold] into your [gold]Draw Pile[/gold].",
-  "AJAMAGHOULIGAN-SLAPSTICK_POWER.smartDescription": "#At the start of your turn, add [blue]{Amount}[/blue] [gold]Surprise(s)[/gold] into your [gold]Draw Pile[/gold]."
+  "AJAMAGHOULIGAN-SLAPSTICK_POWER.smartDescription": "#At the start of your turn, add [blue]{Amount}[/blue] [gold]Surprise(s)[/gold] into your [gold]Draw Pile[/gold].",
+  "AJAMAGHOULIGAN-MISCHIEF_POWER.title": "Mischief",
+  "AJAMAGHOULIGAN-MISCHIEF_POWER.description": "Whenever you play a [gold]Surprise[/gold], gain [gold]Block[/gold].",
+  "AJAMAGHOULIGAN-MISCHIEF_POWER.smartDescription": "Whenever you play a [gold]Surprise[/gold], gain [blue]{Amount}[/blue] [gold]Block[/gold]."
 }

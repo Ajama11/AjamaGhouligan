@@ -264,7 +264,7 @@ public class MyActions
         return await CreateCards(canonicalCard, amount, sourceCard.Owner, sourceCard.CombatState!, pile, position);
     }
     
-    public static async Task<IEnumerable<CardModel>> CreateCards(CardModel canonicalCard, int amount, Player owner, ICombatState combatState, PileType pile = PileType.Hand, CardPilePosition position = CardPilePosition.Bottom)
+    public static async Task<IEnumerable<CardModel>> CreateCards(CardModel canonicalCard, int amount, Player owner, ICombatState combatState, PileType pile = PileType.Hand, CardPilePosition position = CardPilePosition.Bottom, bool preview = true, float previewTime = 1.2f)
     {
         if (amount == 0 || CombatManager.Instance.IsOverOrEnding)
         {
@@ -280,7 +280,7 @@ public class MyActions
 
         IReadOnlyList<CardPileAddResult> results = await CardPileCmd.AddGeneratedCardsToCombat(cards, pile, owner, position);
 
-        if (pile != PileType.Hand) CardCmd.PreviewCardPileAdd(results);
+        if (pile != PileType.Hand && preview) CardCmd.PreviewCardPileAdd(results, previewTime);
 
         return cards;
     }
@@ -575,19 +575,19 @@ public class MyActions
 
     public static async Task<IEnumerable<CardModel>> CreateSurprises(
         AjamaGhouliganCard sourceCard, PileType pile = PileType.Draw,
-        CardPilePosition position = CardPilePosition.Random, int amountOverride = -1)
+        CardPilePosition position = CardPilePosition.Random, int amountOverride = -1, bool preview = true, float previewTime = 1.2f)
     {
         int amount = amountOverride == -1 ? 
             sourceCard.DynamicVars.Surprise().IntValue :
             amountOverride;
         
-        return await CreateSurprises(amount, sourceCard.Owner, sourceCard.CombatState!, pile, position);
+        return await CreateSurprises(amount, sourceCard.Owner, sourceCard.CombatState!, pile, position, preview, previewTime);
     }
 
     public static async Task<IEnumerable<CardModel>> CreateSurprises(int amount,
         Player owner, ICombatState combatState, PileType pile = PileType.Draw,
-        CardPilePosition position = CardPilePosition.Random)
+        CardPilePosition position = CardPilePosition.Random, bool preview = true, float previewTime = 1.2f)
     {
-        return await CreateCards(ModelDb.Card<Surprise>(), amount, owner, combatState, pile, position);
+        return await CreateCards(ModelDb.Card<Surprise>(), amount, owner, combatState, pile, position, preview, previewTime);
     }
 }
