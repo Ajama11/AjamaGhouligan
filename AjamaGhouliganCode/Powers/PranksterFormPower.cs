@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.Cards.Token;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -21,7 +22,21 @@ public class PranksterFormPower : AjamaGhouliganPower
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         if (cardPlay.Card.Owner.Creature != Owner) return;
+        if (cardPlay.Card is Surprise) return;
 
+        await ApplyPowerBasedOnType(choiceContext, cardPlay);
+    }
+
+    public override async Task BeforeCardPlayed(CardPlay cardPlay)
+    {
+        if (cardPlay.Card.Owner.Creature != Owner) return;
+        if (cardPlay.Card is not Surprise) return;
+
+        await ApplyPowerBasedOnType(new ThrowingPlayerChoiceContext(), cardPlay);
+    }
+
+    private async Task ApplyPowerBasedOnType(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
         // ReSharper disable once ConvertIfStatementToSwitchStatement
         if (cardPlay.Card.Type == CardType.Attack)
             await PowerCmd.Apply<GoofPower>(choiceContext, Owner, Amount, Owner, null);

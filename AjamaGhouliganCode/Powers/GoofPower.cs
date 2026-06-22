@@ -33,12 +33,12 @@ public class GoofPower : AjamaGhouliganPower
         MySounds.GoofPop.Play();
         
         VfxCmd.PlayFullScreenInCombat("vfx/vfx_dramatic_entrance_fullscreen", Owner);
+        
+        await PowerCmd.ModifyAmount(new ThrowingPlayerChoiceContext(), this, -Threshold, Owner.Player.Creature, null);
 
         await PlayerCmd.GainEnergy(DynamicVars.Energy.IntValue, Owner.Player);
 
         await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.IntValue, Owner.Player);
-
-        await PowerCmd.ModifyAmount(new ThrowingPlayerChoiceContext(), this, -Threshold, Owner.Player.Creature, null);
         
         foreach (var model in Owner.Player.Creature.CombatState!.IterateHookListeners())
         {
