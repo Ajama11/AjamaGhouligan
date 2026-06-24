@@ -83,14 +83,23 @@ public class Ghouligan : PlaceholderCharacterModel
     }
 
     public override string CustomIconTexturePath => "character_icon_ghouligan.png".CharacterUiPath();
-    public override string? CustomIconOutlineTexturePath => "character_icon_ghouligan_outline.png".CharacterUiPath();
+    public override string CustomIconOutlineTexturePath => "character_icon_ghouligan_outline.png".CharacterUiPath();
     public override string CustomCharacterSelectIconPath => "char_select_ghouligan.png".CharacterUiPath();
     public override string CustomCharacterSelectLockedIconPath => "char_select_char_name_locked.png".CharacterUiPath();
     public override string CustomMapMarkerPath => "map_marker_ghouligan.png".CharacterUiPath();
     
     public override string CustomTrailPath => SceneHelper.GetScenePath("vfx/card_trail_defect");
 
-    public override string CharacterTransitionSfx => "event:/sfx/ui/wipe_ironclad";
+    public override string CharacterTransitionSfx => 
+        "event:/sfx/ui/wipe_ironclad";
+    public override string CharacterSelectSfx => 
+        "res://AjamaGhouligan/audio/laugh.ogg";
+    public override string CustomAttackSfx => 
+        "res://AjamaGhouligan/audio/attack.ogg";
+    public override string CustomCastSfx => 
+        "res://AjamaGhouligan/audio/laugh.ogg";
+    public override string CustomDeathSfx  => 
+        "res://AjamaGhouligan/audio/death.ogg";
 
     public override string CustomCharacterSelectBg =>
         "res://AjamaGhouligan/scenes/character_select.tscn";
