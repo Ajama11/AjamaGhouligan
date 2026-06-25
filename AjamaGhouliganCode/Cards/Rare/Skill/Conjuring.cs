@@ -5,6 +5,7 @@ using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using BaseLib.Extensions;
 using BaseLib.Utils;
+using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -31,24 +32,43 @@ public class Conjuring() : AjamaGhouliganCard(0,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        CardModel? card = await CommonActions.SelectSingleCard(
-            this, SelectionScreenPrompt, choiceContext, SepulchrePile.PileType);
-        
-        if (card == null) return;
-        
+        // CardModel? card = await CommonActions.SelectSingleCard(
+        //     this, SelectionScreenPrompt, choiceContext, SepulchrePile.PileType);
+        //
+        // if (card == null) return;
+        //
+        // int xValue = ResolveEnergyXValue();
+        //
+        // if (IsUpgraded) ++xValue;
+        //
+        // for (int i = 0; i < xValue; ++i)
+        // {
+        //     CardModel cardToPlay = card.Type == CardType.Power && i < xValue - 1 ?
+        //         card.CreateDupe() : card;
+        //
+        //     await CardCmd.AutoPlay(choiceContext, cardToPlay, null);
+        // }
+        //
+        // if (xValue > 1)
+        // {
+        //     await CardCmd.Exhaust(choiceContext, this);
+        // }
         int xValue = ResolveEnergyXValue();
-
         if (IsUpgraded) ++xValue;
+        if (xValue == 0) return;
 
-        for (int i = 0; i < xValue; ++i)
+        List<CardModel> cards = (await CommonActions.SelectCards(
+            this, 
+            new CardSelectorPrefs(SelectionScreenPrompt, 0, xValue),
+            choiceContext, SepulchrePile.PileType))
+            .ToList();
+
+        foreach (CardModel card in cards)
         {
-            CardModel cardToPlay = card.Type == CardType.Power && i < xValue - 1 ?
-                card.CreateDupe() : card;
-
-            await CardCmd.AutoPlay(choiceContext, cardToPlay, null);
+            await CardCmd.AutoPlay(choiceContext, card.CreateDupe(), null);
         }
-
-        if (xValue > 1)
+        
+        if (cards.Count > 0)
         {
             await CardCmd.Exhaust(choiceContext, this);
         }

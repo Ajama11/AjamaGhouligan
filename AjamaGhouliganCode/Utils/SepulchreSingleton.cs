@@ -78,7 +78,8 @@ public class SepulchreSingleton() : CustomSingletonModel(HookType.Combat)
         if (cardPlay.Card.Type != CardType.Power &&
             cardPlay.Card.Keywords.Contains(MyEnums.Bury) &&
             !cardPlay.Card.Keywords.Contains(CardKeyword.Exhaust) &&
-            cardPlay.IsLastInSeries)
+            cardPlay.IsLastInSeries &&
+            !cardPlay.Card.IsDupe)
         {
             await CardPileCmd.Add(cardPlay.Card, SepulchrePile.PileType);
             

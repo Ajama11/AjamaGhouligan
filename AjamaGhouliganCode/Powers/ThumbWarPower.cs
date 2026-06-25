@@ -1,10 +1,10 @@
-using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -15,6 +15,13 @@ public class ThumbWarPower : AjamaGhouliganPower
 {
     public override PowerType Type => PowerType.Debuff;
     public override PowerStackType StackType => PowerStackType.Counter;
+    
+    private const string ApplierName = "ApplierName";
+    
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new StringVar(ApplierName)
+    ];
 
     public override async Task AfterDamageGiven(PlayerChoiceContext choiceContext, Creature? dealer, DamageResult result, ValueProp props,
         Creature target, CardModel? cardSource)
@@ -38,5 +45,14 @@ public class ThumbWarPower : AjamaGhouliganPower
         if (side != Owner.Side) return;
 
         await PowerCmd.Remove(this);
+    }
+    
+    public override Task AfterApplied(Creature? applier, CardModel? cardSource)
+    {
+        ((StringVar) DynamicVars[ApplierName]).StringValue = applier is {IsPlayer: true} ? 
+            applier.Player!.Creature.Name : 
+            "?";
+
+        return Task.CompletedTask;
     }
 }
