@@ -16,7 +16,7 @@
   "AJAMAGHOULIGAN-WARDED_BRACELET.description": "Whenever you apply [gold]Doom[/gold] to yourself, lose [blue]{LoseDoom}[/blue] [gold]Doom[/gold].",
   "AJAMAGHOULIGAN-WARDED_BRACELET.flavor": "It kinda stings, but it's weirdly soothing too!",
   "AJAMAGHOULIGAN-WHOOPEE_CUSHION.title": "Whoopee Cushion",
-  "AJAMAGHOULIGAN-WHOOPEE_CUSHION.description": "#At the start of your turn, gain [blue]{GoofPower}[/blue] [gold]Goof[/gold], and [gold]Haunt[/gold] and [gold]Bury[/gold] [blue]{Haunt}[/blue] random card(s) in your [gold]Draw Pile[/gold].",
+  "AJAMAGHOULIGAN-WHOOPEE_CUSHION.description": "#At the start of your turn, gain [blue]{GoofPower}[/blue] [gold]Goof[/gold], and add [blue]{Surprise}[/blue] [gold]Surprise(s)[/gold] to your [gold]Discard Pile[/gold].",
   "AJAMAGHOULIGAN-WHOOPEE_CUSHION.flavor": "A timeless classic.",
   "AJAMAGHOULIGAN-SUSPICIOUS_SIGIL.title": "Suspicious Sigil",
   "AJAMAGHOULIGAN-SUSPICIOUS_SIGIL.description": "#Upon pickup, [gold]Enchant[/gold] up to [blue]{Cards}[/blue] card(s) with [purple]Occult[/purple].",

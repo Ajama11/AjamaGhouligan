@@ -196,7 +196,7 @@
   "AJAMAGHOULIGAN-OSSIFICATION.title": "Ossification",
   "AJAMAGHOULIGAN-OSSIFICATION.description": "#[gold]Osty[/gold] deals !CD! damage.\nDeals an additional !ExtraDamage! damage for every time he has hit an enemy this combat.",
   "AJAMAGHOULIGAN-SURPRISE.title": "Surprise",
-  "AJAMAGHOULIGAN-SURPRISE.description": "#Deal !D! damage to ALL enemies.\nDraw !C! card(s)\nWhenever you draw this card, immediately play it.",
+  "AJAMAGHOULIGAN-SURPRISE.description": "#Deal !D! damage to ALL enemies.\nDraw !C! card(s).\nWhenever you draw this card, immediately play it.",
   "AJAMAGHOULIGAN-MILK_CHOCOLATE.title": "Milk Chocolate",
   "AJAMAGHOULIGAN-MILK_CHOCOLATE.description": "#Gain !B! [gold]Block[/gold].\n[gold]Summon[/gold] !Summon!.",
   "AJAMAGHOULIGAN-GUMMY_WORM.title": "Gummy Worm",
