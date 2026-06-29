@@ -14,7 +14,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Rare.Power;
 
-public class Eclipse() : AjamaGhouliganCard(2,
+public class Eclipse() : AjamaGhouliganCard(3,
     CardType.Power, CardRarity.Rare,
     TargetType.Self)
 {

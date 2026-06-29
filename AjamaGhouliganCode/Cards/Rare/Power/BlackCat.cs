@@ -15,7 +15,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Rare.Power;
 
-public class BlackCat() : AjamaGhouliganCard(0,
+public class BlackCat() : AjamaGhouliganCard(1,
     CardType.Power, CardRarity.Rare,
     TargetType.Self)
 {
@@ -44,6 +44,6 @@ public class BlackCat() : AjamaGhouliganCard(0,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Power<DoomPower>().UpgradeValueBy(-2);
+        EnergyCost.UpgradeBy(-1);
     }
 }
