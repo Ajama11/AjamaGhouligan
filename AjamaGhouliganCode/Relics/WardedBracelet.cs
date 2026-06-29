@@ -36,6 +36,6 @@ public class WardedBracelet() : AjamaGhouliganRelic
         
         Flash();
 
-        await MyActions.LoseDoom(Owner.Creature, DynamicVars.LoseDoom().IntValue, choiceContext);
+        await MyActions.LoseDoom(Owner.Creature, DynamicVars.LoseDoom.IntValue, choiceContext);
     }
 }

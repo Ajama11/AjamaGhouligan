@@ -37,6 +37,6 @@ public class OverchargedPhylactery : AjamaGhouliganRelic
         
         Flash();
 
-        await MyActions.LoseDoom(Owner.Creature, DynamicVars.LoseDoom().IntValue, choiceContext);
+        await MyActions.LoseDoom(Owner.Creature, DynamicVars.LoseDoom.IntValue, choiceContext);
     }
 }

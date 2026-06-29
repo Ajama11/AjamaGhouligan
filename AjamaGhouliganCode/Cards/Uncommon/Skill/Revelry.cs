@@ -45,6 +45,6 @@ public class Revelry() : AjamaGhouliganCard(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Bury().UpgradeValueBy(1);
+        DynamicVars.Bury.UpgradeValueBy(1);
     }
 }

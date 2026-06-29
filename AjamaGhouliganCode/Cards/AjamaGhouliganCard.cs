@@ -81,7 +81,7 @@ public abstract class AjamaGhouliganCard(int cost, CardType type, CardRarity rar
                 DynamicVars.ContainsKey(nameof(DoomNextTurnPower)) ||
                 (
                     DynamicVars.ContainsKey(LoseDoomVar.Key) && 
-                    !((LoseDoomVar) DynamicVars.LoseDoom()).SkipTooltip
+                    !DynamicVars.LoseDoom.SkipTooltip
                 ))
             {
                 result = [..result, HoverTipFactory.FromPower<DoomPower>()];
@@ -92,7 +92,7 @@ public abstract class AjamaGhouliganCard(int cost, CardType type, CardRarity rar
                 result = [..result, HoverTipFactory.FromPower<GoofPower>()];
             }
 
-            if (DynamicVars.ContainsKey(HauntVar.Key) && !((HauntVar) DynamicVars.Haunt()).SkipTooltip)
+            if (DynamicVars.ContainsKey(HauntVar.Key) && !DynamicVars.Haunt.SkipTooltip)
             {
                 result = [..result, HoverTipFactory.Static(MyEnums.Haunt), HoverTipFactory.FromKeyword(MyEnums.Haunted)];
             }
@@ -102,12 +102,12 @@ public abstract class AjamaGhouliganCard(int cost, CardType type, CardRarity rar
                 result = [..result, HoverTipFactory.Static(MyEnums.BuryOther)];
             }
             
-            if (DynamicVars.ContainsKey(SurpriseVar.Key) && !((SurpriseVar) DynamicVars.Surprise()).SkipTooltip)
+            if (DynamicVars.ContainsKey(SurpriseVar.Key) && !DynamicVars.Surprise.SkipTooltip)
             {
                 result = [..result, HoverTipFactory.FromCard<Surprise>()];
             }
             
-            if (DynamicVars.ContainsKey(TreatVar.Key) && !((TreatVar) DynamicVars.Treat()).SkipTooltip)
+            if (DynamicVars.ContainsKey(TreatVar.Key) && !DynamicVars.Treat.SkipTooltip)
             {
                 result = [..result, ..MyEnums.TreatHovers()];
             }

@@ -57,13 +57,13 @@ public class MyActions
             LocString selectionPrompt =
                 andBury ? MySelectionPrompts.HauntAndBury : MySelectionPrompts.Haunt;
             
-            CardSelectorPrefs prefs = new CardSelectorPrefs(selectionPrompt, sourceCard.DynamicVars.Haunt().IntValue);
+            CardSelectorPrefs prefs = new CardSelectorPrefs(selectionPrompt, sourceCard.DynamicVars.Haunt.IntValue);
 
             selectedCards = (await CardSelectCmd.FromSimpleGrid(choiceContext, possibleCards, sourceCard.Owner, prefs)).ToList();
         }
         else
         {
-            selectedCards = GetRandomCardsFromList(sourceCard.Owner, possibleCards, c => true, sourceCard.DynamicVars.Haunt().IntValue);
+            selectedCards = GetRandomCardsFromList(sourceCard.Owner, possibleCards, c => true, sourceCard.DynamicVars.Haunt.IntValue);
         }
         
         foreach (var card in selectedCards)
@@ -101,13 +101,13 @@ public class MyActions
             LocString selectionPrompt =
                 andBury ? MySelectionPrompts.HauntAndBury : MySelectionPrompts.Haunt;
             
-            CardSelectorPrefs prefs = new CardSelectorPrefs(selectionPrompt, sourceCard.DynamicVars.Haunt().IntValue);
+            CardSelectorPrefs prefs = new CardSelectorPrefs(selectionPrompt, sourceCard.DynamicVars.Haunt.IntValue);
 
             selectedCards = (await CardSelectCmd.FromHand(choiceContext, sourceCard.Owner, prefs, c => true, sourceCard)).ToList();
         }
         else
         {
-            selectedCards = GetRandomCardsFromList(sourceCard.Owner, possibleCards, c => true, sourceCard.DynamicVars.Haunt().IntValue);
+            selectedCards = GetRandomCardsFromList(sourceCard.Owner, possibleCards, c => true, sourceCard.DynamicVars.Haunt.IntValue);
         }
         
         foreach (var card in selectedCards)
@@ -336,7 +336,7 @@ public class MyActions
     
     public static async Task SelectForBury(PlayerChoiceContext choiceContext, AjamaGhouliganCard sourceCard, PileType from = PileType.Hand, bool upTo = false, int amountOverride = -1)
     {
-        int amount = amountOverride == -1 ? sourceCard.DynamicVars.Bury().IntValue : amountOverride;
+        int amount = amountOverride == -1 ? sourceCard.DynamicVars.Bury.IntValue : amountOverride;
 
         await SelectForBury(sourceCard, choiceContext, sourceCard.Owner, amount, from, upTo);
     }
@@ -377,7 +377,7 @@ public class MyActions
     
     public static async Task LoseDoom(PlayerChoiceContext choiceContext, AjamaGhouliganCard sourceCard)
     {
-        await LoseDoom(sourceCard.Owner.Creature, sourceCard.DynamicVars.LoseDoom().IntValue, choiceContext, sourceCard);
+        await LoseDoom(sourceCard.Owner.Creature, sourceCard.DynamicVars.LoseDoom.IntValue, choiceContext, sourceCard);
     }
 
     public static async Task LoseDoom(Creature playerCreature, int amount, PlayerChoiceContext? choiceContext = null, CardModel? sourceCard = null)
@@ -392,7 +392,7 @@ public class MyActions
 
     public static void HauntRandomInPile(PileType pile, AjamaGhouliganCard sourceCard)
     {
-        HauntRandomInPile(pile, sourceCard.Owner, sourceCard.DynamicVars.Haunt().IntValue);
+        HauntRandomInPile(pile, sourceCard.Owner, sourceCard.DynamicVars.Haunt.IntValue);
     }
     
     public static void HauntRandomInPile(PileType pile, Player player, int amount)
@@ -408,7 +408,7 @@ public class MyActions
     
     public static async Task BuryRandomInPile(PileType pile, AjamaGhouliganCard sourceCard, MyEnums.RandomBuryTargeting targeting = MyEnums.RandomBuryTargeting.All)
     {
-        await BuryRandomInPile(pile, sourceCard.Owner, sourceCard.DynamicVars.Bury().IntValue, targeting);
+        await BuryRandomInPile(pile, sourceCard.Owner, sourceCard.DynamicVars.Bury.IntValue, targeting);
     }
     
     public static async Task BuryRandomInPile(PileType pile, Player player, int amount, MyEnums.RandomBuryTargeting targeting = MyEnums.RandomBuryTargeting.All)
@@ -418,7 +418,7 @@ public class MyActions
     
     public static async Task BuryRandomInPiles(List<PileType> piles, AjamaGhouliganCard sourceCard, MyEnums.RandomBuryTargeting targeting = MyEnums.RandomBuryTargeting.All)
     {
-        await BuryRandomInPiles(piles, sourceCard.Owner, sourceCard.DynamicVars.Bury().IntValue, targeting);
+        await BuryRandomInPiles(piles, sourceCard.Owner, sourceCard.DynamicVars.Bury.IntValue, targeting);
     }
     
     public static async Task BuryRandomInPiles(List<PileType> piles, Player player, int amount, MyEnums.RandomBuryTargeting targeting = MyEnums.RandomBuryTargeting.All)
@@ -491,7 +491,7 @@ public class MyActions
             SepulchrePile.PileType, PileType.Hand, 
             MySelectionPrompts.Disinter, 
             CardPilePosition.Bottom, 
-            sourceCard.DynamicVars.Disinter().IntValue, 
+            sourceCard.DynamicVars.Disinter.IntValue, 
             upTo);
 
         foreach (var card in disinterredCards)
@@ -554,7 +554,7 @@ public class MyActions
         CardPilePosition position = CardPilePosition.Bottom, int amountOverride = -1)
     {
         int amount = amountOverride == -1 ? 
-            sourceCard.DynamicVars.Treat().IntValue :
+            sourceCard.DynamicVars.Treat.IntValue :
             amountOverride;
         
         return await CreateTreats(amount, sourceCard.Owner, sourceCard.CombatState!, pile, position);
@@ -588,7 +588,7 @@ public class MyActions
         CardPilePosition position = CardPilePosition.Random, int amountOverride = -1, bool preview = true, float previewTime = 1.2f)
     {
         int amount = amountOverride == -1 ? 
-            sourceCard.DynamicVars.Surprise().IntValue :
+            sourceCard.DynamicVars.Surprise.IntValue :
             amountOverride;
         
         return await CreateSurprises(amount, sourceCard.Owner, sourceCard.CombatState!, pile, position, preview, previewTime);

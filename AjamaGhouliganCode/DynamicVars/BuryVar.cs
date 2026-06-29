@@ -13,10 +13,10 @@ public class BuryVar : DynamicVar
     }
 }
 
-public static class BuryVarDynamicVarSetExtensions
+public static class BuryVarExtension
 {
-    public static DynamicVar Bury(this DynamicVarSet dynamicVars)
+    extension(DynamicVarSet dynamicVars)
     {
-        return dynamicVars[BuryVar.Key];
+        public BuryVar Bury => (BuryVar) dynamicVars[BuryVar.Key];
     }
 }

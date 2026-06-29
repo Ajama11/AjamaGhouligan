@@ -9,10 +9,10 @@ public class SurpriseVar(decimal baseValue, bool skipTooltip = false) : DynamicV
     public bool SkipTooltip = skipTooltip;
 }
 
-public static class SurpriseVarDynamicVarSetExtensions
+public static class SurpriseVarExtension
 {
-    public static DynamicVar Surprise(this DynamicVarSet dynamicVars)
+    extension(DynamicVarSet dynamicVars)
     {
-        return dynamicVars[SurpriseVar.Key];
+        public SurpriseVar Surprise => (SurpriseVar) dynamicVars[SurpriseVar.Key];
     }
 }

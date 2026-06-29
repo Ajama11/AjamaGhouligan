@@ -55,7 +55,7 @@ public class CandiedHijinks() : AjamaGhouliganCard(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Surprise().UpgradeValueBy(1);
+        DynamicVars.Surprise.UpgradeValueBy(1);
     }
 
     protected override bool ShouldGlowGoldInternal => 

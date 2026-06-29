@@ -39,6 +39,6 @@ public class Snack() : AjamaGhouliganCard(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Treat().UpgradeValueBy(1);
+        DynamicVars.Treat.UpgradeValueBy(1);
     }
 }

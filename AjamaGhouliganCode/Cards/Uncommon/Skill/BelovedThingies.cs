@@ -38,7 +38,7 @@ public class BelovedThingies() : AjamaGhouliganCard(2,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Haunt().UpgradeValueBy(1);
-        DynamicVars.Bury().UpgradeValueBy(1);
+        DynamicVars.Haunt.UpgradeValueBy(1);
+        DynamicVars.Bury.UpgradeValueBy(1);
     }
 }

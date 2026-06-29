@@ -9,10 +9,10 @@ public class LoseDoomVar(decimal baseValue, bool skipTooltip = false) : DynamicV
     public bool SkipTooltip = skipTooltip;
 }
 
-public static class LoseDoomVarDynamicVarSetExtensions
+public static class LoseDoomVarExtension
 {
-    public static DynamicVar LoseDoom(this DynamicVarSet dynamicVars)
+    extension(DynamicVarSet dynamicVars)
     {
-        return dynamicVars[LoseDoomVar.Key];
+        public LoseDoomVar LoseDoom => (LoseDoomVar) dynamicVars[LoseDoomVar.Key];
     }
 }

@@ -40,7 +40,7 @@ public class WhoopeeCushion() : AjamaGhouliganRelic
         await PowerCmd.Apply<GoofPower>(new ThrowingPlayerChoiceContext(), Owner.Creature,
             DynamicVars.Power<GoofPower>().BaseValue, Owner.Creature, null);
 
-        await MyActions.CreateSurprises(DynamicVars.Surprise().IntValue, Owner, Owner.Creature.CombatState!,
+        await MyActions.CreateSurprises(DynamicVars.Surprise.IntValue, Owner, Owner.Creature.CombatState!,
             PileType.Discard, CardPilePosition.Bottom);
     }
 }

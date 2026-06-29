@@ -72,6 +72,6 @@ public class AshesToAshes() : AjamaGhouliganCard(0,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.LoseDoom().UpgradeValueBy(3);
+        DynamicVars.LoseDoom.UpgradeValueBy(3);
     }
 }

@@ -13,10 +13,10 @@ public class DisinterVar : DynamicVar
     }
 }
 
-public static class DisinterVarDynamicVarSetExtensions
+public static class DisinterVarExtension
 {
-    public static DynamicVar Disinter(this DynamicVarSet dynamicVars)
+    extension(DynamicVarSet dynamicVars)
     {
-        return dynamicVars[DisinterVar.Key];
+        public DisinterVar Disinter => (DisinterVar) dynamicVars[DisinterVar.Key];
     }
 }

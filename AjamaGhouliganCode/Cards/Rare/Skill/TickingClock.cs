@@ -34,6 +34,6 @@ public class TickingClock() : AjamaGhouliganCard(2,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Surprise().UpgradeValueBy(2);
+        DynamicVars.Surprise.UpgradeValueBy(2);
     }
 }

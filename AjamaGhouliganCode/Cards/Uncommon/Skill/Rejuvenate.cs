@@ -41,6 +41,6 @@ public class Rejuvenate() : AjamaGhouliganCard(2,
     protected override void OnUpgrade()
     {
         DynamicVars.Heal.UpgradeValueBy(2);
-        DynamicVars.LoseDoom().UpgradeValueBy(2);
+        DynamicVars.LoseDoom.UpgradeValueBy(2);
     }
 }

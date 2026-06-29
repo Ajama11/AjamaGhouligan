@@ -40,6 +40,6 @@ public class ThinkFast() : AjamaGhouliganCard(0,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Surprise().UpgradeValueBy(1);
+        DynamicVars.Surprise.UpgradeValueBy(1);
     }
 }

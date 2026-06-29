@@ -8,6 +8,7 @@
         <DefaultItemExcludes>packages/**</DefaultItemExcludes>
         <AppOutputBase>$(MSBuildProjectDirectory)\</AppOutputBase>
         <PathMap>$(AppOutputBase)=.\</PathMap>
+        <LangVersion>14</LangVersion>
     </PropertyGroup>
 
     <PropertyGroup>

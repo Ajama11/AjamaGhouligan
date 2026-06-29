@@ -35,7 +35,7 @@ public class Exchange() : AjamaGhouliganCard(0,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Disinter().UpgradeValueBy(1);
-        DynamicVars.Bury().UpgradeValueBy(1);
+        DynamicVars.Disinter.UpgradeValueBy(1);
+        DynamicVars.Bury.UpgradeValueBy(1);
     }
 }

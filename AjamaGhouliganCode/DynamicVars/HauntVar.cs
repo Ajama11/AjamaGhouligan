@@ -15,10 +15,10 @@ public class HauntVar : DynamicVar
     }
 }
 
-public static class HauntVarDynamicVarSetExtensions
+public static class HauntVarExtension
 {
-    public static DynamicVar Haunt(this DynamicVarSet dynamicVars)
+    extension(DynamicVarSet dynamicVars)
     {
-        return dynamicVars[HauntVar.Key];
+        public HauntVar Haunt => (HauntVar) dynamicVars[HauntVar.Key];
     }
 }

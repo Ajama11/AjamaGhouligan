@@ -39,7 +39,7 @@ public class SugarRush() : AjamaGhouliganCard(1,
         await CommonActions.Draw(this, choiceContext);
 
         List<CardModel> cards = (await CommonActions.SelectCards(this,
-            new CardSelectorPrefs(SelectionScreenPrompt, DynamicVars.Treat().IntValue),
+            new CardSelectorPrefs(SelectionScreenPrompt, DynamicVars.Treat.IntValue),
             choiceContext, PileType.Hand))
             .ToList();
 

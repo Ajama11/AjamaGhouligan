@@ -9,10 +9,10 @@ public class TreatVar(decimal baseValue, bool skipTooltip = false) : DynamicVar(
     public bool SkipTooltip = skipTooltip;
 }
 
-public static class TreatVarDynamicVarSetExtensions
+public static class TreatVarExtension
 {
-    public static DynamicVar Treat(this DynamicVarSet dynamicVars)
+    extension(DynamicVarSet dynamicVars)
     {
-        return dynamicVars[TreatVar.Key];
+        public TreatVar Treat => (TreatVar) dynamicVars[TreatVar.Key];
     }
 }

@@ -33,6 +33,6 @@ public class GoofyPumpkin() : AjamaGhouliganCard(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Haunt().UpgradeValueBy(1);
+        DynamicVars.Haunt.UpgradeValueBy(1);
     }
 }
