@@ -23,8 +23,7 @@ public class Lollipop() : AjamaGhouliganCard(0,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<StrengthPower>(1),
-        new CardsVar(1)
+        new PowerVar<StrengthPower>(3)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
@@ -48,11 +47,13 @@ public class Lollipop() : AjamaGhouliganCard(0,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 
-        await PowerCmd.Apply<StrengthPower>(choiceContext, play.Target!,
-            -1 * DynamicVars.Power<StrengthPower>().BaseValue,
+        await PowerCmd.Apply<LollipopPower>(choiceContext, play.Target!,
+            DynamicVars.Power<StrengthPower>().BaseValue,
             Owner.Creature, this);
+    }
 
-        if (IsUpgraded)
-            await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
+    protected override void OnUpgrade()
+    {
+        DynamicVars.Power<StrengthPower>().UpgradeValueBy(2);
     }
 }

@@ -69,5 +69,6 @@
   "AJAMAGHOULIGAN-SLAPSTICK_POWER.smartDescription": "#At the start of your turn, add [blue]{Amount}[/blue] [gold]Surprise(s)[/gold] into your [gold]Draw Pile[/gold].",
   "AJAMAGHOULIGAN-MISCHIEF_POWER.title": "Mischief",
   "AJAMAGHOULIGAN-MISCHIEF_POWER.description": "Whenever you play a [gold]Surprise[/gold], gain [gold]Block[/gold].",
-  "AJAMAGHOULIGAN-MISCHIEF_POWER.smartDescription": "Whenever you play a [gold]Surprise[/gold], gain [blue]{Amount}[/blue] [gold]Block[/gold]."
+  "AJAMAGHOULIGAN-MISCHIEF_POWER.smartDescription": "Whenever you play a [gold]Surprise[/gold], gain [blue]{Amount}[/blue] [gold]Block[/gold].",
+  "AJAMAGHOULIGAN-LOLLIPOP_POWER.title": "Lollipop"
 }

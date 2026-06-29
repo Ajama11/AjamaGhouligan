@@ -208,7 +208,7 @@
   "AJAMAGHOULIGAN-BUBBLEGUM.title": "Bubblegum",
   "AJAMAGHOULIGAN-BUBBLEGUM.description": "#Apply !WeakPower! [gold]Weak[/gold].\nApply !VulnerablePower! [gold]Vulnerable[/gold].",
   "AJAMAGHOULIGAN-LOLLIPOP.title": "Lollipop",
-  "AJAMAGHOULIGAN-LOLLIPOP.description": "#Enemy loses !StrengthPower! [gold]Strength[/gold].{IfUpgraded:show:\nDraw !C! card(s).|}",
+  "AJAMAGHOULIGAN-LOLLIPOP.description": "#Enemy loses !StrengthPower! [gold]Strength[/gold] this turn.",
   "AJAMAGHOULIGAN-BOUNTIFUL_BUCKET.title": "Bountiful Bucket",
   "AJAMAGHOULIGAN-BOUNTIFUL_BUCKET.description": "#Add X+1 random [gold]Treats[/gold] into your [gold]Hand[/gold].",
   "AJAMAGHOULIGAN-SNACK.title": "Snack",
