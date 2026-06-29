@@ -1,5 +1,6 @@
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -30,7 +31,18 @@ public class GoofPower : AjamaGhouliganPower
 
         Flash();
 
-        MySounds.GoofPop.Play();
+        switch (Config.PlayGoofAudio)
+        {
+            case Config.GoofAudio.Everyone:
+                MySounds.GoofPop.Play();
+                break;
+            case Config.GoofAudio.Self:
+                if (LocalContext.IsMe(Owner)) MySounds.GoofPop.Play();
+                break;
+            case Config.GoofAudio.Never:
+            default:
+                break;
+        }
         
         VfxCmd.PlayFullScreenInCombat("vfx/vfx_dramatic_entrance_fullscreen", Owner);
         

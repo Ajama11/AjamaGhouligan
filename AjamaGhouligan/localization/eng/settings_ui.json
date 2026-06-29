@@ -1,0 +1,5 @@
+{
+  "AJAMAGHOULIGAN.mod_title": "Ghouligan",
+  "AJAMAGHOULIGAN-PLAY_GOOF_AUDIO.title": "Play 'Goof' Audio",
+  "AJAMAGHOULIGAN-PLAY_GOOF_AUDIO.hover.desc": "When 'Goof' reaches 10 or more, it'll pop confetti and play a sound.\n[gold]Everyone[/gold]: You'll hear the sound when anyone reaches 10 'Goof'.\n[gold]Self[/gold]: You'll hear the sound when you reach 10 'Goof' but not when other players reach 10 'Goof'.\n[gold]Never[/gold]: The sound will never play."
+}

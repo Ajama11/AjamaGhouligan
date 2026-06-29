@@ -2,6 +2,7 @@ using System.Reflection;
 using AjamaGhouligan.AjamaGhouliganCode.CardPiles;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
+using BaseLib.Config;
 using BaseLib.Patches.Localization;
 using Godot;
 using HarmonyLib;
@@ -29,6 +30,8 @@ public partial class MainFile : Node
         
         var assembly = Assembly.GetExecutingAssembly();
         Godot.Bridge.ScriptManagerBridge.LookupScriptsInAssembly(assembly);
+        
+        ModConfigRegistry.Register(ModId, new Config());
         
         DescriptionOverrides.CustomizeDescriptionPost += (CardModel card, Creature? _, ref string description) =>
         {
