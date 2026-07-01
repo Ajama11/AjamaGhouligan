@@ -87,7 +87,7 @@
   "AJAMAGHOULIGAN-LATER_PROBLEM.title": "Later Problem",
   "AJAMAGHOULIGAN-LATER_PROBLEM.description": "#Gain !B! [gold]Block[/gold].\nAdd !C! [gold]Burns[/gold] into your [gold]{IfUpgraded:show:Discard|Draw} Pile[/gold].",
   "AJAMAGHOULIGAN-CROWS_GIFT.title": "Crow's Gift",
-  "AJAMAGHOULIGAN-CROWS_GIFT.description": "#Add !C! random Colorless card(s) into your [gold]Hand[/gold].\n{Cards:plural:It is|They are} free to play this combat.",
+  "AJAMAGHOULIGAN-CROWS_GIFT.description": "#Add !C! random Colorless card(s) on top of your [gold]Draw Pile[/gold]. {Cards:plural:It's|They're} free to play this combat.",
   "AJAMAGHOULIGAN-GIMME_A_HAND.title": "Gimme a Hand",
   "AJAMAGHOULIGAN-GIMME_A_HAND.description": "#[gold]Summon[/gold] !Summon!.\n[gold]Osty[/gold] deals !OstyDamage! damage.{IfUpgraded:show:\nLose !LoseDoom! [gold]Doom[/gold].|}",
   "AJAMAGHOULIGAN-MIMIC_BINDY.title": "Mimic Bindy",

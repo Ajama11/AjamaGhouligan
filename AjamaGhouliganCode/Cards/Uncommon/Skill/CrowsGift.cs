@@ -39,8 +39,8 @@ public class CrowsGift() : AjamaGhouliganCard(0,
         
         foreach (CardModel card in colorlessCards)
         {
-            await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, Owner);
             card.SetToFreeThisCombat();
+            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Draw, Owner, CardPilePosition.Top));
         }
     }
 
