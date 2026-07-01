@@ -30,6 +30,13 @@ public class EternalSoulwick() : AjamaGhouliganCard(0,
         MyEnums.Haunted,
         MyEnums.Bury
     ];
+    
+    public override IEnumerable<IHoverTip> MyHoverTips =>
+    [
+        HoverTipFactory.FromKeyword(MyEnums.Haunted),
+        HoverTipFactory.FromPower<DoomPower>(),
+        HoverTipFactory.FromKeyword(MyEnums.Bury)
+    ];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,

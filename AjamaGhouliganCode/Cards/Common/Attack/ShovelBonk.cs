@@ -22,6 +22,12 @@ public class ShovelBonk() : AjamaGhouliganCard(1,
         new DamageVar(7, ValueProp.Move),
         new BuryVar(1)
     ];
+    
+    public override IEnumerable<IHoverTip> MyHoverTips =>
+    [
+        HoverTipFactory.Static(MyEnums.BuryOther),
+        HoverTipFactory.FromKeyword(MyEnums.Haunted)
+    ];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,

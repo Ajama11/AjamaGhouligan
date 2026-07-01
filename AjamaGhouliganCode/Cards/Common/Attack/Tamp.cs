@@ -27,12 +27,25 @@ public class Tamp() : AjamaGhouliganCard(2,
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        CardKeyword.Retain,
-        MyEnums.Unfortunate
+        MyEnums.Unfortunate,
+        CardKeyword.Retain
+    ];
+
+    private IEnumerable<IHoverTip> PreUpgradeHoverTips =>
+    [
+        HoverTipFactory.FromPower<MisfortunePower>(),
+        HoverTipFactory.FromKeyword(MyEnums.Unfortunate),
+        HoverTipFactory.FromKeyword(CardKeyword.Retain),
+        HoverTipFactory.Static(MyEnums.BuryOther)
     ];
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
-    IsUpgraded ? [HoverTipFactory.Static(MyEnums.Haunt)] : [];
+        IsUpgraded ?
+            [
+                ..PreUpgradeHoverTips,
+                HoverTipFactory.Static(MyEnums.Haunt)
+            ]
+            : PreUpgradeHoverTips;
     
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,

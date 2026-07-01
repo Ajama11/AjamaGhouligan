@@ -27,12 +27,14 @@ public class Slam() : AjamaGhouliganCard(1,
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        CardKeyword.Retain,
-        MyEnums.Haunted
+        MyEnums.Haunted,
+        CardKeyword.Retain
     ];
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
+        HoverTipFactory.FromKeyword(MyEnums.Haunted),
+        HoverTipFactory.FromKeyword(CardKeyword.Retain),
         HoverTipFactory.FromPower<WeakPower>()
     ];
 

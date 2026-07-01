@@ -26,6 +26,7 @@ public class Vanish() : AjamaGhouliganCard(2,
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
+        HoverTipFactory.Static(StaticHoverTip.Block),
         HoverTipFactory.FromKeyword(CardKeyword.Exhaust)
     ];
 

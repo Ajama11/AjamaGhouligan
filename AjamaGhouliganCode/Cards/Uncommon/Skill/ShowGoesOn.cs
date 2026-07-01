@@ -34,6 +34,7 @@ public class ShowGoesOn() : AjamaGhouliganCard(2,
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
+        HoverTipFactory.FromPower<DoomPower>(),
         HoverTipFactory.FromKeyword(MyEnums.Haunted),
         HoverTipFactory.FromKeyword(MyEnums.Bury)
     ];

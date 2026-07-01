@@ -25,10 +25,19 @@ public class TakeBacksies() : AjamaGhouliganCard(1,
         new CardsVar(3)
     ];
 
-    public override IEnumerable<IHoverTip> MyHoverTips =>
+    private IEnumerable<IHoverTip> PreUpgradeHoverTips =>
     [
+        HoverTipFactory.Static(MyEnums.Haunt),
         HoverTipFactory.FromKeyword(MyEnums.Haunted)
     ];
+    
+    public override IEnumerable<IHoverTip> MyHoverTips =>
+        IsUpgraded ?
+            [
+                HoverTipFactory.FromKeyword(CardKeyword.Retain),
+                ..PreUpgradeHoverTips
+            ]
+            : PreUpgradeHoverTips;
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,

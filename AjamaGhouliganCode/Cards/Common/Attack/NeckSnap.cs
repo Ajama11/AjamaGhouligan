@@ -30,6 +30,8 @@ public class NeckSnap() : AjamaGhouliganCard(1,
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
+        HoverTipFactory.FromPower<MisfortunePower>(),
+        HoverTipFactory.FromKeyword(MyEnums.Unfortunate),
         HoverTipFactory.FromKeyword(CardKeyword.Retain)
     ];
 

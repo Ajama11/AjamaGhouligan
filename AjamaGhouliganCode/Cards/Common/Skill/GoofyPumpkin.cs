@@ -21,6 +21,13 @@ public class GoofyPumpkin() : AjamaGhouliganCard(1,
         new HauntVar(2),
         new PowerVar<GoofPower>(2)
     ];
+    
+    public override IEnumerable<IHoverTip> MyHoverTips =>
+    [
+        HoverTipFactory.Static(MyEnums.Haunt),
+        HoverTipFactory.FromKeyword(MyEnums.Haunted),
+        HoverTipFactory.FromPower<GoofPower>()
+    ];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,

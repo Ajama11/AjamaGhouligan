@@ -34,14 +34,12 @@ public class Oopsies() : AjamaGhouliganCard(0,
         MyEnums.Unfortunate
     ];
 
-    public override HashSet<CardTag> MyCanonicalTags =>
-    [
-
-    ];
-
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
-
+        HoverTipFactory.FromKeyword(MyEnums.Haunted),
+        HoverTipFactory.FromPower<MisfortunePower>(),
+        HoverTipFactory.FromKeyword(MyEnums.Unfortunate),
+        HoverTipFactory.FromKeyword(MyEnums.Bury)
     ];
 
     protected override async Task OnPlay(

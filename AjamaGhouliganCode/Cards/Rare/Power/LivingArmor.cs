@@ -26,17 +26,14 @@ public class LivingArmor() : AjamaGhouliganCard(3,
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        CardKeyword.Retain,
-        MyEnums.Haunted
-    ];
-
-    public override HashSet<CardTag> MyCanonicalTags =>
-    [
-
+        MyEnums.Haunted,
+        CardKeyword.Retain
     ];
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
+        HoverTipFactory.FromKeyword(MyEnums.Haunted),
+        HoverTipFactory.FromKeyword(CardKeyword.Retain),
         HoverTipFactory.FromPower<PlatingPower>()
     ];
 

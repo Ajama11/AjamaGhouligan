@@ -25,6 +25,11 @@ public class CoyoteTime() : AjamaGhouliganCard(0,
         new CardsVar(1),
         new PowerVar<DoomNextTurnPower>(10)
     ];
+    
+    public override IEnumerable<IHoverTip> MyHoverTips =>
+    [
+        HoverTipFactory.Static(StaticHoverTip.Block)
+    ];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,

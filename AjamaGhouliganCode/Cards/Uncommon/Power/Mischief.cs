@@ -26,7 +26,8 @@ public class Mischief() : AjamaGhouliganCard(1,
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
-        HoverTipFactory.FromCard<Surprise>()
+        HoverTipFactory.FromCard<Surprise>(),
+        HoverTipFactory.Static(StaticHoverTip.Block)
     ];
 
     protected override async Task OnPlay(

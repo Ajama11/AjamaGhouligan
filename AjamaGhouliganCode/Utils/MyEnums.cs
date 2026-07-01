@@ -24,6 +24,9 @@ public class MyEnums
     public static StaticHoverTip BuryOther;
     
     [CustomEnum]
+    public static StaticHoverTip Disinter;
+    
+    [CustomEnum]
     public static StaticHoverTip Treats;
 
     [CustomEnum]

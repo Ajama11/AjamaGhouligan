@@ -37,6 +37,7 @@ public class Eek() : AjamaGhouliganCard(1,
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
+        HoverTipFactory.FromKeyword(MyEnums.Haunted),
         HoverTipFactory.FromPower<DebilitatePower>(),
         HoverTipFactory.Static(MyEnums.BuryOther)
     ];

@@ -22,18 +22,8 @@ public class PianoDrop() : AjamaGhouliganCard(2,
     [
         new DamageVar(14, ValueProp.Move),
         new PowerVar<MisfortunePower>(6)
-    ];
-
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-
-    ];
-
-    public override HashSet<CardTag> MyCanonicalTags =>
-    [
-
-    ];
-
+    ]; 
+    
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
 

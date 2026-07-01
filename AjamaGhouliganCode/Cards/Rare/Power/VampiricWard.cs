@@ -31,6 +31,7 @@ public class VampiricWard() : AjamaGhouliganCard(2,
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
+        HoverTipFactory.FromKeyword(MyEnums.Haunted),
         HoverTipFactory.FromPower<DoomPower>()
     ];
 

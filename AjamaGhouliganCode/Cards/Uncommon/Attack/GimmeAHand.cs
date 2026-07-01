@@ -26,8 +26,18 @@ public class GimmeAHand() : AjamaGhouliganCard(1,
         new LoseDoomVar(3, true)
     ];
     
+    private IEnumerable<IHoverTip> PreUpgradeHoverTips =>
+    [
+        HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon)
+    ];
+    
     public override IEnumerable<IHoverTip> MyHoverTips =>
-        IsUpgraded ? [HoverTipFactory.FromPower<DoomPower>()] : [];
+        IsUpgraded ?
+            [
+                ..PreUpgradeHoverTips,
+                HoverTipFactory.FromPower<DoomPower>()
+            ]
+            : PreUpgradeHoverTips;
 
     protected override bool ShouldGlowRedInternal => false;
 

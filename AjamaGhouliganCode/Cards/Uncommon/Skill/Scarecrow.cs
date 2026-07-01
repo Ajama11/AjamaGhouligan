@@ -32,6 +32,9 @@ public class Scarecrow() : AjamaGhouliganCard(1,
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
+        HoverTipFactory.FromKeyword(CardKeyword.Ethereal),
+        HoverTipFactory.FromKeyword(CardKeyword.Exhaust),
+        HoverTipFactory.Static(StaticHoverTip.Block),
         HoverTipFactory.FromPower<WeakPower>()
     ];
 

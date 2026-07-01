@@ -28,6 +28,7 @@ public class FoulTeaParty() : AjamaGhouliganCard(1,
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
+        HoverTipFactory.FromKeyword(CardKeyword.Retain),
         HoverTipFactory.FromPower<PoisonPower>(),
         HoverTipFactory.FromPower<MisfortunePower>()
     ];

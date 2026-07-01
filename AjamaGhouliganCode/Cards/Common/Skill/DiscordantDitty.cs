@@ -27,6 +27,12 @@ public class DiscordantDitty() : AjamaGhouliganCard(0,
     [
         MyEnums.Haunted
     ];
+    
+    public override IEnumerable<IHoverTip> MyHoverTips =>
+    [
+        HoverTipFactory.FromKeyword(MyEnums.Haunted),
+        HoverTipFactory.FromPower<MisfortunePower>()
+    ];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,

@@ -33,6 +33,8 @@ public class Playtime() : AjamaGhouliganCard(0,
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
+        HoverTipFactory.FromKeyword(CardKeyword.Ethereal),
+        HoverTipFactory.FromKeyword(CardKeyword.Exhaust),
         ..MyEnums.TreatHovers()
     ];
 

@@ -32,6 +32,13 @@ public class BonesOfAFeather() : AjamaGhouliganCard(2,
         MyEnums.Bury
     ];
 
+    public override IEnumerable<IHoverTip> MyHoverTips =>
+    [
+        HoverTipFactory.FromKeyword(MyEnums.Haunted),
+        HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon),
+        HoverTipFactory.FromKeyword(MyEnums.Bury)
+    ];
+    
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)

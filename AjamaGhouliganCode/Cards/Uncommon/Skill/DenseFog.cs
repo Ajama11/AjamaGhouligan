@@ -26,6 +26,7 @@ public class DenseFog() : AjamaGhouliganCard(1,
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
+        HoverTipFactory.FromPower<DoomPower>(),
         HoverTipFactory.FromPower<StrengthPower>()
     ];
 

@@ -30,14 +30,12 @@ public class Boo() : AjamaGhouliganCard(2,
         MyEnums.Unfortunate
     ];
 
-    public override HashSet<CardTag> MyCanonicalTags =>
-    [
-
-    ];
-
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
-
+        HoverTipFactory.FromPower<MisfortunePower>(),
+        HoverTipFactory.FromKeyword(MyEnums.Unfortunate),
+        HoverTipFactory.Static(MyEnums.BuryOther),
+        HoverTipFactory.FromKeyword(MyEnums.Haunted)
     ];
 
     protected override async Task OnPlay(

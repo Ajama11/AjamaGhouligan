@@ -23,7 +23,13 @@ public class ThumbWar() : AjamaGhouliganCard(1,
         new OstyDamageVar(2, ValueProp.Move),
         new RepeatVar(4),
         new PowerVar<GoofPower>(3),
-        new PowerVar<ThumbWarPower>(2)
+        new SummonVar(2)
+    ];
+    
+    public override IEnumerable<IHoverTip> MyHoverTips =>
+    [
+        HoverTipFactory.FromPower<GoofPower>(),
+        HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon)
     ];
 
     protected override async Task OnPlay(
@@ -45,11 +51,11 @@ public class ThumbWar() : AjamaGhouliganCard(1,
 
         await MyActions.Goof(choiceContext, this);
 
-        await CommonActions.Apply<ThumbWarPower>(choiceContext, play.Target, this);
+        await CommonActions.Apply<ThumbWarPower>(choiceContext, play.Target, this, DynamicVars.Summon.IntValue);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Power<ThumbWarPower>().UpgradeValueBy(1);
+        DynamicVars.Summon.UpgradeValueBy(1);
     }
 }

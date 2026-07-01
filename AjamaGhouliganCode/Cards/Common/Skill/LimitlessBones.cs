@@ -23,9 +23,17 @@ public class LimitlessBones() : AjamaGhouliganCard(3,
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        CardKeyword.Retain,
         MyEnums.Haunted,
+        CardKeyword.Retain,
         MyEnums.Bury
+    ];
+    
+    public override IEnumerable<IHoverTip> MyHoverTips =>
+    [
+        HoverTipFactory.FromKeyword(MyEnums.Haunted),
+        HoverTipFactory.FromKeyword(CardKeyword.Retain),
+        HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon),
+        HoverTipFactory.FromKeyword(MyEnums.Bury)
     ];
 
     protected override async Task OnPlay(

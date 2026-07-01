@@ -23,19 +23,10 @@ public class SafeKeeping() : AjamaGhouliganCard(1,
         new BuryVar(1)
     ];
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-
-    ];
-
-    public override HashSet<CardTag> MyCanonicalTags =>
-    [
-
-    ];
-
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
-
+        HoverTipFactory.Static(StaticHoverTip.Block),
+        HoverTipFactory.Static(MyEnums.BuryOther)
     ];
 
     protected override async Task OnPlay(

@@ -27,6 +27,13 @@ public class DubTheeSirBonesy() : AjamaGhouliganCard(1,
     [
         MyEnums.Haunted
     ];
+    
+    public override IEnumerable<IHoverTip> MyHoverTips =>
+    [
+        HoverTipFactory.FromKeyword(MyEnums.Haunted),
+        HoverTipFactory.FromPower<DoomPower>(),
+        HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon)
+    ];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
