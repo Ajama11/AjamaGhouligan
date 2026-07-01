@@ -61,7 +61,7 @@
   "AJAMAGHOULIGAN-BOO.title": "BOO!",
   "AJAMAGHOULIGAN-BOO.description": "#Deal !D! damage !Repeat! times.\n[gold]Bury[/gold] !Bury! random card(s) in your [gold]Draw Pile[/gold], prioritizing [gold]Haunted[/gold] ones.",
   "AJAMAGHOULIGAN-PIANO_DROP.title": "Piano Drop",
-  "AJAMAGHOULIGAN-PIANO_DROP.description": "#Deal !D! damage.\nApply !MisfortunePower! [gold]Misfortune[/gold].",
+  "AJAMAGHOULIGAN-PIANO_DROP.description": "#Deal !D! damage.\nApply !MisfortunePower! [gold]Misfortune[/gold].\nAdd !C! [gold]Dazed[/gold] into your [gold]Discard Pile[/gold].",
   "AJAMAGHOULIGAN-BUCKET_DOOR.title": "Bucket Door",
   "AJAMAGHOULIGAN-BUCKET_DOOR.description": "#Apply !DoomPower! [gold]Doom[/gold] to yourself.\nDeal !D! damage.\nAdd !Surprise! [gold]Surprise(s)[/gold] on top of your [gold]Draw Pile[/gold].",
   "AJAMAGHOULIGAN-THINK_FAST.title": "Think Fast",

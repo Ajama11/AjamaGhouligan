@@ -9,6 +9,8 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.ValueProps;
 
@@ -20,13 +22,14 @@ public class PianoDrop() : AjamaGhouliganCard(2,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(14, ValueProp.Move),
-        new PowerVar<MisfortunePower>(6)
+        new DamageVar(15, ValueProp.Move),
+        new PowerVar<MisfortunePower>(6),
+        new CardsVar(2)
     ]; 
     
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
-
+        HoverTipFactory.FromCard<Dazed>()
     ];
 
     protected override async Task OnPlay(
@@ -44,10 +47,13 @@ public class PianoDrop() : AjamaGhouliganCard(2,
             .Execute(choiceContext);
 
         await MyActions.Misfortune(choiceContext, CombatState!.HittableEnemies, this);
+
+        await MyActions.CreateCards(ModelDb.Card<Dazed>(), DynamicVars.Cards.IntValue, this, PileType.Discard);
     }
 
     protected override void OnUpgrade()
     {
+        DynamicVars.Damage.UpgradeValueBy(2);
         DynamicVars.Power<MisfortunePower>().UpgradeValueBy(1);
     }
 }
