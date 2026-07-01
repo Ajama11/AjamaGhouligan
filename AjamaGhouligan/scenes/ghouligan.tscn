@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c7hswx0s0jk15"]
+[gd_scene load_steps=24 format=3 uid="uid://c7hswx0s0jk15"]
 
 [ext_resource type="Texture2D" uid="uid://tbwyux4h4cvt" path="res://AjamaGhouligan/images/character/GhouliganIdle.png" id="1_qvepr"]
 
@@ -336,6 +336,61 @@ _data = {
 &"idle": SubResource("Animation_qvepr")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qvepr"]
+animation = &"attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5o0ew"]
+animation = &"cast"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t0xk1"]
+animation = &"die"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3l227"]
+animation = &"hurt"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lqf46"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5sw4e"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uklna"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_q0r6e"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lu8mf"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7lhb4"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8m652"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ad7d4"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vyl3y"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qvepr"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_m2h58"]
+states/Start/position = Vector2(192, 100)
+states/attack/node = SubResource("AnimationNodeAnimation_qvepr")
+states/attack/position = Vector2(516, 24)
+states/cast/node = SubResource("AnimationNodeAnimation_5o0ew")
+states/cast/position = Vector2(516, 139)
+states/die/node = SubResource("AnimationNodeAnimation_t0xk1")
+states/die/position = Vector2(383, 197)
+states/hurt/node = SubResource("AnimationNodeAnimation_3l227")
+states/hurt/position = Vector2(383, -19)
+states/idle/node = SubResource("AnimationNodeAnimation_lqf46")
+states/idle/position = Vector2(383, 100)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_5sw4e"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_uklna"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_q0r6e"), "idle", "cast", SubResource("AnimationNodeStateMachineTransition_lu8mf"), "cast", "idle", SubResource("AnimationNodeStateMachineTransition_7lhb4"), "idle", "hurt", SubResource("AnimationNodeStateMachineTransition_8m652"), "hurt", "idle", SubResource("AnimationNodeStateMachineTransition_ad7d4"), "idle", "die", SubResource("AnimationNodeStateMachineTransition_vyl3y"), "die", "idle", SubResource("AnimationNodeStateMachineTransition_qvepr")]
+graph_offset = Vector2(-149, -26)
+
 [node name="Ghouligan" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -379,3 +434,7 @@ libraries = {
 }
 next/RESET = &"idle"
 blend_times = [&"RESET", &"attack", 75.0, &"RESET", &"cast", 75.0, &"RESET", &"hurt", 75.0, &"RESET", &"idle", 75.0]
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_m2h58")
+anim_player = NodePath("../AnimationPlayer")
