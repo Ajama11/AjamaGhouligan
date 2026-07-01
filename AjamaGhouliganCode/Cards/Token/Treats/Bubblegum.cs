@@ -46,9 +46,7 @@ public class Bubblegum() : AjamaGhouliganCard(0,
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
-    {
-        await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        
+    { 
         await CommonActions.Apply<WeakPower>(choiceContext, this, play);
         
         await CommonActions.Apply<VulnerablePower>(choiceContext, this, play);

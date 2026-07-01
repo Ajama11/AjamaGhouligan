@@ -17,7 +17,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Uncommon.Skill;
 
-public class ShowGoesOn() : AjamaGhouliganCard(1,
+public class ShowGoesOn() : AjamaGhouliganCard(2,
     CardType.Skill, CardRarity.Uncommon,
     TargetType.Self)
 {

@@ -15,7 +15,7 @@ public class Jared() : AjamaGhouliganRelic
     
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new TreatVar(1)
+        new TreatVar(2)
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
@@ -29,6 +29,6 @@ public class Jared() : AjamaGhouliganRelic
         
         Flash();
         
-        await MyActions.CreateTreats(1, Owner, combatState);
+        await MyActions.CreateTreats(DynamicVars.Treat.IntValue, Owner, combatState);
     }
 }

@@ -27,7 +27,7 @@ public class CandiedHijinks() : AjamaGhouliganCard(1,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new SurpriseVar(2),
-        new TreatVar(2, true)
+        new TreatVar(3, true)
     ];
     
     public override IEnumerable<IHoverTip> MyHoverTips =>
@@ -56,6 +56,7 @@ public class CandiedHijinks() : AjamaGhouliganCard(1,
     protected override void OnUpgrade()
     {
         DynamicVars.Surprise.UpgradeValueBy(1);
+        DynamicVars.Treat.UpgradeValueBy(1);
     }
 
     protected override bool ShouldGlowGoldInternal => 

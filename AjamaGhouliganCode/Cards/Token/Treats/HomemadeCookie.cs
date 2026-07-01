@@ -40,8 +40,6 @@ public class HomemadeCookie() : AjamaGhouliganCard(0,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        
         await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);
 
         await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);

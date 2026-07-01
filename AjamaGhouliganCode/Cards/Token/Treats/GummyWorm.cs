@@ -24,7 +24,7 @@ public class GummyWorm() : AjamaGhouliganCard(0,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new PowerVar<GoofPower>(2),
-        new PowerVar<StrengthPower>(1)
+        new LoseDoomVar(4)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
@@ -37,21 +37,13 @@ public class GummyWorm() : AjamaGhouliganCard(0,
         MyEnums.Treat
     ];
 
-    public override IEnumerable<IHoverTip> MyHoverTips =>
-    [
-        HoverTipFactory.FromPower<GoofPower>(),
-        HoverTipFactory.FromPower<StrengthPower>()
-    ];
-
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        
         await MyActions.Goof(choiceContext, this);
-        
-        await CommonActions.ApplySelf<StrengthPower>(choiceContext, this);
+
+        await MyActions.LoseDoom(choiceContext, this);
     }
 
     protected override void OnUpgrade()

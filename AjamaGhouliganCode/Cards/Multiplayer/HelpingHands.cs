@@ -39,6 +39,7 @@ public class HelpingHands() : AjamaGhouliganCard(3,
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
+        HoverTipFactory.Static(MyEnums.BuryOther),
         HoverTipFactory.FromKeyword(MyEnums.Haunted),
         HoverTipFactory.FromKeyword(MyEnums.Bury),
         HoverTipFactory.FromCard<HelpingHand>()
@@ -48,6 +49,9 @@ public class HelpingHands() : AjamaGhouliganCard(3,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
+        NGame.Instance!.CurrentRunNode!.GlobalUi.AddChildSafely(NSmokyVignetteVfx.Create(new Color("4dccbba9"), new Color(0.0f, 1.5f, 4f, 0.33f))!);
+        NGame.Instance.CurrentRunNode.GlobalUi.AddChildSafely(NNightmareHandsVfx.Create()!);
+        
         foreach (Creature creature in CombatState!
                      .GetTeammatesOf(Owner.Creature)
                      .Where(c =>
@@ -62,9 +66,6 @@ public class HelpingHands() : AjamaGhouliganCard(3,
 
     public static async Task PlayerChooses(Player player, PlayerChoiceContext choiceContext, LocString selectionScreenPrompt, AbstractModel sourceModel)
     {
-        NGame.Instance!.CurrentRunNode!.GlobalUi.AddChildSafely(NSmokyVignetteVfx.Create(new Color("4dccbba9"), new Color(0.0f, 1.5f, 4f, 0.33f))!);
-        NGame.Instance.CurrentRunNode.GlobalUi.AddChildSafely(NNightmareHandsVfx.Create()!);
-        
         CardModel? card = (await CardSelectCmd.FromHand(choiceContext,
                 player, 
                 new CardSelectorPrefs(selectionScreenPrompt, 1), 
@@ -73,11 +74,9 @@ public class HelpingHands() : AjamaGhouliganCard(3,
             
         if (card == null) return;
 
-        CardModel clone = card.CreateClone();
+        MyActions.GainsHauntedAndBury(card, false);
 
-        MyActions.GainsHauntedAndBury(clone, false);
-            
-        CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(clone, SepulchrePile.PileType, player), 0.6F);
+        await MyActions.BurySpecific(card);
     }
 
     protected override void OnUpgrade()

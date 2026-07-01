@@ -21,24 +21,13 @@ public class SpectreStrike() : AjamaGhouliganCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(11, ValueProp.Move)
-    ];
-
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-        CardKeyword.Exhaust
+        new DamageVar(11, ValueProp.Move),
+        new HauntVar(2)
     ];
 
     public override HashSet<CardTag> MyCanonicalTags =>
     [
         CardTag.Strike
-    ];
-
-    public override IEnumerable<IHoverTip> MyHoverTips =>
-    [
-        HoverTipFactory.FromKeyword(CardKeyword.Ethereal),
-        HoverTipFactory.Static(MyEnums.Haunt),
-        HoverTipFactory.Static(MyEnums.BuryOther)
     ];
 
     protected override async Task OnPlay(
@@ -50,32 +39,17 @@ public class SpectreStrike() : AjamaGhouliganCard(1,
                 "vfx/vfx_attack_slash")
             .Execute(choiceContext);
 
-        CardModel? randomCard = MyActions.GetRandomCards(this, PileType.Draw,
-                c => 
-                    !c.Keywords.Contains(CardKeyword.Ethereal) && 
-                    !c.Keywords.Contains(CardKeyword.Retain))
-            .FirstOrDefault()
-            ??
-            MyActions.GetRandomCards(this, PileType.Draw,
-                c => 
-                    !c.Keywords.Contains(CardKeyword.Ethereal))
-            .FirstOrDefault();
+        MyActions.HauntRandomInPile(PileType.Discard, this);
 
-        randomCard?.AddKeyword(CardKeyword.Ethereal);
-
-        List<CardModel> etherealCards = Owner.PlayerCombatState!.AllCards
-            .Where(c => 
-                c.Keywords.Contains(CardKeyword.Ethereal) &&
-                c.Pile != null &&
-                c.Pile.Type != PileType.Exhaust &&
-                c.Pile.Type != PileType.Play)
+        List<CardModel> hauntedCardsInDiscard = CardPile.GetCards(Owner, PileType.Discard)
+            .Where(c => c.Keywords.Contains(MyEnums.Haunted))
             .ToList();
 
-        await MyActions.HauntAndBurySpecific(etherealCards);
+        await CardPileCmd.Add(hauntedCardsInDiscard, PileType.Draw, CardPilePosition.Top);
     }
 
     protected override void OnUpgrade()
     {
-        RemoveKeyword(CardKeyword.Exhaust);
+        DynamicVars.Haunt.UpgradeValueBy(1);
     }
 }

@@ -19,7 +19,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Rare.Attack;
 
-public class Feast() : AjamaGhouliganCard(1,
+public class CookieCrumble() : AjamaGhouliganCard(1,
     CardType.Attack, CardRarity.Rare,
     TargetType.AnyEnemy)
 {
@@ -27,13 +27,8 @@ public class Feast() : AjamaGhouliganCard(1,
     
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(8, ValueProp.Move),
+        new DamageVar(12, ValueProp.Move),
         new PowerVar<TastySoulPower>(3)
-    ];
-
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-        MyEnums.Unfortunate
     ];
     
     public override IEnumerable<IHoverTip> MyHoverTips =>

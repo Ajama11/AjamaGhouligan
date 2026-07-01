@@ -44,7 +44,7 @@
   "AJAMAGHOULIGAN-TOPSY_TURVY_POWER.description": "At the end of your turn, [gold]Bury[/gold] up to [blue]1[/blue] card in your [gold]Hand[/gold].",
   "AJAMAGHOULIGAN-TOPSY_TURVY_POWER.smartDescription": "#At the end of your turn, [gold]Bury[/gold] up to [blue]{Amount}[/blue] card(s) in your [gold]Hand[/gold].",
   "AJAMAGHOULIGAN-TASTY_SOUL_POWER.title": "Tasty Soul",
-  "AJAMAGHOULIGAN-TASTY_SOUL_POWER.description": "If this creature dies before the end of its turn, the applier gains Max HP, and the [gold]Feast[/gold] that applied this [gold]Exhausts[/gold].",
+  "AJAMAGHOULIGAN-TASTY_SOUL_POWER.description": "If this creature dies before the end of its turn, you gain Max HP, and the [gold]Feast[/gold] that applied this [gold]Exhausts[/gold].",
   "AJAMAGHOULIGAN-TASTY_SOUL_POWER.smartDescription": "If [gold]{OwnerName}[/gold] dies before the end of its turn, {ApplierName.StringValue:cond:[gold]{ApplierName}[/gold] gains|you gain} [blue]{Amount}[/blue] Max HP, and the [gold]{NumberOfFeasts:plural:Feast|Feasts}[/gold] that applied this [gold]{NumberOfFeasts:plural:Exhausts|Exhaust}[/gold].",
   "AJAMAGHOULIGAN-NEUROPURGE_POWER.title": "Neuropurge",
   "AJAMAGHOULIGAN-NEUROPURGE_POWER.description": "At the start of your turn, apply [blue]5[/blue] [gold]Doom[/gold] to yourself.",

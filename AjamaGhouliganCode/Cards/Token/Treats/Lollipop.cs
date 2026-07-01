@@ -45,8 +45,6 @@ public class Lollipop() : AjamaGhouliganCard(0,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-
         await PowerCmd.Apply<LollipopPower>(choiceContext, play.Target!,
             DynamicVars.Power<StrengthPower>().BaseValue,
             Owner.Creature, this);

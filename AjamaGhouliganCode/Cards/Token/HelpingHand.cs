@@ -31,6 +31,7 @@ public class HelpingHand() : AjamaGhouliganCard(0,
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
+        HoverTipFactory.Static(MyEnums.BuryOther),
         HoverTipFactory.FromKeyword(MyEnums.Haunted),
         HoverTipFactory.FromKeyword(MyEnums.Bury)
     ];

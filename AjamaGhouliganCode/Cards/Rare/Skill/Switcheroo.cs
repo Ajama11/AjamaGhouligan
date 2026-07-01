@@ -30,6 +30,9 @@ public class Switcheroo() : AjamaGhouliganCard(0,
         await CardPileCmd.Shuffle(choiceContext, Owner);
 
         await CardPileCmd.Add(snapshottedDrawPile, PileType.Discard, CardPilePosition.Random);
+
+        if (!(Keywords.Contains(CardKeyword.Exhaust) || ExhaustOnNextPlay))
+            await CardPileCmd.Add(this, PileType.Draw, CardPilePosition.Random);
     }
 
     protected override void OnUpgrade()
