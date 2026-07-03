@@ -42,7 +42,7 @@ public class HandOff() : AjamaGhouliganCard(1,
         if (!Osty.CheckMissingWithAnim(Owner))
         {
             await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue)
-                .FromOsty(Owner.Osty!, this)
+                .FromOsty(Owner.Osty!, this, play)
                 .TargetingAllOpponents(CombatState!)
                 .WithHitFx("vfx/vfx_attack_blunt", tmpSfx: "blunt_attack.mp3")
                 .Execute(choiceContext);

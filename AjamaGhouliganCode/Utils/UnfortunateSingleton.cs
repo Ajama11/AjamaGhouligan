@@ -1,5 +1,6 @@
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using BaseLib.Abstracts;
+using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -9,7 +10,7 @@ namespace AjamaGhouligan.AjamaGhouliganCode.Utils;
 public class UnfortunateSingleton() : CustomSingletonModel(HookType.Combat)
 {
     public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer,
-        CardModel? cardSource)
+        CardModel? cardSource, CardPlay? cardPlay)
     {
         if (cardSource == null) return 0;
         if (target == null) return 0;

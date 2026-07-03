@@ -41,7 +41,7 @@ public class ThumbWar() : AjamaGhouliganCard(1,
         if (!Osty.CheckMissingWithAnim(Owner))
         {
             await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue)
-                .FromOsty(Owner.Osty!, this)
+                .FromOsty(Owner.Osty!, this, play)
                 .Targeting(play.Target)
                 .WithHitCount(DynamicVars.Repeat.IntValue)
                 .WithAttackerAnim("attack_poke", 0.3f)

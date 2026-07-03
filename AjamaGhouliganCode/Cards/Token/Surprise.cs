@@ -50,7 +50,7 @@ public class Surprise() : AjamaGhouliganCard(0,
         SfxCmd.Play("event:/sfx/characters/attack_fire");
         
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this)
+            .FromCard(this, play)
             .TargetingAllOpponents(CombatState!)
             .WithHitFx("vfx/vfx_attack_blunt", tmpSfx: "heavy_attack.mp3")
             .Execute(choiceContext);

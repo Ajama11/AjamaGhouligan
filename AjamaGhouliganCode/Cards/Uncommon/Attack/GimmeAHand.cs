@@ -50,7 +50,7 @@ public class GimmeAHand() : AjamaGhouliganCard(1,
         if (!Osty.CheckMissingWithAnim(Owner) && play.Target != null)
         {
             await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue)
-                .FromOsty(Owner.Osty!, this)
+                .FromOsty(Owner.Osty!, this, play)
                 .Targeting(play.Target)
                 .WithHitFx("vfx/vfx_attack_blunt", tmpSfx: "blunt_attack.mp3")
                 .Execute(choiceContext);

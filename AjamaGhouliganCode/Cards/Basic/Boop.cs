@@ -36,7 +36,7 @@ public class Boop() : AjamaGhouliganCard(0,
         if (Osty.CheckMissingWithAnim(Owner)) return;
         
         await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue)
-            .FromOsty(Owner.Osty!, this)
+            .FromOsty(Owner.Osty!, this, play)
             .TargetingRandomOpponents(CombatState!)
             .WithAttackerAnim("attack_poke", 0.3f)
             .WithHitFx("vfx/vfx_attack_blunt", tmpSfx: "blunt_attack.mp3")

@@ -38,7 +38,7 @@ public class SpiritFire() : AjamaGhouliganCard(2,
         ArgumentNullException.ThrowIfNull(play.Target);
 
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this)
+            .FromCard(this, play)
             .Targeting(play.Target)
             .WithHitCount(DynamicVars.Repeat.IntValue)
             .WithHitVfxNode((Func<Creature, Node2D>) (t => NFireBurstVfx.Create(t, 0.75f)!))

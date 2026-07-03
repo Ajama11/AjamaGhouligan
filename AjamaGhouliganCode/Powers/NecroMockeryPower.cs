@@ -34,6 +34,6 @@ public class NecroMockeryPower : AjamaGhouliganPower
 
        await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), target,
            -delta * Amount + target.GetPowerAmount<MisfortunePower>(), 
-           ValueProp.Unpowered, Owner, null);
+           ValueProp.Unpowered, Owner, null, null);
     }
 }

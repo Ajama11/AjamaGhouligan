@@ -41,7 +41,7 @@ public class PaintedTunnel() : AjamaGhouliganCard(2,
             if (target == null) continue;
             
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .FromCard(this)
+                .FromCard(this, play)
                 .Targeting(target)
                 .WithHitFx("vfx/vfx_attack_blunt", null, "blunt_attack.mp3")
                 .Execute(choiceContext);

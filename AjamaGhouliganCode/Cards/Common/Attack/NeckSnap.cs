@@ -44,7 +44,7 @@ public class NeckSnap() : AjamaGhouliganCard(1,
         if (!Osty.CheckMissingWithAnim(Owner))
         {
             await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue)
-                .FromOsty(Owner.Osty!, this)
+                .FromOsty(Owner.Osty!, this, play)
                 .Targeting(play.Target)
                 .WithAttackerAnim("attack_poke", 0.3f)
                 .WithHitFx("vfx/vfx_attack_blunt", tmpSfx: "blunt_attack.mp3")
