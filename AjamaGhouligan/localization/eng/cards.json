@@ -67,7 +67,7 @@
   "AJAMAGHOULIGAN-THINK_FAST.title": "Think Fast",
   "AJAMAGHOULIGAN-THINK_FAST.description": "#Add {Surprise:plural:a [gold]Surprise[/gold]|{} [gold]Surprises[/gold]} on top of your [gold]Draw Pile[/gold].\nAdd {MoreSurprises:plural:a [gold]Surprise[/gold]|{} [gold]Surprises[/gold]} into your [gold]Draw Pile[/gold].\nDraw !C! card(s).",
   "AJAMAGHOULIGAN-THUMB_WAR.title": "Thumb War",
-  "AJAMAGHOULIGAN-THUMB_WAR.description": "#[gold]Osty[/gold] deals !OstyDamage! damage !Repeat! times.\nGain !GoofPower! [gold]Goof[/gold].\nWhenever you or [gold]Osty[/gold] hit this enemy this turn, [gold]Summon[/gold] !ThumbWarPower!.",
+  "AJAMAGHOULIGAN-THUMB_WAR.description": "#[gold]Osty[/gold] deals !OstyDamage! damage !Repeat! times.\nGain !GoofPower! [gold]Goof[/gold].\nWhenever you or [gold]Osty[/gold] hit this enemy this turn, [gold]Summon[/gold] !Summon!.",
   "AJAMAGHOULIGAN-PAINTED_TUNNEL.title": "Painted Tunnel",
   "AJAMAGHOULIGAN-PAINTED_TUNNEL.description": "#Deal !D! damage !Repeat! times to a random enemy.\nWith each hit, apply !MisfortunePower! [gold]Misfortune[/gold].",
   "AJAMAGHOULIGAN-ZOMBIE_BUDDY.title": "Zombie Buddy",
