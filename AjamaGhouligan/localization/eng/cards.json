@@ -230,5 +230,11 @@
   "AJAMAGHOULIGAN-CANDIED_HIJINKS.description": "#{TreatPlayed:|[color=DIM_GRAY]}If you played a {TreatPlayed:[gold]|}Treat{TreatPlayed:[/gold]|} this turn, add !Surprise! {TreatPlayed:[gold]|}{Surprise:plural:Surprise|Surprises}{TreatPlayed:[/gold]|} into your {TreatPlayed:[gold]|}Draw Pile{TreatPlayed:[/gold]|}.{TreatPlayed:|[/color]}\n{SurprisePlayed:|[color=DIM_GRAY]}If you played a {SurprisePlayed:[gold]|}Surprise{SurprisePlayed:[/gold]|} this turn, add !Treat! random {SurprisePlayed:[gold]|}{Treat:plural:Treat|Treats}{SurprisePlayed:[/gold]|} into your {SurprisePlayed:[gold]|}Hand{SurprisePlayed:[/gold]|}.{SurprisePlayed:|[/color]}",
   "AJAMAGHOULIGAN-CANDIED_HIJINKS.description_backup_because_the_plugin_keeps_deleting_it": "#{TreatPlayed:|[color=DIM_GRAY]}If you played a {TreatPlayed:[gold]|}Treat{TreatPlayed:[/gold]|} this turn, add !Surprise! {TreatPlayed:[gold]|}{Surprise:plural:Surprise|Surprises}{TreatPlayed:[/gold]|} into your {TreatPlayed:[gold]|}Draw Pile{TreatPlayed:[/gold]|}.{TreatPlayed:|[/color]}\n{SurprisePlayed:|[color=DIM_GRAY]}If you played a {SurprisePlayed:[gold]|}Surprise{SurprisePlayed:[/gold]|} this turn, add !Treat! random {SurprisePlayed:[gold]|}{Treat:plural:Treat|Treats}{SurprisePlayed:[/gold]|} into your {SurprisePlayed:[gold]|}Hand{SurprisePlayed:[/gold]|}.{SurprisePlayed:|[/color]}",
   "AJAMAGHOULIGAN-FOOL_YOU_TWICE.title": "Fool You Twice",
-  "AJAMAGHOULIGAN-FOOL_YOU_TWICE.description": "#Put ALL [gold]Surprises[/gold] into your [gold]Draw Pile[/gold] from anywhere{IfUpgraded:show: and [gold]Upgrade[/gold] them|}."
+  "AJAMAGHOULIGAN-FOOL_YOU_TWICE.description": "#Put ALL [gold]Surprises[/gold] into your [gold]Draw Pile[/gold] from anywhere{IfUpgraded:show: and [gold]Upgrade[/gold] them|}.",
+  "AJAMAGHOULIGAN-NEED_A_HAND.title": "Need a Hand?",
+  "AJAMAGHOULIGAN-NEED_A_HAND.description": "#Choose another player. They [gold]Summon[/gold] an amount equal to your [gold]Osty's[/gold] current HP.",
+  "AJAMAGHOULIGAN-DOUBLE_TROUBLE.title": "Double Trouble",
+  "AJAMAGHOULIGAN-DOUBLE_TROUBLE.description": "#Choose another player. They [gold]Bury[/gold] a copy of ALL cards in your [gold]Sepulchre Pile[/gold].",
+  "AJAMAGHOULIGAN-YUCKY_BE_GONE.title": "Yucky Be Gone",
+  "AJAMAGHOULIGAN-YUCKY_BE_GONE.description": "#ALL allies [gold]Transform[/gold] ALL Status and Curse cards into [gold]Surprises[/gold].\nAdd !SurpriseAmountExtra! [gold]Surprise(s)[/gold] into your [gold]Draw Pile[/gold] for every card [gold]Transformed[/gold].{InCombat:\n(Add !SurpriseAmount! [gold]Surprise(s)[/gold].)|}"
 }
