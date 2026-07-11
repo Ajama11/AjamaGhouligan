@@ -21,6 +21,7 @@ public class JesterPower : AjamaGhouliganPower
     {
         if (power.Owner != Owner) return;
         if (power is not GoofPower) return;
+        if (amount <= 0) return;
         
         Flash();
 
