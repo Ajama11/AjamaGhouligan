@@ -264,7 +264,7 @@ public class MyActions
         return await CreateCards(canonicalCard, amount, sourceCard.Owner, sourceCard.CombatState!, pile, position);
     }
     
-    public static async Task<IEnumerable<CardModel>> CreateCards(CardModel canonicalCard, int amount, Player owner, ICombatState combatState, PileType pile = PileType.Hand, CardPilePosition position = CardPilePosition.Bottom, bool preview = true, float previewTime = 1.2f)
+    public static async Task<IEnumerable<CardModel>> CreateCards(CardModel canonicalCard, int amount, Player owner, ICombatState combatState, PileType pile = PileType.Hand, CardPilePosition position = CardPilePosition.Bottom, bool preview = true, float previewTime = 1.2f, Func<List<CardModel>, List<CardModel>>? modifyCardsBeforePreview = null)
     {
         if (amount == 0 || CombatManager.Instance.IsOverOrEnding)
         {
@@ -276,6 +276,11 @@ public class MyActions
         for (int i = 0; i < amount; i++)
         {
             cards.Add(combatState.CreateCard(canonicalCard, owner));
+        }
+
+        if (modifyCardsBeforePreview != null)
+        {
+            cards = modifyCardsBeforePreview(cards);
         }
 
         IReadOnlyList<CardPileAddResult> results = await CardPileCmd.AddGeneratedCardsToCombat(cards, pile, owner, position);

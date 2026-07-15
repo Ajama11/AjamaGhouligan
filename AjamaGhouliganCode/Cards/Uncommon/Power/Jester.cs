@@ -1,4 +1,5 @@
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
+using AjamaGhouligan.AjamaGhouliganCode.Cards.Basic;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
@@ -14,7 +15,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Uncommon.Power;
 
-public class Jester() : AjamaGhouliganCard(1,
+public class Jester() : AjamaGhouliganCard(0,
     CardType.Power, CardRarity.Uncommon,
     TargetType.Self)
 {
@@ -26,7 +27,8 @@ public class Jester() : AjamaGhouliganCard(1,
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
         HoverTipFactory.FromPower<GoofPower>(),
-        HoverTipFactory.FromKeyword(MyEnums.Bury)
+        HoverTipFactory.FromKeyword(MyEnums.Bury),
+        HoverTipFactory.FromCard<Strike>(true)
     ];
 
     protected override async Task OnPlay(
@@ -38,6 +40,6 @@ public class Jester() : AjamaGhouliganCard(1,
 
     protected override void OnUpgrade()
     {
-        AddKeyword(MyEnums.Haunted);
+        DynamicVars.Power<JesterPower>().UpgradeValueBy(1);
     }
 }

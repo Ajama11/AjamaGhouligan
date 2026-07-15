@@ -22,32 +22,15 @@ public class MimicBindy() : AjamaGhouliganCard(1,
     CardType.Skill, CardRarity.Uncommon,
     TargetType.Self)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars =>
-    [
-        new PowerVar<DoomPower>(3)
-    ];
-
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-
-    ];
-
-    public override HashSet<CardTag> MyCanonicalTags =>
-    [
-
-    ];
-
-    public override IEnumerable<IHoverTip> MyHoverTips =>
-    [
-
+        CardKeyword.Exhaust
     ];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await MyActions.SelfDoom(choiceContext, this);
-
         List<CardModel> list = CardFactory.GetDistinctForCombat(Owner,
             ModelDb.CardPool<NecrobinderCardPool>()
                 .GetUnlockedCards(Owner.UnlockState, Owner.RunState.CardMultiplayerConstraint)
@@ -57,12 +40,9 @@ public class MimicBindy() : AjamaGhouliganCard(1,
         CardModel? card = await CardSelectCmd.FromChooseACardScreen(choiceContext, list, Owner, true);
         if (card == null) return;
         
+        if (IsUpgraded) CardCmd.Upgrade(card);
         card.SetToFreeThisTurn();
+        
         await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, Owner);
-    }
-
-    protected override void OnUpgrade()
-    {
-        DynamicVars.Power<DoomPower>().UpgradeValueBy(-1);
     }
 }
