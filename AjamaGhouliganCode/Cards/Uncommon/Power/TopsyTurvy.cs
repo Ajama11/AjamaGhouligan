@@ -32,7 +32,7 @@ public class TopsyTurvy() : AjamaGhouliganCard(1,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
+        await CreatureCmd.TriggerAnim(Owner.Creature, "PowerUp", Owner.Character.PowerUpAnimDelay);
 
         await CommonActions.ApplySelf<TopsyTurvyPower>(choiceContext, this);
     }

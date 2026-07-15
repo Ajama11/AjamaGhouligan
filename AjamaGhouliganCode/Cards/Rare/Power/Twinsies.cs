@@ -32,7 +32,7 @@ public class Twinsies() : AjamaGhouliganCard(2,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
+        await CreatureCmd.TriggerAnim(Owner.Creature, "PowerUp", Owner.Character.PowerUpAnimDelay);
 
         await CommonActions.ApplySelf<TwinsiesPower>(choiceContext, this);
     }

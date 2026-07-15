@@ -100,6 +100,8 @@ public class Ghouligan : PlaceholderCharacterModel
         "res://AjamaGhouligan/audio/laugh.ogg";
     public override string CustomDeathSfx  => 
         "res://AjamaGhouligan/audio/death.ogg";
+    public string CustomPowerUpSfx => 
+        "res://AjamaGhouligan/audio/delayed_laugh.ogg";
 
     public override string CustomCharacterSelectBg =>
         "res://AjamaGhouligan/scenes/character_select.tscn";

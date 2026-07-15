@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c7hswx0s0jk15"]
+[gd_scene load_steps=28 format=3 uid="uid://c7hswx0s0jk15"]
 
 [ext_resource type="Texture2D" uid="uid://tbwyux4h4cvt" path="res://AjamaGhouligan/images/character/GhouliganIdle.png" id="1_qvepr"]
 
@@ -326,6 +326,58 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(0, -8), Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_uklna"]
+resource_name = "powerup"
+length = 1.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:skew")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.16666667, 0.3666667, 0.4666667, 0.5666667, 0.6666667, 0.93333334, 1.1666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.17453292519943295, 0.0, -0.19024088846738202, -0.027925268031909423, -0.08377580409572802, 0.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite2D:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.03333334, 0.16666667, 0.26666668, 0.3666667, 0.4666667, 0.5666666, 0.6666666, 0.76666665, 1.1666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1.3195077, 1),
+"update": 0,
+"values": [0.0, 0.10821041362364824, 0.21642082724729647, -0.9738937226128361, -0.43284165449459394, -0.5410520681182421, -0.3665191429188092, -0.5410520681182421, -0.5410520681182421, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/Sprite2D:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.26666668, 0.4333333, 1, 1.0333333, 1.1666666),
+"transitions": PackedFloat32Array(1, 0.7071073, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.9, 0.9), Vector2(0.66, 0.66), Vector2(0.93, 0.93), Vector2(0.9, 0.9), Vector2(0.9, 0.9), Vector2(0.9, 0.85), Vector2(0.9, 0.9)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Visuals/Sprite2D:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.16666669, 0.23333333, 0.36666667, 1.0333333),
+"transitions": PackedFloat32Array(1, 1, 1, 2.2191396, 1),
+"update": 0,
+"values": [Vector2(0, -162), Vector2(0, -162), Vector2(0, -197.715), Vector2(0, -197.715), Vector2(0, -162)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t0xk1"]
 _data = {
 &"RESET": SubResource("Animation_5o0ew"),
@@ -333,7 +385,8 @@ _data = {
 &"cast": SubResource("Animation_lqf46"),
 &"die": SubResource("Animation_5sw4e"),
 &"hurt": SubResource("Animation_t0xk1"),
-&"idle": SubResource("Animation_qvepr")
+&"idle": SubResource("Animation_qvepr"),
+&"powerup": SubResource("Animation_uklna")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qvepr"]
@@ -350,6 +403,9 @@ animation = &"hurt"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lqf46"]
 animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5sw4e"]
+animation = &"powerup"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5sw4e"]
 advance_mode = 2
@@ -376,20 +432,28 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qvepr"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jr88a"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m2h58"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_m2h58"]
 states/Start/position = Vector2(192, 100)
 states/attack/node = SubResource("AnimationNodeAnimation_qvepr")
 states/attack/position = Vector2(516, 24)
 states/cast/node = SubResource("AnimationNodeAnimation_5o0ew")
-states/cast/position = Vector2(516, 139)
+states/cast/position = Vector2(567, 100)
 states/die/node = SubResource("AnimationNodeAnimation_t0xk1")
 states/die/position = Vector2(383, 197)
 states/hurt/node = SubResource("AnimationNodeAnimation_3l227")
 states/hurt/position = Vector2(383, -19)
 states/idle/node = SubResource("AnimationNodeAnimation_lqf46")
 states/idle/position = Vector2(383, 100)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_5sw4e"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_uklna"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_q0r6e"), "idle", "cast", SubResource("AnimationNodeStateMachineTransition_lu8mf"), "cast", "idle", SubResource("AnimationNodeStateMachineTransition_7lhb4"), "idle", "hurt", SubResource("AnimationNodeStateMachineTransition_8m652"), "hurt", "idle", SubResource("AnimationNodeStateMachineTransition_ad7d4"), "idle", "die", SubResource("AnimationNodeStateMachineTransition_vyl3y"), "die", "idle", SubResource("AnimationNodeStateMachineTransition_qvepr")]
-graph_offset = Vector2(-149, -26)
+states/powerup/node = SubResource("AnimationNodeAnimation_5sw4e")
+states/powerup/position = Vector2(516, 176)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_5sw4e"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_uklna"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_q0r6e"), "idle", "cast", SubResource("AnimationNodeStateMachineTransition_lu8mf"), "cast", "idle", SubResource("AnimationNodeStateMachineTransition_7lhb4"), "idle", "hurt", SubResource("AnimationNodeStateMachineTransition_8m652"), "hurt", "idle", SubResource("AnimationNodeStateMachineTransition_ad7d4"), "idle", "die", SubResource("AnimationNodeStateMachineTransition_vyl3y"), "die", "idle", SubResource("AnimationNodeStateMachineTransition_qvepr"), "idle", "powerup", SubResource("AnimationNodeStateMachineTransition_jr88a"), "powerup", "idle", SubResource("AnimationNodeStateMachineTransition_m2h58")]
+graph_offset = Vector2(-136, -40)
 
 [node name="Ghouligan" type="Control"]
 layout_mode = 3

@@ -35,6 +35,8 @@ public class Jester() : AjamaGhouliganCard(0,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
+        await CreatureCmd.TriggerAnim(Owner.Creature, "PowerUp", Owner.Character.PowerUpAnimDelay);
+        
         await CommonActions.ApplySelf<JesterPower>(choiceContext, this);
     }
 
