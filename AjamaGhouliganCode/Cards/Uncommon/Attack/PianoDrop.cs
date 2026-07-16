@@ -22,7 +22,7 @@ public class PianoDrop() : AjamaGhouliganCard(2,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(15, ValueProp.Move),
+        new DamageVar(16, ValueProp.Move),
         new PowerVar<MisfortunePower>(6),
         new CardsVar(2)
     ]; 
@@ -53,7 +53,7 @@ public class PianoDrop() : AjamaGhouliganCard(2,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(2);
+        DynamicVars.Damage.UpgradeValueBy(4);
         DynamicVars.Power<MisfortunePower>().UpgradeValueBy(1);
     }
 }

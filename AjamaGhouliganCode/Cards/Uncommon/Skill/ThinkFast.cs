@@ -8,14 +8,16 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Uncommon.Skill;
 
-public class ThinkFast() : AjamaGhouliganCard(0,
+public class ThinkFast() : AjamaGhouliganCard(1,
     CardType.Skill, CardRarity.Uncommon,
     TargetType.Self)
 {
+    private const string MoreSurprises = "MoreSurprises";
+    
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new SurpriseVar(1),
-        new ("MoreSurprises", 2),
+        new SurpriseVar(2),
+        new (MoreSurprises, 2),
         new CardsVar(1)
     ];
 
@@ -29,9 +31,9 @@ public class ThinkFast() : AjamaGhouliganCard(0,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await MyActions.CreateSurprises(this, PileType.Draw, CardPilePosition.Top, -1, true, 0.0f);
+        await MyActions.CreateSurprises(this, PileType.Draw, CardPilePosition.Top, previewTime: 0.0f);
         
-        await MyActions.CreateSurprises(this, PileType.Draw, CardPilePosition.Random, DynamicVars["MoreSurprises"].IntValue, true, 0.0f);
+        await MyActions.CreateSurprises(this, PileType.Draw, CardPilePosition.Random, DynamicVars[MoreSurprises].IntValue, previewTime: 0.0f);
 
         await Cmd.Wait(0.75f);
 
@@ -40,6 +42,6 @@ public class ThinkFast() : AjamaGhouliganCard(0,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Surprise.UpgradeValueBy(1);
+        DynamicVars[MoreSurprises].UpgradeValueBy(1);
     }
 }

@@ -1,5 +1,3 @@
-using AjamaGhouligan.AjamaGhouliganCode.Cards;
-using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using BaseLib.Extensions;
@@ -9,18 +7,16 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models.Monsters;
-using MegaCrit.Sts2.Core.ValueProps;
 
-namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Uncommon.Power;
+namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Rare.Power;
 
 public class TopsyTurvy() : AjamaGhouliganCard(1,
-    CardType.Power, CardRarity.Uncommon,
+    CardType.Power, CardRarity.Rare,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<TopsyTurvyPower>(1)
+        new PowerVar<TopsyTurvyPower>(2)
     ];
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
