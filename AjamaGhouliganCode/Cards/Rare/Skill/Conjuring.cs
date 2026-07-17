@@ -32,27 +32,6 @@ public class Conjuring() : AjamaGhouliganCard(0,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        // CardModel? card = await CommonActions.SelectSingleCard(
-        //     this, SelectionScreenPrompt, choiceContext, SepulchrePile.PileType);
-        //
-        // if (card == null) return;
-        //
-        // int xValue = ResolveEnergyXValue();
-        //
-        // if (IsUpgraded) ++xValue;
-        //
-        // for (int i = 0; i < xValue; ++i)
-        // {
-        //     CardModel cardToPlay = card.Type == CardType.Power && i < xValue - 1 ?
-        //         card.CreateDupe() : card;
-        //
-        //     await CardCmd.AutoPlay(choiceContext, cardToPlay, null);
-        // }
-        //
-        // if (xValue > 1)
-        // {
-        //     await CardCmd.Exhaust(choiceContext, this);
-        // }
         int xValue = ResolveEnergyXValue();
         if (IsUpgraded) ++xValue;
         if (xValue == 0) return;
@@ -65,7 +44,7 @@ public class Conjuring() : AjamaGhouliganCard(0,
 
         foreach (CardModel card in cards)
         {
-            await CardCmd.AutoPlay(choiceContext, card.CreateDupe(), null);
+            await CardCmd.AutoPlay(choiceContext, card.CreateDupe(Owner), null);
         }
         
         if (cards.Count > 0)

@@ -1,20 +1,12 @@
-using AjamaGhouligan.AjamaGhouliganCode.Cards;
-using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
-using AjamaGhouligan.AjamaGhouliganCode.Utils;
-using BaseLib.Extensions;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Combat;
-using MegaCrit.Sts2.Core.Combat.History.Entries;
 using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Commands.Builders;
 using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Rare.Attack;
@@ -28,23 +20,26 @@ public class CookieCrumble() : AjamaGhouliganCard(1,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(12, ValueProp.Move),
-        new PowerVar<TastySoulPower>(3)
+        new MaxHpVar(3)
+    ];
+    
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        CardKeyword.Exhaust
     ];
     
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
-        HoverTipFactory.FromKeyword(CardKeyword.Exhaust),
-        HoverTipFactory.FromPower<TastySoulPower>()
+        HoverTipFactory.FromKeyword(CardKeyword.Exhaust)
     ];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        if (!HasBeenPlayedThisTurn && 
-            play.Target!.Powers.All(p => p.ShouldOwnerDeathTriggerFatal()))
+        if (!HasBeenPlayedThisTurn)
         {
-            await CommonActions.Apply<TastySoulPower>(choiceContext, this, play);
+            await CreatureCmd.GainMaxHp(Owner.Creature, DynamicVars.MaxHp.BaseValue);
         }
         
         await CommonActions.CardAttack(this, play,
@@ -72,6 +67,6 @@ public class CookieCrumble() : AjamaGhouliganCard(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Power<TastySoulPower>().UpgradeValueBy(1);
+        DynamicVars.Damage.UpgradeValueBy(3);
     }
 }
