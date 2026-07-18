@@ -20,23 +20,18 @@ namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Multiplayer;
 
 public class YuckyBeGone() : AjamaGhouliganCard(1,
     CardType.Skill, CardRarity.Uncommon,
-    TargetType.AllAllies)
+    TargetType.AnyAlly)
 {
     public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
 
-    private const string SurpriseAmount = "SurpriseAmount";
+    private const string TransformAmount = "TransformAmount";
     
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        ..MakeCalculatedVar(SurpriseAmount, 0,
-            static (card, _) =>
-            {
-                return card.CombatState!.GetTeammatesOf(card.Owner.Creature)
-                    .Where(c => 
-                        c is { IsAlive: true, IsPlayer: true } && 
-                        c != card.Owner.Creature)
-                    .Sum(creature => GetStatusAndCurseCards(creature.Player!).Count);
-            })
+        new PowerVar<MisfortunePower>(6),
+        ..MakeCalculatedVar(TransformAmount, 0,
+            static (card, target) =>
+                target == null ? 0 : GetStatusAndCurseCards(target.Player!).Count)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
@@ -54,19 +49,13 @@ public class YuckyBeGone() : AjamaGhouliganCard(1,
         CardPlay play)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        
-        foreach (Creature creature in CombatState!
-                     .GetTeammatesOf(Owner.Creature)
-                     .Where(c =>
-                         c is { IsAlive: true, IsPlayer: true } &&
-                         c != Owner.Creature))
+
+        foreach (CardModel card in GetStatusAndCurseCards(play.Target!.Player!))
         {
-            foreach (CardModel card in GetStatusAndCurseCards(creature.Player!))
-            {
-                await CardCmd.TransformTo<Surprise>(card);
-                await MyActions.CreateSurprises(DynamicVars[SurpriseAmount + "Extra"].IntValue, Owner, CombatState);
-            }
+            await CardCmd.TransformTo<Surprise>(card);
         }
+
+        await MyActions.Misfortune(choiceContext, CombatState!.HittableEnemies, this);
     }
 
     private static List<CardModel> GetStatusAndCurseCards(Player player)
@@ -82,6 +71,6 @@ public class YuckyBeGone() : AjamaGhouliganCard(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars[SurpriseAmount + "Extra"].UpgradeValueBy(1);
+        DynamicVars.Power<MisfortunePower>().UpgradeValueBy(3);
     }
 }

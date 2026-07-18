@@ -28,12 +28,13 @@ public class Surprise() : AjamaGhouliganCard(0,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(8, ValueProp.Move),
+        new DamageVar(6, ValueProp.Move),
         new CardsVar(1)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
+        MyEnums.Unfortunate,
         CardKeyword.Exhaust
     ];
 

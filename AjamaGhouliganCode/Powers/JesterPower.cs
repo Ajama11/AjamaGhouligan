@@ -10,6 +10,7 @@ using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Nodes.CommonUi;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Powers;
 
@@ -39,6 +40,7 @@ public class JesterPower : AjamaGhouliganPower
         await MyActions.CreateCards(ModelDb.Card<Strike>(),
             Amount, player, Owner.CombatState!, SepulchrePile.PileType, modifyCardsBeforePreview: list =>
             {
+                CardCmd.Upgrade(list, CardPreviewStyle.None);
                 MyActions.GainsBury(list, false);
                 return list;
             });

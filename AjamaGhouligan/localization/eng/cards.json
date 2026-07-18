@@ -170,7 +170,7 @@
   "AJAMAGHOULIGAN-ASHES_TO_ASHES.title": "Ashes to Ashes",
   "AJAMAGHOULIGAN-ASHES_TO_ASHES.description": "#Add [gold]Ethereal[/gold] to !C! random card(s) in your [gold]Draw Pile[/gold] or [gold]Discard Pile[/gold].\nLose !LoseDoom! [gold]Doom[/gold].",
   "AJAMAGHOULIGAN-EEK.title": "EEK!",
-  "AJAMAGHOULIGAN-EEK.description": "#Deal !D! damage to ALL enemies who intend to attack.\nApply !DebilitatePower! [gold]Debilitate[/gold] to those enemies.\nWhen this card is [gold]Buried[/gold], play it immediately.",
+  "AJAMAGHOULIGAN-EEK.description": "#Deal !D! damage to ALL enemies who intend to attack.\nApply !DebilitatePower! [gold]Debilitate[/gold] to those enemies.\nWhen [gold]Buried[/gold], plays immediately.",
   "AJAMAGHOULIGAN-ALL_HALLOWS_EVE.title": "All Hallows' Eve",
   "AJAMAGHOULIGAN-ALL_HALLOWS_EVE.description": "#[gold]Bury[/gold] ALL [gold]Haunted[/gold] cards in your [gold]Draw Pile[/gold].",
   "AJAMAGHOULIGAN-TOMBSTONE.title": "Tombstone",
@@ -196,7 +196,7 @@
   "AJAMAGHOULIGAN-OSSIFICATION.title": "Ossification",
   "AJAMAGHOULIGAN-OSSIFICATION.description": "#[gold]Osty[/gold] deals !CD! damage.\nDeals an additional !ExtraDamage! damage for every time he has hit an enemy this combat.",
   "AJAMAGHOULIGAN-SURPRISE.title": "Surprise",
-  "AJAMAGHOULIGAN-SURPRISE.description": "#Deal !D! damage to ALL enemies.\nDraw !C! card(s).\nWhenever you draw this card, immediately play it.",
+  "AJAMAGHOULIGAN-SURPRISE.description": "#Deal !D! damage to ALL enemies.\nDraw !C! card(s).\nWhen drawn, plays immediately.",
   "AJAMAGHOULIGAN-MILK_CHOCOLATE.title": "Milk Chocolate",
   "AJAMAGHOULIGAN-MILK_CHOCOLATE.description": "#Gain !B! [gold]Block[/gold].\n[gold]Summon[/gold] !Summon!.",
   "AJAMAGHOULIGAN-GUMMY_WORM.title": "Gummy Worm",
@@ -236,5 +236,5 @@
   "AJAMAGHOULIGAN-DOUBLE_TROUBLE.title": "Double Trouble",
   "AJAMAGHOULIGAN-DOUBLE_TROUBLE.description": "#Choose another player. They [gold]Bury[/gold] a copy of ALL cards in your [gold]Sepulchre Pile[/gold].",
   "AJAMAGHOULIGAN-YUCKY_BE_GONE.title": "Yucky Be Gone",
-  "AJAMAGHOULIGAN-YUCKY_BE_GONE.description": "#ALL allies [gold]Transform[/gold] ALL Status and Curse cards into [gold]Surprises[/gold].\nAdd !SurpriseAmountExtra! [gold]Surprise(s)[/gold] into your [gold]Draw Pile[/gold] for every card [gold]Transformed[/gold].{InCombat:\n(Add !SurpriseAmount! [gold]Surprise(s)[/gold].)|}"
+  "AJAMAGHOULIGAN-YUCKY_BE_GONE.description": "#Another player [gold]Transforms[/gold] ALL Status and Curse cards into [gold]Surprises[/gold].\nApply !MisfortunePower! [gold]Misfortune[/gold] to ALL enemies.{InCombat:\n(Transform !TransformAmount! cards.)|}"
 }
