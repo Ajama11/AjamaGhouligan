@@ -3,7 +3,7 @@
   "name": "Ghouligan",
   "author": "Ajama",
   "description": "Adds a new character with a lot of focus on automatically playing cards.\n\nSome icons from Lorc at game-icons.net.\nCycling card previews from lovec_minecraftu.",
-  "version": "v0.3.1",
+  "version": "v0.3.2",
   "has_pck": true,
   "has_dll": true,
   "min_game_version": "0.109.0",
