@@ -19,7 +19,7 @@ public class StolenPhylactery : AjamaGhouliganRelic
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new SummonVar(13),
+        new SummonVar(6),
         new LoseDoomVar(1)
     ];
 
