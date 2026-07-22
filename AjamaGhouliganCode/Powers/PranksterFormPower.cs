@@ -2,6 +2,7 @@ using AjamaGhouligan.AjamaGhouliganCode.Cards.Token;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
@@ -16,10 +17,19 @@ public class PranksterFormPower : AjamaGhouliganPower
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromPower<GoofPower>(),
-        HoverTipFactory.FromPower<MisfortunePower>()
+        HoverTipFactory.FromPower<MisfortunePower>(),
+        HoverTipFactory.FromPower<GoofPower>()
     ];
-    
+
+    public override Task BeforeCardPlayed(CardPlay cardPlay)
+    {
+        if (cardPlay.Card.Owner.Creature != Owner) return Task.CompletedTask;
+        
+        GetInternalData<Data>().AmountsForPlayedCards.Add(cardPlay.Card, Amount);
+        
+        return Task.CompletedTask;
+    }
+
     // I'm not using this hook for the main effect because I want the effects to apply after the card's been played and not before, since Goof hitting 10 causes a delay as it gives energy and card draw. And Surprise can be drawn and autoplayed when that happens, which would delay the actual card play even further.
     public override async Task AfterEnergySpent(CardModel card, int amount)
     {
@@ -37,22 +47,37 @@ public class PranksterFormPower : AjamaGhouliganPower
     {
         if (cardPlay.Card.Owner.Creature != Owner) return;
         if (cardPlay.Resources.EnergySpent <= 0) return;
+        
+        Data data = GetInternalData<Data>();
 
-        await ApplyPowers(choiceContext, cardPlay.Resources.EnergySpent);
+        if (!data.AmountsForPlayedCards.Remove(cardPlay.Card, out var storedAmount) || storedAmount <= 0)
+            return;
+
+        await ApplyPowers(choiceContext, cardPlay.Resources.EnergySpent, storedAmount);
     }
 
-    private async Task ApplyPowers(PlayerChoiceContext choiceContext, int energySpent)
+    private async Task ApplyPowers(PlayerChoiceContext choiceContext, int energySpent, int powerAmountOverride = -1)
     {
+        int amount = powerAmountOverride == -1 ? Amount : powerAmountOverride;
+        
         Flash();
         
         await PowerCmd.Apply<MisfortunePower>(choiceContext,
             CombatState.HittableEnemies, 
-            Amount * energySpent,
+            amount * energySpent,
             Owner, null);
             
         await PowerCmd.Apply<GoofPower>(choiceContext, 
             Owner, 
-            Amount * energySpent, 
+            amount * energySpent, 
             Owner, null);
+    }
+
+    protected override object InitInternalData() => new Data();
+    
+    public class Data
+    {
+        // Handle the initial application and subsequent card plays of the same Power the same way Afterimage does
+        public readonly Dictionary<CardModel, int> AmountsForPlayedCards = [];
     }
 }

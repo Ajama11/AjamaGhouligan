@@ -25,8 +25,8 @@ public class PranksterForm() : AjamaGhouliganCard(1,
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
-        HoverTipFactory.FromPower<GoofPower>(),
-        HoverTipFactory.FromPower<MisfortunePower>()
+        HoverTipFactory.FromPower<MisfortunePower>(),
+        HoverTipFactory.FromPower<GoofPower>()
     ];
 
     protected override async Task OnPlay(
