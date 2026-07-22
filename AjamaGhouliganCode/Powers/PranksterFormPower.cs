@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Models;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Powers;
 
@@ -18,30 +19,40 @@ public class PranksterFormPower : AjamaGhouliganPower
         HoverTipFactory.FromPower<GoofPower>(),
         HoverTipFactory.FromPower<MisfortunePower>()
     ];
+    
+    // I'm not using this hook for the main effect because I want the effects to apply after the card's been played and not before, since Goof hitting 10 causes a delay as it gives energy and card draw. And Surprise can be drawn and autoplayed when that happens, which would delay the actual card play even further.
+    public override async Task AfterEnergySpent(CardModel card, int amount)
+    {
+        if (card.Owner.Creature != Owner) return;
+        if (amount <= 0) return;
+        
+        // Spireverse's Captain lets you spend energy on an action that's not a card, so it needs special handling. Thankfully it calls this hook with a dummy card.
+        if (card.Id.ToString() == "CARD.INTOTHESPIREVERSE-AMMO_VOLLEY")
+        {
+            await ApplyPowers(new ThrowingPlayerChoiceContext(), amount);
+        }
+    }
 
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         if (cardPlay.Card.Owner.Creature != Owner) return;
-        if (cardPlay.Card is Surprise) return;
+        if (cardPlay.Resources.EnergySpent <= 0) return;
 
-        await ApplyPowerBasedOnType(choiceContext, cardPlay);
+        await ApplyPowers(choiceContext, cardPlay.Resources.EnergySpent);
     }
 
-    public override async Task BeforeCardPlayed(CardPlay cardPlay)
+    private async Task ApplyPowers(PlayerChoiceContext choiceContext, int energySpent)
     {
-        if (cardPlay.Card.Owner.Creature != Owner) return;
-        if (cardPlay.Card is not Surprise) return;
-
-        await ApplyPowerBasedOnType(new ThrowingPlayerChoiceContext(), cardPlay);
-    }
-
-    private async Task ApplyPowerBasedOnType(PlayerChoiceContext choiceContext, CardPlay cardPlay)
-    {
-        // ReSharper disable once ConvertIfStatementToSwitchStatement
-        if (cardPlay.Card.Type == CardType.Attack)
-            await PowerCmd.Apply<GoofPower>(choiceContext, Owner, Amount, Owner, null);
+        Flash();
         
-        if (cardPlay.Card.Type == CardType.Skill)
-            await PowerCmd.Apply<MisfortunePower>(choiceContext, CombatState.HittableEnemies, Amount, Owner, null);
+        await PowerCmd.Apply<MisfortunePower>(choiceContext,
+            CombatState.HittableEnemies, 
+            Amount * energySpent,
+            Owner, null);
+            
+        await PowerCmd.Apply<GoofPower>(choiceContext, 
+            Owner, 
+            Amount * energySpent, 
+            Owner, null);
     }
 }

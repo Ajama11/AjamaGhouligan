@@ -178,7 +178,7 @@
   "AJAMAGHOULIGAN-NEUROPURGE.title": "Neuropurge",
   "AJAMAGHOULIGAN-NEUROPURGE.description": "#[gold]Haunt[/gold] and [gold]Bury[/gold] ALL Powers in your [gold]Draw Pile[/gold].\nApply !DoomPower! [gold]Doom[/gold] to yourself.\nAt the start of your turn, apply !NeuropurgePower! [gold]Doom[/gold] to yourself.",
   "AJAMAGHOULIGAN-PRANKSTER_FORM.title": "Prankster Form",
-  "AJAMAGHOULIGAN-PRANKSTER_FORM.description": "#Whenever you play an Attack, gain !PranksterFormPower! [gold]Goof[/gold].\nWhenever you play a Skill, apply !PranksterFormPower! [gold]Misfortune[/gold] to ALL enemies.",
+  "AJAMAGHOULIGAN-PRANKSTER_FORM.description": "#Whenever you spend {energyPrefix:energyIcons(1)}, for each {energyPrefix:energyIcons(1)} spent, apply !PranksterFormPower! [gold]Misfortune[/gold] to ALL enemies and gain !PranksterFormPower! [gold]Goof[/gold].",
   "AJAMAGHOULIGAN-TWINSIES.title": "Twinsies",
   "AJAMAGHOULIGAN-TWINSIES.description": "#[gold]Bury[/gold] a copy of the first {TwinsiesPower:plural:|!TwinsiesPower! }manually played {TwinsiesPower:plural:card|cards} each turn.",
   "AJAMAGHOULIGAN-VAMPIRIC_WARD.title": "Vampiric Ward",

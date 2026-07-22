@@ -14,18 +14,13 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Rare.Power;
 
-public class PranksterForm() : AjamaGhouliganCard(2,
+public class PranksterForm() : AjamaGhouliganCard(1,
     CardType.Power, CardRarity.Rare,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new PowerVar<PranksterFormPower>(1)
-    ];
-
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-        CardKeyword.Innate
     ];
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
@@ -45,6 +40,6 @@ public class PranksterForm() : AjamaGhouliganCard(2,
 
     protected override void OnUpgrade()
     {
-        AddKeyword(CardKeyword.Retain);
+        AddKeyword(CardKeyword.Innate);
     }
 }
