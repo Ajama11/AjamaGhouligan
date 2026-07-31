@@ -160,8 +160,8 @@
   "AJAMAGHOULIGAN-BONES_OF_A_FEATHER.title": "Bones of a Feather",
   "AJAMAGHOULIGAN-BONES_OF_A_FEATHER.description": "#ALL players [gold]Summon[/gold] !Summon!.",
   "AJAMAGHOULIGAN-COOKIE_CRUMBLE.title": "Cookie Crumble",
-  "AJAMAGHOULIGAN-COOKIE_CRUMBLE.description_backup_because_the_plugin_keeps_deleting_it": "#{AlreadyPlayed:[color=DIM_GRAY]|}If this is the first time this card has been played, raise your Max HP by !MaxHp!.{AlreadyPlayed:[/color]|}\nDeal !D! damage.",
-  "AJAMAGHOULIGAN-COOKIE_CRUMBLE.description": "#{AlreadyPlayed:[color=DIM_GRAY]|}If this is the first time this card has been played, raise your Max HP by !MaxHp!.{AlreadyPlayed:[/color]|}\nDeal !D! damage.",
+  "AJAMAGHOULIGAN-COOKIE_CRUMBLE.description_backup_because_the_plugin_keeps_deleting_it": "#{FirstPlay:|[color=DIM_GRAY]}If this is the first time this card has been played {EnoughCardsPlayedThisTurn:|[color=DIM_GRAY]}and you've played !C! card(s) or more this turn, raise your Max HP by !MaxHp!.{EnoughCardsPlayedThisTurn:|[/color]}{FirstPlay:|[/color]}{InCombat:{FirstPlay:\n(Played !CardsAlreadyPlayed! card(s).)|}|}",
+  "AJAMAGHOULIGAN-COOKIE_CRUMBLE.description": "#{FirstPlay:|[color=DIM_GRAY]}If this is the first time this card has been played {EnoughCardsPlayedThisTurn:|[color=DIM_GRAY]}and you've played !C! card(s) or more this turn, raise your Max HP by !MaxHp!.{EnoughCardsPlayedThisTurn:|[/color]}{FirstPlay:|[/color]}{InCombat:{FirstPlay:\n(Played !CardsAlreadyPlayed! card(s).)|}|}",
   "AJAMAGHOULIGAN-HAND_OFF.title": "Hand Off",
   "AJAMAGHOULIGAN-HAND_OFF.description": "#[gold]Osty[/gold] deals !OstyDamage! damage to ALL enemies.\nIf [gold]Osty[/gold] is alive, gain !StrengthPower! [gold]Strength[/gold], and [gold]Osty[/gold] dies.",
   "AJAMAGHOULIGAN-DOPPELGANGER.title": "Doppelganger",
@@ -236,5 +236,5 @@
   "AJAMAGHOULIGAN-DOUBLE_TROUBLE.title": "Double Trouble",
   "AJAMAGHOULIGAN-DOUBLE_TROUBLE.description": "#Choose another player. They [gold]Bury[/gold] a copy of ALL cards in your [gold]Sepulchre Pile[/gold].",
   "AJAMAGHOULIGAN-YUCKY_BE_GONE.title": "Yucky Be Gone",
-  "AJAMAGHOULIGAN-YUCKY_BE_GONE.description": "#Another player [gold]Transforms[/gold] ALL Status and Curse cards into [gold]Surprises[/gold].\nApply !MisfortunePower! [gold]Misfortune[/gold] to ALL enemies.{InCombat:\n(Transform !TransformAmount! cards.)|}"
+  "AJAMAGHOULIGAN-YUCKY_BE_GONE.description": "#Another player [gold]Transforms[/gold] ALL Status and Curse cards into [gold]Surprises[/gold].\nApply !MisfortunePower! [gold]Misfortune[/gold] to ALL enemies.{InCombat:\n(Transform !TransformAmount! card(s).)|}"
 }
