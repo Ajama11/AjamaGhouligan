@@ -24,6 +24,7 @@ public class PranksterPower : AjamaGhouliganPower
     public override Task BeforeCardPlayed(CardPlay cardPlay)
     {
         if (cardPlay.Card.Owner.Creature != Owner) return Task.CompletedTask;
+        if (cardPlay.Resources.EnergySpent <= 0) return Task.CompletedTask;
         
         GetInternalData<Data>().AmountsForPlayedCards.Add(cardPlay.Card, Amount);
         
