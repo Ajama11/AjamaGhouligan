@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d045a81u6i6n4"
-path="res://.godot/imported/prankster_form_power.png-9a43d324da2f898d604e555d03b8fc96.ctex"
+uid="uid://chtgrxfj4iu5l"
+path="res://.godot/imported/eclipse_form_power.png-57a5976d9fe7a81d4928045c4c26bf69.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://AjamaGhouligan/images/powers/prankster_form_power.png"
-dest_files=["res://.godot/imported/prankster_form_power.png-9a43d324da2f898d604e555d03b8fc96.ctex"]
+source_file="res://AjamaGhouligan/images/powers/eclipse_form_power.png"
+dest_files=["res://.godot/imported/eclipse_form_power.png-57a5976d9fe7a81d4928045c4c26bf69.ctex"]
 
 [params]
 

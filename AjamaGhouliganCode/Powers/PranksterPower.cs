@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Powers;
 
-public class PranksterFormPower : AjamaGhouliganPower
+public class PranksterPower : AjamaGhouliganPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;

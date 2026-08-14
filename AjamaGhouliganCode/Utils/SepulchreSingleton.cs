@@ -38,7 +38,7 @@ public class SepulchreSingleton() : CustomSingletonModel(HookType.Combat)
             model.InvokeExecutionFinished();
         }
         
-        if (player.Creature.HasPower<EclipsePower>())
+        if (player.Creature.HasPower<EclipseFormPower>())
         {
             await PlayHauntedCardsInSepulchrePile(choiceContext, player);
         }

@@ -14,23 +14,19 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Rare.Power;
 
-public class Eclipse() : AjamaGhouliganCard(3,
+public class Prankster() : AjamaGhouliganCard(1,
     CardType.Power, CardRarity.Rare,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<EclipsePower>(1)
-    ];
-
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-        CardKeyword.Ethereal
+        new PowerVar<PranksterPower>(1)
     ];
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
-        HoverTipFactory.FromKeyword(MyEnums.Haunted)
+        HoverTipFactory.FromPower<MisfortunePower>(),
+        HoverTipFactory.FromPower<GoofPower>()
     ];
 
     protected override async Task OnPlay(
@@ -39,12 +35,11 @@ public class Eclipse() : AjamaGhouliganCard(3,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "PowerUp", Owner.Character.PowerUpAnimDelay);
 
-        await CommonActions.ApplySelf<EclipsePower>(choiceContext, this);
+        await CommonActions.ApplySelf<PranksterPower>(choiceContext, this);
     }
 
     protected override void OnUpgrade()
     {
-        RemoveKeyword(CardKeyword.Ethereal);
-        AddKeyword(MyEnums.Haunted);
+        AddKeyword(CardKeyword.Innate);
     }
 }
