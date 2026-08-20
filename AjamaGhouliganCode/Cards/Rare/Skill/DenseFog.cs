@@ -1,41 +1,33 @@
-using AjamaGhouligan.AjamaGhouliganCode.Cards;
-using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
-using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using BaseLib.Extensions;
-using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.Models.Powers;
-using MegaCrit.Sts2.Core.ValueProps;
 
-namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Uncommon.Skill;
+namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Rare.Skill;
 
-public class EternalSoulwick() : AjamaGhouliganCard(0,
-    CardType.Skill, CardRarity.Uncommon,
-    TargetType.Self)
+public class DenseFog() : AjamaGhouliganCard(1,
+    CardType.Skill, CardRarity.Rare,
+    TargetType.AllEnemies)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<DoomPower>(4),
-        new EnergyVar(1)
+        new PowerVar<StrengthPower>(2),
+        new PowerVar<DoomPower>(12)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        MyEnums.Haunted,
-        MyEnums.Bury
+        CardKeyword.Ethereal
     ];
-    
+
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
-        HoverTipFactory.FromKeyword(MyEnums.Haunted),
         HoverTipFactory.FromPower<DoomPower>(),
-        HoverTipFactory.FromKeyword(MyEnums.Bury)
+        HoverTipFactory.FromPower<StrengthPower>()
     ];
 
     protected override async Task OnPlay(
@@ -46,11 +38,14 @@ public class EternalSoulwick() : AjamaGhouliganCard(0,
 
         await MyActions.SelfDoom(choiceContext, this);
 
-        await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);
+        await PowerCmd.Apply<StrengthPower>(choiceContext,
+            CombatState!.HittableEnemies, 
+            -1 * DynamicVars.Power<StrengthPower>().BaseValue,
+            Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Power<DoomPower>().UpgradeValueBy(-1);
+        DynamicVars.Doom.UpgradeValueBy(-2);
     }
 }

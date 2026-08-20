@@ -27,7 +27,7 @@ public class Eek() : AjamaGhouliganCard(1,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(12, ValueProp.Move),
-        new PowerVar<DebilitatePower>(1)
+        new PowerVar<WeakPower>(1)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
@@ -38,7 +38,7 @@ public class Eek() : AjamaGhouliganCard(1,
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
         HoverTipFactory.FromKeyword(MyEnums.Haunted),
-        HoverTipFactory.FromPower<DebilitatePower>(),
+        HoverTipFactory.FromPower<WeakPower>(),
         HoverTipFactory.Static(MyEnums.BuryOther)
     ];
 
@@ -53,7 +53,7 @@ public class Eek() : AjamaGhouliganCard(1,
                 "blunt_attack.mp3")
             .Execute(choiceContext);
 
-        await CommonActions.Apply<DebilitatePower>(choiceContext, this, play);
+        await CommonActions.Apply<WeakPower>(choiceContext, this, play);
     }
     
     public async Task OnBury(CardModel card, CardPlay? play)

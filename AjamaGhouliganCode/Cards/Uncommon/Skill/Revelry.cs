@@ -21,18 +21,8 @@ public class Revelry() : AjamaGhouliganCard(1,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new PowerVar<GoofPower>(2),
-        new CardsVar(3),
+        new CardsVar(2),
         new BuryVar(2)
-    ];
-
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-        MyEnums.Haunted
-    ];
-    
-    public override IEnumerable<IHoverTip> MyHoverTips =>
-    [
-        HoverTipFactory.FromKeyword(MyEnums.Haunted)
     ];
 
     protected override async Task OnPlay(
@@ -45,11 +35,11 @@ public class Revelry() : AjamaGhouliganCard(1,
 
         await CommonActions.Draw(this, choiceContext);
 
-        await MyActions.SelectForBury(choiceContext, this, PileType.Hand, true);
+        await MyActions.SelectForBury(choiceContext, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Bury.UpgradeValueBy(1);
+        DynamicVars.Power<GoofPower>().UpgradeValueBy(1);
     }
 }

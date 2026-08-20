@@ -22,7 +22,6 @@ public class CoyoteTime() : AjamaGhouliganCard(0,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new BlockVar(10, ValueProp.Move),
-        new CardsVar(1),
         new PowerVar<DoomNextTurnPower>(10)
     ];
     
@@ -37,13 +36,12 @@ public class CoyoteTime() : AjamaGhouliganCard(0,
     {
         await CommonActions.CardBlock(this, play);
 
-        await CommonActions.Draw(this, choiceContext);
-
         await CommonActions.ApplySelf<DoomNextTurnPower>(choiceContext, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Cards.UpgradeValueBy(1);
+        DynamicVars.Block.UpgradeValueBy(2);
+        DynamicVars.Power<DoomNextTurnPower>().UpgradeValueBy(-2);
     }
 }

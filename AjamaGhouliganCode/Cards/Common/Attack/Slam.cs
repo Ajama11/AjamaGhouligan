@@ -22,7 +22,7 @@ public class Slam() : AjamaGhouliganCard(1,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new OstyDamageVar(6, ValueProp.Move),
-        new PowerVar<WeakPower>(1)
+        new ScornVar(1)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
@@ -33,9 +33,7 @@ public class Slam() : AjamaGhouliganCard(1,
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
-        HoverTipFactory.FromKeyword(MyEnums.Haunted),
-        HoverTipFactory.FromKeyword(CardKeyword.Retain),
-        HoverTipFactory.FromPower<WeakPower>()
+        HoverTipFactory.FromKeyword(MyEnums.Haunted)
     ];
 
     protected override async Task OnPlay(
@@ -50,8 +48,8 @@ public class Slam() : AjamaGhouliganCard(1,
                 .WithHitFx("vfx/vfx_attack_blunt", tmpSfx: "blunt_attack.mp3")
                 .Execute(choiceContext);
         }
-        
-        await CommonActions.Apply<WeakPower>(choiceContext, CombatState!.HittableEnemies, this);
+
+        await MyActions.CreateScorn(this);
     }
 
     protected override void OnUpgrade()

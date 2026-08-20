@@ -11,11 +11,11 @@ namespace AjamaGhouligan.AjamaGhouliganCode.Relics;
 public class Jared() : AjamaGhouliganRelic
 {
     public override RelicRarity Rarity =>
-        RelicRarity.Rare;
+        RelicRarity.Common;
     
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new TreatVar(2)
+        new TreatVar(1)
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>

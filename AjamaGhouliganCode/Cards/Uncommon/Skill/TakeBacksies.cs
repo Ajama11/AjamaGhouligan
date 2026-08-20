@@ -22,7 +22,7 @@ public class TakeBacksies() : AjamaGhouliganCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new CardsVar(3)
+        new CardsVar(2)
     ];
 
     private IEnumerable<IHoverTip> PreUpgradeHoverTips =>

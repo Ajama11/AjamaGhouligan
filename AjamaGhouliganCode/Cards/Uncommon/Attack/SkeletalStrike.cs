@@ -14,19 +14,25 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Uncommon.Attack;
 
-public class SkeletalStrike() : AjamaGhouliganCard(1,
+public class SkeletalStrike() : AjamaGhouliganCard(2,
     CardType.Attack, CardRarity.Uncommon,
     TargetType.AllEnemies)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new OstyDamageVar(7, ValueProp.Move),
-        new CardsVar(2)
+        new RepeatVar(2)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        MyEnums.Haunted
+        MyEnums.Haunted,
+        MyEnums.Unfortunate
+    ];
+    
+    public override HashSet<CardTag> MyCanonicalTags =>
+    [
+        CardTag.Strike
     ];
 
     protected override async Task OnPlay(
@@ -37,16 +43,15 @@ public class SkeletalStrike() : AjamaGhouliganCard(1,
         {
             await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue)
                 .FromOsty(Owner.Osty!, this, play)
+                .WithHitCount(DynamicVars.Repeat.IntValue)
                 .TargetingAllOpponents(CombatState!)
                 .WithHitFx("vfx/vfx_attack_blunt", tmpSfx: "blunt_attack.mp3")
                 .Execute(choiceContext);
         }
-
-        await CommonActions.Draw(this, choiceContext);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.OstyDamage.UpgradeValueBy(4);
+        DynamicVars.OstyDamage.UpgradeValueBy(2);
     }
 }

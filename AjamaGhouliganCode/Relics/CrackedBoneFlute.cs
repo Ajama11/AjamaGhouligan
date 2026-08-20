@@ -13,11 +13,11 @@ namespace AjamaGhouligan.AjamaGhouliganCode.Relics;
 public class CrackedBoneFlute() : AjamaGhouliganRelic
 {
     public override RelicRarity Rarity =>
-        RelicRarity.Common;
+        RelicRarity.Rare;
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new SummonVar(1)
+        new SummonVar(2)
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>

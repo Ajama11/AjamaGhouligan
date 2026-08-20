@@ -15,6 +15,7 @@ public class BlackCatPower : AjamaGhouliganPower
     public override async Task AfterCardGeneratedForCombat(CardModel card, Player? creator)
     {
         if (card.Owner.Creature != Owner) return;
+        if (creator != card.Owner) return;
         
         Flash();
 

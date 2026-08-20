@@ -605,4 +605,22 @@ public class MyActions
     {
         return await CreateCards(ModelDb.Card<Surprise>(), amount, owner, combatState, pile, position, preview, previewTime);
     }
+    
+    public static async Task<IEnumerable<CardModel>> CreateScorn(
+        AjamaGhouliganCard sourceCard, PileType pile = PileType.Hand,
+        CardPilePosition position = CardPilePosition.Bottom, int amountOverride = -1, bool preview = true, float previewTime = 1.2f)
+    {
+        int amount = amountOverride == -1 ? 
+            sourceCard.DynamicVars.Scorn.IntValue :
+            amountOverride;
+        
+        return await CreateScorn(amount, sourceCard.Owner, sourceCard.CombatState!, pile, position, preview, previewTime);
+    }
+
+    public static async Task<IEnumerable<CardModel>> CreateScorn(int amount,
+        Player owner, ICombatState combatState, PileType pile = PileType.Hand,
+        CardPilePosition position = CardPilePosition.Bottom, bool preview = true, float previewTime = 1.2f)
+    {
+        return await CreateCards(ModelDb.Card<Surprise>(), amount, owner, combatState, pile, position, preview, previewTime);
+    }
 }
