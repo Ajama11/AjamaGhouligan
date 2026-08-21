@@ -28,7 +28,7 @@ public class Surprise() : AjamaGhouliganCard(0,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(6, ValueProp.Move),
+        new DamageVar(5, ValueProp.Move),
         new CardsVar(1)
     ];
 
