@@ -27,8 +27,7 @@ public class Slam() : AjamaGhouliganCard(1,
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        MyEnums.Haunted,
-        CardKeyword.Retain
+        MyEnums.Haunted
     ];
 
     public override IEnumerable<IHoverTip> MyHoverTips =>

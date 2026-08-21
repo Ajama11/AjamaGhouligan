@@ -14,23 +14,24 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Rare.Power;
 
-public class EclipseForm() : AjamaGhouliganCard(3,
+public class GoofballForm() : AjamaGhouliganCard(3,
     CardType.Power, CardRarity.Rare,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<EclipseFormPower>(1)
+        new PowerVar<GoofballFormPower>(1)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        CardKeyword.Ethereal
+        //If 2 Goof is too strong, then this gets the )Ethereal( treatment I guess.
     ];
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
-        HoverTipFactory.FromKeyword(MyEnums.Haunted)
+        HoverTipFactory.FromKeyword(CardKeyword.Exhaust),
+        HoverTipFactory.FromPower<GoofPower>()
     ];
 
     protected override async Task OnPlay(
@@ -39,11 +40,11 @@ public class EclipseForm() : AjamaGhouliganCard(3,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "PowerUp", Owner.Character.PowerUpAnimDelay);
 
-        await CommonActions.ApplySelf<EclipseFormPower>(choiceContext, this);
+        await CommonActions.ApplySelf<GoofballFormPower>(choiceContext, this);
     }
 
     protected override void OnUpgrade()
     {
-        RemoveKeyword(CardKeyword.Ethereal);
+        DynamicVars.Power<GoofballFormPower>().UpgradeValueBy(1);
     }
 }

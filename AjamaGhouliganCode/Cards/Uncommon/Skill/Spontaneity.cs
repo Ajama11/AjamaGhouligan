@@ -2,8 +2,8 @@ using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
+using BaseLib.Extensions;
 using BaseLib.Utils;
-using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -13,36 +13,40 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Common.Skill;
+namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Uncommon.Skill;
 
-public class Vanish() : AjamaGhouliganCard(2,
-    CardType.Skill, CardRarity.Common,
+public class Spontaneity() : AjamaGhouliganCard(1,
+    CardType.Skill, CardRarity.Uncommon,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(13, ValueProp.Move)
+        new CardsVar(3),
+        new ScornVar(2)
     ];
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
-        HoverTipFactory.Static(StaticHoverTip.Block),
-        HoverTipFactory.FromKeyword(CardKeyword.Exhaust)
+        HoverTipFactory.Static(MyEnums.Haunt),
+        HoverTipFactory.FromKeyword(MyEnums.Haunted)
     ];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await CommonActions.CardBlock(this, play);
+        await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 
-        CardModel? card = await CommonActions.SelectSingleCard(this, CardSelectorPrefs.ExhaustSelectionPrompt, choiceContext, PileType.Discard);
+        List<CardModel> cards = (await CommonActions.Draw(this, choiceContext))
+            .ToList();
 
-        if (card != null) await CardCmd.Exhaust(choiceContext, card);
+        MyActions.HauntSpecific(cards, false);
+
+        await MyActions.CreateScorn(this, PileType.Draw, CardPilePosition.Random);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(3);
+        DynamicVars.Cards.UpgradeValueBy(1);
     }
 }

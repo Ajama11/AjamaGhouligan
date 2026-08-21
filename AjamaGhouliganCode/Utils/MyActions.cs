@@ -2,6 +2,7 @@ using System.Buffers;
 using System.Diagnostics.CodeAnalysis;
 using AjamaGhouligan.AjamaGhouliganCode.CardPiles;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
+using AjamaGhouligan.AjamaGhouliganCode.Cards.Status;
 using AjamaGhouligan.AjamaGhouliganCode.Cards.Token;
 using AjamaGhouligan.AjamaGhouliganCode.Cards.Token.Treats;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
@@ -621,6 +622,6 @@ public class MyActions
         Player owner, ICombatState combatState, PileType pile = PileType.Hand,
         CardPilePosition position = CardPilePosition.Bottom, bool preview = true, float previewTime = 1.2f)
     {
-        return await CreateCards(ModelDb.Card<Surprise>(), amount, owner, combatState, pile, position, preview, previewTime);
+        return await CreateCards(ModelDb.Card<Scorn>(), amount, owner, combatState, pile, position, preview, previewTime);
     }
 }

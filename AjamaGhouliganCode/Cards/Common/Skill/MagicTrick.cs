@@ -1,4 +1,3 @@
-using AjamaGhouligan.AjamaGhouliganCode.CardPiles;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
@@ -10,32 +9,34 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Rare.Skill;
+namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Common.Skill;
 
-public class Doppelganger() : AjamaGhouliganCard(1,
-    CardType.Skill, CardRarity.Rare,
+public class MagicTrick() : AjamaGhouliganCard(1,
+    CardType.Skill, CardRarity.Common,
     TargetType.Self)
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        CardKeyword.Exhaust
+        new BuryVar(2),
+        new ScornVar(1)
     ];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        CardModel? card = await CommonActions.SelectSingleCard(this, SelectionScreenPrompt, choiceContext, SepulchrePile.PileType);
+        await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 
-        if (card != null) await CardPileCmd.AddGeneratedCardToCombat(card.CreateClone(), PileType.Hand, Owner);
+        await MyActions.SelectForBury(choiceContext, this, PileType.Hand, true);
+
+        await MyActions.CreateScorn(this);
     }
 
     protected override void OnUpgrade()
     {
-        EnergyCost.UpgradeBy(-1);
+        DynamicVars.Bury.UpgradeValueBy(1);
     }
 }

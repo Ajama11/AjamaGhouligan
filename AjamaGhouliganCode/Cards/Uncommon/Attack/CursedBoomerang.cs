@@ -4,10 +4,9 @@ using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using BaseLib.Extensions;
 using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Audio.Debug;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -17,39 +16,38 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Uncommon.Attack;
 
-public class PaintedTunnel() : AjamaGhouliganCard(1,
+public class CursedBoomerang() : AjamaGhouliganCard(0,
     CardType.Attack, CardRarity.Uncommon,
     TargetType.RandomEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(2, ValueProp.Move),
-        new RepeatVar(5),
-        new PowerVar<MisfortunePower>(1)
-    ];
-
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-        MyEnums.Bury
+        new DamageVar(2, DamageProps.card),
+        new RepeatVar(4)
     ];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await CommonActions.CardAttack(this, play,
-                DynamicVars.Repeat.IntValue,
-                VfxCmd.bluntPath,
-                tmpSfx: TmpSfx.bluntAttack)
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+            .FromCard(this, play)
+            .TargetingRandomOpponents(CombatState!)
+            .WithHitCount(DynamicVars.Repeat.IntValue)
+            .WithHitFx(VfxCmd.slashPath)
             .Execute(choiceContext);
     }
 
-    public override async Task AfterDamageGiven(PlayerChoiceContext choiceContext, Creature? dealer, DamageResult result, ValueProp props,
-        Creature target, CardModel? cardSource)
+    public override async Task AfterCardGeneratedForCombat(CardModel card, Player? creator)
     {
-        if (cardSource != this) return;
-
-        await MyActions.Misfortune(choiceContext, target, this);
+        if (creator != Owner) return;
+        if (card.Owner != Owner) return;
+        if (card.Type != CardType.Status) return;
+        
+        if (Pile is { Type: not PileType.Hand })
+        {
+            await CardPileCmd.Add(this, PileType.Hand);
+        }
     }
 
     protected override void OnUpgrade()

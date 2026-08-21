@@ -27,6 +27,6 @@ public class TopsyTurvyPower : AjamaGhouliganPower, IBeforeSepulchreAutoplayOnTu
         
         choiceContext.PopModel(this);
 
-        if (Owner.HasPower<EclipseFormPower>()) await Cmd.Wait(1f);
+        if (Owner.HasPower<EclipsePower>()) await Cmd.Wait(1f);
     }
 }

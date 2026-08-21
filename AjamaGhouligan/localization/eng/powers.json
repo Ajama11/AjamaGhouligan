@@ -15,9 +15,9 @@
   "AJAMAGHOULIGAN-AJAMA_GHOULIGAN_POWER.title": "",
   "AJAMAGHOULIGAN-AJAMA_GHOULIGAN_POWER.description": "",
   "AJAMAGHOULIGAN-AJAMA_GHOULIGAN_POWER.smartDescription": "",
-  "AJAMAGHOULIGAN-ECLIPSE_FORM_POWER.title": "Eclipse Form",
-  "AJAMAGHOULIGAN-ECLIPSE_FORM_POWER.description": "At the end of your turn, play ALL [gold]Haunted[/gold] cards in your [gold]Sepulchre Pile[/gold].",
-  "AJAMAGHOULIGAN-ECLIPSE_FORM_POWER.smartDescription": "At the end of your turn, play ALL [gold]Haunted[/gold] cards in your [gold]Sepulchre Pile[/gold].",
+  "AJAMAGHOULIGAN-ECLIPSE_POWER.title": "Eclipse",
+  "AJAMAGHOULIGAN-ECLIPSE_POWER.description": "At the end of your turn, play ALL [gold]Haunted[/gold] cards in your [gold]Sepulchre Pile[/gold].",
+  "AJAMAGHOULIGAN-ECLIPSE_POWER.smartDescription": "At the end of your turn, play ALL [gold]Haunted[/gold] cards in your [gold]Sepulchre Pile[/gold].",
   "AJAMAGHOULIGAN-BLEH_POWER.title": "Bleh",
   "AJAMAGHOULIGAN-BLEH_POWER.description": "The first time each turn you draw a Status or Curse card, [gold]Transform[/gold] it into a random [gold]Treat[/gold].",
   "AJAMAGHOULIGAN-BLEH_POWER.smartDescription": "The first {Amount:plural:time|[blue]{}[/blue] times} each turn you draw a Status or Curse card, [gold]Transform[/gold] it into a random [gold]Treat[/gold].",
@@ -70,5 +70,8 @@
   "AJAMAGHOULIGAN-MISCHIEF_POWER.title": "Mischief",
   "AJAMAGHOULIGAN-MISCHIEF_POWER.description": "Whenever you play a [gold]Surprise[/gold], gain [gold]Block[/gold].",
   "AJAMAGHOULIGAN-MISCHIEF_POWER.smartDescription": "Whenever you play a [gold]Surprise[/gold], gain [blue]{Amount}[/blue] [gold]Block[/gold].",
-  "AJAMAGHOULIGAN-LOLLIPOP_POWER.title": "Lollipop"
+  "AJAMAGHOULIGAN-LOLLIPOP_POWER.title": "Lollipop",
+  "AJAMAGHOULIGAN-GOOFBALL_FORM_POWER.title": "Goofball Form",
+  "AJAMAGHOULIGAN-GOOFBALL_FORM_POWER.description": "Whenever a card is [gold]Exhausted[/gold], gain [gold]Goof[/gold].",
+  "AJAMAGHOULIGAN-GOOFBALL_FORM_POWER.smartDescription": "Whenever a card is [gold]Exhausted[/gold], gain [blue]{Amount}[/blue] [gold]Goof[/gold]."
 }

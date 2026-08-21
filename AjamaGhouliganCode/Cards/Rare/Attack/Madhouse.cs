@@ -4,6 +4,7 @@ using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using BaseLib.Extensions;
 using BaseLib.Utils;
+using Godot;
 using MegaCrit.Sts2.Core.Audio.Debug;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -11,26 +12,21 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Monsters;
+using MegaCrit.Sts2.Core.Nodes.Vfx;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Uncommon.Attack;
+namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Rare.Attack;
 
-public class PaintedTunnel() : AjamaGhouliganCard(1,
-    CardType.Attack, CardRarity.Uncommon,
-    TargetType.RandomEnemy)
+public class Madhouse() : AjamaGhouliganCard(1,
+    CardType.Attack, CardRarity.Rare,
+    TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(2, ValueProp.Move),
-        new RepeatVar(5),
-        new PowerVar<MisfortunePower>(1)
-    ];
-
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-        MyEnums.Bury
+        ..MakeCalculatedDamage(4, (card, _) =>
+            card.Owner.PlayerCombatState!.AllCards.Count(c => c.Type == CardType.Status),
+            3)
     ];
 
     protected override async Task OnPlay(
@@ -38,22 +34,14 @@ public class PaintedTunnel() : AjamaGhouliganCard(1,
         CardPlay play)
     {
         await CommonActions.CardAttack(this, play,
-                DynamicVars.Repeat.IntValue,
-                VfxCmd.bluntPath,
+                vfx: VfxCmd.scratchPath,
                 tmpSfx: TmpSfx.bluntAttack)
+            .WithHitVfxNode((t => NScratchVfx.Create(t, true)))
             .Execute(choiceContext);
-    }
-
-    public override async Task AfterDamageGiven(PlayerChoiceContext choiceContext, Creature? dealer, DamageResult result, ValueProp props,
-        Creature target, CardModel? cardSource)
-    {
-        if (cardSource != this) return;
-
-        await MyActions.Misfortune(choiceContext, target, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Repeat.UpgradeValueBy(1);
+        DynamicVars.ExtraDamage.UpgradeValueBy(1);
     }
 }
