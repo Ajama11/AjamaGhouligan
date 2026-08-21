@@ -30,7 +30,7 @@ public partial class NBuryPile : NCombatCardPile
 
 	private HoverTip _hoverTip;
 
-	public static AddedNode<NCombatPilesContainer, NBuryPile> _ = new(container =>
+	public static AddedNode<NCombatPilesContainer, NBuryPile> PileNode = new(container =>
 	{
 		var buryPileButton = ResourceLoader.Load<PackedScene>(_scenePath).Instantiate<NBuryPile>();
 		buryPileButton.Name = "%BuryPile";

@@ -15,14 +15,14 @@ public static class NCombatPilesContainerPatch
     [HarmonyPostfix]
     public static void EnablePostfix(NCombatPilesContainer __instance)
     {
-        __instance.GetNodeOrNull<NBuryPile>("_BuryPile")?.Enable();
+        NBuryPile.PileNode[__instance].Enable();
     }
 
     [HarmonyPatch("Disable")]
     [HarmonyPostfix]
     public static void DisablePostfix(NCombatPilesContainer __instance)
     {
-        __instance.GetNodeOrNull<NBuryPile>("_BuryPile")?.Disable();
+        NBuryPile.PileNode[__instance].Disable();
     }
 }
 
@@ -33,7 +33,7 @@ public static class NCombatUiActivatePatch
     public static void ActivatePostfix(NCombatUi __instance, CombatState state)
     {
         var container = __instance.GetNode<NCombatPilesContainer>("%CombatPileContainer");
-        var buryPile = container.GetNodeOrNull<NBuryPile>("_BuryPile");
+        var buryPile = NBuryPile.PileNode[container];
         var player = LocalContext.GetMe(state);
         buryPile?.Initialize(player!);
     }

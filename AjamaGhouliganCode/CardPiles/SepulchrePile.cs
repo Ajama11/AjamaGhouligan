@@ -21,7 +21,7 @@ public class SepulchrePile() : CustomPile(PileType)
         if (NCombatRoom.Instance != null)
         {
             var container = NCombatRoom.Instance.Ui.GetNode<NCombatPilesContainer>("%CombatPileContainer");
-            NBuryPile? pile = container.GetNodeOrNull<NBuryPile>("_BuryPile");
+            NBuryPile? pile = NBuryPile.PileNode[container];
 
             if (pile != null) return NBuryPile.PilePosition + pile.Size * 0.5f;
         }
