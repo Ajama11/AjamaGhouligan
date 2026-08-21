@@ -18,7 +18,7 @@ public class GoofPower : AjamaGhouliganPower
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new EnergyVar(3),
+        new EnergyVar(2),
         new CardsVar(2)
     ];
 
