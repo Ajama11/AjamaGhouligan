@@ -94,7 +94,8 @@ public class Ghouligan : PlaceholderCharacterModel
         "event:/sfx/ui/wipe_ironclad";
     public override string CharacterSelectSfx => 
         "res://AjamaGhouligan/audio/laugh.ogg";
-    public override string CustomAttackSfx => 
+    public override string CustomAttackSfx => Config.UseNecrobinderAttackAudio ?
+        "event:/sfx/characters/necrobinder/necrobinder_attack":
         "res://AjamaGhouligan/audio/attack.ogg";
     public override string CustomCastSfx => 
         "res://AjamaGhouligan/audio/laugh.ogg";
