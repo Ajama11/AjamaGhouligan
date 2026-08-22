@@ -28,6 +28,7 @@ public class Lollipop() : AjamaGhouliganCard(0,
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
+        CardKeyword.Ethereal,
         CardKeyword.Exhaust
     ];
     

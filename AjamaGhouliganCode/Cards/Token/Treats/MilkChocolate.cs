@@ -28,6 +28,7 @@ public class MilkChocolate() : AjamaGhouliganCard(0,
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
+        CardKeyword.Ethereal,
         CardKeyword.Exhaust
     ];
     
@@ -47,6 +48,7 @@ public class MilkChocolate() : AjamaGhouliganCard(0,
 
     protected override void OnUpgrade()
     {
+        DynamicVars.Block.UpgradeValueBy(1);
         DynamicVars.Summon.UpgradeValueBy(2);
     }
 }

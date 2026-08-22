@@ -29,6 +29,7 @@ public class GummyWorm() : AjamaGhouliganCard(0,
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
+        CardKeyword.Ethereal,
         CardKeyword.Exhaust
     ];
     
@@ -49,5 +50,6 @@ public class GummyWorm() : AjamaGhouliganCard(0,
     protected override void OnUpgrade()
     {
         DynamicVars.Power<GoofPower>().UpgradeValueBy(1);
+        DynamicVars.LoseDoom.UpgradeValueBy(2);
     }
 }

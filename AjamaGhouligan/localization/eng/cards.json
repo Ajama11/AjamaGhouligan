@@ -206,7 +206,7 @@
   "AJAMAGHOULIGAN-LICORICE.title": "Licorice",
   "AJAMAGHOULIGAN-LICORICE.description": "#Deal !D! damage.\nApply !MisfortunePower! [gold]Misfortune[/gold].",
   "AJAMAGHOULIGAN-BUBBLEGUM.title": "Bubblegum",
-  "AJAMAGHOULIGAN-BUBBLEGUM.description": "#Apply !WeakPower! [gold]Weak[/gold].\nApply !VulnerablePower! [gold]Vulnerable[/gold].",
+  "AJAMAGHOULIGAN-BUBBLEGUM.description": "#Gain !VigorPower! [gold]Vigor[/gold].\nOsty gains !OstyVigor! [gold]Vigor[/gold].",
   "AJAMAGHOULIGAN-LOLLIPOP.title": "Lollipop",
   "AJAMAGHOULIGAN-LOLLIPOP.description": "#Enemy loses !StrengthPower! [gold]Strength[/gold] this turn.",
   "AJAMAGHOULIGAN-BOUNTIFUL_BUCKET.title": "Bountiful Bucket",

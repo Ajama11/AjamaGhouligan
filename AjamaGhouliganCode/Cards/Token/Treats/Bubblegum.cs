@@ -19,16 +19,19 @@ namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Token.Treats;
 [Pool(typeof(TokenCardPool))]
 public class Bubblegum() : AjamaGhouliganCard(0,
     CardType.Skill, CardRarity.Token,
-    TargetType.AnyEnemy)
+    TargetType.Self)
 {
+    private const string OstyVigor = "OstyVigor";
+    
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<WeakPower>(1),
-        new PowerVar<VulnerablePower>(1)
+        new PowerVar<VigorPower>(3),
+        new PowerVar<VigorPower>(OstyVigor, 3)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
+        CardKeyword.Ethereal,
         CardKeyword.Exhaust
     ];
     
@@ -39,22 +42,26 @@ public class Bubblegum() : AjamaGhouliganCard(0,
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
-        HoverTipFactory.FromPower<WeakPower>(),
-        HoverTipFactory.FromPower<VulnerablePower>()
+        HoverTipFactory.FromPower<VigorPower>()
     ];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     { 
-        await CommonActions.Apply<WeakPower>(choiceContext, this, play);
-        
-        await CommonActions.Apply<VulnerablePower>(choiceContext, this, play);
+        await CommonActions.ApplySelf<VigorPower>(choiceContext, this);
+
+        if (Owner.Osty != null)
+        {
+            await PowerCmd.Apply<VigorPower>(choiceContext, 
+                Owner.Osty, DynamicVars[OstyVigor].BaseValue,
+                Owner.Creature, this);
+        }
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Power<WeakPower>().UpgradeValueBy(1);
-        DynamicVars.Power<VulnerablePower>().UpgradeValueBy(1);
+        DynamicVars.Power<VigorPower>().UpgradeValueBy(2);
+        DynamicVars[OstyVigor].UpgradeValueBy(2);
     }
 }

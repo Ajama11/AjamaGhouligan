@@ -15,7 +15,7 @@ public class DoublePoke() : AjamaGhouliganCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new OstyDamageVar(4, ValueProp.Move),
+        new OstyDamageVar(3, ValueProp.Move),
         new RepeatVar(2),
         new DisinterVar(2)
     ];
@@ -47,6 +47,6 @@ public class DoublePoke() : AjamaGhouliganCard(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.OstyDamage.UpgradeValueBy(1);
+        DynamicVars.OstyDamage.UpgradeValueBy(2);
     }
 }
