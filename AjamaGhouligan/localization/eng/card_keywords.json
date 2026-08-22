@@ -8,5 +8,7 @@
   "AJAMAGHOULIGAN-BURIED.title": "Buried",
   "AJAMAGHOULIGAN-BURIED.description": "Can be [gold]Disinterred[/gold] back into your hand.",
   "AJAMAGHOULIGAN-UNFORTUNATE.title": "Unfortunate",
-  "AJAMAGHOULIGAN-UNFORTUNATE.description": "Deals additional damage based on the enemy's [gold]Misfortune[/gold]."
+  "AJAMAGHOULIGAN-UNFORTUNATE.description": "Deals additional damage based on the enemy's [gold]Misfortune[/gold].",
+  "AJAMAGHOULIGAN-GRAVE.title": "Grave",
+  "AJAMAGHOULIGAN-GRAVE.description": "Start each combat with this card in your [gold]Sepulchre Pile[/gold]."
 }

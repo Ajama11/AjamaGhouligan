@@ -67,6 +67,11 @@ public abstract class AjamaGhouliganCard(int cost, CardType type, CardRarity rar
         get
         {
             IEnumerable<IHoverTip> result = [..MyHoverTips];
+
+            if (Keywords.Contains(MyEnums.Grave))
+            {
+                result = [HoverTipFactory.FromKeyword(MyEnums.Grave), ..result];
+            }
             
             if (DynamicVars.ContainsKey(SummonVar.defaultName))
             {

@@ -22,8 +22,7 @@ public class HandyDandy() : AjamaGhouliganCard(2,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new SummonVar(10),
-        new CardsVar(1)
+        new SummonVar(10)
     ];
 
     protected override async Task OnPlay(
@@ -33,8 +32,6 @@ public class HandyDandy() : AjamaGhouliganCard(2,
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 
         await MyActions.Summon(choiceContext, this);
-
-        await CommonActions.Draw(this, choiceContext);
     }
 
     public override Task AfterCardGeneratedForCombat(CardModel card, Player? creator)

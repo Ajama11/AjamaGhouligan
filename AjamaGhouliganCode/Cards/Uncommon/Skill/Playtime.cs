@@ -28,7 +28,8 @@ public class Playtime() : AjamaGhouliganCard(0,
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        CardKeyword.Ethereal
+        CardKeyword.Ethereal,
+        MyEnums.Grave
     ];
 
     public override IEnumerable<IHoverTip> MyHoverTips =>

@@ -244,9 +244,9 @@
   "AJAMAGHOULIGAN-MAGIC_TRICK.title": "Magic Trick",
   "AJAMAGHOULIGAN-MAGIC_TRICK.description": "#[gold]Bury[/gold] up to !Bury! card(s).\nAdd !Scorn! [gold]Scorn[/gold] into your [gold]Hand[/gold].",
   "AJAMAGHOULIGAN-HANDY_DANDY.title": "Handy Dandy",
-  "AJAMAGHOULIGAN-HANDY_DANDY.description": "#[gold]Summon[/gold] !Summon!.\nDraw !C! card(s).\nWhenever you create a Status, reduce this card's cost by 1 {energyPrefix:energyIcons(1)} until played.",
+  "AJAMAGHOULIGAN-HANDY_DANDY.description": "#[gold]Summon[/gold] !Summon!.\nWhenever you create a Status, reduce this card's cost by 1 {energyPrefix:energyIcons(1)} until played.",
   "AJAMAGHOULIGAN-MADHOUSE.title": "Madhouse",
-  "AJAMAGHOULIGAN-MADHOUSE.description": "#Deal !CD! damage.\nDeals !ExtraDamage! additional damage for each Status ANYWHERE.",
+  "AJAMAGHOULIGAN-MADHOUSE.description": "#Deal !CD! damage.\nDeals !ExtraDamage! additional damage for each Status anywhere.",
   "AJAMAGHOULIGAN-GOOFBALL_FORM.title": "Goofball Form",
   "AJAMAGHOULIGAN-GOOFBALL_FORM.description": "#Whenever a card is [gold]Exhausted[/gold], gain !GoofballFormPower! [gold]Goof[/gold]."
 }
