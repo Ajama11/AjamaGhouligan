@@ -246,7 +246,10 @@
   "AJAMAGHOULIGAN-HANDY_DANDY.title": "Handy Dandy",
   "AJAMAGHOULIGAN-HANDY_DANDY.description": "#[gold]Summon[/gold] !Summon!.\nWhenever you create a Status, reduce this card's cost by 1 {energyPrefix:energyIcons(1)} until played.",
   "AJAMAGHOULIGAN-MADHOUSE.title": "Madhouse",
-  "AJAMAGHOULIGAN-MADHOUSE.description": "#Deal !CD! damage.\nDeals !ExtraDamage! additional damage for each Status anywhere.",
+  "AJAMAGHOULIGAN-MADHOUSE.description": "#Deal !CD! damage.\nDeals !ExtraDamage! additional damage for ALL your Status cards.",
   "AJAMAGHOULIGAN-GOOFBALL_FORM.title": "Goofball Form",
-  "AJAMAGHOULIGAN-GOOFBALL_FORM.description": "#Whenever a card is [gold]Exhausted[/gold], gain !GoofballFormPower! [gold]Goof[/gold]."
+  "AJAMAGHOULIGAN-GOOFBALL_FORM.description": "#Whenever a card is [gold]Exhausted[/gold], gain !GoofballFormPower! [gold]Goof[/gold].",
+  "AJAMAGHOULIGAN-MORE_THE_MERRIER.title": "More the Merrier",
+  "AJAMAGHOULIGAN-MORE_THE_MERRIER.description": "#Deal !D! damage.\nWhen [gold]Disinterred[/gold], [gold]Disinter[/gold] !Disinter! random non-[gold]Haunted[/gold] card(s) in your [gold]Sepulchre Pile[/gold].",
+  "AJAMAGHOULIGAN-PLACEHOLDERPLACEHOLDER.description": "#If there are !Threshold! or more Attacks in your [gold]Sepulchre Pile[/gold], gain !StrengthPower! [gold]Strength[/gold] and [gold]Exhaust[/gold].\u2028Otherwise, [gold]Bury[/gold] !Bury! random Attacks in your [gold]Draw Pile[/gold]."
 }

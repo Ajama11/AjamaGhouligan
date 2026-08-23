@@ -30,7 +30,6 @@ public class WardedBracelet() : AjamaGhouliganRelic
         CardModel? cardSource)
     {
         if (applier != Owner.Creature) return;
-        if (power.Owner != Owner.Creature) return;
         if (amount <= 0) return;
         if (power is not DoomPower) return;
         
