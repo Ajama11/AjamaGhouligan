@@ -18,11 +18,25 @@ public class BackInYouGoPower : AjamaGhouliganPower, IAfterSepulchreAutoplayOnTu
     public async Task AfterSepulchreAutoplayOnTurnStart(PlayerChoiceContext choiceContext, Player player)
     {
         if (player != Owner.Player) return;
+
+        List<CardModel> cards = [];
         
-        List<CardModel> cards = MyActions.GetRandomCards(Owner.Player, PileType.Discard, _ => true, Amount);
+        cards =
+        [
+            ..cards,
+            ..MyActions.GetRandomCards(Owner.Player, PileType.Discard,
+                c => c.Keywords.Contains(MyEnums.Haunted), Amount)
+        ];
+        
+        cards =
+        [
+            ..cards,
+            ..MyActions.GetRandomCards(Owner.Player, PileType.Discard,
+                c => !c.Keywords.Contains(MyEnums.Haunted), Amount)
+        ];
         
         if (cards.Count == 0) return;
 
-        await MyActions.HauntAndBurySpecific(cards);
+        await MyActions.BurySpecific(cards);
     }
 }

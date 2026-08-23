@@ -29,6 +29,11 @@ public class Madhouse() : AjamaGhouliganCard(1,
             3)
     ];
 
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        MyEnums.Grave
+    ];
+
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)

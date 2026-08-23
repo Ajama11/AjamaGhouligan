@@ -22,6 +22,7 @@ public class NeedAHand() : AjamaGhouliganCard(1,
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
+        MyEnums.Grave,
         CardKeyword.Exhaust
     ];
 

@@ -1,5 +1,6 @@
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
+using AjamaGhouligan.AjamaGhouliganCode.Extensions;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using BaseLib.Extensions;
@@ -51,10 +52,10 @@ public class Bubblegum() : AjamaGhouliganCard(0,
     { 
         await CommonActions.ApplySelf<VigorPower>(choiceContext, this);
 
-        if (Owner.Osty != null)
+        if (Osty.IsReadyToParty(Owner))
         {
             await PowerCmd.Apply<VigorPower>(choiceContext, 
-                Owner.Osty, DynamicVars[OstyVigor].BaseValue,
+                Owner.Osty!, DynamicVars[OstyVigor].BaseValue,
                 Owner.Creature, this);
         }
     }

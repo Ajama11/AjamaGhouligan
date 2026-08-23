@@ -20,8 +20,13 @@ public class GetSilly() : AjamaGhouliganCard(0,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new SummonVar(4),
+        new DisinterVar(2),
         new PowerVar<GoofPower>(2)
+    ];
+
+    public override IEnumerable<IHoverTip> MyHoverTips =>
+    [
+        HoverTipFactory.FromKeyword(MyEnums.Haunted)
     ];
 
     protected override async Task OnPlay(
@@ -30,7 +35,7 @@ public class GetSilly() : AjamaGhouliganCard(0,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 
-        await MyActions.Summon(choiceContext, this);
+        await MyActions.DisinterRandomNonHaunted(this);
 
         await MyActions.Goof(choiceContext, this);
     }

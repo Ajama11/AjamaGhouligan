@@ -22,6 +22,11 @@ public class TickingClock() : AjamaGhouliganCard(2,
     [
         new SurpriseVar(8)
     ];
+    
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        MyEnums.Grave
+    ];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,

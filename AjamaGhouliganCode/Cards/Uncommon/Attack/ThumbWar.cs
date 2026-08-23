@@ -23,7 +23,7 @@ public class ThumbWar() : AjamaGhouliganCard(1,
         new OstyDamageVar(2, ValueProp.Move),
         new RepeatVar(4),
         new PowerVar<GoofPower>(3),
-        new SummonVar(2)
+        new SummonVar(1)
     ];
     
     public override IEnumerable<IHoverTip> MyHoverTips =>

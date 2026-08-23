@@ -25,14 +25,13 @@ public class BackInYouGo() : AjamaGhouliganCard(2,
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        MyEnums.Haunted
+        
     ];
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
-        HoverTipFactory.FromKeyword(MyEnums.Haunted),
-        HoverTipFactory.Static(MyEnums.Haunt),
-        HoverTipFactory.Static(MyEnums.BuryOther)
+        HoverTipFactory.Static(MyEnums.BuryOther),
+        HoverTipFactory.FromKeyword(MyEnums.Haunted)
     ];
 
     protected override async Task OnPlay(

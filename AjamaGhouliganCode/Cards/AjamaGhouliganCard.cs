@@ -68,6 +68,11 @@ public abstract class AjamaGhouliganCard(int cost, CardType type, CardRarity rar
         {
             IEnumerable<IHoverTip> result = [..MyHoverTips];
 
+            if (Keywords.Contains(MyEnums.Haunted))
+            {
+                result = [HoverTipFactory.FromKeyword(MyEnums.Haunted), ..result];
+            }
+            
             if (Keywords.Contains(MyEnums.Grave))
             {
                 result = [HoverTipFactory.FromKeyword(MyEnums.Grave), ..result];

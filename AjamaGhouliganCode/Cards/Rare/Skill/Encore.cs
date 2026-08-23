@@ -20,6 +20,7 @@ public class Encore() : AjamaGhouliganCard(3,
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
+        MyEnums.Grave,
         CardKeyword.Exhaust
     ];
 

@@ -46,6 +46,6 @@ public class DenseFog() : AjamaGhouliganCard(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Doom.UpgradeValueBy(-2);
+        DynamicVars.Strength.UpgradeValueBy(1);
     }
 }

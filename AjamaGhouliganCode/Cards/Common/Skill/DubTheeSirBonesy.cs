@@ -1,7 +1,9 @@
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
+using AjamaGhouligan.AjamaGhouliganCode.Extensions;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -19,20 +21,19 @@ public class DubTheeSirBonesy() : AjamaGhouliganCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<DoomPower>(3),
-        new SummonVar(9)
+        new SummonVar(5),
+        new PowerVar<StrengthPower>(2),
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        MyEnums.Haunted
+        CardKeyword.Exhaust
     ];
     
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
-        HoverTipFactory.FromKeyword(MyEnums.Haunted),
-        HoverTipFactory.FromPower<DoomPower>(),
-        HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon)
+        HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon),
+        HoverTipFactory.FromPower<StrengthPower>()
     ];
 
     protected override async Task OnPlay(
@@ -41,9 +42,10 @@ public class DubTheeSirBonesy() : AjamaGhouliganCard(1,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 
-        await MyActions.SelfDoom(choiceContext, this);
-
         await MyActions.Summon(choiceContext, this);
+
+        if (Osty.IsReadyToParty(Owner))
+            await CommonActions.Apply<StrengthPower>(choiceContext, Owner.Osty!, this);
     }
 
     protected override void OnUpgrade()

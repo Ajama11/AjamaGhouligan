@@ -14,17 +14,19 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Common.Skill;
 
-public class Snack() : AjamaGhouliganCard(1,
+public class FingerFood() : AjamaGhouliganCard(1,
     CardType.Skill, CardRarity.Common,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new TreatVar(2)
+        new TreatVar(2),
+        new HealVar(5)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
+        MyEnums.Grave,
         CardKeyword.Exhaust
     ];
 
@@ -35,6 +37,8 @@ public class Snack() : AjamaGhouliganCard(1,
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 
         await MyActions.CreateTreats(this);
+
+        await MyActions.OstyHeal(this);
     }
 
     protected override void OnUpgrade()

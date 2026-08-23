@@ -19,12 +19,23 @@ public class JesterPower : AjamaGhouliganPower
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-    [
-        HoverTipFactory.FromPower<GoofPower>(),
-        HoverTipFactory.FromKeyword(MyEnums.Bury),
-        HoverTipFactory.FromCard<Strike>(true)
-    ];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips
+    {
+        get
+        {
+            CardModel strike = ModelDb.Card<Strike>().ToMutable();
+            
+            strike.EnergyCost.SetThisCombat(0);
+            strike.AddKeyword(MyEnums.Bury);
+            
+            return
+            [
+                HoverTipFactory.FromPower<GoofPower>(),
+                HoverTipFactory.FromKeyword(MyEnums.Bury),
+                HoverTipFactory.FromCard(strike)
+            ];
+        }
+    }
 
     public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier,
         CardModel? cardSource)
@@ -40,8 +51,13 @@ public class JesterPower : AjamaGhouliganPower
         await MyActions.CreateCards(ModelDb.Card<Strike>(),
             Amount, player, Owner.CombatState!, SepulchrePile.PileType, modifyCardsBeforePreview: list =>
             {
-                CardCmd.Upgrade(list, CardPreviewStyle.None);
+                foreach (var card in list)
+                {
+                    card.EnergyCost.SetThisCombat(0);
+                }
+                
                 MyActions.GainsBury(list, false);
+                
                 return list;
             });
     }

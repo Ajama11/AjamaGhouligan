@@ -6,6 +6,7 @@ using AjamaGhouligan.AjamaGhouliganCode.Cards.Status;
 using AjamaGhouligan.AjamaGhouliganCode.Cards.Token;
 using AjamaGhouligan.AjamaGhouliganCode.Cards.Token.Treats;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
+using AjamaGhouligan.AjamaGhouliganCode.Extensions;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using BaseLib.Extensions;
 using BaseLib.Utils;
@@ -484,14 +485,10 @@ public class MyActions
     
     public static async Task OstyHeal(Player player, decimal amount)
     {
-        if (player.IsOstyAlive)
-            await CreatureCmd.Heal(player.Osty!, amount);
-        else
-            Osty.CheckMissingWithAnim(player);
-            // The shake was happening even if Osty's alive, so I'm just using this Check for the shake if Osty's dead
+        if (Osty.IsReadyToParty(player)) await CreatureCmd.Heal(player.Osty!, amount);
     }
 
-    public static async Task Disinter(PlayerChoiceContext choiceContext, AjamaGhouliganCard sourceCard, bool upTo = false)
+    public static async Task DisinterSelect(PlayerChoiceContext choiceContext, AjamaGhouliganCard sourceCard, bool upTo = false)
     {
         List<CardModel> disinterredCards = await PutSelect(choiceContext, sourceCard, 
             SepulchrePile.PileType, PileType.Hand, 
@@ -502,7 +499,34 @@ public class MyActions
 
         foreach (var card in disinterredCards)
         {
-            SepulchreSingleton.RemoveFromCurrentAutoplay.Set(card, true);
+            await HandleDisinter(card);
+        }
+    }
+
+    public static async Task DisinterRandomNonHaunted(AjamaGhouliganCard sourceCard)
+    {
+        List<CardModel> disinterredCards = GetRandomCards(sourceCard,
+            SepulchrePile.PileType,
+            c => !c.Keywords.Contains(MyEnums.Haunted),
+            sourceCard.DynamicVars.Disinter.IntValue);
+
+        await CardPileCmd.Add(disinterredCards, PileType.Hand);
+        
+        foreach (var card in disinterredCards)
+        {
+            await HandleDisinter(card);
+        }
+    }
+
+    private static async Task HandleDisinter(CardModel card)
+    {
+        SepulchreSingleton.RemoveFromCurrentAutoplay.Set(card, true);
+        
+        foreach (var model in card.CombatState!.IterateHookListeners())
+        {
+            if (model is not IOnDisinter onDisinterModel) continue;
+            await onDisinterModel.OnDisinter(card);
+            model.InvokeExecutionFinished();
         }
     }
 

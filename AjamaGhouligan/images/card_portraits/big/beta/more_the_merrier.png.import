@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://beq2gefvyms0"
-path="res://.godot/imported/snack.png-c2c9c05882b9bda95708bb59161b3800.ctex"
+uid="uid://bri57bi5dqvgx"
+path="res://.godot/imported/more_the_merrier.png-bd76bcddbdd9c3deb732850fe1b6fcf7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://AjamaGhouligan/images/card_portraits/big/beta/snack.png"
-dest_files=["res://.godot/imported/snack.png-c2c9c05882b9bda95708bb59161b3800.ctex"]
+source_file="res://AjamaGhouligan/images/card_portraits/big/beta/more_the_merrier.png"
+dest_files=["res://.godot/imported/more_the_merrier.png-bd76bcddbdd9c3deb732850fe1b6fcf7.ctex"]
 
 [params]
 

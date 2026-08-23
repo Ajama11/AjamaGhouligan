@@ -42,7 +42,7 @@ public class DoublePoke() : AjamaGhouliganCard(1,
                 .Execute(choiceContext);
         }
 
-        await MyActions.Disinter(choiceContext, this, true);
+        await MyActions.DisinterSelect(choiceContext, this, true);
     }
 
     protected override void OnUpgrade()

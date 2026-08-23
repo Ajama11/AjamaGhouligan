@@ -20,8 +20,8 @@ public class Exchange() : AjamaGhouliganCard(0,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DisinterVar(1),
-        new BuryVar(1)
+        new DisinterVar(2),
+        new BuryVar(2)
     ];
     
     public override IEnumerable<IHoverTip> MyHoverTips =>
@@ -34,7 +34,7 @@ public class Exchange() : AjamaGhouliganCard(0,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await MyActions.Disinter(choiceContext, this);
+        await MyActions.DisinterSelect(choiceContext, this);
         
         await MyActions.SelectForBury(choiceContext, this);
     }

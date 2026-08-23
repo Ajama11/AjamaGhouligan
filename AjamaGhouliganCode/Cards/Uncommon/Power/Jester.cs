@@ -10,6 +10,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.ValueProps;
 
@@ -24,12 +25,23 @@ public class Jester() : AjamaGhouliganCard(0,
         new PowerVar<JesterPower>(1)
     ];
 
-    public override IEnumerable<IHoverTip> MyHoverTips =>
-    [
-        HoverTipFactory.FromPower<GoofPower>(),
-        HoverTipFactory.FromKeyword(MyEnums.Bury),
-        HoverTipFactory.FromCard<Strike>(true)
-    ];
+    public override IEnumerable<IHoverTip> MyHoverTips
+    {
+        get
+        {
+            CardModel strike = ModelDb.Card<Strike>().ToMutable();
+            
+            strike.EnergyCost.SetThisCombat(0);
+            strike.AddKeyword(MyEnums.Bury);
+            
+            return
+            [
+                HoverTipFactory.FromPower<GoofPower>(),
+                HoverTipFactory.FromKeyword(MyEnums.Bury),
+                HoverTipFactory.FromCard(strike)
+            ];
+        }
+    }
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,

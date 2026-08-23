@@ -21,7 +21,7 @@ public class AllHallowsEve() : AjamaGhouliganCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BuryVar(99)
+        
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
@@ -51,6 +51,6 @@ public class AllHallowsEve() : AjamaGhouliganCard(1,
 
     protected override void OnUpgrade()
     {
-        RemoveKeyword(CardKeyword.Exhaust);
+        AddKeyword(MyEnums.Grave);
     }
 }

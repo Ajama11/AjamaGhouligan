@@ -10,32 +10,34 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Multiplayer;
 
-public class BonesOfAFeather() : AjamaGhouliganCard(2,
+public class BonesOfAFeather() : AjamaGhouliganCard(1,
     CardType.Skill, CardRarity.Uncommon,
-    TargetType.AllAllies)
+    TargetType.AllAllies),
+    IOnDisinter
 {
     public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
     
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new SummonVar(4)
+        new SummonVar(3)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        MyEnums.Haunted,
         MyEnums.Bury
     ];
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
-        HoverTipFactory.FromKeyword(MyEnums.Haunted),
         HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon),
+        HoverTipFactory.Static(MyEnums.Disinter),
+        HoverTipFactory.FromKeyword(MyEnums.Haunted),
         HoverTipFactory.FromKeyword(MyEnums.Bury)
     ];
     
@@ -54,6 +56,13 @@ public class BonesOfAFeather() : AjamaGhouliganCard(2,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Summon.UpgradeValueBy(1);
+        DynamicVars.Summon.UpgradeValueBy(2);
+    }
+
+    public async Task OnDisinter(CardModel card)
+    {
+        if (card != this) return;
+        
+        card.AddKeyword(MyEnums.Haunted);
     }
 }
