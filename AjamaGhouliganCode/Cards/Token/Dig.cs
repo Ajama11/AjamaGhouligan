@@ -9,34 +9,39 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Common.Skill;
+namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Token;
 
-public class MagicTrick() : AjamaGhouliganCard(1,
-    CardType.Skill, CardRarity.Common,
+[Pool(typeof(TokenCardPool))]
+public class Dig() : AjamaGhouliganCard(1,
+    CardType.Skill, CardRarity.Token,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BuryVar(2),
-        new ScornVar(1)
+        new DisinterVar(1)
+    ];
+
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        CardKeyword.Ethereal,
+        CardKeyword.Exhaust
     ];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await MyActions.SelectForBury(choiceContext, this, PileType.Hand, true);
+        await MyActions.DisinterSelect(choiceContext, this, IsUpgraded);
         
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-
-        await MyActions.CreateScorn(this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Bury.UpgradeValueBy(1);
+        DynamicVars.Disinter.UpgradeValueBy(1);
     }
 }

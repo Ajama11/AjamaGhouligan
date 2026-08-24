@@ -73,5 +73,14 @@
   "AJAMAGHOULIGAN-LOLLIPOP_POWER.title": "Lollipop",
   "AJAMAGHOULIGAN-GOOFBALL_FORM_POWER.title": "Goofball Form",
   "AJAMAGHOULIGAN-GOOFBALL_FORM_POWER.description": "Whenever a card is [gold]Exhausted[/gold], gain [gold]Goof[/gold].",
-  "AJAMAGHOULIGAN-GOOFBALL_FORM_POWER.smartDescription": "Whenever a card is [gold]Exhausted[/gold], gain [blue]{Amount}[/blue] [gold]Goof[/gold]."
+  "AJAMAGHOULIGAN-GOOFBALL_FORM_POWER.smartDescription": "Whenever a card is [gold]Exhausted[/gold], gain [blue]{Amount}[/blue] [gold]Goof[/gold].",
+  "AJAMAGHOULIGAN-BUILT_DIFFERENT_POWER.title": "Built DIfferent",
+  "AJAMAGHOULIGAN-BUILT_DIFFERENT_POWER.description": "Whenever [gold]Osty[/gold] gains HP, he gains that much [gold]Vigor[/gold].",
+  "AJAMAGHOULIGAN-BUILT_DIFFERENT_POWER.smartDescription": "#Whenever [gold]Osty[/gold] gains HP, he gains {Amount:plural:|[blue]{}[/blue] times }that much [gold]Vigor[/gold].",
+  "AJAMAGHOULIGAN-RELUCTANT_CLEANING_POWER.title": "Reluctant Cleaning",
+  "AJAMAGHOULIGAN-RELUCTANT_CLEANING_POWER.description": "Whenever you [gold]Exhaust[/gold] or [gold]Bury[/gold] a Status, ALL enemies take damage.",
+  "AJAMAGHOULIGAN-RELUCTANT_CLEANING_POWER.smartDescription": "#Whenever you [gold]Exhaust[/gold] or [gold]Bury[/gold] a Status, ALL enemies take [blue]{Amount}[/blue] damage.",
+  "AJAMAGHOULIGAN-GRAVEDIGGER_POWER.title": "Gravedigger",
+  "AJAMAGHOULIGAN-GRAVEDIGGER_POWER.description": "At the start of your turn, add [blue]1[/blue] [gold]Dig[/gold] into your [gold]Hand[/gold].",
+  "AJAMAGHOULIGAN-GRAVEDIGGER_POWER.smartDescription": "#At the start of your turn, add {Amount:plural:[blue]{}[/blue] [gold]Dig[/gold]|[blue]{}[/blue] [gold]Digs[/gold]} into your [gold]Hand[/gold]."
 }

@@ -12,31 +12,40 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Common.Skill;
+namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Rare.Skill;
 
-public class MagicTrick() : AjamaGhouliganCard(1,
-    CardType.Skill, CardRarity.Common,
+public class SecretStash() : AjamaGhouliganCard(1,
+    CardType.Skill, CardRarity.Rare,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BuryVar(2),
-        new ScornVar(1)
+        new DisinterVar(3)
+    ];
+
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        CardKeyword.Innate,
+        CardKeyword.Retain,
+        CardKeyword.Exhaust
+    ];
+
+    public override IEnumerable<IHoverTip> MyHoverTips =>
+    [
+
     ];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await MyActions.SelectForBury(choiceContext, this, PileType.Hand, true);
-        
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 
-        await MyActions.CreateScorn(this);
+        await MyActions.DisinterSelect(choiceContext, this, true);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Bury.UpgradeValueBy(1);
+        EnergyCost.UpgradeBy(-1);
     }
 }

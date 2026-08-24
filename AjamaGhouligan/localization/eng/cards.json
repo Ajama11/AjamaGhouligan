@@ -250,6 +250,19 @@
   "AJAMAGHOULIGAN-GOOFBALL_FORM.title": "Goofball Form",
   "AJAMAGHOULIGAN-GOOFBALL_FORM.description": "#Whenever a card is [gold]Exhausted[/gold], gain !GoofballFormPower! [gold]Goof[/gold].",
   "AJAMAGHOULIGAN-MORE_THE_MERRIER.title": "More the Merrier",
-  "AJAMAGHOULIGAN-MORE_THE_MERRIER.description": "#Deal !D! damage.\nWhen [gold]Disinterred[/gold], [gold]Disinter[/gold] !Disinter! random non-[gold]Haunted[/gold] card(s) in your [gold]Sepulchre Pile[/gold].",
-  "AJAMAGHOULIGAN-PLACEHOLDERPLACEHOLDER.description": "#If there are !Threshold! or more Attacks in your [gold]Sepulchre Pile[/gold], gain !StrengthPower! [gold]Strength[/gold] and [gold]Exhaust[/gold].\u2028Otherwise, [gold]Bury[/gold] !Bury! random Attacks in your [gold]Draw Pile[/gold]."
+  "AJAMAGHOULIGAN-MORE_THE_MERRIER.description": "#Deal !D! damage.\nWhen [gold]Disinterred[/gold], [gold]Disinter[/gold] !Disinter! random non-[gold]Haunted[/gold] card(s) in your [gold]Sepulchre Pile[/gold].",
+  "AJAMAGHOULIGAN-BUILT_DIFFERENT.title": "Built Different",
+  "AJAMAGHOULIGAN-BUILT_DIFFERENT.description": "#Whenever [gold]Osty[/gold] gains HP, he gains {BuiltDifferentPower:plural:|{} times }that much [gold]Vigor[/gold].",
+  "AJAMAGHOULIGAN-RELUCTANT_CLEANING.title": "Reluctant Cleaning",
+  "AJAMAGHOULIGAN-RELUCTANT_CLEANING.description": "#Whenever you [gold]Exhaust[/gold] or [gold]Bury[/gold] a Status, ALL enemies take !ReluctantCleaningPower! damage.",
+  "AJAMAGHOULIGAN-DIG.title": "Dig",
+  "AJAMAGHOULIGAN-DIG.description": "#Disinter {Disinter:plural:|up to }!Disinter! card(s).",
+  "AJAMAGHOULIGAN-GRAVEDIGGER.title": "Gravedigger",
+  "AJAMAGHOULIGAN-GRAVEDIGGER.description": "#At the start of your turn, add {GravediggerPower:plural:{} [gold]Dig[/gold]|{} [gold]Digs[/gold]} into your [gold]Hand[/gold].",
+  "AJAMAGHOULIGAN-SECRET_STASH.title": "Secret Stash",
+  "AJAMAGHOULIGAN-SECRET_STASH.description": "#[gold]Disinter[/gold] up to !Disinter! card(s).",
+  "AJAMAGHOULIGAN-THICK_AS_THIEVES.title": "Thick as Thieves",
+  "AJAMAGHOULIGAN-THICK_AS_THIEVES.description": "#Deal !D! damage !HitCount! time(s).\nHits an additional time for every !Threshold! Max HP [gold]Osty[/gold] has.",
+  "AJAMAGHOULIGAN-UNEARTH.title": "Unearth",
+  "AJAMAGHOULIGAN-UNEARTH.description": "#If there are !Threshold! or more Attacks in your [gold]Sepulchre Pile[/gold], gain !StrengthPower! [gold]Strength[/gold] and [gold]Exhaust[/gold].\u2028Otherwise, [gold]Bury[/gold] !Bury! random Attacks in your [gold]Draw Pile[/gold]."
 }

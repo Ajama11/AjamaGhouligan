@@ -12,31 +12,39 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Common.Skill;
+namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Uncommon.Power;
 
-public class MagicTrick() : AjamaGhouliganCard(1,
-    CardType.Skill, CardRarity.Common,
+public class ReluctantCleaning() : AjamaGhouliganCard(0,
+    CardType.Power, CardRarity.Uncommon,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BuryVar(2),
-        new ScornVar(1)
+        new PowerVar<ReluctantCleaningPower>(3)
+    ];
+
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        MyEnums.Grave
+    ];
+
+    public override IEnumerable<IHoverTip> MyHoverTips =>
+    [
+        HoverTipFactory.FromKeyword(CardKeyword.Exhaust),
+        HoverTipFactory.Static(MyEnums.BuryOther)
     ];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await MyActions.SelectForBury(choiceContext, this, PileType.Hand, true);
-        
-        await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
+        await CreatureCmd.TriggerAnim(Owner.Creature, "PowerUp", Owner.Character.PowerUpAnimDelay);
 
-        await MyActions.CreateScorn(this);
+        await CommonActions.ApplySelf<ReluctantCleaningPower>(choiceContext, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Bury.UpgradeValueBy(1);
+        DynamicVars.Power<ReluctantCleaningPower>().UpgradeValueBy(1);
     }
 }

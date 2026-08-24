@@ -1,4 +1,5 @@
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
+using AjamaGhouligan.AjamaGhouliganCode.Cards.Token;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
@@ -12,31 +13,33 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Common.Skill;
+namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Uncommon.Power;
 
-public class MagicTrick() : AjamaGhouliganCard(1,
-    CardType.Skill, CardRarity.Common,
+public class Gravedigger() : AjamaGhouliganCard(2,
+    CardType.Power, CardRarity.Uncommon,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BuryVar(2),
-        new ScornVar(1)
+        new PowerVar<GravediggerPower>(1)
+    ];
+
+    public override IEnumerable<IHoverTip> MyHoverTips =>
+    [
+        HoverTipFactory.FromCard<Dig>()
     ];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await MyActions.SelectForBury(choiceContext, this, PileType.Hand, true);
-        
-        await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
+        await CreatureCmd.TriggerAnim(Owner.Creature, "PowerUp", Owner.Character.PowerUpAnimDelay);
 
-        await MyActions.CreateScorn(this);
+        await CommonActions.ApplySelf<GravediggerPower>(choiceContext, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Bury.UpgradeValueBy(1);
+        EnergyCost.UpgradeBy(-1);
     }
 }

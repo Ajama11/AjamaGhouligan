@@ -413,33 +413,35 @@ public class MyActions
         }
     }
     
-    public static async Task BuryRandomInPile(PileType pile, AjamaGhouliganCard sourceCard, MyEnums.RandomBuryTargeting targeting = MyEnums.RandomBuryTargeting.All)
+    public static async Task BuryRandomInPile(PileType pile, AjamaGhouliganCard sourceCard, MyEnums.RandomBuryTargeting targeting = MyEnums.RandomBuryTargeting.All, Func<CardModel, bool>? filter = null)
     {
-        await BuryRandomInPile(pile, sourceCard.Owner, sourceCard.DynamicVars.Bury.IntValue, targeting);
+        await BuryRandomInPile(pile, sourceCard.Owner, sourceCard.DynamicVars.Bury.IntValue, targeting, filter);
     }
     
-    public static async Task BuryRandomInPile(PileType pile, Player player, int amount, MyEnums.RandomBuryTargeting targeting = MyEnums.RandomBuryTargeting.All)
+    public static async Task BuryRandomInPile(PileType pile, Player player, int amount, MyEnums.RandomBuryTargeting targeting = MyEnums.RandomBuryTargeting.All, Func<CardModel, bool>? filter = null)
     {
-        await BuryRandomInPiles([pile], player, amount, targeting);
+        await BuryRandomInPiles([pile], player, amount, targeting, filter);
     }
     
-    public static async Task BuryRandomInPiles(List<PileType> piles, AjamaGhouliganCard sourceCard, MyEnums.RandomBuryTargeting targeting = MyEnums.RandomBuryTargeting.All)
+    public static async Task BuryRandomInPiles(List<PileType> piles, AjamaGhouliganCard sourceCard, MyEnums.RandomBuryTargeting targeting = MyEnums.RandomBuryTargeting.All, Func<CardModel, bool>? filter = null)
     {
-        await BuryRandomInPiles(piles, sourceCard.Owner, sourceCard.DynamicVars.Bury.IntValue, targeting);
+        await BuryRandomInPiles(piles, sourceCard.Owner, sourceCard.DynamicVars.Bury.IntValue, targeting, filter);
     }
     
-    public static async Task BuryRandomInPiles(List<PileType> piles, Player player, int amount, MyEnums.RandomBuryTargeting targeting = MyEnums.RandomBuryTargeting.All)
+    public static async Task BuryRandomInPiles(List<PileType> piles, Player player, int amount, MyEnums.RandomBuryTargeting targeting = MyEnums.RandomBuryTargeting.All, Func<CardModel, bool>? filter = null)
     {
-        Func<CardModel, bool> filter = targeting switch
+        filter ??= _ => true;
+        
+        Func<CardModel, bool> combinedFilter = targeting switch
         {
             MyEnums.RandomBuryTargeting.All => 
-                _ => true,
+                filter,
             
             MyEnums.RandomBuryTargeting.NotHaunted => 
-                c => !c.Keywords.Contains(MyEnums.Haunted),
+                c => !c.Keywords.Contains(MyEnums.Haunted) && filter(c),
             
             MyEnums.RandomBuryTargeting.PrioritizeHaunted or MyEnums.RandomBuryTargeting.OnlyHaunted => 
-                c => c.Keywords.Contains(MyEnums.Haunted),
+                c => c.Keywords.Contains(MyEnums.Haunted) && filter(c),
             
             _ => throw new ArgumentOutOfRangeException(nameof(targeting), targeting, null)
         };
@@ -451,7 +453,7 @@ public class MyActions
             cardsInPiles = [..cardsInPiles, ..pile.GetPile(player).Cards];
         }
 
-        List<CardModel> chosenCards = GetRandomCardsFromList(player, cardsInPiles, filter, amount);
+        List<CardModel> chosenCards = GetRandomCardsFromList(player, cardsInPiles, combinedFilter, amount);
 
         if (chosenCards.Count < amount && targeting == MyEnums.RandomBuryTargeting.PrioritizeHaunted)
         {
