@@ -21,8 +21,6 @@ public class HelpingHand() : AjamaGhouliganCard(0,
     CardType.Skill, CardRarity.Token,
     TargetType.Self)
 {
-    public override int MaxUpgradeLevel => 0;
-
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
         CardKeyword.Ethereal,
@@ -41,5 +39,10 @@ public class HelpingHand() : AjamaGhouliganCard(0,
         CardPlay play)
     {
         await HelpingHands.PlayerChooses(Owner, choiceContext, SelectionScreenPrompt, this);
+    }
+
+    protected override void OnUpgrade()
+    {
+        RemoveKeyword(CardKeyword.Ethereal);
     }
 }

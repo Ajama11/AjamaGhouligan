@@ -26,7 +26,7 @@ public class GimmeAHand() : AjamaGhouliganCard(1,
     
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new SummonVar(3),
+        new SummonVar(4),
         new OstyDamageVar(4, ValueProp.Move),
         new (Increase, 5)
     ];

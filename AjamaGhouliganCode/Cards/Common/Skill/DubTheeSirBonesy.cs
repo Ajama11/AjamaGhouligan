@@ -3,6 +3,7 @@ using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Extensions;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
+using BaseLib.Extensions;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -21,13 +22,13 @@ public class DubTheeSirBonesy() : AjamaGhouliganCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new SummonVar(5),
-        new PowerVar<StrengthPower>(2),
+        new SummonVar(6),
+        new PowerVar<StrengthPower>(1)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        CardKeyword.Exhaust
+        MyEnums.Haunted
     ];
     
     public override IEnumerable<IHoverTip> MyHoverTips =>
@@ -50,6 +51,7 @@ public class DubTheeSirBonesy() : AjamaGhouliganCard(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Summon.UpgradeValueBy(3);
+        DynamicVars.Summon.UpgradeValueBy(2);
+        DynamicVars.Power<StrengthPower>().UpgradeValueBy(1);
     }
 }
