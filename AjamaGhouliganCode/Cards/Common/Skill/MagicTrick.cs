@@ -21,7 +21,7 @@ public class MagicTrick() : AjamaGhouliganCard(1,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new BuryVar(2),
-        new ScornVar(1)
+        new ScornVar(2)
     ];
 
     protected override async Task OnPlay(

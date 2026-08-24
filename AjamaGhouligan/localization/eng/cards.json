@@ -256,7 +256,7 @@
   "AJAMAGHOULIGAN-RELUCTANT_CLEANING.title": "Reluctant Cleaning",
   "AJAMAGHOULIGAN-RELUCTANT_CLEANING.description": "#Whenever you [gold]Exhaust[/gold] or [gold]Bury[/gold] a Status, ALL enemies take !ReluctantCleaningPower! damage.",
   "AJAMAGHOULIGAN-DIG.title": "Dig",
-  "AJAMAGHOULIGAN-DIG.description": "#Disinter {Disinter:plural:|up to }!Disinter! card(s).",
+  "AJAMAGHOULIGAN-DIG.description": "#[gold]Disinter[/gold] {Disinter:plural:|up to }!Disinter! card(s).",
   "AJAMAGHOULIGAN-GRAVEDIGGER.title": "Gravedigger",
   "AJAMAGHOULIGAN-GRAVEDIGGER.description": "#At the start of your turn, add {GravediggerPower:plural:{} [gold]Dig[/gold]|{} [gold]Digs[/gold]} into your [gold]Hand[/gold].",
   "AJAMAGHOULIGAN-SECRET_STASH.title": "Secret Stash",

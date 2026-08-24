@@ -22,7 +22,6 @@ public class HandyDandy() : AjamaGhouliganCard(2,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new SummonVar(10),
         ..HalfSummon.MakeVars(8, 16)
     ];
 
