@@ -22,7 +22,7 @@ public class DubTheeSirBonesy() : AjamaGhouliganCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new SummonVar(6),
+        ..HalfSummon.MakeVars(6, 9),
         new PowerVar<StrengthPower>(1)
     ];
 
@@ -33,7 +33,7 @@ public class DubTheeSirBonesy() : AjamaGhouliganCard(1,
     
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
-        HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon),
+        HalfSummon.DynamicTip(DynamicVars),
         HoverTipFactory.FromPower<StrengthPower>()
     ];
 
@@ -43,7 +43,7 @@ public class DubTheeSirBonesy() : AjamaGhouliganCard(1,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 
-        await MyActions.Summon(choiceContext, this);
+        await MyActions.HalfSummon(choiceContext, this);
 
         if (Osty.IsReadyToParty(Owner))
             await CommonActions.Apply<StrengthPower>(choiceContext, Owner.Osty!, this);
@@ -51,7 +51,8 @@ public class DubTheeSirBonesy() : AjamaGhouliganCard(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Summon.UpgradeValueBy(2);
+        DynamicVars.HalfSummonFilled.UpgradeValueBy(1);
+        DynamicVars.HalfSummonTotal.UpgradeValueBy(5);
         DynamicVars.Power<StrengthPower>().UpgradeValueBy(1);
     }
 }

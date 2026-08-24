@@ -8,5 +8,7 @@
   "AJAMAGHOULIGAN-DISINTER.title": "Disinter",
   "AJAMAGHOULIGAN-DISINTER.description": "Put cards from your [gold]Sepulchre Pile[/gold] into your [gold]Hand[/gold].",
   "AJAMAGHOULIGAN-TREATS.title": "Treats",
-  "AJAMAGHOULIGAN-TREATS.description": "[gold]Bubblegum[/gold], [gold]Gummy Worm[/gold], [gold]Homemade Cookie[/gold], [gold]Licorice[/gold], [gold]Lollipop[/gold], or [gold]Milk Chocolate[/gold]."
+  "AJAMAGHOULIGAN-TREATS.description": "[gold]Bubblegum[/gold], [gold]Gummy Worm[/gold], [gold]Homemade Cookie[/gold], [gold]Licorice[/gold], [gold]Lollipop[/gold], or [gold]Milk Chocolate[/gold].",
+  "AJAMAGHOULIGAN-HALF_SUMMON_DYNAMIC.title": "Half-Summon {HalfSummonFilled}-{HalfSummonTotal}",
+  "AJAMAGHOULIGAN-HALF_SUMMON_DYNAMIC.description": "Summon [gold]Osty[/gold] with [blue]{HalfSummonFilled}[/blue] HP out of [blue]{HalfSummonTotal}[/blue] Max HP. If already summoned, raise his Max HP by [blue]{HalfSummonTotal}[/blue] while only healing [blue]{HalfSummonFilled}[/blue] of it."
 }

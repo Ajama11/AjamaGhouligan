@@ -1,5 +1,6 @@
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.Cards.Ancient;
+using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using BaseLib.Abstracts;
 using MegaCrit.Sts2.Core.Commands;
@@ -18,7 +19,7 @@ public class Yoink() : AjamaGhouliganCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new SummonVar(5)
+        ..HalfSummon.MakeVars(5, 7)
     ];
 
     protected override async Task OnPlay(
@@ -26,13 +27,14 @@ public class Yoink() : AjamaGhouliganCard(1,
         CardPlay play)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-
-        await MyActions.Summon(choiceContext, this);
+        
+        await MyActions.HalfSummon(choiceContext, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Summon.UpgradeValueBy(2);
+        DynamicVars.HalfSummonFilled.UpgradeValueBy(2);
+        DynamicVars.HalfSummonTotal.UpgradeValueBy(4);
     }
     
     public CardModel GetTranscendenceTransformedCard()

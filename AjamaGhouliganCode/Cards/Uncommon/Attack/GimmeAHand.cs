@@ -26,7 +26,7 @@ public class GimmeAHand() : AjamaGhouliganCard(1,
     
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new SummonVar(4),
+        ..HalfSummon.MakeVars(4, 5),
         new OstyDamageVar(4, ValueProp.Move),
         new (Increase, 5)
     ];
@@ -48,7 +48,7 @@ public class GimmeAHand() : AjamaGhouliganCard(1,
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
-        HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon),
+        HalfSummon.DynamicTip(DynamicVars),
         HoverTipFactory.Static(MyEnums.Disinter)
     ];
 
@@ -58,7 +58,7 @@ public class GimmeAHand() : AjamaGhouliganCard(1,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await MyActions.Summon(choiceContext, this);
+        await MyActions.HalfSummon(choiceContext, this);
 
         if (!Osty.CheckMissingWithAnim(Owner) && play.Target != null)
         {
@@ -86,7 +86,8 @@ public class GimmeAHand() : AjamaGhouliganCard(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Summon.UpgradeValueBy(2);
+        DynamicVars.HalfSummonFilled.UpgradeValueBy(2);
+        DynamicVars.HalfSummonTotal.UpgradeValueBy(3);
         DynamicVars[Increase].UpgradeValueBy(5);
     }
 }

@@ -4,6 +4,7 @@ using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using Godot;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Commands.Builders;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -37,16 +38,21 @@ public class SpiritFire() : AjamaGhouliganCard(2,
     {
         ArgumentNullException.ThrowIfNull(play.Target);
 
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+        AttackCommand attackCommand = await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(this, play)
             .Targeting(play.Target)
             .WithHitCount(DynamicVars.Repeat.IntValue)
             .WithHitVfxNode((Func<Creature, Node2D>) (t => NFireBurstVfx.Create(t, 0.75f)!))
             .Execute(choiceContext);
+
+        await MyActions.OstyHeal(Owner,
+            attackCommand.Results
+                .SelectMany(r => r)
+                .Sum(r => r.TotalDamage + r.OverkillDamage));
     }
 
     protected override void OnUpgrade()
     {
-        AddKeyword(CardKeyword.Retain);
+        DynamicVars.Damage.UpgradeValueBy(1);
     }
 }

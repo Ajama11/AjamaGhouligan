@@ -31,6 +31,9 @@ public class MyEnums
     
     [CustomEnum]
     public static StaticHoverTip Treats;
+    
+    [CustomEnum]
+    public static StaticHoverTip HalfSummonDynamic;
 
     [CustomEnum]
     public static CardTag Treat;

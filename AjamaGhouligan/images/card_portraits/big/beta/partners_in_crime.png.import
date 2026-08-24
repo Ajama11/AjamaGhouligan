@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dpm86rrso1fa4"
-path="res://.godot/imported/thick_as_thieves.png-cf757b0cbca5b2cfb9fed8f1f2000773.ctex"
+path="res://.godot/imported/partners_in_crime.png-5db8ca5c739e8f4422c6713fa674656e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://AjamaGhouligan/images/card_portraits/big/beta/thick_as_thieves.png"
-dest_files=["res://.godot/imported/thick_as_thieves.png-cf757b0cbca5b2cfb9fed8f1f2000773.ctex"]
+source_file="res://AjamaGhouligan/images/card_portraits/big/beta/partners_in_crime.png"
+dest_files=["res://.godot/imported/partners_in_crime.png-5db8ca5c739e8f4422c6713fa674656e.ctex"]
 
 [params]
 

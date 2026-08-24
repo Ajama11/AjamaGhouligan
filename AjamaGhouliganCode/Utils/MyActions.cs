@@ -10,6 +10,7 @@ using AjamaGhouligan.AjamaGhouliganCode.Extensions;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using BaseLib.Extensions;
 using BaseLib.Utils;
+using Godot;
 using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
@@ -18,6 +19,7 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Extensions;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Monsters;
@@ -258,6 +260,75 @@ public class MyActions
     {
         choiceContext ??= new ThrowingPlayerChoiceContext();
         await OstyCmd.Summon(choiceContext, player, amount, sourceModel);
+    }
+    
+    public static async Task HalfSummon(PlayerChoiceContext choiceContext, AjamaGhouliganCard sourceCard)
+    {
+        await HalfSummon(sourceCard, sourceCard.Owner,
+            sourceCard.DynamicVars.HalfSummonFilled.IntValue, sourceCard.DynamicVars.HalfSummonTotal.IntValue,
+            choiceContext);
+    }
+
+    public static async Task<SummonResult> HalfSummon(AbstractModel sourceModel, Player summoner, int filledValue, int totalValue, PlayerChoiceContext? choiceContext)
+    {
+        choiceContext ??= new ThrowingPlayerChoiceContext();
+        ICombatState combatState = summoner.Creature.CombatState!;
+        
+        totalValue = (int) Hook.ModifySummonAmount(combatState, summoner, totalValue, sourceModel);
+        filledValue = (int) Hook.ModifySummonAmount(combatState, summoner, filledValue, sourceModel);
+        
+        if (totalValue == 0M) return new SummonResult(summoner.Osty, 0M);
+        
+        if (CombatManager.Instance.IsInProgress) 
+            SfxCmd.Play("event:/sfx/characters/necrobinder/necrobinder_summon");
+        
+        Creature? osty = combatState.Allies.FirstOrDefault(c => c.Monster is Osty && c.PetOwner == summoner);
+        
+        if (summoner.IsOstyAlive)
+        {
+            await CreatureCmd.SetMaxHp(osty!, osty!.MaxHp + totalValue);
+            await CreatureCmd.Heal(osty, filledValue);
+        }
+        else
+        { 
+            bool isReviving = osty != null;
+            
+            if (isReviving) 
+            { 
+                if (osty!.IsAlive) 
+                    throw new InvalidOperationException("We shouldn't make it here if Osty is still alive!"); 
+                summoner.PlayerCombatState!.AddPetInternal(osty); 
+            }
+            else 
+            { 
+                osty = await PlayerCmd.AddPet<Osty>(summoner); 
+                NCreature? ostyNode = NCombatRoom.Instance?.GetCreatureNode(osty);
+                
+                if (ostyNode != null && sourceModel is CardModel) 
+                { 
+                    ostyNode.Modulate = Colors.Transparent; 
+                    ostyNode.CreateTween().TweenProperty(ostyNode, (NodePath) "modulate", Colors.White, 0.3499999940395355).SetDelay(0.10000000149011612); 
+                    ostyNode.StartReviveAnim(); 
+                }
+                
+                await PowerCmd.Apply<DieForYouPower>(choiceContext, osty, 1, null, null);
+                
+                ostyNode?.TrackBlockStatus(summoner.Creature); 
+            }
+            
+            await CreatureCmd.SetMaxHp(osty, totalValue);
+            await CreatureCmd.Heal(osty, filledValue, isReviving);
+            
+            if (isReviving) await Hook.AfterOstyRevived(combatState, osty);
+        }
+        
+        NCombatRoom.Instance?.GetCreatureNode(osty)?.OstyScaleToSize(osty.MaxHp, 0.75);
+        
+        CombatManager.Instance.History.Summoned(combatState, filledValue, summoner);
+        
+        await Hook.AfterSummon(combatState, choiceContext, summoner, filledValue);
+        
+        return new SummonResult(summoner.Osty, filledValue);
     }
     
     public static async Task<IEnumerable<CardModel>> CreateCards(CardModel canonicalCard, int amount,

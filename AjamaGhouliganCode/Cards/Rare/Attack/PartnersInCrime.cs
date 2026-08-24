@@ -15,7 +15,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Rare.Attack;
 
-public class ThickAsThieves() : AjamaGhouliganCard(1,
+public class PartnersInCrime() : AjamaGhouliganCard(1,
     CardType.Attack, CardRarity.Rare,
     TargetType.AnyEnemy)
 {

@@ -18,7 +18,7 @@ public class LimitlessBones() : AjamaGhouliganCard(3,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new SummonVar(2)
+        ..HalfSummon.MakeVars(2, 4)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
@@ -32,7 +32,7 @@ public class LimitlessBones() : AjamaGhouliganCard(3,
     [
         HoverTipFactory.FromKeyword(MyEnums.Haunted),
         HoverTipFactory.FromKeyword(CardKeyword.Retain),
-        HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon),
+        HalfSummon.DynamicTip(DynamicVars),
         HoverTipFactory.FromKeyword(MyEnums.Bury)
     ];
 
@@ -42,7 +42,7 @@ public class LimitlessBones() : AjamaGhouliganCard(3,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 
-        await MyActions.Summon(choiceContext, this);
+        await MyActions.HalfSummon(choiceContext, this);
     }
 
     protected override void OnUpgrade()

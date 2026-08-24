@@ -19,7 +19,8 @@ public class SiphonStrike() : AjamaGhouliganCard(1,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(8, ValueProp.Move),
-        new LoseDoomVar(4)
+        new LoseDoomVar(4),
+        new HealVar(4)
     ];
 
     public override HashSet<CardTag> MyCanonicalTags =>
@@ -40,10 +41,14 @@ public class SiphonStrike() : AjamaGhouliganCard(1,
             .Execute(choiceContext);
 
         await MyActions.LoseDoom(choiceContext, this);
+
+        await MyActions.OstyHeal(this);
     }
 
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(3);
+        DynamicVars.LoseDoom.UpgradeValueBy(2);
+        DynamicVars.Heal.UpgradeValueBy(1);
     }
 }

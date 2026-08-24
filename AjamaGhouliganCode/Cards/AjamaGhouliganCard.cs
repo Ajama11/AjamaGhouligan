@@ -11,6 +11,7 @@ using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 
@@ -81,6 +82,11 @@ public abstract class AjamaGhouliganCard(int cost, CardType type, CardRarity rar
             if (DynamicVars.ContainsKey(SummonVar.defaultName))
             {
                 result = [..result, HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon)];
+            }
+            
+            if (DynamicVars.Values.Any(dv => dv is HalfSummonTotalVar { SkipTooltip: false }))
+            {
+                result = [..result, HalfSummon.DynamicTip(DynamicVars)];
             }
             
             if (DynamicVars.ContainsKey(nameof(MisfortunePower)) || Keywords.Contains(MyEnums.Unfortunate))

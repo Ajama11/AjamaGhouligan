@@ -20,7 +20,7 @@ public class Yoinkadoo() : AjamaGhouliganCard(0,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new SummonVar(7),
+        ..HalfSummon.MakeVars(7, 9),
         new PowerVar<GoofPower>(2),
         new CardsVar(1)
     ];
@@ -31,7 +31,7 @@ public class Yoinkadoo() : AjamaGhouliganCard(0,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 
-        await MyActions.Summon(choiceContext, this);
+        await MyActions.HalfSummon(choiceContext, this);
 
         await MyActions.Goof(choiceContext, this);
 
@@ -40,7 +40,8 @@ public class Yoinkadoo() : AjamaGhouliganCard(0,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Summon.UpgradeValueBy(2);
+        DynamicVars.HalfSummonFilled.UpgradeValueBy(2);
+        DynamicVars.HalfSummonTotal.UpgradeValueBy(4);
         DynamicVars.Power<GoofPower>().UpgradeValueBy(1);
     }
 }
