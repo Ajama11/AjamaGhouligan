@@ -16,40 +16,22 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Token.Treats;
 
-[Pool(typeof(TokenCardPool))]
-public class GummyWorm() : AjamaGhouliganCard(0,
-    CardType.Skill, CardRarity.Token,
-    TargetType.Self)
+public class GummyWorm() : BaseTreat()
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    protected override IEnumerable<DynamicVar> TreatCanonicalVars =>
     [
-        new PowerVar<GoofPower>(2),
-        new LoseDoomVar(4)
+        new PowerVar<GoofPower>(2)
     ];
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-        CardKeyword.Ethereal,
-        CardKeyword.Exhaust
-    ];
-    
-    public override HashSet<CardTag> MyCanonicalTags =>
-    [
-        MyEnums.Treat
-    ];
-
-    protected override async Task OnPlay(
+    protected override async Task TreatOnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
         await MyActions.Goof(choiceContext, this);
-
-        await MyActions.LoseDoom(choiceContext, this);
     }
 
-    protected override void OnUpgrade()
+    protected override void TreatOnUpgrade()
     {
         DynamicVars.Power<GoofPower>().UpgradeValueBy(1);
-        DynamicVars.LoseDoom.UpgradeValueBy(2);
     }
 }

@@ -127,7 +127,7 @@ public abstract class AjamaGhouliganCard(int cost, CardType type, CardRarity rar
             
             if (DynamicVars.ContainsKey(TreatVar.Key) && !DynamicVars.Treat.SkipTooltip)
             {
-                result = [..result, ..MyEnums.TreatHovers()];
+                result = [..result, ..MyEnums.TreatHovers(DynamicVars.Treat.Upgraded)];
             }
             
             if (DynamicVars.ContainsKey(ScornVar.Key) && !DynamicVars.Scorn.SkipTooltip)

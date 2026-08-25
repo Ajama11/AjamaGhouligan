@@ -6,7 +6,8 @@
       "id": "card",
       "markers": [
         "CustomCardModel",
-        "AjamaGhouliganCard"
+        "AjamaGhouliganCard",
+        "BaseTreat"
       ],
       "fields": [
         {
@@ -204,17 +205,6 @@
       ]
     }
   ],
-  "pinnedColors": [
-    {
-      "tag": "gold"
-    },
-    {
-      "tag": "blue"
-    },
-    {
-      "hex": "#696969",
-      "label": "#696969"
-    }
-  ],
+  "pinnedColors": [],
   "customTags": []
 }

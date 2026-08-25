@@ -1,5 +1,6 @@
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
+using AjamaGhouligan.AjamaGhouliganCode.Extensions;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using BaseLib.Extensions;
@@ -10,6 +11,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Monsters;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Common.Skill;
@@ -21,12 +23,17 @@ public class FingerFood() : AjamaGhouliganCard(1,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new TreatVar(2),
-        new HealVar(5)
+        new PowerVar<VigorPower>(3)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
         MyEnums.Grave
+    ];
+
+    public override IEnumerable<IHoverTip> MyHoverTips =>
+    [
+        HoverTipFactory.FromPower<VigorPower>()
     ];
 
     protected override async Task OnPlay(
@@ -37,7 +44,12 @@ public class FingerFood() : AjamaGhouliganCard(1,
 
         await MyActions.CreateTreats(this);
 
-        await MyActions.OstyHeal(this);
+        if (Osty.IsReadyToParty(Owner))
+        {
+            await PowerCmd.Apply<VigorPower>(choiceContext, 
+                Owner.Osty!, DynamicVars.Power<VigorPower>().BaseValue,
+                Owner.Creature, this);
+        }
     }
 
     protected override void OnUpgrade()

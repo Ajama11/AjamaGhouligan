@@ -656,13 +656,13 @@ public class MyActions
     
     public static async Task<IEnumerable<CardModel>> CreateTreats(
         AjamaGhouliganCard sourceCard, PileType pile = PileType.Hand,
-        CardPilePosition position = CardPilePosition.Bottom, int amountOverride = -1)
+        CardPilePosition position = CardPilePosition.Bottom, int amountOverride = -1, Func<List<CardModel>, List<CardModel>>? modifyCardsBeforePreview = null)
     {
         int amount = amountOverride == -1 ? 
             sourceCard.DynamicVars.Treat.IntValue :
             amountOverride;
         
-        return await CreateTreats(amount, sourceCard.Owner, sourceCard.CombatState!, pile, position);
+        return await CreateTreats(amount, sourceCard.Owner, sourceCard.CombatState!, pile, position, modifyCardsBeforePreview);
     }
 
     public static async Task<IEnumerable<CardModel>> CreateTreats(int amount,

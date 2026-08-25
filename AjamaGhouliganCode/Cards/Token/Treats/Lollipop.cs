@@ -16,33 +16,19 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Token.Treats;
 
-[Pool(typeof(TokenCardPool))]
-public class Lollipop() : AjamaGhouliganCard(0,
-    CardType.Skill, CardRarity.Token,
-    TargetType.AnyEnemy)
+public class Lollipop() : BaseTreat()
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    protected override IEnumerable<DynamicVar> TreatCanonicalVars =>
     [
         new PowerVar<StrengthPower>(3)
     ];
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-        CardKeyword.Ethereal,
-        CardKeyword.Exhaust
-    ];
-    
-    public override HashSet<CardTag> MyCanonicalTags =>
-    [
-        MyEnums.Treat
-    ];
-
-    public override IEnumerable<IHoverTip> MyHoverTips =>
+    public override IEnumerable<IHoverTip> TreatMyHoverTips =>
     [
         HoverTipFactory.FromPower<StrengthPower>()
     ];
 
-    protected override async Task OnPlay(
+    protected override async Task TreatOnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
@@ -51,7 +37,7 @@ public class Lollipop() : AjamaGhouliganCard(0,
             Owner.Creature, this);
     }
 
-    protected override void OnUpgrade()
+    protected override void TreatOnUpgrade()
     {
         DynamicVars.Power<StrengthPower>().UpgradeValueBy(2);
     }

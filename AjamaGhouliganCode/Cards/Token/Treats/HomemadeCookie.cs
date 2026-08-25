@@ -15,29 +15,15 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Token.Treats;
 
-[Pool(typeof(TokenCardPool))]
-public class HomemadeCookie() : AjamaGhouliganCard(0,
-    CardType.Skill, CardRarity.Token,
-    TargetType.Self)
+public class HomemadeCookie() : BaseTreat()
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    protected override IEnumerable<DynamicVar> TreatCanonicalVars =>
     [
         new EnergyVar(1),
         new CardsVar(1)
     ];
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-        CardKeyword.Ethereal,
-        CardKeyword.Exhaust
-    ];
-    
-    public override HashSet<CardTag> MyCanonicalTags =>
-    [
-        MyEnums.Treat
-    ];
-
-    protected override async Task OnPlay(
+    protected override async Task TreatOnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
@@ -46,7 +32,7 @@ public class HomemadeCookie() : AjamaGhouliganCard(0,
         await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
     }
 
-    protected override void OnUpgrade()
+    protected override void TreatOnUpgrade()
     {
         DynamicVars.Energy.UpgradeValueBy(1);
     }

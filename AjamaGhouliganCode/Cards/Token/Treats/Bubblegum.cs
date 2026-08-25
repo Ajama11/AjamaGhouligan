@@ -17,36 +17,19 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Token.Treats;
 
-[Pool(typeof(TokenCardPool))]
-public class Bubblegum() : AjamaGhouliganCard(0,
-    CardType.Skill, CardRarity.Token,
-    TargetType.Self)
+public class Bubblegum() : BaseTreat()
 {
-    private const string OstyVigor = "OstyVigor";
-    
-    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    protected override IEnumerable<DynamicVar> TreatCanonicalVars =>
     [
         new PowerVar<VigorPower>(3),
-        new PowerVar<VigorPower>(OstyVigor, 3)
-    ];
-
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-        CardKeyword.Ethereal,
-        CardKeyword.Exhaust
     ];
     
-    public override HashSet<CardTag> MyCanonicalTags =>
-    [
-        MyEnums.Treat
-    ];
-
-    public override IEnumerable<IHoverTip> MyHoverTips =>
+    public override IEnumerable<IHoverTip> TreatMyHoverTips =>
     [
         HoverTipFactory.FromPower<VigorPower>()
     ];
 
-    protected override async Task OnPlay(
+    protected override async Task TreatOnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     { 
@@ -55,14 +38,13 @@ public class Bubblegum() : AjamaGhouliganCard(0,
         if (Osty.IsReadyToParty(Owner))
         {
             await PowerCmd.Apply<VigorPower>(choiceContext, 
-                Owner.Osty!, DynamicVars[OstyVigor].BaseValue,
+                Owner.Osty!, DynamicVars.Power<VigorPower>().BaseValue,
                 Owner.Creature, this);
         }
     }
 
-    protected override void OnUpgrade()
+    protected override void TreatOnUpgrade()
     {
         DynamicVars.Power<VigorPower>().UpgradeValueBy(2);
-        DynamicVars[OstyVigor].UpgradeValueBy(2);
     }
 }

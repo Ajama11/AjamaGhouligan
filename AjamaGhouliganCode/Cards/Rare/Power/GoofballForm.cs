@@ -1,4 +1,5 @@
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
+using AjamaGhouligan.AjamaGhouliganCode.Cards.Token;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
@@ -31,7 +32,8 @@ public class GoofballForm() : AjamaGhouliganCard(3,
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
         HoverTipFactory.FromKeyword(CardKeyword.Exhaust),
-        HoverTipFactory.FromPower<GoofPower>()
+        HoverTipFactory.FromPower<GoofPower>(),
+        HoverTipFactory.FromCard<Cavort>()
     ];
 
     protected override async Task OnPlay(

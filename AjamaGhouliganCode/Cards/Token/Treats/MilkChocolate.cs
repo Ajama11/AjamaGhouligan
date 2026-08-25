@@ -15,40 +15,22 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Token.Treats;
 
-[Pool(typeof(TokenCardPool))]
-public class MilkChocolate() : AjamaGhouliganCard(0,
-    CardType.Skill, CardRarity.Token,
-    TargetType.Self)
+public class MilkChocolate() : BaseTreat()
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    protected override IEnumerable<DynamicVar> TreatCanonicalVars =>
     [
-        new BlockVar(6, ValueProp.Move),
-        new SummonVar(3)
+        new SummonVar(6)
     ];
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-        CardKeyword.Ethereal,
-        CardKeyword.Exhaust
-    ];
-    
-    public override HashSet<CardTag> MyCanonicalTags =>
-    [
-        MyEnums.Treat
-    ];
-
-    protected override async Task OnPlay(
+    protected override async Task TreatOnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await CommonActions.CardBlock(this, play);
-
         await MyActions.Summon(choiceContext, this);
     }
 
-    protected override void OnUpgrade()
+    protected override void TreatOnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(1);
-        DynamicVars.Summon.UpgradeValueBy(2);
+        DynamicVars.Summon.UpgradeValueBy(3);
     }
 }

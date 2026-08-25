@@ -10,6 +10,8 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Monsters;
+using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.Nodes.CommonUi;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Uncommon.Skill;
@@ -20,9 +22,8 @@ public class Rejuvenate() : AjamaGhouliganCard(2,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new HealVar(8),
-        new LoseDoomVar(8),
-        new TreatVar(2)
+        new SummonVar(8),
+        new TreatVar(3, upgraded: IsUpgraded)
     ];
 
     protected override async Task OnPlay(
@@ -31,16 +32,17 @@ public class Rejuvenate() : AjamaGhouliganCard(2,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 
-        await MyActions.OstyHeal(this);
+        await CommonActions.ApplySelf<SummonNextTurnPower>(choiceContext, this, DynamicVars.Summon.IntValue);
 
-        await MyActions.LoseDoom(choiceContext, this);
-
-        await MyActions.CreateTreats(this);
+        await MyActions.CreateTreats(this, modifyCardsBeforePreview: list =>
+        {
+            CardCmd.Upgrade(list, CardPreviewStyle.None);
+            return list;
+        });
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Heal.UpgradeValueBy(2);
-        DynamicVars.LoseDoom.UpgradeValueBy(2);
+        DynamicVars.Summon.UpgradeValueBy(2);
     }
 }

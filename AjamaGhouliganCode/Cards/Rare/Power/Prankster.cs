@@ -1,4 +1,5 @@
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
+using AjamaGhouligan.AjamaGhouliganCode.Cards.Token;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
@@ -20,13 +21,14 @@ public class Prankster() : AjamaGhouliganCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<PranksterPower>(1)
+        new PowerVar<PranksterPower>(2)
     ];
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
         HoverTipFactory.FromPower<MisfortunePower>(),
-        HoverTipFactory.FromPower<GoofPower>()
+        HoverTipFactory.FromPower<GoofPower>(),
+        HoverTipFactory.FromCard<Cavort>()
     ];
 
     protected override async Task OnPlay(
