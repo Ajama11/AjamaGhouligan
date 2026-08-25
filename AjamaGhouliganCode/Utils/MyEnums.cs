@@ -1,8 +1,10 @@
 using AjamaGhouligan.AjamaGhouliganCode.Cards.Token.Treats;
 using BaseLib.Patches.Content;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Nodes.CommonUi;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Utils;
 
@@ -46,11 +48,25 @@ public class MyEnums
         OnlyHaunted
     }
     
-    public static IEnumerable<IHoverTip> TreatHovers()
+    public static IEnumerable<IHoverTip> TreatHovers(bool upgraded = false)
     {
+        List<CardModel> treats = MyActions.CanonicalTreats;
+
+        if (upgraded)
+        {
+            treats = [];
+            
+            foreach (var canonicalTreat in MyActions.CanonicalTreats)
+            {
+                treats = [..treats, canonicalTreat.ToMutable()];
+            }
+            
+            CardCmd.Upgrade(treats, CardPreviewStyle.None);
+        }
+        
         return
         [
-            new CycleHoverTip(MyActions.CanonicalTreats),
+            new CycleHoverTip(treats),
             HoverTipFactory.Static(Treats)
         ];
     }

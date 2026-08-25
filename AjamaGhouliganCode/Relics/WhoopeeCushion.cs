@@ -21,8 +21,8 @@ public class WhoopeeCushion() : AjamaGhouliganRelic
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<GoofPower>(1),
-        new SurpriseVar(3)
+        new PowerVar<GoofPower>(2),
+        new SurpriseVar(2)
     ];
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>

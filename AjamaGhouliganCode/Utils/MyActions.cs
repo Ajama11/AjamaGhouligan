@@ -667,7 +667,7 @@ public class MyActions
 
     public static async Task<IEnumerable<CardModel>> CreateTreats(int amount,
         Player owner, ICombatState combatState, PileType pile = PileType.Hand,
-        CardPilePosition position = CardPilePosition.Bottom)
+        CardPilePosition position = CardPilePosition.Bottom, Func<List<CardModel>, List<CardModel>>? modifyCardsBeforePreview = null)
     {
         if (amount == 0 || CombatManager.Instance.IsOverOrEnding)
         {
@@ -679,6 +679,11 @@ public class MyActions
         for (int i = 0; i < amount; i++)
         {
             cards.Add(combatState.CreateCard(owner.RunState.Rng.CombatCardGeneration.NextItem(CanonicalTreats)!, owner));
+        }
+        
+        if (modifyCardsBeforePreview != null)
+        {
+            cards = modifyCardsBeforePreview(cards);
         }
         
         IReadOnlyList<CardPileAddResult> results = await CardPileCmd.AddGeneratedCardsToCombat(cards, pile, owner, position);

@@ -13,11 +13,11 @@ namespace AjamaGhouligan.AjamaGhouliganCode.Relics;
 public class FunnyBones() : AjamaGhouliganRelic, IOnGoofPop
 {
     public override RelicRarity Rarity =>
-        RelicRarity.Rare;
+        RelicRarity.Common;
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new SummonVar(8)
+        new SummonVar(6)
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
