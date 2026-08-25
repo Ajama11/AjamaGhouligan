@@ -262,7 +262,7 @@
   "AJAMAGHOULIGAN-SECRET_STASH.title": "Secret Stash",
   "AJAMAGHOULIGAN-SECRET_STASH.description": "#[gold]Disinter[/gold] up to !Disinter! card(s).",
   "AJAMAGHOULIGAN-PARTNERS_IN_CRIME.title": "Partners in Crime",
-  "AJAMAGHOULIGAN-PARTNERS_IN_CRIME.description": "#Deal !D! damage !HitCount! time(s).\nHits an additional time for every !Threshold! Max HP [gold]Osty[/gold] has.",
+  "AJAMAGHOULIGAN-PARTNERS_IN_CRIME.description": "#Deal !D! damage !HitCount! time(s).\n[gold]Osty[/gold] deals !OstyDamage! damage !HitCount! time(s).\nBoth hit an additional time for every !Threshold! Max HP [gold]Osty[/gold] has.",
   "AJAMAGHOULIGAN-UNEARTH.title": "Unearth",
   "AJAMAGHOULIGAN-UNEARTH.description": "#If there are !Threshold! or more Attacks in your [gold]Sepulchre Pile[/gold], gain !StrengthPower! [gold]Strength[/gold] and [gold]Exhaust[/gold].\u2028Otherwise, [gold]Bury[/gold] !Bury! random Attacks in your [gold]Draw Pile[/gold].",
   "AJAMAGHOULIGAN-BASE_TREAT.title": "",
