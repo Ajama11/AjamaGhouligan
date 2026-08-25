@@ -28,7 +28,8 @@ public class WhoopeeCushion() : AjamaGhouliganRelic
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.FromPower<GoofPower>(),
-        HoverTipFactory.FromCard<Surprise>()
+        HoverTipFactory.FromCard<Surprise>(),
+        HoverTipFactory.FromCard<Cavort>()
     ];
 
     public override async Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)

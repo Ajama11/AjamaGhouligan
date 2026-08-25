@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.Cards.Token;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using BaseLib.Extensions;
@@ -26,7 +27,8 @@ public class JuiceBarrel : AjamaGhouliganPotion
 
     public override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromPower<GoofPower>()
+        HoverTipFactory.FromPower<GoofPower>(),
+        HoverTipFactory.FromCard<Cavort>()
     ];
 
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)

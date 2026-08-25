@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.Cards.Token;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Combat;
@@ -20,7 +21,8 @@ public class GoofballFormPower : AjamaGhouliganPower
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.FromKeyword(CardKeyword.Exhaust),
-        HoverTipFactory.FromPower<GoofPower>()
+        HoverTipFactory.FromPower<GoofPower>(),
+        HoverTipFactory.FromCard<Cavort>()
     ];
 
     public override async Task AfterCardExhausted(PlayerChoiceContext choiceContext, CardModel card, bool causedByEthereal)

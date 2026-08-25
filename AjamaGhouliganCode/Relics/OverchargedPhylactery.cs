@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Relics;
 
@@ -15,7 +16,7 @@ public class OverchargedPhylactery : AjamaGhouliganRelic
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new SummonVar(14),
+        ..HalfSummon.MakeVars(14, 10),
         new LoseDoomVar(3)
     ];
 
@@ -23,17 +24,22 @@ public class OverchargedPhylactery : AjamaGhouliganRelic
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon)
+        HalfSummon.DynamicTip(DynamicVars),
+        HoverTipFactory.FromPower<DoomPower>()
     ];
 
     public override async Task BeforeCombatStart()
     {
-        await OstyCmd.Summon(new ThrowingPlayerChoiceContext(), Owner, DynamicVars.Summon.BaseValue, this);
+        await MyActions.HalfSummon(this, Owner,
+            DynamicVars.HalfSummonFilled.IntValue,
+            DynamicVars.HalfSummonEmpty.IntValue,
+            new ThrowingPlayerChoiceContext());
     }
 
     public override async Task AfterPlayerTurnStartLate(PlayerChoiceContext choiceContext, Player player)
     {
         if (player != Owner) return;
+        if (!player.Creature.HasPower<DoomPower>()) return;
         
         Flash();
 

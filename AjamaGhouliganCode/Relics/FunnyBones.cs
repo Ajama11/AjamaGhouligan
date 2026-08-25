@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.Cards.Token;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Relics;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
@@ -22,6 +23,7 @@ public class FunnyBones() : AjamaGhouliganRelic, IOnGoofPop
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.FromPower<GoofPower>(),
+        HoverTipFactory.FromCard<Cavort>(),
         HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon)
     ];
 

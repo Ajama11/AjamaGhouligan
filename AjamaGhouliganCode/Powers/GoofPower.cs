@@ -1,9 +1,11 @@
+using AjamaGhouligan.AjamaGhouliganCode.Cards.Token;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 
@@ -16,10 +18,9 @@ public class GoofPower : AjamaGhouliganPower
     
     private const decimal Threshold = 10;
 
-    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        new EnergyVar(2),
-        new CardsVar(2)
+        HoverTipFactory.FromCard<Cavort>()
     ];
 
     public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier,
@@ -48,9 +49,7 @@ public class GoofPower : AjamaGhouliganPower
         
         await PowerCmd.ModifyAmount(new ThrowingPlayerChoiceContext(), this, -Threshold, Owner.Player.Creature, null);
 
-        await PlayerCmd.GainEnergy(DynamicVars.Energy.IntValue, Owner.Player);
-
-        await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.IntValue, Owner.Player);
+        await MyActions.CreateCards(ModelDb.Card<Cavort>(), 1, Owner.Player!, CombatState);
         
         foreach (var model in Owner.Player.Creature.CombatState!.IterateHookListeners())
         {

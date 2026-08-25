@@ -1,5 +1,6 @@
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.Cards.Basic;
+using AjamaGhouligan.AjamaGhouliganCode.Cards.Token;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
@@ -38,7 +39,8 @@ public class Jester() : AjamaGhouliganCard(0,
             [
                 HoverTipFactory.FromPower<GoofPower>(),
                 HoverTipFactory.FromKeyword(MyEnums.Bury),
-                HoverTipFactory.FromCard(strike)
+                HoverTipFactory.FromCard(strike),
+                HoverTipFactory.FromCard<Cavort>()
             ];
         }
     }

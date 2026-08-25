@@ -1,5 +1,6 @@
 using AjamaGhouligan.AjamaGhouliganCode.CardPiles;
 using AjamaGhouligan.AjamaGhouliganCode.Cards.Basic;
+using AjamaGhouligan.AjamaGhouliganCode.Cards.Token;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -32,7 +33,8 @@ public class JesterPower : AjamaGhouliganPower
             [
                 HoverTipFactory.FromPower<GoofPower>(),
                 HoverTipFactory.FromKeyword(MyEnums.Bury),
-                HoverTipFactory.FromCard(strike)
+                HoverTipFactory.FromCard(strike),
+                HoverTipFactory.FromCard<Cavort>()
             ];
         }
     }

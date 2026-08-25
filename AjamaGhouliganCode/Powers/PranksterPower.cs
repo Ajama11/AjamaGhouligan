@@ -18,7 +18,8 @@ public class PranksterPower : AjamaGhouliganPower
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.FromPower<MisfortunePower>(),
-        HoverTipFactory.FromPower<GoofPower>()
+        HoverTipFactory.FromPower<GoofPower>(),
+        HoverTipFactory.FromCard<Cavort>()
     ];
 
     public override Task BeforeCardPlayed(CardPlay cardPlay)

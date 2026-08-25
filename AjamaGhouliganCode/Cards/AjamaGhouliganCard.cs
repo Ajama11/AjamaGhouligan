@@ -102,7 +102,7 @@ public abstract class AjamaGhouliganCard(int cost, CardType type, CardRarity rar
             
             if (DynamicVars.ContainsKey(nameof(GoofPower)))
             {
-                result = [..result, HoverTipFactory.FromPower<GoofPower>()];
+                result = [..result, HoverTipFactory.FromPower<GoofPower>(), HoverTipFactory.FromCard<Cavort>()];
             }
 
             if (DynamicVars.ContainsKey(HauntVar.Key) && !DynamicVars.Haunt.SkipTooltip)

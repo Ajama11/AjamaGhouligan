@@ -95,7 +95,7 @@
   "AJAMAGHOULIGAN-POSSESS_ASCENDER.title": "Possess Ascender",
   "AJAMAGHOULIGAN-POSSESS_ASCENDER.description": "#Choose 1 of 3 random{IfUpgraded:show: [gold]Upgraded[/gold]|} Skills from another character to add into your [gold]Sepulchre Pile[/gold].\nIt gains [gold]Haunted[/gold] and [gold]Bury[/gold].",
   "AJAMAGHOULIGAN-CAVORT.title": "Cavort",
-  "AJAMAGHOULIGAN-CAVORT.description": "#Gain !GoofPower! [gold]Goof[/gold].\nLose !LoseDoom! [gold]Doom[/gold].",
+  "AJAMAGHOULIGAN-CAVORT.description": "#Play a copy of your last played Attack or Skill.{InCombat:\n({IsExhausted:Played|Plays} {FormattedCardName}.)|}",
   "AJAMAGHOULIGAN-ECLIPSE.title": "Eclipse",
   "AJAMAGHOULIGAN-ECLIPSE.description": "At the end of your turn, play ALL [gold]Haunted[/gold] cards in your [gold]Sepulchre Pile[/gold].",
   "AJAMAGHOULIGAN-BLEH.title": "Bleh",
