@@ -26,7 +26,7 @@ public class GimmeAHand() : AjamaGhouliganCard(1,
     
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        ..HalfSummon.MakeVars(4, 5),
+        ..HalfSummon.MakeVars(4, 1),
         new OstyDamageVar(4, ValueProp.Move),
         new (Increase, 5)
     ];
@@ -87,7 +87,7 @@ public class GimmeAHand() : AjamaGhouliganCard(1,
     protected override void OnUpgrade()
     {
         DynamicVars.HalfSummonFilled.UpgradeValueBy(2);
-        DynamicVars.HalfSummonTotal.UpgradeValueBy(3);
+        DynamicVars.HalfSummonEmpty.UpgradeValueBy(1);
         DynamicVars[Increase].UpgradeValueBy(5);
     }
 }

@@ -8,7 +8,9 @@ using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -19,9 +21,11 @@ public class Tombstone() : AjamaGhouliganCard(2,
     CardType.Skill, CardRarity.Rare,
     TargetType.Self)
 {
+    private const string CalculatedSummon = "CalculatedSummon";
+    
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        ..MakeCalculatedBlock(10, (card, _) => SepulchrePile.PileType.GetPile(card.Owner).Cards.Count)
+        ..MakeCalculatedVar(CalculatedSummon, 10, (card, _) => SepulchrePile.PileType.GetPile(card.Owner).Cards.Count)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
@@ -30,15 +34,36 @@ public class Tombstone() : AjamaGhouliganCard(2,
         CardKeyword.Exhaust
     ];
 
+    public override IEnumerable<IHoverTip> MyHoverTips
+    {
+        get
+        {
+            string str = StringHelper.Slugify(nameof(StaticHoverTip.SummonDynamic));
+            
+            LocString title = HoverTipFactory.L10NStatic(str + ".title");
+            LocString description = HoverTipFactory.L10NStatic(str + ".description");
+            
+            title.AddObj("Summon", DynamicVars[CalculatedSummon]);
+            description.AddObj("Summon", DynamicVars[CalculatedSummon]);
+            
+            return
+            [
+                new HoverTip(title, description)
+            ];
+        }
+    }
+
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await CommonActions.CardBlock(this, play);
+        await MyActions.Summon(this, Owner,
+            (int) ((CalculatedVar)DynamicVars[CalculatedSummon]).Calculate(null), 
+            choiceContext);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.CalculationExtra.UpgradeValueBy(1);
+        DynamicVars[CalculatedSummon + "Extra"].UpgradeValueBy(1);
     }
 }

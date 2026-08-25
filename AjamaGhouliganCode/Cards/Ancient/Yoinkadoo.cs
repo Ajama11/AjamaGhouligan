@@ -20,7 +20,7 @@ public class Yoinkadoo() : AjamaGhouliganCard(0,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        ..HalfSummon.MakeVars(7, 9),
+        ..HalfSummon.MakeVars(7, 2),
         new PowerVar<GoofPower>(2),
         new CardsVar(1)
     ];
@@ -41,7 +41,7 @@ public class Yoinkadoo() : AjamaGhouliganCard(0,
     protected override void OnUpgrade()
     {
         DynamicVars.HalfSummonFilled.UpgradeValueBy(2);
-        DynamicVars.HalfSummonTotal.UpgradeValueBy(4);
+        DynamicVars.HalfSummonEmpty.UpgradeValueBy(2);
         DynamicVars.Power<GoofPower>().UpgradeValueBy(1);
     }
 }

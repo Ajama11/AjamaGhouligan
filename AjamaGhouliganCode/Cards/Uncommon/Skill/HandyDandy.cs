@@ -22,7 +22,7 @@ public class HandyDandy() : AjamaGhouliganCard(2,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        ..HalfSummon.MakeVars(8, 16)
+        ..HalfSummon.MakeVars(8, 5)
     ];
 
     protected override async Task OnPlay(
@@ -48,6 +48,6 @@ public class HandyDandy() : AjamaGhouliganCard(2,
     protected override void OnUpgrade()
     {
         DynamicVars.HalfSummonFilled.UpgradeValueBy(2);
-        DynamicVars.HalfSummonTotal.UpgradeValueBy(4);
+        DynamicVars.HalfSummonEmpty.UpgradeValueBy(2);
     }
 }

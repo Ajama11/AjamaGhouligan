@@ -19,7 +19,7 @@ public class Yoink() : AjamaGhouliganCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        ..HalfSummon.MakeVars(5, 7)
+        ..HalfSummon.MakeVars(5, 2)
     ];
 
     protected override async Task OnPlay(
@@ -34,7 +34,7 @@ public class Yoink() : AjamaGhouliganCard(1,
     protected override void OnUpgrade()
     {
         DynamicVars.HalfSummonFilled.UpgradeValueBy(2);
-        DynamicVars.HalfSummonTotal.UpgradeValueBy(4);
+        DynamicVars.HalfSummonEmpty.UpgradeValueBy(2);
     }
     
     public CardModel GetTranscendenceTransformedCard()

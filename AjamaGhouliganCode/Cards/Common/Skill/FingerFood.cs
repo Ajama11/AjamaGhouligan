@@ -26,8 +26,7 @@ public class FingerFood() : AjamaGhouliganCard(1,
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        MyEnums.Grave,
-        CardKeyword.Exhaust
+        MyEnums.Grave
     ];
 
     protected override async Task OnPlay(

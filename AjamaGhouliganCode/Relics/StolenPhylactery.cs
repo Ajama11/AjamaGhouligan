@@ -19,7 +19,7 @@ public class StolenPhylactery : AjamaGhouliganRelic
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new SummonVar(6),
+        ..HalfSummon.MakeVars(6, 7),
         new LoseDoomVar(1)
     ];
 
@@ -27,13 +27,16 @@ public class StolenPhylactery : AjamaGhouliganRelic
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon),
+        HalfSummon.DynamicTip(DynamicVars),
         HoverTipFactory.FromPower<DoomPower>()
     ];
 
     public override async Task BeforeCombatStart()
     {
-        await OstyCmd.Summon(new ThrowingPlayerChoiceContext(), Owner, DynamicVars.Summon.BaseValue, this);
+        await MyActions.HalfSummon(this, Owner,
+            DynamicVars.HalfSummonFilled.IntValue,
+            DynamicVars.HalfSummonEmpty.IntValue,
+            new ThrowingPlayerChoiceContext());
     }
 
     public override async Task AfterPlayerTurnStartLate(PlayerChoiceContext choiceContext, Player player)

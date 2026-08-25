@@ -22,7 +22,7 @@ public class DubTheeSirBonesy() : AjamaGhouliganCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        ..HalfSummon.MakeVars(6, 9),
+        ..HalfSummon.MakeVars(6, 3),
         new PowerVar<StrengthPower>(1)
     ];
 
@@ -52,7 +52,7 @@ public class DubTheeSirBonesy() : AjamaGhouliganCard(1,
     protected override void OnUpgrade()
     {
         DynamicVars.HalfSummonFilled.UpgradeValueBy(1);
-        DynamicVars.HalfSummonTotal.UpgradeValueBy(5);
+        DynamicVars.HalfSummonEmpty.UpgradeValueBy(1);
         DynamicVars.Power<StrengthPower>().UpgradeValueBy(1);
     }
 }

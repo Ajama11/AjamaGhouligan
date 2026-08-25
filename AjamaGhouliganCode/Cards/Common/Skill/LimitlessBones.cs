@@ -18,7 +18,7 @@ public class LimitlessBones() : AjamaGhouliganCard(3,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        ..HalfSummon.MakeVars(2, 4)
+        ..HalfSummon.MakeVars(2, 2)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>

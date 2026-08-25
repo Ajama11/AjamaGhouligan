@@ -19,14 +19,14 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Rare.Attack;
 
-public class Eek() : AjamaGhouliganCard(1,
+public class Eek() : AjamaGhouliganCard(2,
     CardType.Attack, CardRarity.Rare,
     CustomTargetType.AllAttackingEnemies),
     IOnBury
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(12, ValueProp.Move),
+        new DamageVar(21, ValueProp.Move),
         new PowerVar<WeakPower>(1)
     ];
 

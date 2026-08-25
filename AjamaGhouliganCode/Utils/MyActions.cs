@@ -265,17 +265,19 @@ public class MyActions
     public static async Task HalfSummon(PlayerChoiceContext choiceContext, AjamaGhouliganCard sourceCard)
     {
         await HalfSummon(sourceCard, sourceCard.Owner,
-            sourceCard.DynamicVars.HalfSummonFilled.IntValue, sourceCard.DynamicVars.HalfSummonTotal.IntValue,
+            sourceCard.DynamicVars.HalfSummonFilled.IntValue, sourceCard.DynamicVars.HalfSummonEmpty.IntValue,
             choiceContext);
     }
 
-    public static async Task<SummonResult> HalfSummon(AbstractModel sourceModel, Player summoner, int filledValue, int totalValue, PlayerChoiceContext? choiceContext)
+    public static async Task<SummonResult> HalfSummon(AbstractModel sourceModel, Player summoner, int filledValue, int emptyValue, PlayerChoiceContext? choiceContext)
     {
         choiceContext ??= new ThrowingPlayerChoiceContext();
         ICombatState combatState = summoner.Creature.CombatState!;
         
-        totalValue = (int) Hook.ModifySummonAmount(combatState, summoner, totalValue, sourceModel);
         filledValue = (int) Hook.ModifySummonAmount(combatState, summoner, filledValue, sourceModel);
+        emptyValue = (int) Hook.ModifySummonAmount(combatState, summoner, emptyValue, sourceModel);
+
+        decimal totalValue = filledValue + emptyValue;
         
         if (totalValue == 0M) return new SummonResult(summoner.Osty, 0M);
         

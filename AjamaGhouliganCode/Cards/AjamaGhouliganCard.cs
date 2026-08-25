@@ -84,7 +84,7 @@ public abstract class AjamaGhouliganCard(int cost, CardType type, CardRarity rar
                 result = [..result, HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon)];
             }
             
-            if (DynamicVars.Values.Any(dv => dv is HalfSummonTotalVar { SkipTooltip: false }))
+            if (DynamicVars.Values.Any(dv => dv is HalfSummonEmptyVar { SkipTooltip: false }))
             {
                 result = [..result, HalfSummon.DynamicTip(DynamicVars)];
             }
