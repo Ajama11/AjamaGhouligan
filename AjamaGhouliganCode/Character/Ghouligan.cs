@@ -4,6 +4,7 @@ using BaseLib.Abstracts;
 using BaseLib.Utils.NodeFactories;
 using AjamaGhouligan.AjamaGhouliganCode.Extensions;
 using AjamaGhouligan.AjamaGhouliganCode.Relics;
+using BaseLib.Patches.UI;
 using Godot;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Characters;
@@ -106,6 +107,11 @@ public class Ghouligan : PlaceholderCharacterModel
 
     public override string CustomCharacterSelectBg =>
         "res://AjamaGhouligan/scenes/character_select.tscn";
+
+    public override RelicIconData CustomYummyCookie =>
+        new("yummy_cookie.png".BigRelicImagePath(),
+            "yummy_cookie.png".RelicImagePath(),
+            "yummy_cookie_outline.png".RelicImagePath());
 
     public override float DeathAnimTime => 2f;
 }
