@@ -18,6 +18,8 @@ namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Token.Treats;
 
 public class Lollipop() : BaseTreat()
 {
+    public override TargetType TargetType => TargetType.AnyEnemy;
+
     protected override IEnumerable<DynamicVar> TreatCanonicalVars =>
     [
         new PowerVar<StrengthPower>(3)

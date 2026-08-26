@@ -5,6 +5,9 @@ using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using BaseLib.Extensions;
 using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Audio.Debug;
+using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Combat.History.Entries;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -21,7 +24,8 @@ public class ZombieBuddy() : AjamaGhouliganCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        ..MakeCalculatedDamage(3, (card, _) => SepulchrePile.PileType.GetPile(card.Owner).Cards.Count, 2)
+        ..MakeCalculatedDamage(3, static (card, _) => CombatManager.Instance.History.Entries.OfType<CardGeneratedEntry>().Count(e => e.Creator == card.Owner), 1),
+        new CardsVar(1)
     ];
 
     protected override async Task OnPlay(
@@ -29,18 +33,20 @@ public class ZombieBuddy() : AjamaGhouliganCard(1,
         CardPlay play)
     {
         await CommonActions.CardAttack(this, play,
-                1,
-                "vfx/vfx_attack_blunt",
-                null,
-                "blunt_attack.mp3")
+                vfx: VfxCmd.bluntPath,
+                tmpSfx: TmpSfx.bluntAttack)
             .Execute(choiceContext);
         
-        CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(
-            CreateClone(), PileType.Discard, Owner));
+        var cards = MyActions.GetRandomCards(this, PileType.Hand, _ => true, DynamicVars.Cards.IntValue);
+
+        foreach (var card in cards)
+        {
+            await CardCmd.Transform(card, CreateClone());
+        }
     }
 
     protected override void OnUpgrade()
     {
-        EnergyCost.UpgradeBy(-1);
+        DynamicVars.ExtraDamage.UpgradeValueBy(1);
     }
 }

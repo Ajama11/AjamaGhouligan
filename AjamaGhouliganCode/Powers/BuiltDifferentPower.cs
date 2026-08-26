@@ -24,6 +24,8 @@ public class BuiltDifferentPower : AjamaGhouliganPower
         if (osty.Creature.PetOwner?.Creature != Owner) return;
         if (delta <= 0) return;
 
+        Flash();
+        
         await PowerCmd.Apply<VigorPower>(new ThrowingPlayerChoiceContext(),
             osty.Creature, Amount * delta,
             Owner, null);

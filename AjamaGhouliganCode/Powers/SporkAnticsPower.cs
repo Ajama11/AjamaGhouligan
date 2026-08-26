@@ -1,8 +1,13 @@
+using AjamaGhouligan.AjamaGhouliganCode.Utils;
+using BaseLib.Extensions;
+using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 
@@ -13,21 +18,27 @@ public class SporkAnticsPower : AjamaGhouliganPower
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
+    public override PowerInstanceType InstanceType => PowerInstanceType.Instanced;
+
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new PowerVar<GoofPower>(5)
+    ];
+    
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromPower<DoomPower>(),
-        HoverTipFactory.FromPower<DexterityPower>()
+        HoverTipFactory.FromPower<GoofPower>()
     ];
 
-    public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier,
-        CardModel? cardSource)
+    public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, IReadOnlyList<Creature> participants,
+        ICombatState combatState)
     {
-        if (applier != Owner) return;
-        if (amount <= 0) return;
-        if (power is not DoomPower) return;
-        
-        Flash();
+        if (!participants.Contains(Owner)) return;
 
-        await PowerCmd.Apply<SporksPower>(choiceContext, Owner, Amount, Owner, null);
+        Flash();
+        
+        await PowerCmd.Apply<GoofPower>(choiceContext, Owner, DynamicVars.Power<GoofPower>().BaseValue, Owner, null);
+        
+        await PowerCmd.Decrement(this);
     }
 }
