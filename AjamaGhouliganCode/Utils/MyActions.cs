@@ -616,7 +616,7 @@ public class MyActions
 
         foreach (CardModel card in cards)
         {
-            if (!card.Keywords.Contains(CardKeyword.Exhaust) && !card.Keywords.Contains(CardKeyword.Unplayable))
+            if (!card.Keywords.Contains(CardKeyword.Exhaust) && !card.Keywords.Contains(CardKeyword.Unplayable) && card.Type != CardType.Power)
                 card.AddKeyword(MyEnums.Bury);
         }
     }
@@ -630,7 +630,7 @@ public class MyActions
     { 
         foreach (CardModel card in cards)
         {
-            if (!card.Keywords.Contains(CardKeyword.Exhaust) && !card.Keywords.Contains(CardKeyword.Unplayable))
+            if (!card.Keywords.Contains(CardKeyword.Exhaust) && !card.Keywords.Contains(CardKeyword.Unplayable) && card.Type != CardType.Power)
             {
                 card.AddKeyword(MyEnums.Bury);
             }
