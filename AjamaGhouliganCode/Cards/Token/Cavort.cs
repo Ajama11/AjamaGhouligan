@@ -25,7 +25,7 @@ public class Cavort() : AjamaGhouliganCard(0,
     CardType.Skill, CardRarity.Token,
     TargetType.None)
 {
-    public string FormattedCardName = "nothing";
+    public string FormattedCardName = LocString.GetIfExists("cards", "AJAMAGHOULIGAN-CAVORT.nothing")?.GetRawText() ?? "nothing";
     
     public CardModel? Card
     {
@@ -35,9 +35,11 @@ public class Cavort() : AjamaGhouliganCard(0,
             field = value;
             FormattedCardName = field != null ?
                 $"[gold]{field.Title}[/gold]" :
-                "nothing";
+                LocString.GetIfExists("cards", "AJAMAGHOULIGAN-CAVORT.nothing")?.GetRawText() ?? "nothing";
         }
     }
+
+    public override TargetType TargetType => Card?.TargetType ?? TargetType.None;
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
@@ -60,7 +62,7 @@ public class Cavort() : AjamaGhouliganCard(0,
     {
         if (Card != null)
         {
-            await CardCmd.AutoPlay(choiceContext, Card.CreateDupe(Owner), null);
+            await CardCmd.AutoPlay(choiceContext, Card.CreateDupe(Owner), play.Target);
         }
     }
 
