@@ -1,6 +1,7 @@
 using AjamaGhouligan.AjamaGhouliganCode.Relics;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using MegaCrit.Sts2.Core.Commands.Builders;
+using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -14,6 +15,9 @@ public class CrackedBoneFlute() : AjamaGhouliganRelic
 {
     public override RelicRarity Rarity =>
         RelicRarity.Rare;
+
+    private bool ShouldSummonAfterCardPlay { get; set; }
+    private int AmountToSummonAfterCardPlay { get; set; }
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
@@ -34,6 +38,19 @@ public class CrackedBoneFlute() : AjamaGhouliganRelic
 
         int numberOfHits = command.Results.Sum(list => list.Count);
 
-        await MyActions.Summon(this, Owner, DynamicVars.Summon.IntValue * numberOfHits, choiceContext);
+        ShouldSummonAfterCardPlay = true;
+        AmountToSummonAfterCardPlay = DynamicVars.Summon.IntValue * numberOfHits;
+    }
+
+    public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        if (ShouldSummonAfterCardPlay)
+        {
+            ShouldSummonAfterCardPlay = false;
+            
+            await MyActions.Summon(this, Owner, AmountToSummonAfterCardPlay, choiceContext);
+            
+            AmountToSummonAfterCardPlay = 0;
+        }
     }
 }
