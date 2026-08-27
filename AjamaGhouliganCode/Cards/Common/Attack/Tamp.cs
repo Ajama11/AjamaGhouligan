@@ -27,14 +27,13 @@ public class Tamp() : AjamaGhouliganCard(2,
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        MyEnums.Unfortunate,
         CardKeyword.Retain
     ];
 
     private IEnumerable<IHoverTip> PreUpgradeHoverTips =>
     [
-        HoverTipFactory.FromPower<MisfortunePower>(),
         HoverTipFactory.FromKeyword(MyEnums.Unfortunate),
+        HoverTipFactory.FromPower<MisfortunePower>(),
         HoverTipFactory.FromKeyword(CardKeyword.Retain),
         HoverTipFactory.Static(MyEnums.BuryOther)
     ];

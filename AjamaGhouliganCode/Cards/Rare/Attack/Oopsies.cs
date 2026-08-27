@@ -23,22 +23,21 @@ public class Oopsies() : AjamaGhouliganCard(0,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(0, ValueProp.Move),
-        new PowerVar<MisfortunePower>(6)
+        new DamageVar(6, DamageProps.card),
+        new PowerVar<MisfortunePower>(3),
+        new RepeatVar(2)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
         MyEnums.Haunted,
-        MyEnums.Bury,
-        MyEnums.Unfortunate
+        MyEnums.Bury
     ];
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
         HoverTipFactory.FromKeyword(MyEnums.Haunted),
         HoverTipFactory.FromPower<MisfortunePower>(),
-        HoverTipFactory.FromKeyword(MyEnums.Unfortunate),
         HoverTipFactory.FromKeyword(MyEnums.Bury)
     ];
 
@@ -57,10 +56,12 @@ public class Oopsies() : AjamaGhouliganCard(0,
             .Execute(choiceContext);
 
         await MyActions.Misfortune(choiceContext, play.Target, this);
+
+        await UnfortunateSingleton.Trigger(CombatState!, DynamicVars.Repeat.IntValue, choiceContext, play);
     }
 
     protected override void OnUpgrade()
     {
-        AddKeyword(CardKeyword.Innate);
+        DynamicVars.Repeat.UpgradeValueBy(1);
     }
 }

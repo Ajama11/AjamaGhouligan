@@ -2,6 +2,7 @@ using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
+using BaseLib.Utils;
 using Godot;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Commands.Builders;
@@ -22,37 +23,30 @@ public class SpiritFire() : AjamaGhouliganCard(2,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(1, ValueProp.Move),
-        new RepeatVar(6)
+        new DamageVar(2, DamageProps.card),
+        new RepeatVar(4),
+        new SurpriseVar(1)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        MyEnums.Unfortunate,
-        CardKeyword.Exhaust
+        MyEnums.Unfortunate
     ];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        ArgumentNullException.ThrowIfNull(play.Target);
-
-        AttackCommand attackCommand = await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this, play)
-            .Targeting(play.Target)
-            .WithHitCount(DynamicVars.Repeat.IntValue)
+        await CommonActions.CardAttack(this, play,
+                hitCount: DynamicVars.Repeat.IntValue)
             .WithHitVfxNode((Func<Creature, Node2D>) (t => NFireBurstVfx.Create(t, 0.75f)!))
             .Execute(choiceContext);
 
-        await MyActions.OstyHeal(Owner,
-            attackCommand.Results
-                .SelectMany(r => r)
-                .Sum(r => r.TotalDamage + r.OverkillDamage));
+        await MyActions.CreateSurprises(this, PileType.Draw, CardPilePosition.Top);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(1);
+        DynamicVars.Repeat.UpgradeValueBy(2);
     }
 }

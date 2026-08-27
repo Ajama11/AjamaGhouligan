@@ -18,8 +18,7 @@ public class PranksterPower : AjamaGhouliganPower
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.FromPower<MisfortunePower>(),
-        HoverTipFactory.FromPower<GoofPower>(),
-        HoverTipFactory.FromCard<Cavort>()
+        HoverTipFactory.FromCard<Surprise>()
     ];
 
     public override Task BeforeCardPlayed(CardPlay cardPlay)
@@ -41,7 +40,7 @@ public class PranksterPower : AjamaGhouliganPower
         // Spireverse's Captain lets you spend energy on an action that's not a card, so it needs special handling. Thankfully it calls this hook with a dummy card.
         if (card.Id.ToString() == "CARD.INTOTHESPIREVERSE-AMMO_VOLLEY")
         {
-            await ApplyPowers(new ThrowingPlayerChoiceContext(), amount);
+            await DoTheThing(new ThrowingPlayerChoiceContext(), amount);
         }
     }
 
@@ -55,10 +54,10 @@ public class PranksterPower : AjamaGhouliganPower
         if (!data.AmountsForPlayedCards.Remove(cardPlay.Card, out var storedAmount) || storedAmount <= 0)
             return;
 
-        await ApplyPowers(choiceContext, cardPlay.Resources.EnergySpent, storedAmount);
+        await DoTheThing(choiceContext, cardPlay.Resources.EnergySpent, storedAmount);
     }
 
-    private async Task ApplyPowers(PlayerChoiceContext choiceContext, int energySpent, int powerAmountOverride = -1)
+    private async Task DoTheThing(PlayerChoiceContext choiceContext, int energySpent, int powerAmountOverride = -1)
     {
         int amount = powerAmountOverride == -1 ? Amount : powerAmountOverride;
         
@@ -68,11 +67,9 @@ public class PranksterPower : AjamaGhouliganPower
             CombatState.HittableEnemies, 
             amount * energySpent,
             Owner, null);
-            
-        await PowerCmd.Apply<GoofPower>(choiceContext, 
-            Owner, 
-            amount * energySpent, 
-            Owner, null);
+
+        await MyActions.CreateSurprises(amount * energySpent, Owner.Player!, CombatState,
+            PileType.Discard, CardPilePosition.Bottom, previewTime: 0.6f);
     }
 
     protected override object InitInternalData() => new Data();

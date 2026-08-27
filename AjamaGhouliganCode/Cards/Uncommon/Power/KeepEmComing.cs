@@ -1,4 +1,5 @@
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
+using AjamaGhouligan.AjamaGhouliganCode.Cards.Token;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
@@ -12,25 +13,21 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Rare.Power;
+namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Uncommon.Power;
 
-public class NecroMockery() : AjamaGhouliganCard(2,
-    CardType.Power, CardRarity.Rare,
+public class KeepEmComing() : AjamaGhouliganCard(2,
+    CardType.Power, CardRarity.Uncommon,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<NecroMockeryPower>(1)
-    ];
-
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-        MyEnums.Unfortunate
+        new PowerVar<KeepEmComingPower>(1),
+        new SurpriseVar(3)
     ];
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
-        
+        HoverTipFactory.FromCard<Surprise>()
     ];
 
     protected override async Task OnPlay(
@@ -39,11 +36,16 @@ public class NecroMockery() : AjamaGhouliganCard(2,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "PowerUp", Owner.Character.PowerUpAnimDelay);
 
-        await CommonActions.ApplySelf<NecroMockeryPower>(choiceContext, this);
+        await CommonActions.ApplySelf<KeepEmComingPower>(choiceContext, this);
+
+        if (IsUpgraded)
+        {
+            await MyActions.CreateSurprises(this);
+        }
     }
 
     protected override void OnUpgrade()
     {
-        EnergyCost.UpgradeBy(-1);
+
     }
 }

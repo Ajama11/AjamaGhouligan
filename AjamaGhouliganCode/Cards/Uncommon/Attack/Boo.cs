@@ -32,8 +32,8 @@ public class Boo() : AjamaGhouliganCard(2,
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
-        HoverTipFactory.FromPower<MisfortunePower>(),
         HoverTipFactory.FromKeyword(MyEnums.Unfortunate),
+        HoverTipFactory.FromPower<MisfortunePower>(),
         HoverTipFactory.Static(MyEnums.BuryOther),
         HoverTipFactory.FromKeyword(MyEnums.Haunted)
     ];

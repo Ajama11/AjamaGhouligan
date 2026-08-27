@@ -18,6 +18,8 @@ public class MisfortunePower : AjamaGhouliganPower
     public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
     {
         if (CombatManager.Instance.IsOverOrEnding || side != Owner.Side || Owner.IsDead) return;
+        
+        if (CombatState.PlayerCreatures.Any(p => p.HasPower<WildRidePower>())) return;
 
         await PowerCmd.ModifyAmount(choiceContext, this, -1 * (decimal) Math.Ceiling(Amount * 0.5), Applier, null);
     }

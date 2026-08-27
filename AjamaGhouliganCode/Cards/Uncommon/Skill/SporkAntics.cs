@@ -12,6 +12,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Uncommon.Skill;
 
+// Repurpose for one of the card expansion mods?
 public abstract class SporkAntics() : AjamaGhouliganCard(1,
     CardType.Skill, CardRarity.Uncommon,
     TargetType.Self)

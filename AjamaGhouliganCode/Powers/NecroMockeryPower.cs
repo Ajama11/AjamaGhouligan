@@ -18,7 +18,6 @@ public class NecroMockeryPower : AjamaGhouliganPower
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromKeyword(MyEnums.Unfortunate),
         HoverTipFactory.FromPower<MisfortunePower>()
     ];
 
@@ -26,14 +25,8 @@ public class NecroMockeryPower : AjamaGhouliganPower
     {
        if (delta >= 0 || creature.Monster is not Osty || creature.PetOwner != Owner.Player || Owner.Player == null) return;
        
-       Creature? target = Owner.Player.RunState.Rng.CombatTargets.NextItem(CombatState.HittableEnemies);
-       
-       if (target == null) return;
-       
        Flash();
 
-       await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), target,
-           -delta * Amount + target.GetPowerAmount<MisfortunePower>(), 
-           ValueProp.Unpowered, Owner, null, null);
+       await UnfortunateSingleton.Trigger(CombatState, Amount);
     }
 }

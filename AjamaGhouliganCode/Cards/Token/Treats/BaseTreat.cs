@@ -24,10 +24,11 @@ public abstract class BaseTreat() : AjamaGhouliganCard(0,
         ..TreatCanonicalVars
     ];
     
+    public virtual IEnumerable<CardKeyword> TreatCanonicalKeywords => [];
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        CardKeyword.Ethereal,
-        CardKeyword.Exhaust
+        CardKeyword.Exhaust,
+        ..TreatCanonicalKeywords
     ];
     
     public override HashSet<CardTag> MyCanonicalTags =>

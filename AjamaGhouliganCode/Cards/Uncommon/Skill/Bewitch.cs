@@ -30,8 +30,8 @@ public class Bewitch() : AjamaGhouliganCard(1,
 
     public override IEnumerable<IHoverTip> MyHoverTips =>
     [
-        HoverTipFactory.FromPower<MisfortunePower>(),
-        HoverTipFactory.FromKeyword(MyEnums.Unfortunate)
+        HoverTipFactory.FromKeyword(MyEnums.Unfortunate),
+        HoverTipFactory.FromPower<MisfortunePower>()
     ];
 
     protected override async Task OnPlay(
@@ -40,7 +40,7 @@ public class Bewitch() : AjamaGhouliganCard(1,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 
-        foreach (var card in Owner.PlayerCombatState!.Hand.Cards.Where(c => c.Type == CardType.Attack))
+        foreach (var card in Owner.PlayerCombatState!.Hand.Cards.Where(c => !c.Keywords.Contains(CardKeyword.Unplayable)))
         {
             card.AddKeyword(MyEnums.Unfortunate);
         }

@@ -45,6 +45,6 @@ public class ReluctantCleaning() : AjamaGhouliganCard(0,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Power<ReluctantCleaningPower>().UpgradeValueBy(1);
+        DynamicVars.Power<ReluctantCleaningPower>().UpgradeValueBy(2);
     }
 }

@@ -1,7 +1,10 @@
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using BaseLib.Abstracts;
+using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 
@@ -9,13 +12,33 @@ namespace AjamaGhouligan.AjamaGhouliganCode.Utils;
 
 public class UnfortunateSingleton() : CustomSingletonModel(HookType.Combat)
 {
-    public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer,
-        CardModel? cardSource, CardPlay? cardPlay)
+    public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (cardSource == null) return 0;
-        if (target == null) return 0;
-        if (!cardSource.Keywords.Contains(MyEnums.Unfortunate)) return 0;
+        if (!cardPlay.Card.Keywords.Contains(MyEnums.Unfortunate)) return;
 
-        return target.GetPowerAmount<MisfortunePower>();
+        await Trigger(cardPlay.Card.CombatState!, choiceContext: choiceContext, cardPlay: cardPlay);
+    }
+
+    public static async Task Trigger(ICombatState combatState, int times = 1, PlayerChoiceContext? choiceContext = null, CardPlay? cardPlay = null)
+    {
+        choiceContext ??= new ThrowingPlayerChoiceContext();
+        
+        for (int i = 0; i < times; i++)
+        {
+            foreach (var enemy in combatState.HittableEnemies)
+            {
+                MisfortunePower? misfortune = enemy.GetPower<MisfortunePower>();
+                if (misfortune == null) continue;
+                
+                await CreatureCmd.Damage(choiceContext, enemy,
+                    misfortune.Amount, DamageProps.nonCardUnpowered,
+                    cardPlay?.Card, cardPlay);
+
+                if (combatState.PlayerCreatures.Any(p => p.HasPower<WildRidePower>()))
+                {
+                    await PowerCmd.Decrement(misfortune);
+                }
+            }
+        }
     }
 }

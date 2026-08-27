@@ -19,18 +19,22 @@ namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Uncommon.Attack;
 
 public class PaintedTunnel() : AjamaGhouliganCard(1,
     CardType.Attack, CardRarity.Uncommon,
-    TargetType.RandomEnemy)
+    TargetType.AllEnemies)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(2, ValueProp.Move),
-        new RepeatVar(5),
-        new PowerVar<MisfortunePower>(1)
+        new DamageVar(11, DamageProps.card),
+        new PowerVar<PaintedTunnelPower>(1)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        MyEnums.Bury
+        CardKeyword.Exhaust
+    ];
+
+    public override IEnumerable<IHoverTip> MyHoverTips =>
+    [
+        HoverTipFactory.FromPower<MisfortunePower>()
     ];
 
     protected override async Task OnPlay(
@@ -38,22 +42,15 @@ public class PaintedTunnel() : AjamaGhouliganCard(1,
         CardPlay play)
     {
         await CommonActions.CardAttack(this, play,
-                DynamicVars.Repeat.IntValue,
-                VfxCmd.bluntPath,
+                vfx: VfxCmd.bluntPath,
                 tmpSfx: TmpSfx.bluntAttack)
             .Execute(choiceContext);
-    }
 
-    public override async Task AfterDamageGiven(PlayerChoiceContext choiceContext, Creature? dealer, DamageResult result, ValueProp props,
-        Creature target, CardModel? cardSource)
-    {
-        if (cardSource != this) return;
-
-        await MyActions.Misfortune(choiceContext, target, this);
+        await CommonActions.Apply<PaintedTunnelPower>(choiceContext, this, play);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Repeat.UpgradeValueBy(1);
+        DynamicVars.Damage.UpgradeValueBy(3);
     }
 }

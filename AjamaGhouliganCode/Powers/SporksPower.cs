@@ -7,7 +7,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Powers;
 
-public class SporksPower : CustomTemporaryPowerModelWrapper<SporkAnticsPower, DexterityPower>
+public abstract class SporksPower : CustomTemporaryPowerModelWrapper<SporkAnticsPower, DexterityPower>
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;

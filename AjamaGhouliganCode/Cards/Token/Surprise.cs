@@ -5,6 +5,8 @@ using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using BaseLib.Extensions;
 using BaseLib.Utils;
 using Godot;
+using MegaCrit.Sts2.Core.Audio;
+using MegaCrit.Sts2.Core.Audio.Debug;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -26,15 +28,16 @@ public class Surprise() : AjamaGhouliganCard(0,
     CardType.Attack, CardRarity.Token,
     TargetType.AllEnemies)
 {
+    private const string CalculatedDraw = "CalculatedDraw";
+    
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(5, ValueProp.Move),
-        new CardsVar(1)
+        new DamageVar(7, DamageProps.card),
+        ..MakeCalculatedVar(CalculatedDraw, 1, (card, _) => card.Owner.Creature.GetPowerAmount<KeepEmComingPower>())
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        MyEnums.Unfortunate,
         CardKeyword.Exhaust
     ];
 
@@ -48,15 +51,15 @@ public class Surprise() : AjamaGhouliganCard(0,
             instance?.CombatVfxContainer.AddChildSafely(NGroundFireVfx.Create(hittableEnemy));
         }
         
-        SfxCmd.Play("event:/sfx/characters/attack_fire");
+        SfxCmd.Play(FmodSfx.fire);
         
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(this, play)
             .TargetingAllOpponents(CombatState!)
-            .WithHitFx("vfx/vfx_attack_blunt", tmpSfx: "heavy_attack.mp3")
+            .WithHitFx(VfxCmd.bluntPath, tmpSfx: TmpSfx.heavyAttack)
             .Execute(choiceContext);
 
-        await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
+        await CardPileCmd.Draw(choiceContext, ((CalculatedVar) DynamicVars[CalculatedDraw]).BaseValue, Owner);
     }
 
     public override async Task AfterCardDrawn(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw)

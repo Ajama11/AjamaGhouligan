@@ -18,7 +18,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Multiplayer;
 
-public class YuckyBeGone() : AjamaGhouliganCard(1,
+public class YuckyBeGone() : AjamaGhouliganCard(0,
     CardType.Skill, CardRarity.Uncommon,
     TargetType.AnyAlly)
 {
@@ -28,7 +28,6 @@ public class YuckyBeGone() : AjamaGhouliganCard(1,
     
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<MisfortunePower>(6),
         ..MakeCalculatedVar(TransformAmount, 0,
             static (card, target) =>
                 target == null ? 0 : GetStatusAndCurseCards(target.Player!).Count)
@@ -54,8 +53,6 @@ public class YuckyBeGone() : AjamaGhouliganCard(1,
         {
             await CardCmd.TransformTo<Surprise>(card);
         }
-
-        await MyActions.Misfortune(choiceContext, CombatState!.HittableEnemies, this);
     }
 
     private static List<CardModel> GetStatusAndCurseCards(Player player)
@@ -71,6 +68,6 @@ public class YuckyBeGone() : AjamaGhouliganCard(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Power<MisfortunePower>().UpgradeValueBy(3);
+        AddKeyword(CardKeyword.Retain);
     }
 }

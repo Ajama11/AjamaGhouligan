@@ -89,9 +89,14 @@ public abstract class AjamaGhouliganCard(int cost, CardType type, CardRarity rar
                 result = [..result, HalfSummon.DynamicTip(DynamicVars)];
             }
             
-            if (DynamicVars.ContainsKey(nameof(MisfortunePower)) || Keywords.Contains(MyEnums.Unfortunate))
+            if (DynamicVars.ContainsKey(nameof(MisfortunePower)))
             {
                 result = [..result, HoverTipFactory.FromPower<MisfortunePower>()];
+            }
+            
+            if (Keywords.Contains(MyEnums.Unfortunate))
+            {
+                result = [..result, HoverTipFactory.FromKeyword(MyEnums.Unfortunate), HoverTipFactory.FromPower<MisfortunePower>()];
             }
 
             if (DynamicVars.ContainsKey(nameof(DoomPower)) || 

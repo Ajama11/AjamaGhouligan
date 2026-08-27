@@ -16,7 +16,7 @@ public class MyEnums
     [CustomEnum, KeywordProperties(AutoKeywordPosition.After)]
     public static CardKeyword Bury;
     
-    [CustomEnum, KeywordProperties(AutoKeywordPosition.Before)]
+    [CustomEnum, KeywordProperties(AutoKeywordPosition.None)]
     public static CardKeyword Unfortunate;
     
     [CustomEnum, KeywordProperties(AutoKeywordPosition.Before)]
