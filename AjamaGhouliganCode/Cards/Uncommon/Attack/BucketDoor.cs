@@ -24,8 +24,8 @@ public class BucketDoor() : AjamaGhouliganCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<DoomPower>(5),
         new DamageVar(4, ValueProp.Move),
+        new PowerVar<DoomPower>(5),
         new SurpriseVar(2)
     ];
 
@@ -38,13 +38,13 @@ public class BucketDoor() : AjamaGhouliganCard(1,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await MyActions.SelfDoom(choiceContext, this);
-        
         await CommonActions.CardAttack(this, play,
                 1,
                 "vfx/vfx_attack_slash")
             .Execute(choiceContext);
 
+        await MyActions.SelfDoom(choiceContext, this);
+        
         await MyActions.CreateSurprises(this, PileType.Draw, CardPilePosition.Top);
     }
 

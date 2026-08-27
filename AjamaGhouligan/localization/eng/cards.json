@@ -63,7 +63,7 @@
   "AJAMAGHOULIGAN-PIANO_DROP.title": "Piano Drop",
   "AJAMAGHOULIGAN-PIANO_DROP.description": "#Deal !D! damage.\nApply !MisfortunePower! [gold]Misfortune[/gold].\nAdd !C! [gold]Dazed[/gold] into your [gold]Discard Pile[/gold].",
   "AJAMAGHOULIGAN-BUCKET_DOOR.title": "Bucket Door",
-  "AJAMAGHOULIGAN-BUCKET_DOOR.description": "#Apply !DoomPower! [gold]Doom[/gold] to yourself.\nDeal !D! damage.\nAdd !Surprise! [gold]Surprise(s)[/gold] on top of your [gold]Draw Pile[/gold].",
+  "AJAMAGHOULIGAN-BUCKET_DOOR.description": "#Deal !D! damage.\nApply !DoomPower! [gold]Doom[/gold] to yourself.\nAdd !Surprise! [gold]Surprise(s)[/gold] on top of your [gold]Draw Pile[/gold].",
   "AJAMAGHOULIGAN-THINK_FAST.title": "Think Fast",
   "AJAMAGHOULIGAN-THINK_FAST.description": "#Add !Surprise! [gold]Surprise(s)[/gold] on top of your [gold]Draw Pile[/gold] and !MoreSurprises! [gold]Surprise(s)[/gold] into your [gold]Draw Pile[/gold].\nDraw !C! card(s).",
   "AJAMAGHOULIGAN-THUMB_WAR.title": "Thumb War",
