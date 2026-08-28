@@ -86,7 +86,7 @@ public class GimmeAHand() : AjamaGhouliganCard(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.HalfSummonFilled.UpgradeValueBy(2);
+        DynamicVars.HalfSummonFilled.UpgradeValueBy(1);
         DynamicVars.HalfSummonEmpty.UpgradeValueBy(1);
         DynamicVars[Increase].UpgradeValueBy(5);
     }

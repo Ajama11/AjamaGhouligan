@@ -52,7 +52,6 @@ public class DubTheeSirBonesy() : AjamaGhouliganCard(1,
     protected override void OnUpgrade()
     {
         DynamicVars.HalfSummonFilled.UpgradeValueBy(1);
-        DynamicVars.HalfSummonEmpty.UpgradeValueBy(1);
-        DynamicVars.Power<StrengthPower>().UpgradeValueBy(1);
+        DynamicVars.HalfSummonEmpty.UpgradeValueBy(2);
     }
 }

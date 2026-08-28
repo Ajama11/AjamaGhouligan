@@ -25,6 +25,11 @@ public class KeepEmComing() : AjamaGhouliganCard(2,
         new SurpriseVar(3)
     ];
 
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        MyEnums.Grave
+    ];
+
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
