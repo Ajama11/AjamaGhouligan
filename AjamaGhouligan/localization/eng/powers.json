@@ -91,5 +91,8 @@
   "AJAMAGHOULIGAN-WILD_RIDE_POWER.smartDescription": "[gold]Misfortune[/gold] no longer halves at the end of the turn, but reduces by [blue]1[/blue] when triggered.",
   "AJAMAGHOULIGAN-KEEP_EM_COMING_POWER.title": "Keep 'Em Coming!",
   "AJAMAGHOULIGAN-KEEP_EM_COMING_POWER.description": "[gold]Surprises[/gold] draw [blue]1[/blue] additional card.",
-  "AJAMAGHOULIGAN-KEEP_EM_COMING_POWER.smartDescription": "#[gold]Surprises[/gold] draw [blue]{Amount}[/blue] additional card(s)."
+  "AJAMAGHOULIGAN-KEEP_EM_COMING_POWER.smartDescription": "#[gold]Surprises[/gold] draw [blue]{Amount}[/blue] additional card(s).",
+  "AJAMAGHOULIGAN-MURDER_OF_CROWS_POWER.title": "Murder of Crows",
+  "AJAMAGHOULIGAN-MURDER_OF_CROWS_POWER.description": "Whenever you play a card this turn, this enemy loses [blue]1[/blue] HP.",
+  "AJAMAGHOULIGAN-MURDER_OF_CROWS_POWER.smartDescription": "Whenever you play a card this turn, this enemy loses [blue]{Amount}[/blue] HP."
 }

@@ -273,5 +273,7 @@
   "AJAMAGHOULIGAN-KEEP_EM_COMING.title": "Keep 'Em Coming!",
   "AJAMAGHOULIGAN-KEEP_EM_COMING.description": "#[gold]Surprises[/gold] draw !KeepEmComingPower! additional card(s).{IfUpgraded:show:\nAdd !Surprise! [gold]Surprise(s)[/gold] into your [gold]Draw Pile[/gold].|}",
   "AJAMAGHOULIGAN-HAND_THAT_GIVES.title": "Hand That Gives",
-  "AJAMAGHOULIGAN-HAND_THAT_GIVES.description": "#[gold]Osty[/gold] deals !OstyDamage! damage.\nNext turn, gain [E?].\nAdd !Surprise! [gold]Surprise(s)[/gold] into your [gold]Discard Pile[/gold]."
+  "AJAMAGHOULIGAN-HAND_THAT_GIVES.description": "#[gold]Osty[/gold] deals !OstyDamage! damage.\nNext turn, gain [E?].\nAdd !Surprise! [gold]Surprise(s)[/gold] into your [gold]Discard Pile[/gold].",
+  "AJAMAGHOULIGAN-MURDER_OF_CROWS.title": "Murder of Crows",
+  "AJAMAGHOULIGAN-MURDER_OF_CROWS.description": "#Deal !D! damage to ALL enemies.\nWhenever you play a card this turn, ALL enemies lose !MurderOfCrowsPower! HP."
 }
