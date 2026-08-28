@@ -1,3 +1,5 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips;
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.Cards.Token;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
@@ -29,11 +31,10 @@ public class GoofballForm() : AjamaGhouliganCard(3,
         //If 2 Goof is too strong, then this gets the )Ethereal( treatment I guess.
     ];
 
-    public override IEnumerable<IHoverTip> MyHoverTips =>
+    public override BundledHoverTipManager MyBundles =>
     [
-        HoverTipFactory.FromKeyword(CardKeyword.Exhaust),
-        HoverTipFactory.FromPower<GoofPower>(),
-        HoverTipFactory.FromCard<Cavort>()
+        BundledHoverTipFactory.FromKeyword(CardKeyword.Exhaust),
+        new GoofBundle()
     ];
 
     protected override async Task OnPlay(

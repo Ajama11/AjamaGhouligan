@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
@@ -33,14 +34,12 @@ public class BonesOfAFeather() : AjamaGhouliganCard(1,
         MyEnums.Bury
     ];
 
-    public override IEnumerable<IHoverTip> MyHoverTips =>
+    public override BundledHoverTipManager MyBundles =>
     [
-        HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon),
-        HoverTipFactory.Static(MyEnums.Disinter),
-        HoverTipFactory.FromKeyword(MyEnums.Haunted),
-        HoverTipFactory.FromKeyword(MyEnums.Bury)
+        BundledHoverTipFactory.Static(MyEnums.Disinter),
+        BundledHoverTipFactory.FromKeyword(MyEnums.Haunted)
     ];
-    
+
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)

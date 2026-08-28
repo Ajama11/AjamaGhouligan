@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
@@ -31,19 +32,9 @@ public class ChaseSequence() : AjamaGhouliganCard(1,
         new CardsVar(1)
     ];
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    public override BundledHoverTipManager MyBundles =>
     [
-
-    ];
-
-    public override HashSet<CardTag> MyCanonicalTags =>
-    [
-
-    ];
-
-    public override IEnumerable<IHoverTip> MyHoverTips =>
-    [
-
+        BundledHoverTipFactory.FromCard<Dazed>()
     ];
 
     protected override async Task OnPlay(

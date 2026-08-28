@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.CardPiles;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.Cards.Token;
@@ -37,12 +38,12 @@ public class HelpingHands() : AjamaGhouliganCard(3,
         CardKeyword.Exhaust
     ];
 
-    public override IEnumerable<IHoverTip> MyHoverTips =>
+    public override BundledHoverTipManager MyBundles =>
     [
-        HoverTipFactory.Static(MyEnums.BuryOther),
-        HoverTipFactory.FromKeyword(MyEnums.Haunted),
-        HoverTipFactory.FromKeyword(MyEnums.Bury),
-        HoverTipFactory.FromCard<HelpingHand>()
+        BundledHoverTipFactory.Static(MyEnums.BuryOther),
+        BundledHoverTipFactory.FromKeyword(MyEnums.Haunted),
+        BundledHoverTipFactory.FromKeyword(MyEnums.Bury),
+        BundledHoverTipFactory.FromCard<HelpingHand>()
     ];
 
     protected override async Task OnPlay(

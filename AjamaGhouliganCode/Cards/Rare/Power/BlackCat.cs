@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
@@ -25,11 +26,10 @@ public class BlackCat() : AjamaGhouliganCard(1,
         new PowerVar<BlackCatPower>(1)
     ];
 
-    public override IEnumerable<IHoverTip> MyHoverTips =>
+    public override BundledHoverTipManager MyBundles =>
     [
-        HoverTipFactory.FromPower<DoomPower>(),
-        HoverTipFactory.Static(MyEnums.BuryOther),
-        HoverTipFactory.FromKeyword(MyEnums.Haunted)
+        BundledHoverTipFactory.Static(MyEnums.BuryOther),
+        BundledHoverTipFactory.FromKeyword(MyEnums.Haunted)
     ];
 
     protected override async Task OnPlay(

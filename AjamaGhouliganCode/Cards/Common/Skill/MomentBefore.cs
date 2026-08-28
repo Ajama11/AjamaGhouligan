@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using MegaCrit.Sts2.Core.CardSelection;
@@ -20,10 +21,9 @@ public class MomentBefore() : AjamaGhouliganCard(1,
         new CardsVar(1)
     ];
 
-    public override IEnumerable<IHoverTip> MyHoverTips =>
+    public override BundledHoverTipManager MyBundles =>
     [
-        HoverTipFactory.FromPower<MisfortunePower>(),
-        HoverTipFactory.FromKeyword(CardKeyword.Retain)
+        BundledHoverTipFactory.FromKeyword(CardKeyword.Retain)
     ];
 
     protected override async Task OnPlay(

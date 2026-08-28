@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using BaseLib.Utils;
@@ -36,11 +37,10 @@ public abstract class BaseTreat() : AjamaGhouliganCard(0,
         MyEnums.Treat
     ];
     
-    public virtual IEnumerable<IHoverTip> TreatMyHoverTips => [];
-    public override IEnumerable<IHoverTip> MyHoverTips =>
+    public virtual BundledHoverTipManager TreatMyBundles => [];
+    public override BundledHoverTipManager MyBundles =>
     [
-        HoverTipFactory.FromPower<DoomPower>(),
-        ..TreatMyHoverTips
+        ..TreatMyBundles
     ];
 
     protected override async Task OnPlay(

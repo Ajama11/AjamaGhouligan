@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.Cards.Token;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
@@ -24,9 +25,9 @@ public class Gravedigger() : AjamaGhouliganCard(2,
         new PowerVar<GravediggerPower>(1)
     ];
 
-    public override IEnumerable<IHoverTip> MyHoverTips =>
+    public override BundledHoverTipManager MyBundles =>
     [
-        HoverTipFactory.FromCard<Dig>()
+        BundledHoverTipFactory.FromCard<Dig>()
     ];
 
     protected override async Task OnPlay(

@@ -6,16 +6,14 @@ namespace AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 
 public class BundledHoverTip
 {
-    public string Name = "default";
+    public string Name;
     
     public Category SortCategory = Category.Middle;
     public int SortOrder = 0;
     
-    public IEnumerable<IHoverTip> HoverTips = [];
+    public IEnumerable<IHoverTip> HoverTips;
 
     public int InternalSortOrder => SortOrder + (int) SortCategory;
-
-    public BundledHoverTip() { }
 
     public BundledHoverTip(string name, IHoverTip hoverTip)
     {

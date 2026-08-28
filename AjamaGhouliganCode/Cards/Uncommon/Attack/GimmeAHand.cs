@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
@@ -46,10 +47,9 @@ public class GimmeAHand() : AjamaGhouliganCard(1,
         MyEnums.Grave
     ];
 
-    public override IEnumerable<IHoverTip> MyHoverTips =>
+    public override BundledHoverTipManager MyBundles =>
     [
-        HalfSummon.DynamicTip(DynamicVars),
-        HoverTipFactory.Static(MyEnums.Disinter)
+        BundledHoverTipFactory.Static(MyEnums.Disinter)
     ];
 
     protected override bool ShouldGlowRedInternal => false;

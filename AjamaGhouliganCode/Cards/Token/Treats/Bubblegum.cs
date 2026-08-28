@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Extensions;
@@ -23,10 +24,10 @@ public class Bubblegum() : BaseTreat()
     [
         new PowerVar<VigorPower>(3),
     ];
-    
-    public override IEnumerable<IHoverTip> TreatMyHoverTips =>
+
+    public override BundledHoverTipManager TreatMyBundles =>
     [
-        HoverTipFactory.FromPower<VigorPower>()
+        BundledHoverTipFactory.FromPower<VigorPower>()
     ];
 
     protected override async Task TreatOnPlay(

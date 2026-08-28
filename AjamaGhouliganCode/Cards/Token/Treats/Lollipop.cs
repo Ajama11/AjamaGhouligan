@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
@@ -25,9 +26,9 @@ public class Lollipop() : BaseTreat()
         new PowerVar<StrengthPower>(3)
     ];
 
-    public override IEnumerable<IHoverTip> TreatMyHoverTips =>
+    public override BundledHoverTipManager TreatMyBundles =>
     [
-        HoverTipFactory.FromPower<StrengthPower>()
+        BundledHoverTipFactory.FromPower<StrengthPower>()
     ];
 
     protected override async Task TreatOnPlay(

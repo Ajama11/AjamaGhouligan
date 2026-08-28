@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
@@ -28,11 +29,10 @@ public class VampiricWard() : AjamaGhouliganCard(2,
     [
         MyEnums.Haunted
     ];
-
-    public override IEnumerable<IHoverTip> MyHoverTips =>
+    
+    public override BundledHoverTipManager MyBundles =>
     [
-        HoverTipFactory.FromKeyword(MyEnums.Haunted),
-        HoverTipFactory.FromPower<DoomPower>()
+        BundledHoverTipFactory.FromPower<DoomPower>()
     ];
 
     protected override async Task OnPlay(

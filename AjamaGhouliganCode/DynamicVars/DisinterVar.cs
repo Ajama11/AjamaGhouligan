@@ -6,9 +6,11 @@ namespace AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 public class DisinterVar : DynamicVar
 {
     public const string Key = "Disinter";
+    public bool SkipTooltip;
     
     public DisinterVar(decimal baseValue, bool skipTooltip = false) : base(Key, baseValue)
     {
+        SkipTooltip = skipTooltip;
         if (!skipTooltip) this.WithTooltip();
     }
 }

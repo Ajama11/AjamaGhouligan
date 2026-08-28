@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
@@ -24,10 +25,10 @@ public class EndlessNight() : AjamaGhouliganCard(3,
         CardKeyword.Exhaust
     ];
 
-    public override IEnumerable<IHoverTip> MyHoverTips =>
+    public override BundledHoverTipManager MyBundles =>
     [
-        HoverTipFactory.FromKeyword(MyEnums.Haunted),
-        HoverTipFactory.FromKeyword(MyEnums.Bury)
+        BundledHoverTipFactory.FromKeyword(MyEnums.Haunted),
+        BundledHoverTipFactory.FromKeyword(MyEnums.Bury)
     ];
 
     protected override async Task OnPlay(

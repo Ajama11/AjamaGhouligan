@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.CardPiles;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
@@ -26,19 +27,18 @@ public class Tamp() : AjamaGhouliganCard(2,
         CardKeyword.Retain
     ];
 
-    private IEnumerable<IHoverTip> PreUpgradeHoverTips =>
+    private BundledHoverTipManager PreUpgradeBundles =>
     [
-        HoverTipFactory.FromKeyword(CardKeyword.Retain),
-        HoverTipFactory.Static(MyEnums.BuryOther)
+        BundledHoverTipFactory.Static(MyEnums.BuryOther)
     ];
 
-    public override IEnumerable<IHoverTip> MyHoverTips =>
+    public override BundledHoverTipManager MyBundles =>
         IsUpgraded ?
             [
-                ..PreUpgradeHoverTips,
-                HoverTipFactory.Static(MyEnums.Haunt)
+                ..PreUpgradeBundles,
+                BundledHoverTipFactory.Static(MyEnums.Haunt)
             ]
-            : PreUpgradeHoverTips;
+            : PreUpgradeBundles;
     
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,

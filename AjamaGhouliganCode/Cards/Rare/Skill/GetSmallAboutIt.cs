@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
@@ -29,9 +30,9 @@ public class GetSmallAboutIt() : AjamaGhouliganCard(1,
         CardKeyword.Exhaust
     ];
 
-    public override IEnumerable<IHoverTip> MyHoverTips =>
+    public override BundledHoverTipManager MyBundles =>
     [
-        HoverTipFactory.FromPower<ShrinkPower>()
+        BundledHoverTipFactory.FromPower<ShrinkPower>()
     ];
 
     protected override async Task OnPlay(

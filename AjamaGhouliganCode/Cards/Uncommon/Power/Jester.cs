@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.Cards.Basic;
 using AjamaGhouligan.AjamaGhouliganCode.Cards.Token;
@@ -25,8 +26,8 @@ public class Jester() : AjamaGhouliganCard(0,
     [
         new PowerVar<JesterPower>(1)
     ];
-
-    public override IEnumerable<IHoverTip> MyHoverTips
+    
+    public override BundledHoverTipManager MyBundles
     {
         get
         {
@@ -37,10 +38,10 @@ public class Jester() : AjamaGhouliganCard(0,
             
             return
             [
-                HoverTipFactory.FromPower<GoofPower>(),
-                HoverTipFactory.FromKeyword(MyEnums.Bury),
-                HoverTipFactory.FromCard(strike),
-                HoverTipFactory.FromCard<Cavort>()
+                BundledHoverTipFactory.FromPower<GoofPower>(),
+                BundledHoverTipFactory.FromKeyword(MyEnums.Bury),
+                BundledHoverTipFactory.FromCard(strike),
+                BundledHoverTipFactory.FromCard<Cavort>()
             ];
         }
     }

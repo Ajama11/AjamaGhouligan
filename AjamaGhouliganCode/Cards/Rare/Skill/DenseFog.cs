@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using BaseLib.Extensions;
 using MegaCrit.Sts2.Core.Commands;
@@ -24,10 +25,9 @@ public class DenseFog() : AjamaGhouliganCard(1,
         CardKeyword.Ethereal
     ];
 
-    public override IEnumerable<IHoverTip> MyHoverTips =>
+    public override BundledHoverTipManager MyBundles =>
     [
-        HoverTipFactory.FromPower<DoomPower>(),
-        HoverTipFactory.FromPower<StrengthPower>()
+        BundledHoverTipFactory.FromPower<StrengthPower>()
     ];
 
     protected override async Task OnPlay(

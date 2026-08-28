@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.CardPiles;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
@@ -22,7 +23,7 @@ public class Paraphernalia() : AjamaGhouliganCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DisinterVar(99)
+        
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
@@ -30,10 +31,11 @@ public class Paraphernalia() : AjamaGhouliganCard(1,
         CardKeyword.Exhaust
     ];
 
-    public override IEnumerable<IHoverTip> MyHoverTips =>
+    public override BundledHoverTipManager MyBundles =>
     [
-        HoverTipFactory.FromKeyword(MyEnums.Haunted),
-        HoverTipFactory.FromKeyword(MyEnums.Bury)
+        BundledHoverTipFactory.FromKeyword(MyEnums.Haunted),
+        BundledHoverTipFactory.FromKeyword(MyEnums.Bury),
+        BundledHoverTipFactory.Static(MyEnums.Disinter)
     ];
 
     protected override async Task OnPlay(

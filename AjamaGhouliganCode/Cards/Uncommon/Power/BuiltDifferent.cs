@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
@@ -24,14 +25,9 @@ public class BuiltDifferent() : AjamaGhouliganCard(1,
         new PowerVar<BuiltDifferentPower>(1)
     ];
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    public override BundledHoverTipManager MyBundles =>
     [
-
-    ];
-
-    public override IEnumerable<IHoverTip> MyHoverTips =>
-    [
-        HoverTipFactory.FromPower<VigorPower>()
+        BundledHoverTipFactory.FromPower<VigorPower>()
     ];
 
     protected override async Task OnPlay(

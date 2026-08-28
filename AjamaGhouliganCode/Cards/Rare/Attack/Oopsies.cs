@@ -34,13 +34,6 @@ public class Oopsies() : AjamaGhouliganCard(0,
         MyEnums.Bury
     ];
 
-    public override IEnumerable<IHoverTip> MyHoverTips =>
-    [
-        HoverTipFactory.FromKeyword(MyEnums.Haunted),
-        HoverTipFactory.FromPower<MisfortunePower>(),
-        HoverTipFactory.FromKeyword(MyEnums.Bury)
-    ];
-
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)

@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using BaseLib.Utils;
@@ -28,10 +29,9 @@ public class MoreTheMerrier() : AjamaGhouliganCard(0,
         MyEnums.Bury
     ];
 
-    public override IEnumerable<IHoverTip> MyHoverTips =>
+    public override BundledHoverTipManager MyBundles =>
     [
-        HoverTipFactory.Static(MyEnums.Disinter),
-        HoverTipFactory.FromKeyword(MyEnums.Haunted)
+        BundledHoverTipFactory.FromKeyword(MyEnums.Haunted)
     ];
 
     protected override async Task OnPlay(

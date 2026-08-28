@@ -1,3 +1,5 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips;
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
@@ -23,9 +25,9 @@ public class Bleh() : AjamaGhouliganCard(1,
         new PowerVar<BlehPower>(1)
     ];
 
-    public override IEnumerable<IHoverTip> MyHoverTips =>
+    public override BundledHoverTipManager MyBundles =>
     [
-        ..MyEnums.TreatHovers()
+        new TreatBundle()
     ];
 
     protected override async Task OnPlay(

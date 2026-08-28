@@ -30,11 +30,6 @@ public abstract class SporkAntics() : AjamaGhouliganCard(1,
         CardKeyword.Exhaust
     ];
 
-    public override IEnumerable<IHoverTip> MyHoverTips =>
-    [
-        
-    ];
-
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)

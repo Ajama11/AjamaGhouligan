@@ -1,3 +1,5 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips;
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.Cards.Token;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
@@ -32,11 +34,9 @@ public class Playtime() : AjamaGhouliganCard(0,
         MyEnums.Grave
     ];
 
-    public override IEnumerable<IHoverTip> MyHoverTips =>
+    public override BundledHoverTipManager MyBundles =>
     [
-        HoverTipFactory.FromKeyword(CardKeyword.Ethereal),
-        HoverTipFactory.FromKeyword(CardKeyword.Exhaust),
-        ..MyEnums.TreatHovers()
+        new TreatBundle()
     ];
 
     protected override async Task OnPlay(

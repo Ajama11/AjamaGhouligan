@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.Cards.Token;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
@@ -24,10 +25,10 @@ public class Mischief() : AjamaGhouliganCard(1,
         new PowerVar<MischiefPower>(4)
     ];
 
-    public override IEnumerable<IHoverTip> MyHoverTips =>
+    public override BundledHoverTipManager MyBundles =>
     [
-        HoverTipFactory.FromCard<Surprise>(),
-        HoverTipFactory.Static(StaticHoverTip.Block)
+        BundledHoverTipFactory.FromCard<Surprise>(),
+        BundledHoverTipFactory.Static(StaticHoverTip.Block)
     ];
 
     protected override async Task OnPlay(

@@ -1,3 +1,5 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips;
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
@@ -28,9 +30,19 @@ public class NecroMockery() : AjamaGhouliganCard(2,
         MyEnums.Unfortunate
     ];
 
-    public override IEnumerable<IHoverTip> MyHoverTips =>
+    public override BundledHoverTipManager MyBundles =>
     [
-        
+        BundledHoverTipFactory.FromPower<MisfortunePower>(),
+        BundledHoverTipFactory.FromKeyword(MyEnums.Unfortunate)
+    ];
+
+    public override List<List<string>> BundleReorders =>
+    [
+        [
+            BundledHoverTipFactory.FromPower<MisfortunePower>().Name,
+            BundledHoverTipFactory.FromKeyword(MyEnums.Unfortunate).Name,
+            new GoofBundle().Name
+        ]
     ];
 
     protected override async Task OnPlay(

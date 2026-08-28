@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
@@ -26,10 +27,10 @@ public class PianoDrop() : AjamaGhouliganCard(2,
         new PowerVar<MisfortunePower>(6),
         new CardsVar(2)
     ]; 
-    
-    public override IEnumerable<IHoverTip> MyHoverTips =>
+
+    public override BundledHoverTipManager MyBundles =>
     [
-        HoverTipFactory.FromCard<Dazed>()
+        BundledHoverTipFactory.FromCard<Dazed>()
     ];
 
     protected override async Task OnPlay(

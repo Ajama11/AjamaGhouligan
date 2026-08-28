@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
@@ -23,15 +24,10 @@ public class BackInYouGo() : AjamaGhouliganCard(2,
         new PowerVar<BackInYouGoPower>(1)
     ];
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    public override BundledHoverTipManager MyBundles =>
     [
-        
-    ];
-
-    public override IEnumerable<IHoverTip> MyHoverTips =>
-    [
-        HoverTipFactory.Static(MyEnums.BuryOther),
-        HoverTipFactory.FromKeyword(MyEnums.Haunted)
+        BundledHoverTipFactory.Static(MyEnums.BuryOther),
+        BundledHoverTipFactory.FromKeyword(MyEnums.Haunted)
     ];
 
     protected override async Task OnPlay(

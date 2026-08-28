@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Extensions;
@@ -30,11 +31,10 @@ public class DubTheeSirBonesy() : AjamaGhouliganCard(1,
     [
         MyEnums.Haunted
     ];
-    
-    public override IEnumerable<IHoverTip> MyHoverTips =>
+
+    public override BundledHoverTipManager MyBundles =>
     [
-        HalfSummon.DynamicTip(DynamicVars),
-        HoverTipFactory.FromPower<StrengthPower>()
+        BundledHoverTipFactory.FromPower<StrengthPower>()
     ];
 
     protected override async Task OnPlay(

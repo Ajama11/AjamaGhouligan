@@ -25,11 +25,6 @@ public class KeepEmComing() : AjamaGhouliganCard(2,
         new SurpriseVar(3)
     ];
 
-    public override IEnumerable<IHoverTip> MyHoverTips =>
-    [
-        HoverTipFactory.FromCard<Surprise>()
-    ];
-
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)

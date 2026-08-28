@@ -1,3 +1,5 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips;
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
@@ -23,10 +25,19 @@ public class GetSilly() : AjamaGhouliganCard(0,
         new DisinterVar(2),
         new PowerVar<GoofPower>(2)
     ];
-
-    public override IEnumerable<IHoverTip> MyHoverTips =>
+    
+    public override BundledHoverTipManager MyBundles =>
     [
-        HoverTipFactory.FromKeyword(MyEnums.Haunted)
+        BundledHoverTipFactory.FromKeyword(MyEnums.Haunted)
+    ];
+
+    public override List<List<string>> BundleReorders =>
+    [
+        [
+            BundledHoverTipFactory.Static(MyEnums.Disinter).Name,
+            BundledHoverTipFactory.FromKeyword(MyEnums.Haunted).Name,
+            new GoofBundle().Name
+        ]
     ];
 
     protected override async Task OnPlay(

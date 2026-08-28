@@ -41,4 +41,13 @@ public static class BundledHoverTipFactory
             category
         );
     }
+    
+    public static BundledHoverTip FromCard(CardModel card, bool upgrade = false, BundledHoverTipManager.Category category = BundledHoverTipManager.Category.Middle, string? name = null)
+    {
+        return new BundledHoverTip(
+            name ?? card.TitleLocString.GetRawText(),
+            HoverTipFactory.FromCard(card, upgrade),
+            category
+        );
+    }
 }

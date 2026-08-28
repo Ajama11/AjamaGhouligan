@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Extensions;
@@ -31,9 +32,9 @@ public class FingerFood() : AjamaGhouliganCard(1,
         MyEnums.Grave
     ];
 
-    public override IEnumerable<IHoverTip> MyHoverTips =>
+    public override BundledHoverTipManager MyBundles =>
     [
-        HoverTipFactory.FromPower<VigorPower>()
+        BundledHoverTipFactory.FromPower<VigorPower>()
     ];
 
     protected override async Task OnPlay(

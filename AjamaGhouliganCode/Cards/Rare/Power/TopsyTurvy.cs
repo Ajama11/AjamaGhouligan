@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using BaseLib.Extensions;
@@ -19,9 +20,9 @@ public class TopsyTurvy() : AjamaGhouliganCard(1,
         new PowerVar<TopsyTurvyPower>(2)
     ];
 
-    public override IEnumerable<IHoverTip> MyHoverTips =>
+    public override BundledHoverTipManager MyBundles =>
     [
-        HoverTipFactory.Static(MyEnums.BuryOther)
+        BundledHoverTipFactory.Static(MyEnums.BuryOther)
     ];
 
     protected override async Task OnPlay(

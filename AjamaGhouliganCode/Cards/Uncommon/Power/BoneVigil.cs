@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
@@ -23,9 +24,9 @@ public class BoneVigil() : AjamaGhouliganCard(2,
         new PowerVar<BoneVigilPower>(1)
     ];
 
-    public override IEnumerable<IHoverTip> MyHoverTips =>
+    public override BundledHoverTipManager MyBundles =>
     [
-        HoverTipFactory.Static(MyEnums.BuryOther)
+        BundledHoverTipFactory.Static(MyEnums.BuryOther)
     ];
 
     protected override async Task OnPlay(

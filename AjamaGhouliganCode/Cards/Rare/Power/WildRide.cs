@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
@@ -22,10 +23,10 @@ public class WildRide() : AjamaGhouliganCard(3,
     [
         new PowerVar<WildRidePower>(1)
     ];
-
-    public override IEnumerable<IHoverTip> MyHoverTips =>
+    
+    public override BundledHoverTipManager MyBundles =>
     [
-        HoverTipFactory.FromPower<MisfortunePower>()
+        BundledHoverTipFactory.FromPower<MisfortunePower>()
     ];
 
     protected override async Task OnPlay(

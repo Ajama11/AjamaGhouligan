@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Cards.Token;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -16,10 +17,10 @@ public class FoolYouTwice() : AjamaGhouliganCard(0,
     [
         CardKeyword.Exhaust
     ];
-    
-    public override IEnumerable<IHoverTip> MyHoverTips =>
+
+    public override BundledHoverTipManager MyBundles =>
     [
-        HoverTipFactory.FromCard<Surprise>()
+        BundledHoverTipFactory.FromCard<Surprise>()
     ];
 
     protected override async Task OnPlay(

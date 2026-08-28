@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.CardPiles;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
@@ -34,7 +35,7 @@ public class Tombstone() : AjamaGhouliganCard(2,
         CardKeyword.Exhaust
     ];
 
-    public override IEnumerable<IHoverTip> MyHoverTips
+    public override BundledHoverTipManager MyBundles
     {
         get
         {
@@ -48,7 +49,7 @@ public class Tombstone() : AjamaGhouliganCard(2,
             
             return
             [
-                new HoverTip(title, description)
+                new BundledHoverTip(CalculatedSummon, new HoverTip(title, description))
             ];
         }
     }

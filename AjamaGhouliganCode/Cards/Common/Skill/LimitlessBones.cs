@@ -27,14 +27,6 @@ public class LimitlessBones() : AjamaGhouliganCard(3,
         CardKeyword.Retain,
         MyEnums.Bury
     ];
-    
-    public override IEnumerable<IHoverTip> MyHoverTips =>
-    [
-        HoverTipFactory.FromKeyword(MyEnums.Haunted),
-        HoverTipFactory.FromKeyword(CardKeyword.Retain),
-        HalfSummon.DynamicTip(DynamicVars),
-        HoverTipFactory.FromKeyword(MyEnums.Bury)
-    ];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,

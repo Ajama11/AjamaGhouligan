@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
@@ -25,11 +26,13 @@ public class ThumbWar() : AjamaGhouliganCard(1,
         new PowerVar<GoofPower>(3),
         new SummonVar(1)
     ];
-    
-    public override IEnumerable<IHoverTip> MyHoverTips =>
+
+    public override List<List<string>> BundleReorders =>
     [
-        HoverTipFactory.FromPower<GoofPower>(),
-        HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon)
+        [
+            new GoofBundle().Name,
+            SummonVar.defaultName
+        ]
     ];
 
     protected override async Task OnPlay(

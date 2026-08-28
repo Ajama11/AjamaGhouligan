@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
@@ -26,11 +27,11 @@ public class NeedAHand() : AjamaGhouliganCard(1,
         CardKeyword.Exhaust
     ];
 
-    public override IEnumerable<IHoverTip> MyHoverTips =>
+    public override BundledHoverTipManager MyBundles =>
     [
-        HoverTipFactory.Static(StaticHoverTip.SummonStatic)
+        BundledHoverTipFactory.Static(StaticHoverTip.SummonStatic)
     ];
-    
+
     protected override bool ShouldGlowRedInternal => Owner.IsOstyMissing;
 
     protected override async Task OnPlay(

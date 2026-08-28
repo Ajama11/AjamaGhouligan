@@ -37,7 +37,6 @@ public abstract class AjamaGhouliganCard(int cost, CardType type, CardRarity rar
     public override string BetaPortraitPath => $"beta/{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
 
     public virtual HashSet<CardTag> MyCanonicalTags => [];
-    public virtual IEnumerable<IHoverTip> MyHoverTips => [];
 
     protected override HashSet<CardTag> CanonicalTags
     {
@@ -74,7 +73,7 @@ public abstract class AjamaGhouliganCard(int cost, CardType type, CardRarity rar
                 ));
             }
             
-            foreach (var keyword in CardKeywordOrder.beforeDescription)
+            foreach (var keyword in ((IEnumerable<CardKeyword>) CardKeywordOrder.beforeDescription).Reverse())
             {
                 if (Keywords.Contains(keyword))
                 {
@@ -83,6 +82,15 @@ public abstract class AjamaGhouliganCard(int cost, CardType type, CardRarity rar
                         HoverTipFactory.FromKeyword(keyword),
                         BundledHoverTipManager.Category.Start
                     ));
+
+                    if (keyword == CardKeyword.Ethereal && !Keywords.Contains(CardKeyword.Exhaust))
+                    {
+                        bundles.Add(new BundledHoverTip(
+                            CardKeyword.Exhaust.GetTitle().GetRawText(),
+                            HoverTipFactory.FromKeyword(CardKeyword.Exhaust),
+                            BundledHoverTipManager.Category.Start
+                        ));
+                    }
                 }
             }
 
@@ -104,6 +112,11 @@ public abstract class AjamaGhouliganCard(int cost, CardType type, CardRarity rar
                 }
             }
 
+            if (GainsBlock)
+            {
+                bundles.Add(BundledHoverTipFactory.Static(StaticHoverTip.Block));
+            }
+
             if (DynamicVars.ContainsKey(SummonVar.defaultName))
             {
                 bundles.Add(new BundledHoverTip(
@@ -118,6 +131,11 @@ public abstract class AjamaGhouliganCard(int cost, CardType type, CardRarity rar
                     nameof(HalfSummon),
                     HalfSummon.DynamicTip(DynamicVars)
                 ));
+            }
+            
+            if (DynamicVars.Values.Any(dv => dv is DisinterVar { SkipTooltip: false }))
+            {
+                bundles.Add(BundledHoverTipFactory.Static(MyEnums.Disinter));
             }
             
             if (DynamicVars.ContainsKey(nameof(MisfortunePower)))
@@ -158,10 +176,7 @@ public abstract class AjamaGhouliganCard(int cost, CardType type, CardRarity rar
             
             if (DynamicVars.Values.Any(dv => dv is TreatVar { SkipTooltip: false }))
             {
-                bundles.Add(new BundledHoverTip(
-                    TreatVar.Key,
-                    MyEnums.TreatHovers(DynamicVars.Treat.Upgraded)
-                ));
+                bundles.Add(new TreatBundle(DynamicVars.Treat.Upgraded));
             }
             
             if (DynamicVars.Values.Any(dv => dv is ScornVar { SkipTooltip: false }))
@@ -182,15 +197,6 @@ public abstract class AjamaGhouliganCard(int cost, CardType type, CardRarity rar
             }
             
             bundles.SortHoverTips();
-            
-            MainFile.Logger.Warn("-=-=-=-=-=-=-=-=-=-=-=-=-");
-            MainFile.Logger.Warn($"{Title}");
-            foreach (var bundle in bundles)
-            {
-                MainFile.Logger.Warn($"{bundle.InternalSortOrder}: {bundle.Name}");
-            }
-            MainFile.Logger.Warn("-=-=-=-=-=-=-=-=-=-=-=-=-");
-            
             return bundles.GetHoverTips();
         }
     }

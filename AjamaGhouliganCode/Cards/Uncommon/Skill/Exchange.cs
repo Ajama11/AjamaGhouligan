@@ -23,12 +23,6 @@ public class Exchange() : AjamaGhouliganCard(0,
         new DisinterVar(2),
         new BuryVar(2)
     ];
-    
-    public override IEnumerable<IHoverTip> MyHoverTips =>
-    [
-        HoverTipFactory.Static(MyEnums.Disinter),
-        HoverTipFactory.Static(MyEnums.BuryOther)
-    ];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,

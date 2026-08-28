@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
@@ -26,19 +27,9 @@ public class LaterProblem() : AjamaGhouliganCard(1,
         new CardsVar(2)
     ];
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    public override BundledHoverTipManager MyBundles =>
     [
-
-    ];
-
-    public override HashSet<CardTag> MyCanonicalTags =>
-    [
-
-    ];
-
-    public override IEnumerable<IHoverTip> MyHoverTips =>
-    [
-        HoverTipFactory.FromCard<Burn>()
+        BundledHoverTipFactory.FromCard<Burn>()
     ];
 
     protected override async Task OnPlay(

@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
@@ -30,12 +31,9 @@ public class Boo() : AjamaGhouliganCard(2,
         MyEnums.Unfortunate
     ];
 
-    public override IEnumerable<IHoverTip> MyHoverTips =>
+    public override BundledHoverTipManager MyBundles =>
     [
-        HoverTipFactory.FromKeyword(MyEnums.Unfortunate),
-        HoverTipFactory.FromPower<MisfortunePower>(),
-        HoverTipFactory.Static(MyEnums.BuryOther),
-        HoverTipFactory.FromKeyword(MyEnums.Haunted)
+        BundledHoverTipFactory.FromKeyword(MyEnums.Haunted)
     ];
 
     protected override async Task OnPlay(

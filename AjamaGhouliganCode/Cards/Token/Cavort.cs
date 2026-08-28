@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
@@ -50,10 +51,10 @@ public class Cavort() : AjamaGhouliganCard(0,
     [
         CardKeyword.Exhaust
     ];
-
-    public override IEnumerable<IHoverTip> MyHoverTips =>
+    
+    public override BundledHoverTipManager MyBundles =>
         Card != null ?
-            [HoverTipFactory.FromCard(Card)] :
+            [BundledHoverTipFactory.FromCard(Card)] :
             [];
 
     protected override async Task OnPlay(

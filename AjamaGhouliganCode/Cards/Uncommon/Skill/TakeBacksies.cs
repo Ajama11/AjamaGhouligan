@@ -1,3 +1,5 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips;
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
@@ -25,19 +27,10 @@ public class TakeBacksies() : AjamaGhouliganCard(1,
         new CardsVar(2)
     ];
 
-    private IEnumerable<IHoverTip> PreUpgradeHoverTips =>
+    public override BundledHoverTipManager MyBundles =>
     [
-        HoverTipFactory.Static(MyEnums.Haunt),
-        HoverTipFactory.FromKeyword(MyEnums.Haunted)
+        new HauntBundle()
     ];
-    
-    public override IEnumerable<IHoverTip> MyHoverTips =>
-        IsUpgraded ?
-            [
-                HoverTipFactory.FromKeyword(CardKeyword.Retain),
-                ..PreUpgradeHoverTips
-            ]
-            : PreUpgradeHoverTips;
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,

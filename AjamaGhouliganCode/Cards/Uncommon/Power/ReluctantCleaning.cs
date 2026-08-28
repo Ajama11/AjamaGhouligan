@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
@@ -28,10 +29,10 @@ public class ReluctantCleaning() : AjamaGhouliganCard(0,
         MyEnums.Grave
     ];
 
-    public override IEnumerable<IHoverTip> MyHoverTips =>
+    public override BundledHoverTipManager MyBundles =>
     [
-        HoverTipFactory.FromKeyword(CardKeyword.Exhaust),
-        HoverTipFactory.Static(MyEnums.BuryOther)
+        BundledHoverTipFactory.FromKeyword(CardKeyword.Exhaust),
+        BundledHoverTipFactory.Static(MyEnums.BuryOther)
     ];
 
     protected override async Task OnPlay(

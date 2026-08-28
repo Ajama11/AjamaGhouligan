@@ -5,12 +5,12 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips;
 
-public class UnfortunateBundle() : BundledHoverTip(
+public class UnfortunateBundle(BundledHoverTipManager.Category category = BundledHoverTipManager.Category.End) : BundledHoverTip(
     nameof(UnfortunateBundle),
     [
         HoverTipFactory.FromKeyword(MyEnums.Unfortunate),
         HoverTipFactory.FromPower<MisfortunePower>()
     ],
-    BundledHoverTipManager.Category.End
+    category
 )
 { }
