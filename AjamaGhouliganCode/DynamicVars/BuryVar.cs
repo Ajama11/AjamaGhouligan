@@ -6,10 +6,12 @@ namespace AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 public class BuryVar : DynamicVar
 {
     public const string Key = "Bury";
+    public bool SkipTooltip;
     
     public BuryVar(decimal baseValue, bool skipTooltip = false) : base(Key, baseValue)
     {
-        if (!skipTooltip) this.WithTooltip("AJAMAGHOULIGAN-BURY_OTHER");
+        SkipTooltip = skipTooltip;
+        // if (!skipTooltip) this.WithTooltip("AJAMAGHOULIGAN-BURY_OTHER");
     }
 }
 

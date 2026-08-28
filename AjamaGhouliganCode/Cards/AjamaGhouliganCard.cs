@@ -1,4 +1,6 @@
-﻿using AjamaGhouligan.AjamaGhouliganCode.CardPiles;
+﻿using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips;
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
+using AjamaGhouligan.AjamaGhouliganCode.CardPiles;
 using AjamaGhouligan.AjamaGhouliganCode.Cards.Status;
 using AjamaGhouligan.AjamaGhouliganCode.Cards.Token;
 using BaseLib.Abstracts;
@@ -33,20 +35,9 @@ public abstract class AjamaGhouliganCard(int cost, CardType type, CardRarity rar
     //Uses card_portraits/card_name.png as image path. These should be smaller images.
     public override string PortraitPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
     public override string BetaPortraitPath => $"beta/{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
-    
-    // public virtual IEnumerable<CardKeyword> MyCanonicalKeywords => [];
+
     public virtual HashSet<CardTag> MyCanonicalTags => [];
     public virtual IEnumerable<IHoverTip> MyHoverTips => [];
-    
-    // public override IEnumerable<CardKeyword> CanonicalKeywords
-    // {
-    //     get
-    //     {
-    //         IEnumerable<CardKeyword> result = [..MyCanonicalKeywords];
-    //
-    //         return result;
-    //     }
-    // }
 
     protected override HashSet<CardTag> CanonicalTags
     {
@@ -63,84 +54,144 @@ public abstract class AjamaGhouliganCard(int cost, CardType type, CardRarity rar
         }
     }
 
+    public virtual BundledHoverTipManager MyBundles => [];
+    public virtual List<List<string>> BundleReorders => [];
+
     protected override IEnumerable<IHoverTip> ExtraHoverTips
     {
         get
         {
-            IEnumerable<IHoverTip> result = [..MyHoverTips];
+            BundledHoverTipManager bundles = [];
 
+            #region Automatic Bundles
+            
             if (Keywords.Contains(MyEnums.Haunted))
             {
-                result = [HoverTipFactory.FromKeyword(MyEnums.Haunted), ..result];
+                bundles.Add(new BundledHoverTip(
+                    nameof(MyEnums.Haunted),
+                    HoverTipFactory.FromKeyword(MyEnums.Haunted),
+                    BundledHoverTipManager.Category.Start
+                ));
             }
             
-            if (Keywords.Contains(MyEnums.Grave))
+            foreach (var keyword in CardKeywordOrder.beforeDescription)
             {
-                result = [HoverTipFactory.FromKeyword(MyEnums.Grave), ..result];
+                if (Keywords.Contains(keyword))
+                {
+                    bundles.Add(new BundledHoverTip(
+                        keyword.GetTitle().GetRawText(),
+                        HoverTipFactory.FromKeyword(keyword),
+                        BundledHoverTipManager.Category.Start
+                    ));
+                }
+            }
+
+            if (Keywords.Contains(MyEnums.Unfortunate))
+            {
+                bundles.Add(new UnfortunateBundle());
             }
             
+            foreach (var keyword in CardKeywordOrder.afterDescription
+                         .Where(k => k != MyEnums.Unfortunate))
+            {
+                if (Keywords.Contains(keyword))
+                {
+                    bundles.Add(new BundledHoverTip(
+                        keyword.GetTitle().GetRawText(),
+                        HoverTipFactory.FromKeyword(keyword),
+                        BundledHoverTipManager.Category.End
+                    ));
+                }
+            }
+
             if (DynamicVars.ContainsKey(SummonVar.defaultName))
             {
-                result = [..result, HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon)];
+                bundles.Add(new BundledHoverTip(
+                    SummonVar.defaultName,
+                    HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon)
+                ));
             }
             
             if (DynamicVars.Values.Any(dv => dv is HalfSummonEmptyVar { SkipTooltip: false }))
             {
-                result = [..result, HalfSummon.DynamicTip(DynamicVars)];
+                bundles.Add(new BundledHoverTip(
+                    nameof(HalfSummon),
+                    HalfSummon.DynamicTip(DynamicVars)
+                ));
             }
             
             if (DynamicVars.ContainsKey(nameof(MisfortunePower)))
             {
-                result = [..result, HoverTipFactory.FromPower<MisfortunePower>()];
-            }
-            
-            if (Keywords.Contains(MyEnums.Unfortunate))
-            {
-                result = [..result, HoverTipFactory.FromKeyword(MyEnums.Unfortunate), HoverTipFactory.FromPower<MisfortunePower>()];
+                bundles.Add(BundledHoverTipFactory.FromPower<MisfortunePower>());
             }
 
             if (DynamicVars.ContainsKey(nameof(DoomPower)) || 
                 DynamicVars.ContainsKey(nameof(DoomNextTurnPower)))
             {
-                result = [..result, HoverTipFactory.FromPower<DoomPower>()];
+                bundles.Add(BundledHoverTipFactory.FromPower<DoomPower>());
             }
             
             if (DynamicVars.ContainsKey(nameof(GoofPower)))
             {
-                result = [..result, HoverTipFactory.FromPower<GoofPower>(), HoverTipFactory.FromCard<Cavort>()];
+                bundles.Add(new GoofBundle());
             }
 
-            if (DynamicVars.ContainsKey(HauntVar.Key) && !DynamicVars.Haunt.SkipTooltip)
+            if (DynamicVars.Values.Any(dv => dv is HauntVar { SkipTooltip: false }))
             {
-                result = [..result, HoverTipFactory.Static(MyEnums.Haunt), HoverTipFactory.FromKeyword(MyEnums.Haunted)];
+                bundles.Add(new HauntBundle());
             }
             
-            if (DynamicVars.ContainsKey(BuryVar.Key))
+            if (DynamicVars.Values.Any(dv => dv is BuryVar { SkipTooltip: false }))
             {
-                result = [..result, HoverTipFactory.Static(MyEnums.BuryOther)];
+                bundles.Add(BundledHoverTipFactory.Static(MyEnums.BuryOther));
             }
             
-            if (DynamicVars.ContainsKey(SurpriseVar.Key) && !DynamicVars.Surprise.SkipTooltip)
+            if (DynamicVars.Values.Any(dv => dv is SurpriseVar { SkipTooltip: false }))
             {
-                result = [..result, HoverTipFactory.FromCard<Surprise>()];
+                bundles.Add(BundledHoverTipFactory.FromCard<Surprise>());
             }
             
-            if (DynamicVars.ContainsKey(LoseDoomVar.Key) && !DynamicVars.LoseDoom.SkipTooltip)
+            if (DynamicVars.Values.Any(dv => dv is LoseDoomVar { SkipTooltip: false }))
             {
-                result = [..result, HoverTipFactory.FromPower<DoomPower>()];
+                bundles.Add(BundledHoverTipFactory.FromPower<DoomPower>());
             }
             
-            if (DynamicVars.ContainsKey(TreatVar.Key) && !DynamicVars.Treat.SkipTooltip)
+            if (DynamicVars.Values.Any(dv => dv is TreatVar { SkipTooltip: false }))
             {
-                result = [..result, ..MyEnums.TreatHovers(DynamicVars.Treat.Upgraded)];
+                bundles.Add(new BundledHoverTip(
+                    TreatVar.Key,
+                    MyEnums.TreatHovers(DynamicVars.Treat.Upgraded)
+                ));
             }
             
-            if (DynamicVars.ContainsKey(ScornVar.Key) && !DynamicVars.Scorn.SkipTooltip)
+            if (DynamicVars.Values.Any(dv => dv is ScornVar { SkipTooltip: false }))
             {
-                result = [..result, HoverTipFactory.FromCard<Scorn>()];
+                bundles.Add(BundledHoverTipFactory.FromCard<Scorn>());
+            }
+            
+            #endregion
+
+            foreach (var bundle in MyBundles)
+            {
+                bundles.Add(bundle);
             }
 
-            return result;
+            foreach (var list in BundleReorders)
+            {
+                bundles.Reorder(list[0], list.Skip(1).ToArray());
+            }
+            
+            bundles.SortHoverTips();
+            
+            MainFile.Logger.Warn("-=-=-=-=-=-=-=-=-=-=-=-=-");
+            MainFile.Logger.Warn($"{Title}");
+            foreach (var bundle in bundles)
+            {
+                MainFile.Logger.Warn($"{bundle.InternalSortOrder}: {bundle.Name}");
+            }
+            MainFile.Logger.Warn("-=-=-=-=-=-=-=-=-=-=-=-=-");
+            
+            return bundles.GetHoverTips();
         }
     }
 
