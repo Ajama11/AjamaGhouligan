@@ -2,7 +2,7 @@
   "id": "AjamaGhouligan",
   "name": "Ghouligan",
   "author": "Ajama",
-  "description": "Adds a new character with a lot of focus on automatically playing cards.\n\nSome icons from Lorc at game-icons.net.\nCycling card previews from lovec_minecraftu.",
+  "description": "Adds a new character with a lot of focus on automatically playing cards.\n\nSome icons from Lorc, rihlsul, and Delapouite at game-icons.net.\nCycling card previews from lovec_minecraftu.",
   "version": "v0.4.0",
   "has_pck": true,
   "has_dll": true,
