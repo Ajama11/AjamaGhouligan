@@ -271,5 +271,7 @@
   "AJAMAGHOULIGAN-WILD_RIDE.title": "Wild Ride",
   "AJAMAGHOULIGAN-WILD_RIDE.description": "[gold]Misfortune[/gold] no longer halves at the end of the turn, but reduces by 1 when triggered.",
   "AJAMAGHOULIGAN-KEEP_EM_COMING.title": "Keep 'Em Coming!",
-  "AJAMAGHOULIGAN-KEEP_EM_COMING.description": "#[gold]Surprises[/gold] draw !KeepEmComingPower! additional card(s).{IfUpgraded:show:\nAdd !Surprise! [gold]Surprise(s)[/gold] into your [gold]Draw Pile[/gold].|}"
+  "AJAMAGHOULIGAN-KEEP_EM_COMING.description": "#[gold]Surprises[/gold] draw !KeepEmComingPower! additional card(s).{IfUpgraded:show:\nAdd !Surprise! [gold]Surprise(s)[/gold] into your [gold]Draw Pile[/gold].|}",
+  "AJAMAGHOULIGAN-HAND_THAT_GIVES.title": "Hand That Gives",
+  "AJAMAGHOULIGAN-HAND_THAT_GIVES.description": "#[gold]Osty[/gold] deals !OstyDamage! damage.\nNext turn, gain [E?].\nAdd !Surprise! [gold]Surprise(s)[/gold] into your [gold]Discard Pile[/gold]."
 }
