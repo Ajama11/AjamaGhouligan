@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
@@ -11,6 +12,8 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Nodes.Vfx;
@@ -24,15 +27,25 @@ public class SpiritFire() : AjamaGhouliganCard(2,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(2, DamageProps.card),
-        new RepeatVar(4),
-        new SurpriseVar(1)
+        new DamageVar(4, DamageProps.card),
+        new RepeatVar(5),
+        new CardsVar(2)
     ];
-
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-        MyEnums.Unfortunate
-    ];
+    
+    public override BundledHoverTipManager MyBundles
+    {
+        get
+        {
+            CardModel burn = ModelDb.Card<Burn>().ToMutable();
+            
+            burn.AddKeyword(CardKeyword.Ethereal);
+            
+            return
+            [
+                BundledHoverTipFactory.FromCard(burn),
+            ];
+        }
+    }
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
@@ -45,11 +58,19 @@ public class SpiritFire() : AjamaGhouliganCard(2,
                 0.75f, new Color(0, 0.75f, 0))!))
             .Execute(choiceContext);
 
-        await MyActions.CreateSurprises(this, PileType.Draw, CardPilePosition.Top);
+        await MyActions.CreateCards(ModelDb.Card<Burn>(), DynamicVars.Cards.IntValue, this, modifyCardsBeforePreview:
+            list =>
+            {
+                foreach (var burn in list)
+                {
+                    burn.AddKeyword(CardKeyword.Ethereal);
+                }
+                return list;
+            });
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Repeat.UpgradeValueBy(2);
+        DynamicVars.Repeat.UpgradeValueBy(1);
     }
 }

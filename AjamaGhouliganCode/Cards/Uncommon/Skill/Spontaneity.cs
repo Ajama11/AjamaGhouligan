@@ -24,7 +24,7 @@ public class Spontaneity() : AjamaGhouliganCard(1,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new CardsVar(3),
-        new ScornVar(2)
+        new ScornVar(3)
     ];
 
     public override BundledHoverTipManager MyBundles =>

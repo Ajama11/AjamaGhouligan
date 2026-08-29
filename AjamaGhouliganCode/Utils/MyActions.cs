@@ -346,9 +346,9 @@ public class MyActions
     }
     
     public static async Task<IEnumerable<CardModel>> CreateCards(CardModel canonicalCard, int amount,
-        AjamaGhouliganCard sourceCard, PileType pile = PileType.Hand, CardPilePosition position = CardPilePosition.Bottom)
+        AjamaGhouliganCard sourceCard, PileType pile = PileType.Hand, CardPilePosition position = CardPilePosition.Bottom, bool preview = true, float previewTime = 1.2f, Func<List<CardModel>, List<CardModel>>? modifyCardsBeforePreview = null)
     {
-        return await CreateCards(canonicalCard, amount, sourceCard.Owner, sourceCard.CombatState!, pile, position);
+        return await CreateCards(canonicalCard, amount, sourceCard.Owner, sourceCard.CombatState!, pile, position, preview, previewTime, modifyCardsBeforePreview);
     }
     
     public static async Task<IEnumerable<CardModel>> CreateCards(CardModel canonicalCard, int amount, Player owner, ICombatState combatState, PileType pile = PileType.Hand, CardPilePosition position = CardPilePosition.Bottom, bool preview = true, float previewTime = 1.2f, Func<List<CardModel>, List<CardModel>>? modifyCardsBeforePreview = null)

@@ -22,7 +22,7 @@ public class Bewitch() : AjamaGhouliganCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new ScornVar(3)
+        new ScornVar(5)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>

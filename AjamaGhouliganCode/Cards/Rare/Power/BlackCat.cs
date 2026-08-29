@@ -1,5 +1,6 @@
 using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
+using AjamaGhouligan.AjamaGhouliganCode.Cards.Status;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
@@ -10,6 +11,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -22,15 +24,23 @@ public class BlackCat() : AjamaGhouliganCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<DoomPower>(4),
         new PowerVar<BlackCatPower>(1)
     ];
 
-    public override BundledHoverTipManager MyBundles =>
-    [
-        BundledHoverTipFactory.Static(MyEnums.BuryOther),
-        BundledHoverTipFactory.FromKeyword(MyEnums.Haunted)
-    ];
+    public override BundledHoverTipManager MyBundles
+    {
+        get
+        {
+            CardModel scorn = ModelDb.Card<Scorn>().ToMutable();
+            
+            scorn.AddKeyword(CardKeyword.Ethereal);
+            
+            return
+            [
+                BundledHoverTipFactory.FromCard(scorn),
+            ];
+        }
+    }
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
@@ -38,13 +48,11 @@ public class BlackCat() : AjamaGhouliganCard(1,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "PowerUp", Owner.Character.PowerUpAnimDelay);
 
-        await MyActions.SelfDoom(choiceContext, this);
-
         await CommonActions.ApplySelf<BlackCatPower>(choiceContext, this);
     }
 
     protected override void OnUpgrade()
     {
-        EnergyCost.UpgradeBy(-1);
+        AddKeyword(CardKeyword.Innate);
     }
 }

@@ -1,7 +1,10 @@
+using AjamaGhouligan.AjamaGhouliganCode.Cards.Status;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 
@@ -12,16 +15,20 @@ public class BlackCatPower : AjamaGhouliganPower
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public override async Task AfterCardGeneratedForCombat(CardModel card, Player? creator)
+    public override async Task BeforeHandDraw(Player player, PlayerChoiceContext choiceContext, ICombatState combatState)
     {
-        if (card.Owner.Creature != Owner) return;
-        if (creator != card.Owner) return;
+        if (player != Owner.Player) return;
         
         Flash();
 
-        await MyActions.BuryRandomInPiles(
-            [PileType.Draw, PileType.Discard],
-            Owner.Player!, Amount,
-            MyEnums.RandomBuryTargeting.OnlyHaunted);
+        await MyActions.CreateCards(ModelDb.Card<Scorn>(), Amount, Owner.Player, CombatState, modifyCardsBeforePreview:
+            list =>
+            {
+                foreach (var scorn in list)
+                {
+                    scorn.AddKeyword(CardKeyword.Ethereal);
+                }
+                return list;
+            });
     }
 }
