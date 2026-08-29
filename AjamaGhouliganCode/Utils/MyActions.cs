@@ -8,6 +8,7 @@ using AjamaGhouligan.AjamaGhouliganCode.Cards.Token.Treats;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Extensions;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
+using BaseLib.Commands;
 using BaseLib.Extensions;
 using BaseLib.Utils;
 using Godot;
@@ -39,15 +40,14 @@ public class MyActions
         List<CardModel> possibleCards = [];
         List<CardModel> selectedCards;
 
+        filter ??= _ => true;
+
         foreach (var pile in fromPiles)
         {
             possibleCards = [..possibleCards, ..pile.GetPile(sourceCard.Owner).Cards];
         }
 
-        if (filter != null)
-        {
-            possibleCards = possibleCards.Where(filter).ToList();
-        }
+        possibleCards = possibleCards.Where(filter).ToList();
 
         if (possibleCards.Count == 0)
         {
@@ -63,7 +63,19 @@ public class MyActions
             
             CardSelectorPrefs prefs = new CardSelectorPrefs(selectionPrompt, sourceCard.DynamicVars.Haunt.IntValue);
 
-            selectedCards = (await CardSelectCmd.FromSimpleGrid(choiceContext, possibleCards, sourceCard.Owner, prefs)).ToList();
+            if (fromPiles is [PileType.Draw])
+            {
+                selectedCards = (await CardSelectCmd.FromCombatPile(choiceContext,
+                    PileType.Draw.GetPile(sourceCard.Owner), sourceCard.Owner, prefs, filter)).ToList();
+            }
+            else if (fromPiles.Count > 1)
+            {
+                selectedCards = (await MultiPileCardSelect.Select(choiceContext, sourceCard.Owner, prefs, filter, fromPiles.ToArray())).ToList();
+            }
+            else
+            {
+                selectedCards = (await CardSelectCmd.FromSimpleGrid(choiceContext, possibleCards, sourceCard.Owner, prefs)).ToList();
+            }
         }
         else
         {
