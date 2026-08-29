@@ -20,8 +20,8 @@ public class Awoo() : AjamaGhouliganCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(8, ValueProp.Move),
-        new PowerVar<MisfortunePower>(4)
+        new DamageVar(7, ValueProp.Move),
+        new PowerVar<MisfortunePower>(3)
     ];
 
     protected override async Task OnPlay(

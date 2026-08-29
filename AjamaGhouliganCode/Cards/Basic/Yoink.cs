@@ -34,7 +34,7 @@ public class Yoink() : AjamaGhouliganCard(1,
     protected override void OnUpgrade()
     {
         DynamicVars.HalfSummonFilled.UpgradeValueBy(2);
-        DynamicVars.HalfSummonEmpty.UpgradeValueBy(2);
+        DynamicVars.HalfSummonEmpty.UpgradeValueBy(1);
     }
     
     public CardModel GetTranscendenceTransformedCard()

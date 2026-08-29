@@ -21,7 +21,7 @@ public class ReluctantCleaning() : AjamaGhouliganCard(0,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<ReluctantCleaningPower>(3)
+        new PowerVar<ReluctantCleaningPower>(5)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>

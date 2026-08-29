@@ -19,7 +19,7 @@ public class StolenPhylactery : AjamaGhouliganRelic
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        ..HalfSummon.MakeVars(6, 7),
+        ..HalfSummon.MakeVars(6, 4),
         new LoseDoomVar(1)
     ];
 

@@ -16,7 +16,7 @@ public class OverchargedPhylactery : AjamaGhouliganRelic
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        ..HalfSummon.MakeVars(14, 10),
+        ..HalfSummon.MakeVars(14, 7),
         new LoseDoomVar(3)
     ];
 

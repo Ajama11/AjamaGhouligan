@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Relics;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using MegaCrit.Sts2.Core.Commands.Builders;
@@ -21,25 +22,27 @@ public class CrackedBoneFlute() : AjamaGhouliganRelic
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new SummonVar(2)
+        ..HalfSummon.MakeVars(1, 1)
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon)
+        HalfSummon.DynamicTip(DynamicVars)
     ];
 
-    public override async Task AfterAttack(PlayerChoiceContext choiceContext, AttackCommand command)
+    public override Task AfterAttack(PlayerChoiceContext choiceContext, AttackCommand command)
     {
         if (command.Attacker?.Monster is not Osty || 
-            command.Attacker?.PetOwner != Owner) return;
+            command.Attacker?.PetOwner != Owner) return Task.CompletedTask;
         
         Flash();
 
         int numberOfHits = command.Results.Sum(list => list.Count);
 
         ShouldSummonAfterCardPlay = true;
-        AmountToSummonAfterCardPlay = DynamicVars.Summon.IntValue * numberOfHits;
+        AmountToSummonAfterCardPlay = DynamicVars.HalfSummonFilled.IntValue * numberOfHits;
+        
+        return Task.CompletedTask;
     }
 
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -47,8 +50,10 @@ public class CrackedBoneFlute() : AjamaGhouliganRelic
         if (ShouldSummonAfterCardPlay)
         {
             ShouldSummonAfterCardPlay = false;
-            
-            await MyActions.Summon(this, Owner, AmountToSummonAfterCardPlay, choiceContext);
+
+            await MyActions.HalfSummon(this, Owner, 
+                AmountToSummonAfterCardPlay, AmountToSummonAfterCardPlay,
+                choiceContext);
             
             AmountToSummonAfterCardPlay = 0;
         }

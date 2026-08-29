@@ -12,6 +12,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Monsters;
+using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Nodes.Vfx;
 using MegaCrit.Sts2.Core.ValueProps;
 
@@ -39,7 +40,9 @@ public class SpiritFire() : AjamaGhouliganCard(2,
     {
         await CommonActions.CardAttack(this, play,
                 hitCount: DynamicVars.Repeat.IntValue)
-            .WithHitVfxNode((Func<Creature, Node2D>) (t => NFireBurstVfx.Create(t, 0.75f)!))
+            .WithHitVfxNode((Func<Creature, Node2D>) (t => NFireBurstVfx.Create(
+                NCombatRoom.Instance!.GetCreatureNode(t)!.GetBottomOfHitbox(), 
+                0.75f, new Color(0, 0.75f, 0))!))
             .Execute(choiceContext);
 
         await MyActions.CreateSurprises(this, PileType.Draw, CardPilePosition.Top);

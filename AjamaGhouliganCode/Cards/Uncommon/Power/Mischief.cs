@@ -22,7 +22,7 @@ public class Mischief() : AjamaGhouliganCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<MischiefPower>(3)
+        new PowerVar<MischiefPower>(2)
     ];
 
     public override BundledHoverTipManager MyBundles =>

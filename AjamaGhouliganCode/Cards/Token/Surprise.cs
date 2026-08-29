@@ -32,7 +32,7 @@ public class Surprise() : AjamaGhouliganCard(0,
     
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(7, DamageProps.card),
+        new DamageVar(6, DamageProps.card),
         ..MakeCalculatedVar(CalculatedDraw, 1, (card, _) => card.Owner.Creature.GetPowerAmount<KeepEmComingPower>())
     ];
 
@@ -48,7 +48,7 @@ public class Surprise() : AjamaGhouliganCard(0,
         foreach (Creature hittableEnemy in CombatState!.HittableEnemies)
         {
             NCombatRoom? instance = NCombatRoom.Instance;
-            instance?.CombatVfxContainer.AddChildSafely(NGroundFireVfx.Create(hittableEnemy));
+            instance?.CombatVfxContainer.AddChildSafely(NGroundFireVfx.Create(hittableEnemy, VfxColor.Green));
         }
         
         SfxCmd.Play(FmodSfx.fire);
