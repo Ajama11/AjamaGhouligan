@@ -89,7 +89,8 @@ public class Ghouligan : PlaceholderCharacterModel
     public override string CustomCharacterSelectLockedIconPath => "char_select_char_name_locked.png".CharacterUiPath();
     public override string CustomMapMarkerPath => "map_marker_ghouligan.png".CharacterUiPath();
     
-    public override string CustomTrailPath => SceneHelper.GetScenePath("vfx/card_trail_defect");
+    public override string CustomTrailPath =>
+        "res://AjamaGhouligan/scenes/card_trail.tscn";
 
     public override string CharacterTransitionSfx => 
         "event:/sfx/ui/wipe_ironclad";
