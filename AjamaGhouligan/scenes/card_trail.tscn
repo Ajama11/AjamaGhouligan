@@ -8,8 +8,8 @@ _data = [Vector2(0, 0.111037), 0.0, 0.0, 0, 0, Vector2(0.839578, 0.663793), -2.6
 point_count = 4
 
 [sub_resource type="Gradient" id="Gradient_veuic"]
-offsets = PackedFloat32Array(0, 0.141431, 0.522463)
-colors = PackedColorArray(0, 0, 0, 0, 0.25, 0.25, 0.25, 0.305882, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0, 0.141431, 0.522463, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 0.12941177, 0.8980392, 0.30588236, 0.12941177, 1, 0.70980394, 1, 0.12941177, 1, 0.70980394, 1)
 
 [sub_resource type="Curve" id="Curve_7plk7"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.801075, 0.571397), -3.15833, -3.15833, 0, 0, Vector2(0.900922, 0.367031), 0.0, 0.0, 0, 0, Vector2(0.938291, 0.930834), 0.0, 0.0, 0, 0, Vector2(1, 0.742201), 0.0, 0.0, 0, 0]
@@ -33,7 +33,7 @@ script = ExtResource("2_7plk7")
 
 [node name="OuterTrail" type="Line2D" parent="Trails"]
 unique_name_in_owner = true
-modulate = Color(1, 0.13, 0.8984999, 0.7529412)
+modulate = Color(1, 1, 1, 0.7529412)
 width = 96.0
 width_curve = SubResource("Curve_veuic")
 default_color = Color(1, 1, 1, 0.752941)
@@ -100,9 +100,11 @@ scale_amount_max = 0.05
 color_ramp = SubResource("Gradient_aiii3")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Sprites"]
+unique_name_in_owner = true
 modulate = Color(0.84, 0.34440002, 0.7821799, 0.7529412)
 scale = Vector2(1.1, 1.054)
 
 [node name="Sprite2D3" type="Sprite2D" parent="Sprites"]
+unique_name_in_owner = true
 modulate = Color(0.28210002, 0.91, 0.70070004, 0.5019608)
 scale = Vector2(0.9, 0.9)
