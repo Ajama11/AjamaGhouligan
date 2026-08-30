@@ -4,7 +4,10 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Nodes.Rooms;
+using MegaCrit.Sts2.Core.Nodes.Vfx;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Powers;
@@ -32,6 +35,8 @@ public class MurderOfCrowsPower : AjamaGhouliganPower
         
         Flash();
 
+        VfxCmd.PlayOnCreatureCenter(Owner, VfxCmd.scratchPath);
+        
         await CreatureCmd.Damage(choiceContext, Owner, amount, DamageProps.nonCardHpLoss, null, null);
     }
 
