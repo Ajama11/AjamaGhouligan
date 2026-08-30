@@ -113,5 +113,6 @@ public class Ghouligan : PlaceholderCharacterModel
             "yummy_cookie.png".RelicImagePath(),
             "yummy_cookie_outline.png".RelicImagePath());
 
+    public override float PowerUpAnimDelay => 0.5f;
     public override float DeathAnimTime => 2f;
 }

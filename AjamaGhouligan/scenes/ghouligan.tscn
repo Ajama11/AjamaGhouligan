@@ -339,7 +339,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.099999994, 0.16666667, 0.3666667, 0.4666667, 0.5666667, 0.6666667, 0.93333334, 1.1666666),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [0.0, 0.0, 0.17453292519943295, 0.0, -0.19024088846738202, -0.027925268031909423, -0.08377580409572802, 0.0, 0.0]
+"values": [0.0, 0.0, 0.17453292519943295, 0.0, -0.190240888467382, -0.02792526803190942, -0.08377580409572802, 0.0, 0.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -351,7 +351,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.03333334, 0.16666667, 0.26666668, 0.3666667, 0.4666667, 0.5666666, 0.6666666, 0.76666665, 1.1666666),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1.3195077, 1),
 "update": 0,
-"values": [0.0, 0.10821041362364824, 0.21642082724729647, -0.9738937226128361, -0.43284165449459394, -0.5410520681182421, -0.3665191429188092, -0.5410520681182421, -0.5410520681182421, 0.0]
+"values": [0.0, 0.10821041362364824, 0.21642082724729647, -0.973893722612836, -0.43284165449459394, -0.5410520681182421, -0.3665191429188092, -0.5410520681182421, -0.5410520681182421, 0.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -439,6 +439,7 @@ switch_mode = 2
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_m2h58"]
+allow_transition_to_self = true
 states/Start/position = Vector2(192, 100)
 states/attack/node = SubResource("AnimationNodeAnimation_qvepr")
 states/attack/position = Vector2(516, 24)
@@ -453,7 +454,7 @@ states/idle/position = Vector2(383, 100)
 states/powerup/node = SubResource("AnimationNodeAnimation_5sw4e")
 states/powerup/position = Vector2(516, 176)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_5sw4e"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_uklna"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_q0r6e"), "idle", "cast", SubResource("AnimationNodeStateMachineTransition_lu8mf"), "cast", "idle", SubResource("AnimationNodeStateMachineTransition_7lhb4"), "idle", "hurt", SubResource("AnimationNodeStateMachineTransition_8m652"), "hurt", "idle", SubResource("AnimationNodeStateMachineTransition_ad7d4"), "idle", "die", SubResource("AnimationNodeStateMachineTransition_vyl3y"), "die", "idle", SubResource("AnimationNodeStateMachineTransition_qvepr"), "idle", "powerup", SubResource("AnimationNodeStateMachineTransition_jr88a"), "powerup", "idle", SubResource("AnimationNodeStateMachineTransition_m2h58")]
-graph_offset = Vector2(-136, -40)
+graph_offset = Vector2(-120, -34)
 
 [node name="Ghouligan" type="Control"]
 layout_mode = 3
