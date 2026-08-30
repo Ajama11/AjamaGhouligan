@@ -23,7 +23,7 @@ public class MurderOfCrows() : AjamaGhouliganCard(1,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(9, DamageProps.card),
-        new PowerVar<MurderOfCrowsPower>(1)
+        new PowerVar<MurderOfCrowsPower>(2)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>

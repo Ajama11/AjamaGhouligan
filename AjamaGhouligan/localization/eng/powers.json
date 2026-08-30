@@ -93,7 +93,7 @@
   "AJAMAGHOULIGAN-KEEP_EM_COMING_POWER.description": "[gold]Surprises[/gold] draw [blue]1[/blue] additional card.",
   "AJAMAGHOULIGAN-KEEP_EM_COMING_POWER.smartDescription": "#[gold]Surprises[/gold] draw [blue]{Amount}[/blue] additional card(s).",
   "AJAMAGHOULIGAN-MURDER_OF_CROWS_POWER.title": "Murder of Crows",
-  "AJAMAGHOULIGAN-MURDER_OF_CROWS_POWER.description": "Whenever you play a card this turn, this enemy loses [blue]1[/blue] HP.",
+  "AJAMAGHOULIGAN-MURDER_OF_CROWS_POWER.description": "Whenever you play a card this turn, this enemy loses [blue]2[/blue] HP.",
   "AJAMAGHOULIGAN-MURDER_OF_CROWS_POWER.smartDescription": "Whenever you play a card this turn, this enemy loses [blue]{Amount}[/blue] HP.",
   "AJAMAGHOULIGAN-FRIGHT_POWER.title": "Fright",
   "AJAMAGHOULIGAN-FRIGHT_POWER.description": "Whenever a Status enters your [gold]Hand[/gold], a random enemy loses HP.",
