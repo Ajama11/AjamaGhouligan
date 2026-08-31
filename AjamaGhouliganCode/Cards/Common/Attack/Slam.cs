@@ -23,7 +23,7 @@ public class Slam() : AjamaGhouliganCard(1,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new OstyDamageVar(6, ValueProp.Move),
-        new ScornVar(1)
+        new PattyCakeVar(3)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
@@ -49,7 +49,7 @@ public class Slam() : AjamaGhouliganCard(1,
                 .Execute(choiceContext);
         }
 
-        await MyActions.CreateScorn(this);
+        await MyActions.PattyCake(choiceContext, this);
     }
 
     protected override void OnUpgrade()

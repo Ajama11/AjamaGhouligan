@@ -1,7 +1,9 @@
 using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
+using BaseLib.Extensions;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips;
@@ -10,6 +12,9 @@ public class PattyCakeBundle(int amount, bool onPlayer = true) : BundledHoverTip
     nameof(PattyCakeBundle),
     MakeHoverTip(amount, onPlayer))
 {
+    public PattyCakeBundle(DynamicVarSet vars, bool onPlayer = true) : this(vars.Power<PattyCakePower>().IntValue, onPlayer)
+    { }
+    
     public static HoverTip MakeHoverTip(int amount, bool onPlayer)
     {
         PattyCakePower power = ModelDb.Power<PattyCakePower>();

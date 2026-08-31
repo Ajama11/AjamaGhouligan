@@ -740,4 +740,20 @@ public class MyActions
     {
         return await CreateCards(ModelDb.Card<Scorn>(), amount, owner, combatState, pile, position, preview, previewTime);
     }
+
+    public static async Task PattyCake(PlayerChoiceContext choiceContext, AjamaGhouliganCard sourceCard)
+    {
+        await PattyCake(sourceCard.Owner, sourceCard.DynamicVars.PattyCake.OnPlayer, sourceCard.DynamicVars.PattyCake.IntValue, choiceContext, sourceCard);
+    }
+
+    public static async Task PattyCake(Player player, bool onPlayer, int amount, PlayerChoiceContext? choiceContext = null, CardModel? sourceCard = null)
+    {
+        choiceContext ??= new ThrowingPlayerChoiceContext();
+
+        Creature? creature = onPlayer ? player.Creature : player.Osty;
+
+        if (!Osty.IsReadyToParty(player)) return;
+
+        await PowerCmd.Apply<PattyCakePower>(choiceContext, creature!, amount, player.Creature, sourceCard);
+    }
 }

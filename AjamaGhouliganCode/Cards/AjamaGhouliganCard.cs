@@ -154,6 +154,13 @@ public abstract class AjamaGhouliganCard(int cost, CardType type, CardRarity rar
                 bundles.Add(new GoofBundle());
             }
 
+            foreach (var dynVar in DynamicVars.Values)
+            {
+                if (dynVar is not PattyCakeVar pattyCakeVar) continue;
+                if (pattyCakeVar.SkipTooltip) continue;
+                bundles.Add(new PattyCakeBundle(DynamicVars, pattyCakeVar.OnPlayer));
+            }
+
             if (DynamicVars.Values.Any(dv => dv is HauntVar { SkipTooltip: false }))
             {
                 bundles.Add(new HauntBundle());

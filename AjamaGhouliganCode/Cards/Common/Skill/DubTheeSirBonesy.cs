@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips;
 using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
@@ -24,17 +25,12 @@ public class DubTheeSirBonesy() : AjamaGhouliganCard(1,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         ..HalfSummon.MakeVars(6, 2),
-        new PowerVar<StrengthPower>(1)
+        new PattyCakeVar(4, false)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
         MyEnums.Haunted
-    ];
-
-    public override BundledHoverTipManager MyBundles =>
-    [
-        BundledHoverTipFactory.FromPower<StrengthPower>()
     ];
 
     protected override async Task OnPlay(
@@ -45,8 +41,7 @@ public class DubTheeSirBonesy() : AjamaGhouliganCard(1,
 
         await MyActions.HalfSummon(choiceContext, this);
 
-        if (Osty.IsReadyToParty(Owner))
-            await CommonActions.Apply<StrengthPower>(choiceContext, Owner.Osty!, this);
+        await MyActions.PattyCake(choiceContext, this);
     }
 
     protected override void OnUpgrade()
