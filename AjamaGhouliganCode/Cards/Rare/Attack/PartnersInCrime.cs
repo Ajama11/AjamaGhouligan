@@ -57,10 +57,10 @@ public class PartnersInCrime() : AjamaGhouliganCard(1,
                 vfx: VfxCmd.thrashPath, 
                 tmpSfx: TmpSfx.heavyAttack);
 
-        if (Owner.IsOstyAlive) await Hook.BeforeAttack(CombatState!, ostyFakeCommand);
-
-        await using AttackContext attackContext =
+        AttackContext attackContext =
             await AttackCommand.CreateContextAsync(CombatState!, choiceContext, play);
+        
+        if (Owner.IsOstyAlive) await Hook.BeforeAttack(CombatState!, ostyFakeCommand);
 
         bool wasThereAtLeastOneOstyHit = false;
 
@@ -100,6 +100,8 @@ public class PartnersInCrime() : AjamaGhouliganCard(1,
                 wasThereAtLeastOneOstyHit = true;
             }
         }
+
+        await attackContext.DisposeAsync();
         
         if (wasThereAtLeastOneOstyHit)
         {

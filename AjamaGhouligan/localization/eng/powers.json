@@ -97,5 +97,8 @@
   "AJAMAGHOULIGAN-MURDER_OF_CROWS_POWER.smartDescription": "Whenever you play a card this turn, this enemy loses [blue]{Amount}[/blue] HP.",
   "AJAMAGHOULIGAN-FRIGHT_POWER.title": "Fright",
   "AJAMAGHOULIGAN-FRIGHT_POWER.description": "Whenever a Status enters your [gold]Hand[/gold], a random enemy loses HP.",
-  "AJAMAGHOULIGAN-FRIGHT_POWER.smartDescription": "#Whenever a Status enters your [gold]Hand[/gold], a random enemy loses [blue]{Amount}[/blue] HP."
+  "AJAMAGHOULIGAN-FRIGHT_POWER.smartDescription": "#Whenever a Status enters your [gold]Hand[/gold], a random enemy loses [blue]{Amount}[/blue] HP.",
+  "AJAMAGHOULIGAN-PATTY_CAKE_POWER.title": "Patty Cake",
+  "AJAMAGHOULIGAN-PATTY_CAKE_POWER.description": "{OnPlayer:Your|[gold]Osty's[/gold]} next Attack deals [blue]{Amount}[/blue] additional damage{PassAmount:cond:>0? and gives {OnPlayer:[gold]Osty[/gold]|you} [blue]{}[/blue] [gold]Patty Cake[/gold]|}.",
+  "AJAMAGHOULIGAN-PATTY_CAKE_POWER.smartDescription": "{OnPlayer:Your|[gold]Osty's[/gold]} next Attack deals [blue]{Amount}[/blue] additional damage{ShouldPass: and gives {OnPlayer:[gold]Osty[/gold]|you} [blue]{PassAmount}[/blue] [gold]Patty Cake[/gold]|}."
 }
