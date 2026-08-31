@@ -22,7 +22,7 @@ public class TwinsiesPower : AjamaGhouliganPower, IHasSecondAmount
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         if (cardPlay.IsAutoPlay) return;
-        if (cardPlay.Card.Owner.Creature != Owner) return;
+        if (cardPlay.Player.Creature != Owner) return;
         
         Data data = GetInternalData<Data>();
         

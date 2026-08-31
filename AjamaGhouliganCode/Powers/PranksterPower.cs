@@ -46,7 +46,7 @@ public class PranksterPower : AjamaGhouliganPower
 
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (cardPlay.Card.Owner.Creature != Owner) return;
+        if (cardPlay.Player.Creature != Owner) return;
         if (cardPlay.Resources.EnergySpent <= 0) return;
         
         Data data = GetInternalData<Data>();

@@ -23,8 +23,7 @@ public class MurderOfCrowsPower : AjamaGhouliganPower
 
     public override Task BeforeCardPlayed(CardPlay cardPlay)
     {
-        if (Applier?.Player == null) return Task.CompletedTask;
-        if (cardPlay.Card.Owner != Applier.Player) return Task.CompletedTask;
+        if (cardPlay.Player != Applier?.Player) return Task.CompletedTask;
         
         GetInternalData<Data>().AmountsForPlayedCards.Add(cardPlay.Card, Amount);
 
@@ -33,6 +32,8 @@ public class MurderOfCrowsPower : AjamaGhouliganPower
 
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        if (cardPlay.Player != Applier?.Player) return;
+        
         if (!GetInternalData<Data>().AmountsForPlayedCards.Remove(cardPlay.Card, out var amount)) return;
         
         Flash();
