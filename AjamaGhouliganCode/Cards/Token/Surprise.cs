@@ -2,6 +2,7 @@ using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
+using BaseLib.Audio;
 using BaseLib.Extensions;
 using BaseLib.Utils;
 using Godot;
@@ -19,6 +20,7 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Nodes.Vfx;
+using MegaCrit.Sts2.Core.Random;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Token;
@@ -29,7 +31,26 @@ public class Surprise() : AjamaGhouliganCard(0,
     TargetType.AllEnemies)
 {
     private const string CalculatedDraw = "CalculatedDraw";
-    
+
+    private static readonly ModSound[] Sounds = 
+    [
+        MySounds.BamLong,
+        MySounds.BellHorn, MySounds.BellHorn,
+        MySounds.Bonk, MySounds.Bonk,
+        MySounds.Bronk, MySounds.Bronk,
+        MySounds.Cymbal, MySounds.Cymbal,
+        MySounds.CymbalTwo, MySounds.CymbalTwo,
+        MySounds.Donk, MySounds.Donk,
+        MySounds.Drum, MySounds.Drum,
+        MySounds.FallCrash, MySounds.FallCrash,
+        MySounds.Gun, MySounds.Gun,
+        MySounds.GunTwo, MySounds.GunTwo,
+        MySounds.KabongLong,
+        MySounds.MetalPan, MySounds.MetalPan,
+        MySounds.Tromboing, MySounds.Tromboing,
+        MySounds.WhiskerPluck, MySounds.WhiskerPluck
+    ];
+
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(6, DamageProps.card),
@@ -52,11 +73,13 @@ public class Surprise() : AjamaGhouliganCard(0,
         }
         
         SfxCmd.Play(FmodSfx.fire);
+        Rng.Chaotic.NextItem(Sounds)!.Play();
         
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(this, play)
             .TargetingAllOpponents(CombatState!)
             .WithHitFx(VfxCmd.bluntPath, tmpSfx: TmpSfx.heavyAttack)
+            .WithNoAttackerAnim()
             .Execute(choiceContext);
 
         await CardPileCmd.Draw(choiceContext, ((CalculatedVar) DynamicVars[CalculatedDraw]).BaseValue, Owner);
