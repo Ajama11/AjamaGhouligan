@@ -22,7 +22,7 @@ public class Bewitch() : AjamaGhouliganCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new ScornVar(5)
+        
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
@@ -45,8 +45,6 @@ public class Bewitch() : AjamaGhouliganCard(1,
         {
             card.AddKeyword(MyEnums.Unfortunate);
         }
-        
-        await MyActions.CreateScorn(this, PileType.Discard);
     }
 
     protected override void OnUpgrade()

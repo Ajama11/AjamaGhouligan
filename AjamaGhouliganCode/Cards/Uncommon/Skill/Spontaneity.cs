@@ -13,6 +13,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Monsters;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Uncommon.Skill;
@@ -23,8 +24,8 @@ public class Spontaneity() : AjamaGhouliganCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new CardsVar(3),
-        new ScornVar(3)
+        new PowerVar<DoomPower>(4),
+        new CardsVar(3)
     ];
 
     public override BundledHoverTipManager MyBundles =>
@@ -38,12 +39,12 @@ public class Spontaneity() : AjamaGhouliganCard(1,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 
+        await MyActions.SelfDoom(choiceContext, this);
+
         List<CardModel> cards = (await CommonActions.Draw(this, choiceContext))
             .ToList();
 
         MyActions.HauntSpecific(cards, false);
-
-        await MyActions.CreateScorn(this, PileType.Draw, CardPilePosition.Random);
     }
 
     protected override void OnUpgrade()
