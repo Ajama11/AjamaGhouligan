@@ -1,11 +1,13 @@
 using System.Reflection;
 using AjamaGhouligan.AjamaGhouliganCode.CardPiles;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
+using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using BaseLib.Config;
 using BaseLib.Patches.Localization;
 using Godot;
 using HarmonyLib;
+using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Modding;
@@ -46,6 +48,24 @@ public partial class MainFile : Node
                 else
                 {
                     description = LocString.GetIfExists("card_keywords", "AJAMAGHOULIGAN-HAUNTED.title_fancy")?.GetFormattedText() + "\n" + description;
+                }
+            }
+            
+            // ReSharper disable once RedundantAlwaysMatchSubpattern
+            if (card is { Owner: not null, Pile: not null, Pile.Type: PileType.Hand})
+            {
+                if (card.Owner.Creature.Powers.Where(p => p is SpectreFormPower)
+                    .Any(p => p.GetInternalData<SpectreFormPower.Data>().CardsLeft == 1))
+                {
+                    if (SepulchreSingleton.CanGainHaunted(card) && card.Type != CardType.Power) // Powers /do/ get Haunted, but you need other mod shenanigans to get a copy of a Power that's been played, so I'm not gonna show it in the preview
+                    {
+                        description = LocString.GetIfExists("card_keywords", "AJAMAGHOULIGAN-HAUNTED.title_fancy_spectre_form")?.GetFormattedText() + "\n" + description;
+                    }
+                    
+                    if (SepulchreSingleton.CanGainBury(card))
+                    {
+                        description = description + "\n" + LocString.GetIfExists("card_keywords", "AJAMAGHOULIGAN-BURY.title_fancy_spectre_form")?.GetFormattedText();
+                    }
                 }
             }
         };

@@ -17,18 +17,18 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Rare.Power;
 
-public class GoofballForm() : AjamaGhouliganCard(3,
+public class SpectreForm() : AjamaGhouliganCard(3,
     CardType.Power, CardRarity.Rare,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<GoofballFormPower>(1)
+        new PowerVar<SpectreFormPower>(10)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        //If 2 Goof is too strong, then this gets the )Ethereal( treatment I guess.
+        
     ];
 
     public override BundledHoverTipManager MyBundles =>
@@ -43,11 +43,11 @@ public class GoofballForm() : AjamaGhouliganCard(3,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "PowerUp", Owner.Character.PowerUpAnimDelay);
 
-        await CommonActions.ApplySelf<GoofballFormPower>(choiceContext, this);
+        await CommonActions.ApplySelf<SpectreFormPower>(choiceContext, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Power<GoofballFormPower>().UpgradeValueBy(1);
+        DynamicVars.Power<SpectreFormPower>().UpgradeValueBy(-2);
     }
 }

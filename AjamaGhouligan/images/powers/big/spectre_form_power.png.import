@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2tc73hqrojd8"
-path="res://.godot/imported/goofball_form_power.png-20a5f6d43f50532fd745c70fe82854ef.ctex"
+uid="uid://bqskxcij77sap"
+path="res://.godot/imported/spectre_form_power.png-c1653ba6ba06ff225695eca67a35c5d1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://AjamaGhouligan/images/powers/goofball_form_power.png"
-dest_files=["res://.godot/imported/goofball_form_power.png-20a5f6d43f50532fd745c70fe82854ef.ctex"]
+source_file="res://AjamaGhouligan/images/powers/big/spectre_form_power.png"
+dest_files=["res://.godot/imported/spectre_form_power.png-c1653ba6ba06ff225695eca67a35c5d1.ctex"]
 
 [params]
 

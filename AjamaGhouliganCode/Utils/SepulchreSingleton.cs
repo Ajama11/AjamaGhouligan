@@ -91,4 +91,19 @@ public class SepulchreSingleton() : CustomSingletonModel(HookType.Combat)
             }
         }
     }
+
+    public static bool CanGainHaunted(CardModel card)
+    {
+        return !card.Keywords.Contains(CardKeyword.Unplayable) &&
+               !card.Keywords.Contains(MyEnums.Haunted);
+    }
+
+    public static bool CanGainBury(CardModel card)
+    {
+        return !card.Keywords.Contains(CardKeyword.Unplayable) &&
+               !card.Keywords.Contains(MyEnums.Bury) &&
+               !card.Keywords.Contains(CardKeyword.Exhaust) &&
+               card.Type != CardType.Power &&
+               !card.IsDupe;
+    }
 }
