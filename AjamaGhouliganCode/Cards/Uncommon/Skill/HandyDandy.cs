@@ -29,6 +29,11 @@ public class HandyDandy() : AjamaGhouliganCard(2,
         new PowerVar<FreeManualAttackPower>(1)
     ];
 
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        MyEnums.Haunted
+    ];
+
     private bool IsSepulchreAutoPlay { get; set; }
     private bool ShouldDelayBuff { get; set; }
 
