@@ -51,8 +51,7 @@ public partial class MainFile : Node
                 }
             }
             
-            // ReSharper disable once RedundantAlwaysMatchSubpattern
-            if (card is { Owner: not null, Pile: not null, Pile.Type: PileType.Hand})
+            if (!card.IsCanonical && card is {Pile: not null, Pile.Type: PileType.Hand})
             {
                 if (card.Owner.Creature.Powers.Where(p => p is SpectreFormPower)
                     .Any(p => p.GetInternalData<SpectreFormPower.Data>().CardsLeft == 1))
