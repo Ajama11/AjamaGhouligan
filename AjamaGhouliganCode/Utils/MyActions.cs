@@ -28,6 +28,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Nodes;
 using MegaCrit.Sts2.Core.Nodes.Combat;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
+using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Utils;
 
@@ -755,5 +756,15 @@ public class MyActions
         if (!Osty.IsReadyToParty(player)) return;
 
         await PowerCmd.Apply<PattyCakePower>(choiceContext, creature!, amount, player.Creature, sourceCard);
+    }
+
+    public static async Task OstyLosesHp(PlayerChoiceContext choiceContext, AjamaGhouliganCard sourceCard, CardPlay play)
+    {
+        if (Osty.IsReadyToParty(sourceCard.Owner))
+        {
+            await CreatureCmd.Damage(choiceContext, sourceCard.Owner.Osty!,
+                sourceCard.DynamicVars.HpLoss.BaseValue, DamageProps.cardHpLoss,
+                sourceCard, play);
+        }
     }
 }

@@ -5,6 +5,7 @@ using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using BaseLib.Extensions;
 using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Audio.Debug;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -13,6 +14,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Monsters;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Uncommon.Attack;
@@ -23,33 +25,24 @@ public class PianoDrop() : AjamaGhouliganCard(2,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(16, ValueProp.Move),
+        new DamageVar(16, DamageProps.card),
         new PowerVar<MisfortunePower>(6),
-        new CardsVar(2)
+        new PowerVar<DoomPower>(4)
     ]; 
-
-    public override BundledHoverTipManager MyBundles =>
-    [
-        BundledHoverTipFactory.FromCard<Dazed>()
-    ];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        ArgumentNullException.ThrowIfNull(play.Target);
-
         await CommonActions.CardAttack(this, play,
-                1,
-                "vfx/vfx_heavy_blunt",
-                null,
-                "blunt_attack.mp3")
+                vfx: VfxCmd.heavyBluntPath,
+                tmpSfx: TmpSfx.bluntAttack)
             .WithHitVfxSpawnedAtBase()
             .Execute(choiceContext);
 
         await MyActions.Misfortune(choiceContext, CombatState!.HittableEnemies, this);
 
-        await MyActions.CreateCards(ModelDb.Card<Dazed>(), DynamicVars.Cards.IntValue, this, PileType.Discard);
+        await MyActions.SelfDoom(choiceContext, this);
     }
 
     protected override void OnUpgrade()

@@ -85,7 +85,7 @@ public class PartnersInCrime() : AjamaGhouliganCard(1,
                 
                  ostyHit =
                     await CreatureCmd.Damage(choiceContext, play.Target!,
-                        DynamicVars.Damage, Owner.Osty, this, play);
+                        DynamicVars.OstyDamage.BaseValue, DynamicVars.OstyDamage.Props, Owner.Osty, this, play);
             }
             
             attackContext.AddHit(ghouliganHit);

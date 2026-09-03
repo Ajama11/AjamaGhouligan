@@ -1,6 +1,5 @@
 using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
-using AjamaGhouligan.AjamaGhouliganCode.Cards.Status;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
@@ -11,36 +10,40 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Monsters;
-using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Rare.Power;
+namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Uncommon.Skill;
 
-public class BlackCat() : AjamaGhouliganCard(1,
-    CardType.Power, CardRarity.Rare,
+public class FistBump() : AjamaGhouliganCard(2,
+    CardType.Skill, CardRarity.Uncommon,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<DoomPower>(4),
-        new EnergyVar(1)
+        ..HalfSummon.MakeVars(10, 8),
+        new PattyCakeVar(10, false)
+    ];
+
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        CardKeyword.Exhaust
     ];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await CreatureCmd.TriggerAnim(Owner.Creature, "PowerUp", Owner.Character.PowerUpAnimDelay);
+        await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 
-        BlackCatPower? power = await CommonActions.ApplySelf<BlackCatPower>(choiceContext, this, DynamicVars.Energy.BaseValue);
-        
-        power?.IncreaseSelfDoom(DynamicVars.Doom.IntValue);
+        await MyActions.HalfSummon(choiceContext, this);
+
+        await MyActions.PattyCake(choiceContext, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Doom.UpgradeValueBy(-1);
+        DynamicVars.HalfSummonFilled.UpgradeValueBy(2);
+        DynamicVars.PattyCake.UpgradeValueBy(2);
     }
 }

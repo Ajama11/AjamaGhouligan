@@ -1,6 +1,6 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips;
 using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
-using AjamaGhouligan.AjamaGhouliganCode.Cards.Status;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
@@ -11,21 +11,29 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Monsters;
-using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Rare.Power;
 
-public class BlackCat() : AjamaGhouliganCard(1,
+public class Cahoots() : AjamaGhouliganCard(2,
     CardType.Power, CardRarity.Rare,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<DoomPower>(4),
-        new EnergyVar(1)
+        new PowerVar<CahootsPower>(1)
+    ];
+
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        MyEnums.Grave
+    ];
+
+    public override BundledHoverTipManager MyBundles =>
+    [
+        new HauntBundle(),
+        BundledHoverTipFactory.Static(MyEnums.BuryOther)
     ];
 
     protected override async Task OnPlay(
@@ -34,13 +42,11 @@ public class BlackCat() : AjamaGhouliganCard(1,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "PowerUp", Owner.Character.PowerUpAnimDelay);
 
-        BlackCatPower? power = await CommonActions.ApplySelf<BlackCatPower>(choiceContext, this, DynamicVars.Energy.BaseValue);
-        
-        power?.IncreaseSelfDoom(DynamicVars.Doom.IntValue);
+        await CommonActions.ApplySelf<CahootsPower>(choiceContext, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Doom.UpgradeValueBy(-1);
+        DynamicVars.Power<CahootsPower>().UpgradeValueBy(1);
     }
 }

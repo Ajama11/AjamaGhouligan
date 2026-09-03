@@ -25,11 +25,11 @@
   "AJAMAGHOULIGAN-BONE_VIGIL_POWER.description": "Whenever a card is [gold]Buried[/gold], [gold]Osty[/gold] heals [blue]2[/blue] HP.",
   "AJAMAGHOULIGAN-BONE_VIGIL_POWER.smartDescription": "Whenever a card is [gold]Buried[/gold], [gold]Osty[/gold] heals [blue]{Amount}[/blue] HP.",
   "AJAMAGHOULIGAN-BLACK_CAT_POWER.title": "Black Cat",
-  "AJAMAGHOULIGAN-BLACK_CAT_POWER.description": "At the start of your turn, add [blue]1[/blue] [gold]Scorn[/gold] into your [gold]Hand[/gold]. It gains [gold]Ethereal[/gold].",
-  "AJAMAGHOULIGAN-BLACK_CAT_POWER.smartDescription": "#At the start of your turn, add [blue]{Amount}[/blue] [gold]Scorn[/gold] into your [gold]Hand[/gold]. {Amount:plural:It gains|They gain} [gold]Ethereal[/gold].",
+  "AJAMAGHOULIGAN-BLACK_CAT_POWER.description": "At the start of your turn, apply [gold]Doom[/gold] to yourself and gain {energyPrefix:energyIcons(1)}.",
+  "AJAMAGHOULIGAN-BLACK_CAT_POWER.smartDescription": "#At the start of your turn, apply [blue]{SelfDoomAmount}[/blue] [gold]Doom[/gold] to yourself and gain {Amount:energyIcons()}.",
   "AJAMAGHOULIGAN-JESTER_POWER.title": "Jester",
-  "AJAMAGHOULIGAN-JESTER_POWER.description": "Whenever you gain [gold]Goof[/gold], add [blue]1[/blue] [gold]Strike[/gold] into your [gold]Sepulchre Pile[/gold]. It costs 0 {energyPrefix:energyIcons(1)} and gains [gold]Bury[/gold].",
-  "AJAMAGHOULIGAN-JESTER_POWER.smartDescription": "#Whenever you gain [gold]Goof[/gold], add [blue]{Amount}[/blue] [gold]Strike(s)[/gold] into your [gold]Sepulchre Pile[/gold]. {Amount:plural:It costs|They cost} 0 {energyPrefix:energyIcons(1)} and {Amount:plural:gains|gain} [gold]Bury[/gold].",
+  "AJAMAGHOULIGAN-JESTER_POWER.description": "Whenever [gold]Osty[/gold] loses HP, gain [blue]1[/blue] [gold]Goof[/gold] and add [blue]1[/blue] [gold]Strike[/gold] into your [gold]Sepulchre Pile[/gold]. It costs 0 {energyPrefix:energyIcons(1)} and gains [gold]Bury[/gold].",
+  "AJAMAGHOULIGAN-JESTER_POWER.smartDescription": "#Whenever [gold]Osty[/gold] loses HP, gain [blue]{Amount}[/blue] [gold]Goof[/gold] and add [blue]{Amount}[/blue] [gold]Strike(s)[/gold] into your [gold]Sepulchre Pile[/gold]. {Amount:plural:It costs|They cost} 0 {energyPrefix:energyIcons(1)} and {Amount:plural:gains|gain} [gold]Bury[/gold].",
   "AJAMAGHOULIGAN-SPORK_ANTICS_POWER.title": "Spork Antics",
   "AJAMAGHOULIGAN-SPORK_ANTICS_POWER.description": "At the start of the next [blue]2[/blue] turns, gain [blue]5[/blue] [gold]Goof[/gold].",
   "AJAMAGHOULIGAN-SPORK_ANTICS_POWER.smartDescription": "At the start of the next {Amount:plural:turn|[blue]{}[/blue] turns}, gain [blue]{GoofPower}[/blue] [gold]Goof[/gold].",
@@ -103,5 +103,11 @@
   "AJAMAGHOULIGAN-PATTY_CAKE_POWER.smartDescription": "{OnPlayer:Your|[gold]Osty's[/gold]} next Attack deals [blue]{Amount}[/blue] additional damage{ShouldPass: and gives {OnPlayer:[gold]Osty[/gold]|you} [blue]{PassAmount}[/blue] [gold]Patty Cake[/gold]|}.",
   "AJAMAGHOULIGAN-FREE_MANUAL_ATTACK_POWER.title": "Free Manual Attack",
   "AJAMAGHOULIGAN-FREE_MANUAL_ATTACK_POWER.description": "Your next manually played Attack costs [blue]0[/blue] {energyPrefix:energyIcons(1)}.",
-  "AJAMAGHOULIGAN-FREE_MANUAL_ATTACK_POWER.smartDescription": "Your next {Amount:plural:manually played Attack costs|[blue]{}[/blue] manually played Attacks cost} [blue]0[/blue] {energyPrefix:energyIcons(1)}."
+  "AJAMAGHOULIGAN-FREE_MANUAL_ATTACK_POWER.smartDescription": "Your next {Amount:plural:manually played Attack costs|[blue]{}[/blue] manually played Attacks cost} [blue]0[/blue] {energyPrefix:energyIcons(1)}.",
+  "AJAMAGHOULIGAN-CAHOOTS_POWER.title": "Cahoots",
+  "AJAMAGHOULIGAN-CAHOOTS_POWER.description": "Whenever [gold]Osty[/gold] attacks, [gold]Haunt[/gold] and [gold]Bury[/gold] the top card of your [gold]Draw Pile[/gold].",
+  "AJAMAGHOULIGAN-CAHOOTS_POWER.smartDescription": "#Whenever [gold]Osty[/gold] attacks, [gold]Haunt[/gold] and [gold]Bury[/gold] the top {Amount:plural:card|[blue]{}[/blue] cards} of your [gold]Draw Pile[/gold].",
+  "AJAMAGHOULIGAN-FINGER_FLINGER_POWER.title": "Finger Flinger",
+  "AJAMAGHOULIGAN-FINGER_FLINGER_POWER.description": "Whenever you [gold]Disinter[/gold] a card, play a [gold]Boop[/gold] on a random enemy.",
+  "AJAMAGHOULIGAN-FINGER_FLINGER_POWER.smartDescription": "#Whenever you [gold]Disinter[/gold] a card, play a [gold]Boop[/gold] on a random enemy{Amount:cond:==2? twice|>2? [blue]{}[/blue] times|}."
 }

@@ -36,8 +36,6 @@ public class Dig() : AjamaGhouliganCard(1,
         CardPlay play)
     {
         await MyActions.DisinterSelect(choiceContext, this, IsUpgraded);
-        
-        await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
     }
 
     protected override void OnUpgrade()

@@ -1,5 +1,7 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
+using AjamaGhouligan.AjamaGhouliganCode.Extensions;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using BaseLib.Extensions;
@@ -10,6 +12,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Monsters;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Common.Skill;
@@ -21,7 +24,8 @@ public class MagicTrick() : AjamaGhouliganCard(1,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new BuryVar(2),
-        new ScornVar(2)
+        new HpLossVar(5),
+        new SummonVar(10)
     ];
 
     protected override async Task OnPlay(
@@ -31,8 +35,10 @@ public class MagicTrick() : AjamaGhouliganCard(1,
         await MyActions.SelectForBury(choiceContext, this, PileType.Hand, true);
         
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
+        
+        await MyActions.OstyLosesHp(choiceContext, this, play);
 
-        await MyActions.CreateScorn(this);
+        await CommonActions.ApplySelf<SummonNextTurnPower>(choiceContext, this, DynamicVars.Summon.IntValue);
     }
 
     protected override void OnUpgrade()

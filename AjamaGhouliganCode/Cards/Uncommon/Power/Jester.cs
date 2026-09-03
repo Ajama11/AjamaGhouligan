@@ -18,7 +18,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Uncommon.Power;
 
-public class Jester() : AjamaGhouliganCard(0,
+public class Jester() : AjamaGhouliganCard(1,
     CardType.Power, CardRarity.Uncommon,
     TargetType.Self)
 {
@@ -40,8 +40,8 @@ public class Jester() : AjamaGhouliganCard(0,
             [
                 BundledHoverTipFactory.FromPower<GoofPower>(),
                 BundledHoverTipFactory.FromKeyword(MyEnums.Bury),
-                BundledHoverTipFactory.FromCard(strike),
-                BundledHoverTipFactory.FromCard<Cavort>()
+                BundledHoverTipFactory.FromCard<Cavort>(),
+                BundledHoverTipFactory.FromCard(strike)
             ];
         }
     }

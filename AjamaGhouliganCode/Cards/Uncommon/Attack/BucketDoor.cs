@@ -39,8 +39,7 @@ public class BucketDoor() : AjamaGhouliganCard(1,
         CardPlay play)
     {
         await CommonActions.CardAttack(this, play,
-                1,
-                "vfx/vfx_attack_slash")
+                vfx: VfxCmd.slashPath)
             .Execute(choiceContext);
 
         await MyActions.SelfDoom(choiceContext, this);
@@ -50,6 +49,6 @@ public class BucketDoor() : AjamaGhouliganCard(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Power<DoomPower>().UpgradeValueBy(-1);
+        DynamicVars.Doom.UpgradeValueBy(-1);
     }
 }

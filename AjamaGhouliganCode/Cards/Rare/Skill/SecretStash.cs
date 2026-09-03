@@ -34,8 +34,6 @@ public class SecretStash() : AjamaGhouliganCard(1,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-
         await MyActions.DisinterSelect(choiceContext, this, true);
     }
 

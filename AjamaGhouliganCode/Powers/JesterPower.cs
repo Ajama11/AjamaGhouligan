@@ -2,6 +2,7 @@ using AjamaGhouligan.AjamaGhouliganCode.CardPiles;
 using AjamaGhouligan.AjamaGhouliganCode.Cards.Basic;
 using AjamaGhouligan.AjamaGhouliganCode.Cards.Token;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
+using BaseLib.Extensions;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -10,7 +11,9 @@ using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.Nodes.CommonUi;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Powers;
@@ -33,25 +36,24 @@ public class JesterPower : AjamaGhouliganPower
             [
                 HoverTipFactory.FromPower<GoofPower>(),
                 HoverTipFactory.FromKeyword(MyEnums.Bury),
-                HoverTipFactory.FromCard(strike),
-                HoverTipFactory.FromCard<Cavort>()
+                HoverTipFactory.FromCard<Cavort>(),
+                HoverTipFactory.FromCard(strike)
             ];
         }
     }
-
-    public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier,
-        CardModel? cardSource)
+    
+    public override async Task AfterCurrentHpChanged(Creature creature, decimal delta)
     {
-        if (power.Owner != Owner) return;
-        if (power is not GoofPower) return;
-        if (amount <= 0) return;
-        
+        if (delta >= 0 || creature.Monster is not Osty || creature.PetOwner != Owner.Player || Owner.Player == null) return;
+       
         Flash();
 
-        Player player = Owner.Player!;
+        await PowerCmd.Apply<GoofPower>(new ThrowingPlayerChoiceContext(),
+            Owner, Amount,
+            Owner, null);
         
         await MyActions.CreateCards(ModelDb.Card<Strike>(),
-            Amount, player, Owner.CombatState!, SepulchrePile.PileType, modifyCardsBeforePreview: list =>
+            Amount, Owner.Player!, Owner.CombatState!, SepulchrePile.PileType, modifyCardsBeforePreview: list =>
             {
                 foreach (var card in list)
                 {
