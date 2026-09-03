@@ -109,5 +109,8 @@
   "AJAMAGHOULIGAN-CAHOOTS_POWER.smartDescription": "#Whenever [gold]Osty[/gold] attacks, [gold]Haunt[/gold] and [gold]Bury[/gold] the top {Amount:plural:card|[blue]{}[/blue] cards} of your [gold]Draw Pile[/gold].",
   "AJAMAGHOULIGAN-FINGER_FLINGER_POWER.title": "Finger Flinger",
   "AJAMAGHOULIGAN-FINGER_FLINGER_POWER.description": "Whenever you [gold]Disinter[/gold] a card, play a [gold]Boop[/gold] on a random enemy.",
-  "AJAMAGHOULIGAN-FINGER_FLINGER_POWER.smartDescription": "#Whenever you [gold]Disinter[/gold] a card, play a [gold]Boop[/gold] on a random enemy{Amount:cond:==2? twice|>2? [blue]{}[/blue] times|}."
+  "AJAMAGHOULIGAN-FINGER_FLINGER_POWER.smartDescription": "#Whenever you [gold]Disinter[/gold] a card, play a [gold]Boop[/gold] on a random enemy{Amount:cond:==2? twice|>2? [blue]{}[/blue] times|}.",
+  "AJAMAGHOULIGAN-BAKERS_HAND_POWER.title": "Baker's Hand",
+  "AJAMAGHOULIGAN-BAKERS_HAND_POWER.description": "Whenever you gain [gold]Patty Cake[/gold], ALL allies gain that much [gold]Vigor[/gold].",
+  "AJAMAGHOULIGAN-BAKERS_HAND_POWER.smartDescription": "Whenever you gain [gold]Patty Cake[/gold], ALL allies gain {Amount:plural:|[blue]{}[/blue] times }that much [gold]Vigor[/gold]."
 }

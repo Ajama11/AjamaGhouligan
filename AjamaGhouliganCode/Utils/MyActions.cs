@@ -329,7 +329,9 @@ public class MyActions
                 
                 await PowerCmd.Apply<DieForYouPower>(choiceContext, osty, 1, null, null);
                 
-                ostyNode?.TrackBlockStatus(summoner.Creature); 
+                ostyNode?.TrackBlockStatus(summoner.Creature);
+
+                filledValue -= 1; // Fixes bug where, if Osty is added to the fight via Half-Summon, he has 1 more healed HP than he's supposed to. Presumably because he gets added to the combat with 1/1 HP, and then the max is set to totalValue, but the current gets filledValue added instead of being set
             }
             
             await CreatureCmd.SetMaxHp(osty, totalValue);

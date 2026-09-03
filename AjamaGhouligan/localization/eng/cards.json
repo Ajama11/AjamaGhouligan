@@ -283,5 +283,9 @@
   "AJAMAGHOULIGAN-FINGER_FLINGER.title": "Finger Flinger",
   "AJAMAGHOULIGAN-FINGER_FLINGER.description": "#Whenever you [gold]Disinter[/gold] a card, play a [gold]Boop[/gold] on a random enemy{FingerFlingerPower:cond:==2? twice|>2? {} times|}.",
   "AJAMAGHOULIGAN-FIST_BUMP.title": "Fist Bump",
-  "AJAMAGHOULIGAN-FIST_BUMP.description": "#[gold]Half/-Summon[/gold] !HalfSummonFilled!/+!HalfSummonEmpty!.\n[gold]Osty[/gold] gains !PattyCakePower! [gold]Patty Cake[/gold]."
+  "AJAMAGHOULIGAN-FIST_BUMP.description": "#[gold]Half/-Summon[/gold] !HalfSummonFilled!/+!HalfSummonEmpty!.\n[gold]Osty[/gold] gains !PattyCakePower! [gold]Patty Cake[/gold].",
+  "AJAMAGHOULIGAN-ON_HAND.title": "On Hand",
+  "AJAMAGHOULIGAN-ON_HAND.description": "#Gain !B! [gold]Block[/gold].\n[gold]Osty[/gold] loses !HpLoss! HP.",
+  "AJAMAGHOULIGAN-BAKERS_HAND.title": "Baker's Hand",
+  "AJAMAGHOULIGAN-BAKERS_HAND.description": "Whenever you gain [gold]Patty Cake[/gold], ALL allies gain {BakersHandPower:plural:|{} times }that much [gold]Vigor[/gold]."
 }
