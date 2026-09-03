@@ -21,8 +21,8 @@ public class OnHand() : AjamaGhouliganCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(16, BlockProps.card),
-        new HpLossVar(7)
+        new BlockVar(15, BlockProps.card),
+        new HpLossVar(6)
     ];
 
     protected override async Task OnPlay(
@@ -36,6 +36,7 @@ public class OnHand() : AjamaGhouliganCard(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.HpLoss.UpgradeValueBy(-3);
+        DynamicVars.Block.UpgradeValueBy(1);
+        DynamicVars.HpLoss.UpgradeValueBy(-2);
     }
 }

@@ -27,6 +27,7 @@ public class FistBump() : AjamaGhouliganCard(2,
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
+        MyEnums.Grave,
         CardKeyword.Exhaust
     ];
 
