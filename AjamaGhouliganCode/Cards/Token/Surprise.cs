@@ -73,7 +73,7 @@ public class Surprise() : AjamaGhouliganCard(0,
         }
         
         SfxCmd.Play(FmodSfx.fire);
-        Rng.Chaotic.NextItem(Sounds)!.Play();
+        Rng.Chaotic.NextItem(Sounds)!.Play(pitchVariation: 0.1f);
         
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(this, play)
@@ -82,7 +82,7 @@ public class Surprise() : AjamaGhouliganCard(0,
             .WithNoAttackerAnim()
             .Execute(choiceContext);
 
-        await CardPileCmd.Draw(choiceContext, ((CalculatedVar) DynamicVars[CalculatedDraw]).BaseValue, Owner);
+        await CardPileCmd.Draw(choiceContext, ((CalculatedVar) DynamicVars[CalculatedDraw]).Calculate(null), Owner);
     }
 
     public override async Task AfterCardDrawn(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw)

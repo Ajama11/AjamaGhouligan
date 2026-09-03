@@ -27,6 +27,7 @@ using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Nodes;
 using MegaCrit.Sts2.Core.Nodes.Combat;
+using MegaCrit.Sts2.Core.Nodes.CommonUi;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.ValueProps;
 
@@ -373,7 +374,7 @@ public class MyActions
 
         IReadOnlyList<CardPileAddResult> results = await CardPileCmd.AddGeneratedCardsToCombat(cards, pile, owner, position);
 
-        if (pile != PileType.Hand && preview) CardCmd.PreviewCardPileAdd(results, previewTime);
+        if (pile != PileType.Hand && preview) CardCmd.PreviewCardPileAdd(results, previewTime, amount > 5 ? CardPreviewStyle.MessyLayout : CardPreviewStyle.HorizontalLayout);
 
         return cards;
     }

@@ -25,7 +25,8 @@ public class TickingClock() : AjamaGhouliganCard(2,
     
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        MyEnums.Grave
+        MyEnums.Grave,
+        CardKeyword.Exhaust
     ];
 
     protected override async Task OnPlay(

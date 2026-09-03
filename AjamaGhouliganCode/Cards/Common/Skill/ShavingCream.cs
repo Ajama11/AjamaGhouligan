@@ -20,8 +20,8 @@ public class ShavingCream() : AjamaGhouliganCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(4, ValueProp.Move),
-        new SurpriseVar(2)
+        new BlockVar(6, ValueProp.Move),
+        new SurpriseVar(1)
     ];
 
     protected override async Task OnPlay(

@@ -1,4 +1,6 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
+using AjamaGhouligan.AjamaGhouliganCode.Cards.Token;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
@@ -20,8 +22,12 @@ public class Slapstick() : AjamaGhouliganCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<SlapstickPower>(1),
-        new SurpriseVar(0)
+        new PowerVar<SlapstickPower>(1)
+    ];
+
+    public override BundledHoverTipManager MyBundles =>
+    [
+        BundledHoverTipFactory.FromCard<Surprise>()
     ];
 
     protected override async Task OnPlay(
