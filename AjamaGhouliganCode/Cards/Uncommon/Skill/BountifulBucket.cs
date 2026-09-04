@@ -24,7 +24,7 @@ public class BountifulBucket() : AjamaGhouliganCard(0,
     
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        
+        new PattyCakeVar(2)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
@@ -34,7 +34,8 @@ public class BountifulBucket() : AjamaGhouliganCard(0,
 
     public override BundledHoverTipManager MyBundles =>
     [
-        new TreatBundle()
+        new TreatBundle(),
+        new PattyCakeBundle(DynamicVars)
     ];
 
     protected override async Task OnPlay(
@@ -43,7 +44,11 @@ public class BountifulBucket() : AjamaGhouliganCard(0,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 
-        await MyActions.CreateTreats(this, PileType.Hand, CardPilePosition.Bottom, ResolveEnergyXValue() + 1);
+        int xValue = ResolveEnergyXValue() + 1;
+
+        await MyActions.CreateTreats(this, PileType.Hand, CardPilePosition.Bottom, xValue);
+
+        await MyActions.PattyCake(Owner, true, xValue, choiceContext, this);
     }
 
     protected override void OnUpgrade()
