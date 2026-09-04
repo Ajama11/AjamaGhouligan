@@ -33,8 +33,8 @@ public class SpectreForm() : AjamaGhouliganCard(3,
 
     public override BundledHoverTipManager MyBundles =>
     [
-        BundledHoverTipFactory.FromKeyword(CardKeyword.Exhaust),
-        new GoofBundle()
+        BundledHoverTipFactory.FromKeyword(MyEnums.Haunted),
+        BundledHoverTipFactory.FromKeyword(MyEnums.Bury)
     ];
 
     protected override async Task OnPlay(
