@@ -31,6 +31,8 @@ public class ThumbWarPower : AjamaGhouliganPower
         
         if (target != Owner) return;
         if (!(dealer.Monster is Osty || dealer == Applier)) return;
+        
+        if (props.HasFlag(ValueProp.Unpowered)) return;
 
         Player? summoner = null;
         if (dealer.Monster is Osty) summoner = dealer.Monster.Creature.PetOwner;
