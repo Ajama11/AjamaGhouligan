@@ -1,7 +1,6 @@
 ﻿using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips;
 using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.CardPiles;
-using AjamaGhouligan.AjamaGhouliganCode.Cards.Status;
 using AjamaGhouligan.AjamaGhouliganCode.Cards.Token;
 using BaseLib.Abstracts;
 using BaseLib.Extensions;
@@ -184,11 +183,6 @@ public abstract class AjamaGhouliganCard(int cost, CardType type, CardRarity rar
             if (DynamicVars.Values.Any(dv => dv is TreatVar { SkipTooltip: false }))
             {
                 bundles.Add(new TreatBundle(DynamicVars.Treat.Upgraded));
-            }
-            
-            if (DynamicVars.Values.Any(dv => dv is ScornVar { SkipTooltip: false }))
-            {
-                bundles.Add(BundledHoverTipFactory.FromCard<Scorn>());
             }
             
             #endregion
