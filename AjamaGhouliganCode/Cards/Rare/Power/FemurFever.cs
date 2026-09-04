@@ -16,13 +16,13 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Rare.Power;
 
-public class Cahoots() : AjamaGhouliganCard(2,
+public class FemurFever() : AjamaGhouliganCard(2,
     CardType.Power, CardRarity.Rare,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<CahootsPower>(1)
+        new PowerVar<FemurFeverPower>(1)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
@@ -42,11 +42,11 @@ public class Cahoots() : AjamaGhouliganCard(2,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "PowerUp", Owner.Character.PowerUpAnimDelay);
 
-        await CommonActions.ApplySelf<CahootsPower>(choiceContext, this);
+        await CommonActions.ApplySelf<FemurFeverPower>(choiceContext, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Power<CahootsPower>().UpgradeValueBy(1);
+        DynamicVars.Power<FemurFeverPower>().UpgradeValueBy(1);
     }
 }
