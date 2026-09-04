@@ -32,6 +32,7 @@ public class FingerFlinger() : AjamaGhouliganCard(1,
 
     public override BundledHoverTipManager MyBundles =>
     [
+        BundledHoverTipFactory.Static(MyEnums.Disinter),
         BundledHoverTipFactory.FromCard<Boop>()
     ];
 
