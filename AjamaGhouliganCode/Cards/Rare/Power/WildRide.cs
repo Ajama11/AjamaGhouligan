@@ -23,7 +23,12 @@ public class WildRide() : AjamaGhouliganCard(3,
     [
         new PowerVar<WildRidePower>(1)
     ];
-    
+
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        CardKeyword.Ethereal
+    ];
+
     public override BundledHoverTipManager MyBundles =>
     [
         BundledHoverTipFactory.FromPower<MisfortunePower>()
@@ -40,6 +45,6 @@ public class WildRide() : AjamaGhouliganCard(3,
 
     protected override void OnUpgrade()
     {
-        EnergyCost.UpgradeBy(-1);
+        RemoveKeyword(CardKeyword.Ethereal);
     }
 }

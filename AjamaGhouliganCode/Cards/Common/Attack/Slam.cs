@@ -23,7 +23,7 @@ public class Slam() : AjamaGhouliganCard(1,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new OstyDamageVar(6, ValueProp.Move),
-        new PattyCakeVar(3)
+        new PattyCakeVar(5)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
