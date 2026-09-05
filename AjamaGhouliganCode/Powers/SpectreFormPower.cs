@@ -31,7 +31,7 @@ public class SpectreFormPower : AjamaGhouliganPower
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.FromKeyword(MyEnums.Haunted),
-        HoverTipFactory.FromKeyword(MyEnums.Bury)
+        HoverTipFactory.FromKeyword(MyEnums.Entomb)
     ];
 
     public override Task AfterApplied(Creature? applier, CardModel? cardSource)
@@ -65,7 +65,7 @@ public class SpectreFormPower : AjamaGhouliganPower
         
         Flash();
         
-        MyActions.GainsHauntedAndBury(cardPlay.Card, false);
+        MyActions.GainsHauntedAndEntomb(cardPlay.Card, false);
         
         data.CardsLeft = Amount + 1; // Immediately decremented and invokes display in AfterCardPlayed for the same card play
         

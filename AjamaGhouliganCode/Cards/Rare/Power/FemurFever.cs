@@ -33,7 +33,7 @@ public class FemurFever() : AjamaGhouliganCard(2,
     public override BundledHoverTipManager MyBundles =>
     [
         new HauntBundle(),
-        BundledHoverTipFactory.Static(MyEnums.BuryOther)
+        BundledHoverTipFactory.Static(MyEnums.Bury)
     ];
 
     protected override async Task OnPlay(

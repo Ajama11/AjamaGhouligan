@@ -34,12 +34,12 @@ public class Jester() : AjamaGhouliganCard(1,
             CardModel strike = ModelDb.Card<Strike>().ToMutable();
             
             strike.EnergyCost.SetThisCombat(0);
-            strike.AddKeyword(MyEnums.Bury);
+            strike.AddKeyword(MyEnums.Entomb);
             
             return
             [
                 BundledHoverTipFactory.FromPower<GoofPower>(),
-                BundledHoverTipFactory.FromKeyword(MyEnums.Bury),
+                BundledHoverTipFactory.FromKeyword(MyEnums.Entomb),
                 BundledHoverTipFactory.FromCard<Cavort>(),
                 BundledHoverTipFactory.FromCard(strike)
             ];

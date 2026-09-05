@@ -17,7 +17,7 @@ public class FemurFeverPower : AjamaGhouliganPower
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         ..new HauntBundle().HoverTips,
-        HoverTipFactory.Static(MyEnums.BuryOther)
+        HoverTipFactory.Static(MyEnums.Bury)
     ];
 
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)

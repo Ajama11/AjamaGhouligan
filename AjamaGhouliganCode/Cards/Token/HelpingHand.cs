@@ -30,9 +30,9 @@ public class HelpingHand() : AjamaGhouliganCard(0,
 
     public override BundledHoverTipManager MyBundles =>
     [
-        BundledHoverTipFactory.Static(MyEnums.BuryOther),
+        BundledHoverTipFactory.Static(MyEnums.Bury),
         BundledHoverTipFactory.FromKeyword(MyEnums.Haunted),
-        BundledHoverTipFactory.FromKeyword(MyEnums.Bury)
+        BundledHoverTipFactory.FromKeyword(MyEnums.Entomb)
     ];
 
     protected override async Task OnPlay(

@@ -31,7 +31,7 @@ public class BonesOfAFeather() : AjamaGhouliganCard(1,
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        MyEnums.Bury
+        MyEnums.Entomb
     ];
 
     public override BundledHoverTipManager MyBundles =>

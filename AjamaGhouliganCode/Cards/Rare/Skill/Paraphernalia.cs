@@ -34,7 +34,7 @@ public class Paraphernalia() : AjamaGhouliganCard(1,
     public override BundledHoverTipManager MyBundles =>
     [
         BundledHoverTipFactory.FromKeyword(MyEnums.Haunted),
-        BundledHoverTipFactory.FromKeyword(MyEnums.Bury),
+        BundledHoverTipFactory.FromKeyword(MyEnums.Entomb),
         BundledHoverTipFactory.Static(MyEnums.Disinter)
     ];
 
@@ -44,7 +44,7 @@ public class Paraphernalia() : AjamaGhouliganCard(1,
     {
         List<CardModel> cards = CardPile.Get(SepulchrePile.PileType, Owner)!.Cards.ToList();
         
-        MyActions.GainsHauntedAndBury(cards);
+        MyActions.GainsHauntedAndEntomb(cards);
         
         foreach (var card in cards)
         {

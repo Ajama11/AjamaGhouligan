@@ -25,7 +25,7 @@ public class LimitlessBones() : AjamaGhouliganCard(3,
     [
         MyEnums.Haunted,
         CardKeyword.Retain,
-        MyEnums.Bury
+        MyEnums.Entomb
     ];
 
     protected override async Task OnPlay(

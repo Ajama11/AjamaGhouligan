@@ -26,7 +26,7 @@ public class Twinsies() : AjamaGhouliganCard(2,
 
     public override BundledHoverTipManager MyBundles =>
     [
-        BundledHoverTipFactory.Static(MyEnums.BuryOther)
+        BundledHoverTipFactory.Static(MyEnums.Bury)
     ];
 
     protected override async Task OnPlay(

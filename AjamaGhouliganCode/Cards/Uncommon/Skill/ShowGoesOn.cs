@@ -36,7 +36,7 @@ public class ShowGoesOn() : AjamaGhouliganCard(2,
     public override BundledHoverTipManager MyBundles =>
     [
         BundledHoverTipFactory.FromKeyword(MyEnums.Haunted),
-        BundledHoverTipFactory.FromKeyword(MyEnums.Bury)
+        BundledHoverTipFactory.FromKeyword(MyEnums.Entomb)
     ];
 
     protected override async Task OnPlay(
@@ -45,12 +45,12 @@ public class ShowGoesOn() : AjamaGhouliganCard(2,
     {
         await MyActions.SelfDoom(choiceContext, this);
         
-        MyActions.GainsHauntedAndBury((await CommonActions.SelectCards(this,
-                MySelectionPrompts.GainsHauntedAndBury, choiceContext,
+        MyActions.GainsHauntedAndEntomb((await CommonActions.SelectCards(this,
+                MySelectionPrompts.AddHauntedAndEntomb, choiceContext,
                 SepulchrePile.PileType,
                 c =>
                     !(c.Keywords.Contains(MyEnums.Haunted) &&
-                      c.Keywords.Contains(MyEnums.Bury)),
+                      c.Keywords.Contains(MyEnums.Entomb)),
                 DynamicVars.Cards.IntValue))
             .ToList());
     }

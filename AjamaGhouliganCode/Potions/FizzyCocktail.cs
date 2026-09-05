@@ -25,9 +25,9 @@ public class FizzyCocktail : AjamaGhouliganPotion
     
     public override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.Static(MyEnums.BuryOther),
+        HoverTipFactory.Static(MyEnums.Bury),
         HoverTipFactory.FromKeyword(MyEnums.Haunted),
-        HoverTipFactory.FromKeyword(MyEnums.Bury)
+        HoverTipFactory.FromKeyword(MyEnums.Entomb)
     ];
 
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
@@ -41,7 +41,7 @@ public class FizzyCocktail : AjamaGhouliganPotion
         
         if (card == null) return;
         
-        MyActions.GainsHauntedAndBury(card, false);
+        MyActions.GainsHauntedAndEntomb(card, false);
 
         await MyActions.BurySpecific(card);
     }

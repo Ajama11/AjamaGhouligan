@@ -30,12 +30,12 @@ public class JesterPower : AjamaGhouliganPower
             CardModel strike = ModelDb.Card<Strike>().ToMutable();
             
             strike.EnergyCost.SetThisCombat(0);
-            strike.AddKeyword(MyEnums.Bury);
+            strike.AddKeyword(MyEnums.Entomb);
             
             return
             [
                 HoverTipFactory.FromPower<GoofPower>(),
-                HoverTipFactory.FromKeyword(MyEnums.Bury),
+                HoverTipFactory.FromKeyword(MyEnums.Entomb),
                 HoverTipFactory.FromCard<Cavort>(),
                 HoverTipFactory.FromCard(strike)
             ];
@@ -60,7 +60,7 @@ public class JesterPower : AjamaGhouliganPower
                     card.EnergyCost.SetThisCombat(0);
                 }
                 
-                MyActions.GainsBury(list, false);
+                MyActions.GainsEntomb(list, false);
                 
                 return list;
             });

@@ -11,12 +11,12 @@ public class Occult : CustomEnchantmentModel
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.FromKeyword(MyEnums.Haunted),
-        HoverTipFactory.FromKeyword(MyEnums.Bury)
+        HoverTipFactory.FromKeyword(MyEnums.Entomb)
     ];
 
     protected override void OnEnchant()
     {
         Card.AddKeyword(MyEnums.Haunted);
-        Card.AddKeyword(MyEnums.Bury);
+        Card.AddKeyword(MyEnums.Entomb);
     }
 }

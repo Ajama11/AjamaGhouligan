@@ -17,7 +17,7 @@ public class ReluctantCleaningPower : AjamaGhouliganPower, IOnBury
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.FromKeyword(CardKeyword.Exhaust),
-        HoverTipFactory.Static(MyEnums.BuryOther)
+        HoverTipFactory.Static(MyEnums.Bury)
     ];
 
     public override async Task AfterCardExhausted(PlayerChoiceContext choiceContext, CardModel card, bool causedByEthereal)

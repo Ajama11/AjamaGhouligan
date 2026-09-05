@@ -39,7 +39,7 @@ public class Eek() : AjamaGhouliganCard(2,
     public override BundledHoverTipManager MyBundles =>
     [
         BundledHoverTipFactory.FromPower<WeakPower>(),
-        BundledHoverTipFactory.Static(MyEnums.BuryOther)
+        BundledHoverTipFactory.Static(MyEnums.Bury)
     ];
 
     protected override async Task OnPlay(

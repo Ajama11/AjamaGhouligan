@@ -167,7 +167,7 @@ public abstract class AjamaGhouliganCard(int cost, CardType type, CardRarity rar
             
             if (DynamicVars.Values.Any(dv => dv is BuryVar { SkipTooltip: false }))
             {
-                bundles.Add(BundledHoverTipFactory.Static(MyEnums.BuryOther));
+                bundles.Add(BundledHoverTipFactory.Static(MyEnums.Bury));
             }
             
             if (DynamicVars.Values.Any(dv => dv is SurpriseVar { SkipTooltip: false }))

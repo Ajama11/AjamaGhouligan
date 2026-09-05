@@ -28,7 +28,7 @@ public class EndlessNight() : AjamaGhouliganCard(3,
     public override BundledHoverTipManager MyBundles =>
     [
         BundledHoverTipFactory.FromKeyword(MyEnums.Haunted),
-        BundledHoverTipFactory.FromKeyword(MyEnums.Bury)
+        BundledHoverTipFactory.FromKeyword(MyEnums.Entomb)
     ];
 
     protected override async Task OnPlay(
@@ -37,7 +37,7 @@ public class EndlessNight() : AjamaGhouliganCard(3,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         
-        MyActions.GainsHauntedAndBury(PileType.Hand.GetPile(Owner).Cards.ToList());
+        MyActions.GainsHauntedAndEntomb(PileType.Hand.GetPile(Owner).Cards.ToList());
     }
 
     protected override void OnUpgrade()

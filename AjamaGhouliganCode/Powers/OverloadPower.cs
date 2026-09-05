@@ -18,7 +18,7 @@ public class OverloadPower : AjamaGhouliganPower
             !card.Keywords.Contains(MyEnums.Haunted)) 
             return Task.CompletedTask;
 
-        MyActions.GainsBury(card, false);
+        MyActions.GainsEntomb(card, false);
         
         return Task.CompletedTask;
     }

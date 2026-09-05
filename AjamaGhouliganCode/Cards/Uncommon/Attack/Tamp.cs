@@ -29,7 +29,7 @@ public class Tamp() : AjamaGhouliganCard(2,
 
     private BundledHoverTipManager PreUpgradeBundles =>
     [
-        BundledHoverTipFactory.Static(MyEnums.BuryOther)
+        BundledHoverTipFactory.Static(MyEnums.Bury)
     ];
 
     public override BundledHoverTipManager MyBundles =>

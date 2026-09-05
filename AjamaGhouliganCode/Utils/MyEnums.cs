@@ -14,7 +14,7 @@ public class MyEnums
     public static CardKeyword Haunted;
     
     [CustomEnum, KeywordProperties(AutoKeywordPosition.After)]
-    public static CardKeyword Bury;
+    public static CardKeyword Entomb;
     
     [CustomEnum, KeywordProperties(AutoKeywordPosition.None)]
     public static CardKeyword Unfortunate;
@@ -26,7 +26,7 @@ public class MyEnums
     public static StaticHoverTip Haunt;
     
     [CustomEnum]
-    public static StaticHoverTip BuryOther;
+    public static StaticHoverTip Bury;
     
     [CustomEnum]
     public static StaticHoverTip Disinter;

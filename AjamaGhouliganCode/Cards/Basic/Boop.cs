@@ -46,6 +46,6 @@ public class Boop() : AjamaGhouliganCard(0,
 
     protected override void OnUpgrade()
     {
-        AddKeyword(MyEnums.Bury);
+        AddKeyword(MyEnums.Entomb);
     }
 }

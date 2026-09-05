@@ -31,7 +31,7 @@ public class Oopsies() : AjamaGhouliganCard(0,
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
         MyEnums.Haunted,
-        MyEnums.Bury
+        MyEnums.Entomb
     ];
 
     protected override async Task OnPlay(

@@ -26,7 +26,7 @@ public class MoreTheMerrier() : AjamaGhouliganCard(0,
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
         MyEnums.Grave,
-        MyEnums.Bury
+        MyEnums.Entomb
     ];
 
     public override BundledHoverTipManager MyBundles =>

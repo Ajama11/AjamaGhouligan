@@ -61,9 +61,9 @@ public partial class MainFile : Node
                         description = LocString.GetIfExists("card_keywords", "AJAMAGHOULIGAN-HAUNTED.title_fancy_spectre_form")?.GetFormattedText() + "\n" + description;
                     }
                     
-                    if (SepulchreSingleton.CanGainBury(card))
+                    if (SepulchreSingleton.CanGainEntomb(card))
                     {
-                        description = description + "\n" + LocString.GetIfExists("card_keywords", "AJAMAGHOULIGAN-BURY.title_fancy_spectre_form")?.GetFormattedText();
+                        description = description + "\n" + LocString.GetIfExists("card_keywords", "AJAMAGHOULIGAN-ENTOMB.title_fancy_spectre_form")?.GetFormattedText();
                     }
                 }
             }

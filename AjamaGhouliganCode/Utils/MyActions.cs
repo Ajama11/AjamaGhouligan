@@ -620,34 +620,34 @@ public class MyActions
         }
     }
 
-    public static void GainsHauntedAndBury(CardModel card, bool preview = true)
+    public static void GainsHauntedAndEntomb(CardModel card, bool preview = true)
     {
-        GainsHauntedAndBury([card], preview);
+        GainsHauntedAndEntomb([card], preview);
     }
 
-    public static void GainsHauntedAndBury(List<CardModel> cards, bool preview = true)
+    public static void GainsHauntedAndEntomb(List<CardModel> cards, bool preview = true)
     {
         HauntSpecific(cards, preview);
 
         foreach (CardModel card in cards)
         {
             if (!card.Keywords.Contains(CardKeyword.Exhaust) && !card.Keywords.Contains(CardKeyword.Unplayable) && card.Type != CardType.Power)
-                card.AddKeyword(MyEnums.Bury);
+                card.AddKeyword(MyEnums.Entomb);
         }
     }
     
-    public static void GainsBury(CardModel card, bool preview = true)
+    public static void GainsEntomb(CardModel card, bool preview = true)
     {
-        GainsBury([card], preview);
+        GainsEntomb([card], preview);
     }
     
-    public static void GainsBury(List<CardModel> cards, bool preview = true)
+    public static void GainsEntomb(List<CardModel> cards, bool preview = true)
     { 
         foreach (CardModel card in cards)
         {
             if (!card.Keywords.Contains(CardKeyword.Exhaust) && !card.Keywords.Contains(CardKeyword.Unplayable) && card.Type != CardType.Power)
             {
-                card.AddKeyword(MyEnums.Bury);
+                card.AddKeyword(MyEnums.Entomb);
             }
         }
         

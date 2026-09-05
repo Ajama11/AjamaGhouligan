@@ -26,7 +26,7 @@ public class BackInYouGo() : AjamaGhouliganCard(2,
 
     public override BundledHoverTipManager MyBundles =>
     [
-        BundledHoverTipFactory.Static(MyEnums.BuryOther),
+        BundledHoverTipFactory.Static(MyEnums.Bury),
         BundledHoverTipFactory.FromKeyword(MyEnums.Haunted)
     ];
 
