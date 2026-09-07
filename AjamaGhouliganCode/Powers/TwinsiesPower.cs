@@ -19,6 +19,15 @@ public class TwinsiesPower : AjamaGhouliganPower, IHasSecondAmount
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
+    public override Task BeforeCardPlayed(CardPlay cardPlay)
+    {
+        if (cardPlay.Card.Owner.Creature != Owner) return Task.CompletedTask;
+        
+        GetInternalData<Data>().AmountsForPlayedCards.Add(cardPlay.Card, Amount);
+        
+        return Task.CompletedTask;
+    }
+
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         if (cardPlay.IsAutoPlay) return;
@@ -26,7 +35,8 @@ public class TwinsiesPower : AjamaGhouliganPower, IHasSecondAmount
         
         Data data = GetInternalData<Data>();
         
-        if (!data.ShouldCopyTwinsies && data.CardSources.Contains(cardPlay.Card)) return;
+        if (!data.AmountsForPlayedCards.Remove(cardPlay.Card, out var storedAmount) || storedAmount <= 0)
+            return;
         
         if (CombatManager.Instance.History
                 .CardPlaysStarted
@@ -34,7 +44,7 @@ public class TwinsiesPower : AjamaGhouliganPower, IHasSecondAmount
                     e.Actor == Owner && 
                     e.CardPlay is { IsFirstInSeries: true, IsAutoPlay: false } &&
                     e.HappenedThisTurn(CombatState)
-                ) > Amount)
+                ) > storedAmount)
             return;
 
         Flash();
@@ -47,11 +57,6 @@ public class TwinsiesPower : AjamaGhouliganPower, IHasSecondAmount
     
     public override Task AfterApplied(Creature? applier, CardModel? cardSource)
     {
-        Data data = GetInternalData<Data>();
-        
-        if (cardSource != null) data.CardSources.Add(cardSource);
-        data.ShouldCopyTwinsies = false;
-        
         UpdateSecondAmount();
         return Task.CompletedTask;
     }
@@ -68,10 +73,6 @@ public class TwinsiesPower : AjamaGhouliganPower, IHasSecondAmount
         CardModel? cardSource)
     {
         if (power != this) return Task.CompletedTask;
-        
-        Data data = GetInternalData<Data>();
-        if (cardSource != null) data.CardSources.Add(cardSource);
-        data.ShouldCopyTwinsies = data.CardsLeft > 0;
         
         UpdateSecondAmount();
         return Task.CompletedTask;
@@ -102,7 +103,6 @@ public class TwinsiesPower : AjamaGhouliganPower, IHasSecondAmount
     public class Data
     {
         public int CardsLeft;
-        public bool ShouldCopyTwinsies;
-        public List<CardModel> CardSources = [];
+        public readonly Dictionary<CardModel, int> AmountsForPlayedCards = [];
     }
 }
