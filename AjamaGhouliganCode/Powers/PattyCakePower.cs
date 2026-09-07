@@ -6,6 +6,8 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Monsters;
@@ -28,6 +30,42 @@ public class PattyCakePower : AjamaGhouliganPower
         new DisplayVar<PattyCakePower>(PassAmount, p => (p.Amount - 1).ToString()),
         new BoolVar(ShouldPass, false)
     ];
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips
+    {
+        get
+        {
+            if (IsCanonical) return [];
+            
+            LocString title = new("powers", Id.Entry + ".title_total");
+            LocString description = new("powers", Id.Entry + ".description_total");
+
+            int totalAmount = 0;
+            int totalPassAmount = 0;
+            int totalInstancesAfter = 0;
+
+            List<PattyCakePower> pattyCakes = Owner.GetPowerInstances<PattyCakePower>()
+                .ToList();
+            if (pattyCakes.Count == 1) return [];
+            
+            foreach (var pattyCake in pattyCakes)
+            {
+                totalAmount += pattyCake.Amount;
+                totalPassAmount += pattyCake.Amount - 1;
+                if (pattyCake.Amount - 1 > 0) totalInstancesAfter += 1;
+            }
+            
+            description.Add("TotalAmount", totalAmount);
+            description.Add("TotalPassAmount", totalPassAmount);
+            description.Add("OnPlayer", Owner.IsPlayer);
+            description.Add("TotalInstancesAfter", totalInstancesAfter);
+            
+            return
+            [
+                new HoverTip(title, description, Icon)
+            ];
+        }
+    }
 
     public override Task AfterApplied(Creature? applier, CardModel? cardSource)
     {
