@@ -1,4 +1,6 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips;
 using AjamaGhouligan.AjamaGhouliganCode.Cards.Token;
+using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using BaseLib.Extensions;
@@ -22,13 +24,12 @@ public class JuiceBarrel : AjamaGhouliganPotion
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<GoofPower>(4)
+        new PattyCakeVar(6)
     ];
 
     public override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromPower<GoofPower>(),
-        HoverTipFactory.FromCard<Cavort>()
+        ..new PattyCakeBundle(DynamicVars.PattyCake.IntValue).HoverTips
     ];
 
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
@@ -37,6 +38,6 @@ public class JuiceBarrel : AjamaGhouliganPotion
         
         NCombatRoom.Instance?.PlaySplashVfx(target, new Color("a0dd40"));
 
-        await PowerCmd.Apply<GoofPower>(choiceContext, target, DynamicVars.Power<GoofPower>().BaseValue, Owner.Creature, null);
+        await MyActions.PattyCake(Owner, DynamicVars.PattyCake.OnPlayer, DynamicVars.PattyCake.IntValue, choiceContext);
     }
 }
