@@ -5,18 +5,70 @@
   "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.0-1.next": "Continue",
   "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.0-2.ancient": "I see. A pity.",
   "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.0-attack": "Architect",
+  
   "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.1-0r.char": "What do you know about my past?",
   "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.1-0r.next": "Continue",
   "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.1-1r.ancient": "Too much.",
   "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.1-attack": "Architect",
+  
   "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.2-0r.char": "Why won't anyone tell me who I was?!",
   "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.2-attack": "Architect",
+  
   "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.3-0r.ancient": "So much potential wasted.",
   "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.3-0r.next": "Continue",
   "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.3-1r.char": "Stop with this vagueness, just tell me!",
   "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.3-attack": "Architect",
+  
   "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.4-0r.char": "Who was I in the past?",
   "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.4-0r.next": "Continue",
   "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.4-1r.ancient": "Promising. And yet...",
-  "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.4-attack": "Architect"
+  "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.4-attack": "Architect",
+
+  "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.0-0.char": "Hiya Neow!",
+  "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.0-0.next": "Continue",
+  "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.0-1.ancient.sfx": "event:/sfx/npcs/neow/neow_curious",
+  "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.0-1.ancient": "[sine]....back.. again...?[/sine]",
+  "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.0-1.next": "Continue",
+  "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.0-2.char": "You know how I get when I'm bored!",
+
+  "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.1-0r.ancient.sfx": "event:/sfx/npcs/neow/neow_welcome",
+  "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.1-0r.ancient": "[sine]....welcome.. back... troublemaker.....[/sine]",
+
+  "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.2-0.char": "[i][font_size=22]The Ghouligan deflates.[/font_size][/i]",
+  "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.2-0.next": "Continue",
+  "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.2-1.ancient.sfx": "event:/sfx/npcs/neow/neow_curious",
+  "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.2-1.ancient": "[sine]......?[/sine]",
+  "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.2-1.next": "Open Up",
+  "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.2-2.char": "...why does the Architect know me? Why does [jitter]everyone[/jitter] know me?",
+  "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.2-2.next": "Continue",
+  "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.2-3.ancient.sfx": "event:/sfx/npcs/neow/neow_sleepy",
+  "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.2-3.ancient": "[sine]...... .......... .......... ..................\n..you're.... better off.... ..not... ..knowing.....[/sine]",
+  
+
+  "OROBAS.talk.AJAMAGHOULIGAN-GHOULIGAN.0-0.ancient": "Death lady! Why here? Heart working??",
+  "OROBAS.talk.AJAMAGHOULIGAN-GHOULIGAN.0-0.next": "Question",
+  "OROBAS.talk.AJAMAGHOULIGAN-GHOULIGAN.0-1.char": "Heart?",
+
+  "OROBAS.talk.AJAMAGHOULIGAN-GHOULIGAN.1-0r.ancient": "Death lady fun now!!",
+
+  "OROBAS.talk.AJAMAGHOULIGAN-GHOULIGAN.2-0.char": "Why do you call me \"death lady\"?",
+  "OROBAS.talk.AJAMAGHOULIGAN-GHOULIGAN.2-0.next": "Continue",
+  "OROBAS.talk.AJAMAGHOULIGAN-GHOULIGAN.2-1.ancient": "Death lady is death lady! Mean before. But nice now!",
+  "OROBAS.talk.AJAMAGHOULIGAN-GHOULIGAN.2-1.next": "Question",
+  "OROBAS.talk.AJAMAGHOULIGAN-GHOULIGAN.2-2.char": "Mean? What else can you tell me about who I was?",
+  "OROBAS.talk.AJAMAGHOULIGAN-GHOULIGAN.2-2.next": "Continue",
+  "OROBAS.talk.AJAMAGHOULIGAN-GHOULIGAN.2-3.ancient": "Didn't like me!!",
+  
+  
+  "VAKUU.talk.AJAMAGHOULIGAN-GHOULIGAN.0-0.ancient": "How [jitter]fitting.[/jitter] In a way, you got what you wanted.",
+  "VAKUU.talk.AJAMAGHOULIGAN-GHOULIGAN.0-0.next": "Question",
+  "VAKUU.talk.AJAMAGHOULIGAN-GHOULIGAN.0-1.char": "What do you know about me?",
+  "VAKUU.talk.AJAMAGHOULIGAN-GHOULIGAN.0-1.next": "Continue",
+  "VAKUU.talk.AJAMAGHOULIGAN-GHOULIGAN.0-2.ancient": "Where to begin?",
+
+  "VAKUU.talk.AJAMAGHOULIGAN-GHOULIGAN.1-0r.ancient": "Wretched offers for a wretched being. [sine]Enjoy.[/sine]",
+
+  "VAKUU.talk.AJAMAGHOULIGAN-GHOULIGAN.2-0.char": "I've signed enough of your contracts, when will you tell me who I was?",
+  "VAKUU.talk.AJAMAGHOULIGAN-GHOULIGAN.2-0.next": "Continue",
+  "VAKUU.talk.AJAMAGHOULIGAN-GHOULIGAN.2-1.ancient": "Later. It's retribution for what you [jitter]sought.[/jitter]"
 }
