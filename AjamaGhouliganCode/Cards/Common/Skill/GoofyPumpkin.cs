@@ -47,7 +47,7 @@ public class GoofyPumpkin() : AjamaGhouliganCard(1,
         
         MyActions.GainsHauntedAndEntomb((await CommonActions.SelectCards(this,
                 MySelectionPrompts.AddHauntedAndEntomb, choiceContext,
-                PileType.Hand,
+                PileType.Discard,
                 c =>
                     !(c.Keywords.Contains(MyEnums.Haunted) &&
                       c.Keywords.Contains(MyEnums.Entomb)),

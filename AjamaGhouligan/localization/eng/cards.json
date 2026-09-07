@@ -51,7 +51,7 @@
   "AJAMAGHOULIGAN-GET_SILLY.title": "Get Silly",
   "AJAMAGHOULIGAN-GET_SILLY.description": "#[gold]Disinter[/gold] !Disinter! random\u2028non-[gold]Haunted[/gold] cards.\nGain !GoofPower! [gold]Goof[/gold].",
   "AJAMAGHOULIGAN-GOOFY_PUMPKIN.title": "Goofy Pumpkin",
-  "AJAMAGHOULIGAN-GOOFY_PUMPKIN.description": "#Gain !GoofPower! [gold]Goof[/gold].\nAdd [gold]Haunted[/gold] and [gold]Entomb[/gold] to {Cards:plural:a card|{} cards} in your [gold]Hand[/gold].",
+  "AJAMAGHOULIGAN-GOOFY_PUMPKIN.description": "#Gain !GoofPower! [gold]Goof[/gold].\nAdd [gold]Haunted[/gold] and [gold]Entomb[/gold] to {Cards:plural:a card|{} cards} in your [gold]Discard Pile[/gold].",
   "AJAMAGHOULIGAN-LIMITLESS_BONES.title": "Limitless Bones",
   "AJAMAGHOULIGAN-LIMITLESS_BONES.description": "#[gold]Half/-Summon[/gold] !HalfSummonFilled!/+!HalfSummonEmpty!.",
   "AJAMAGHOULIGAN-VANISH.title": "Vanish",

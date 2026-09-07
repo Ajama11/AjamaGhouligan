@@ -148,7 +148,7 @@ public class MyActions
         if (preview && card.Pile!.Type != PileType.Hand) CardCmd.Preview(card);
     }
     
-    public static void HauntSpecific(List<CardModel> cards, bool preview = true)
+    public static List<CardModel> HauntSpecific(List<CardModel> cards, bool preview = true)
     {
         List<CardModel> cardsToPreview = [];
         
@@ -157,11 +157,13 @@ public class MyActions
             if (card.Keywords.Contains(CardKeyword.Unplayable)) continue;
             
             card.AddKeyword(MyEnums.Haunted);
-            if (preview && card.Pile!.Type != PileType.Hand)
+            if (card.Pile!.Type != PileType.Hand)
                 cardsToPreview = [..cardsToPreview, card];
         }
         
-        if (cardsToPreview.Count > 0) CardCmd.Preview(cardsToPreview);
+        if (preview && cardsToPreview.Count > 0) CardCmd.Preview(cardsToPreview);
+
+        return cardsToPreview;
     }
 
     public static async Task BurySpecific(CardModel card)
@@ -627,13 +629,25 @@ public class MyActions
 
     public static void GainsHauntedAndEntomb(List<CardModel> cards, bool preview = true)
     {
-        HauntSpecific(cards, preview);
+        List<CardModel> cardsToPreview = HauntSpecific(cards, false);
 
         foreach (CardModel card in cards)
         {
-            if (!card.Keywords.Contains(CardKeyword.Exhaust) && !card.Keywords.Contains(CardKeyword.Unplayable) && card.Type != CardType.Power)
+            if (!card.Keywords.Contains(CardKeyword.Exhaust) &&
+                !card.Keywords.Contains(CardKeyword.Unplayable) &&
+                card.Type != CardType.Power)
+            {
                 card.AddKeyword(MyEnums.Entomb);
+                
+                if (card.Pile!.Type != PileType.Hand &&
+                    !cardsToPreview.Contains(card))
+                {
+                    cardsToPreview = [..cardsToPreview, card];
+                }
+            }
         }
+        
+        if (preview && cardsToPreview.Count > 0) CardCmd.Preview(cardsToPreview);
     }
     
     public static void GainsEntomb(CardModel card, bool preview = true)
