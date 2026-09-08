@@ -26,7 +26,7 @@ public class Ghouligan : PlaceholderCharacterModel
     public static readonly Color Color = new("54cba2");
 
     public override Color MapDrawingColor => new("3f9979");
-    public override Color DialogueColor => MapDrawingColor;
+    public override Color DialogueColor => new("28654f");
     public override Color NameColor => Color;
     
     public override CharacterGender Gender => CharacterGender.Feminine;

@@ -25,7 +25,7 @@
   "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.4-attack": "Architect",
 
   
-  "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.0-0.char": "Hiya Neow!",
+  "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.0-0.char": "Hiya Neow!\n[i][font_size=22]Osty waves hello.[/font_size][/i]",
   "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.0-0.next": "Continue",
   "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.0-1.ancient.sfx": "event:/sfx/npcs/neow/neow_curious",
   "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.0-1.ancient": "[sine]....back.. again...?[/sine]",
@@ -38,7 +38,7 @@
   "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.1-0r.ancient.sfx": "event:/sfx/npcs/neow/neow_welcome",
   "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.1-0r.ancient": "[sine]....welcome.. back... troublemaker.....[/sine]",
 
-  "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.2-0.char": "[i][font_size=22]The Ghouligan deflates.[/font_size][/i]",
+  "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.2-0.char": "[i][font_size=22]The Ghouligan deflates. Osty lays on her.[/font_size][/i]",
   "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.2-0.next": "Continue",
   "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.2-1.ancient.sfx": "event:/sfx/npcs/neow/neow_curious",
   "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.2-1.ancient": "[sine]......?[/sine]",
@@ -49,27 +49,37 @@
   "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.2-3.ancient": "[sine]...... .......... .......... ..................\n..you're.... better off.... ..not... ..knowing.....[/sine]",
 
 
+  "DARV.talk.AJAMAGHOULIGAN-GHOULIGAN.0-0.ancient.sfx": "event:/sfx/npcs/darv/darv_introduction",
   "DARV.talk.AJAMAGHOULIGAN-GHOULIGAN.0-0.ancient": "Well look who it is!\nI dig the new look!",
   "DARV.talk.AJAMAGHOULIGAN-GHOULIGAN.0-0.next": "Question",
   "DARV.talk.AJAMAGHOULIGAN-GHOULIGAN.0-1.char": "Have we met before?",
 
+  "DARV.talk.AJAMAGHOULIGAN-GHOULIGAN.1-0r.ancient.sfx": "event:/sfx/npcs/darv/darv_endeared",
   "DARV.talk.AJAMAGHOULIGAN-GHOULIGAN.1-0r.ancient": "Prank anyone good today?",
 
   "DARV.talk.AJAMAGHOULIGAN-GHOULIGAN.2-0.char": "Everyone seems to know my past life. Why is that?",
   "DARV.talk.AJAMAGHOULIGAN-GHOULIGAN.2-0.next": "Continue",
-  "DARV.talk.AJAMAGHOULIGAN-GHOULIGAN.2-1.ancient": "Err... considering her line of work, I'm 'fraid she might come back to life [sine]again[/sine] and take mine if I blab. Even if ya both are the same person.",
+  "DARV.talk.AJAMAGHOULIGAN-GHOULIGAN.2-1.ancient.sfx": "event:/sfx/npcs/darv/darv_fear",
+  "DARV.talk.AJAMAGHOULIGAN-GHOULIGAN.2-1.ancient": "Err... considering her line of work, I'm 'fraid she might come back to life [sine]again[/sine] and take mine if I blab.",
+  "DARV.talk.AJAMAGHOULIGAN-GHOULIGAN.2-1.next": "Continue",
+  "DARV.talk.AJAMAGHOULIGAN-GHOULIGAN.2-2.ancient.sfx": "event:/sfx/npcs/darv/darv_pain",
+  "DARV.talk.AJAMAGHOULIGAN-GHOULIGAN.2-2.ancient": "Even if ya both are the same person. No offense, of course!",
 
 
   "NONUPEIPE.talk.AJAMAGHOULIGAN-GHOULIGAN.0-0.ancient": "[i][font_size=22]Guards surround the Ghouligan, weapons out.[/font_size][/i]",
   "NONUPEIPE.talk.AJAMAGHOULIGAN-GHOULIGAN.0-0.next": "Surrender",
   "NONUPEIPE.talk.AJAMAGHOULIGAN-GHOULIGAN.0-1.char": "[jitter]Wah?![/jitter]",
   "NONUPEIPE.talk.AJAMAGHOULIGAN-GHOULIGAN.0-1.next": "Continue",
+  "NONUPEIPE.talk.AJAMAGHOULIGAN-GHOULIGAN.0-2.ancient.sfx": "event:/sfx/npcs/nonupeipe/nonupeipe_grossed_out",
   "NONUPEIPE.talk.AJAMAGHOULIGAN-GHOULIGAN.0-2.ancient": "...No, this doesn't seem to be one of her tricks. She seems to well and truly be gone. At ease, and come forth.",
 
-  "NONUPEIPE.talk.AJAMAGHOULIGAN-GHOULIGAN.1-0r.ancient": "What a joy it is to see you! Step forth and receive my power, Ghouligan.",
+  "NONUPEIPE.talk.AJAMAGHOULIGAN-GHOULIGAN.1-0r.ancient.sfx": "event:/sfx/npcs/nonupeipe/nonupeipe_welcome",
+  "NONUPEIPE.talk.AJAMAGHOULIGAN-GHOULIGAN.1-0r.ancient": "What a joy it is to see you! Yes yes Osty, you as well!\nStep forth and receive my power, Ghouligan.",
 
+  "NONUPEIPE.talk.AJAMAGHOULIGAN-GHOULIGAN.2-0.ancient.sfx": "event:/sfx/npcs/nonupeipe/nonupeipe_giggle",
   "NONUPEIPE.talk.AJAMAGHOULIGAN-GHOULIGAN.2-0.ancient": "You share her face, and yet you are nothing like her. What a relief!",
   "NONUPEIPE.talk.AJAMAGHOULIGAN-GHOULIGAN.2-0.next": "Continue",
+  "NONUPEIPE.talk.AJAMAGHOULIGAN-GHOULIGAN.2-1.ancient.sfx": "event:/sfx/npcs/nonupeipe/nonupeipe_eeked",
   "NONUPEIPE.talk.AJAMAGHOULIGAN-GHOULIGAN.2-1.ancient": "Your pranks are a breath of fresh air compared to her... [jitter]atrocities.[/jitter]",
 
 
