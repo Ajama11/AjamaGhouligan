@@ -60,7 +60,7 @@
   "DARV.talk.AJAMAGHOULIGAN-GHOULIGAN.2-0.char": "Everyone seems to know my past life. Why is that?",
   "DARV.talk.AJAMAGHOULIGAN-GHOULIGAN.2-0.next": "Continue",
   "DARV.talk.AJAMAGHOULIGAN-GHOULIGAN.2-1.ancient.sfx": "event:/sfx/npcs/darv/darv_fear",
-  "DARV.talk.AJAMAGHOULIGAN-GHOULIGAN.2-1.ancient": "Err... considering her line of work, I'm 'fraid she might come back to life [sine]again[/sine] and take mine if I blab.",
+  "DARV.talk.AJAMAGHOULIGAN-GHOULIGAN.2-1.ancient": "Err... considering her line of work, I'm 'fraid she might come back to life [sine][b]again[/b][/sine] and take mine if I blab.",
   "DARV.talk.AJAMAGHOULIGAN-GHOULIGAN.2-1.next": "Continue",
   "DARV.talk.AJAMAGHOULIGAN-GHOULIGAN.2-2.ancient.sfx": "event:/sfx/npcs/darv/darv_pain",
   "DARV.talk.AJAMAGHOULIGAN-GHOULIGAN.2-2.ancient": "Even if ya both are the same person. No offense, of course!",
@@ -109,6 +109,36 @@
   "OROBAS.talk.AJAMAGHOULIGAN-GHOULIGAN.2-2.char": "Wait, what else can you tell me about who I was?!",
   "OROBAS.talk.AJAMAGHOULIGAN-GHOULIGAN.2-2.next": "Continue",
   "OROBAS.talk.AJAMAGHOULIGAN-GHOULIGAN.2-3.ancient": "Didn't like me!!",
+
+
+  "TANX.talk.AJAMAGHOULIGAN-GHOULIGAN.0-0.ancient.sfx": "event:/sfx/npcs/tanx/tanx_curiosity",
+  "TANX.talk.AJAMAGHOULIGAN-GHOULIGAN.0-0.ancient": "YOU REPLACED YOUR SICKLES WITH A HAND?",
+
+  "TANX.talk.AJAMAGHOULIGAN-GHOULIGAN.1-0r.ancient.sfx": "event:/sfx/npcs/tanx/tanx_laugh",
+  "TANX.talk.AJAMAGHOULIGAN-GHOULIGAN.1-0r.ancient": "PRANKS ARE NOT WEAPONS!!",
+
+  "TANX.talk.AJAMAGHOULIGAN-GHOULIGAN.2-0.ancient.sfx": "event:/sfx/npcs/tanx/tanx_roar",
+  "TANX.talk.AJAMAGHOULIGAN-GHOULIGAN.2-0.ancient": "FIGHT ME, GHOULIGAN!!",
+  "TANX.talk.AJAMAGHOULIGAN-GHOULIGAN.2-0.next": "Fight",
+  "TANX.talk.AJAMAGHOULIGAN-GHOULIGAN.2-1.char": "[i][font_size=22]The Ghouligan flings a pie onto Tanx's face.[/font_size][/i]",
+  "TANX.talk.AJAMAGHOULIGAN-GHOULIGAN.2-1.next": "Continue",
+  "TANX.talk.AJAMAGHOULIGAN-GHOULIGAN.2-2.ancient.sfx": "event:/sfx/npcs/tanx/tanx_laugh",
+  "TANX.talk.AJAMAGHOULIGAN-GHOULIGAN.2-2.ancient": "TASTY!! STILL NOT A WEAPON!",
+
+
+  "TEZCATARA.talk.AJAMAGHOULIGAN-GHOULIGAN.0-0.char": "Oooh! I really like your vibes! I think we can really get along!",
+  "TEZCATARA.talk.AJAMAGHOULIGAN-GHOULIGAN.0-0.next": "Continue",
+  "TEZCATARA.talk.AJAMAGHOULIGAN-GHOULIGAN.0-1.ancient": "...Of course, dear!",
+
+  "TEZCATARA.talk.AJAMAGHOULIGAN-GHOULIGAN.1-0r.ancient": "How wonderful it would be for his undoing to be by [jitter]your[/jitter] hands! And hand!",
+
+  "TEZCATARA.talk.AJAMAGHOULIGAN-GHOULIGAN.2-0.ancient": "It's still hard to believe she's actually gone.",
+  "TEZCATARA.talk.AJAMAGHOULIGAN-GHOULIGAN.2-0.next": "Continue",
+  "TEZCATARA.talk.AJAMAGHOULIGAN-GHOULIGAN.2-1.char": "Hm?",
+  "TEZCATARA.talk.AJAMAGHOULIGAN-GHOULIGAN.2-1.next": "Continue",
+  "TEZCATARA.talk.AJAMAGHOULIGAN-GHOULIGAN.2-2.ancient": "I thought she'd be a thorn forever in my side!\n[jitter][b]Good riddance![/b][/jitter]",
+  "TEZCATARA.talk.AJAMAGHOULIGAN-GHOULIGAN.2-2.next": "Continue",
+  "TEZCATARA.talk.AJAMAGHOULIGAN-GHOULIGAN.2-3.ancient": "Now, would you like some treats?",
   
   
   "VAKUU.talk.AJAMAGHOULIGAN-GHOULIGAN.0-0.ancient": "How [jitter]fitting.[/jitter] In a way, you got what you wanted.",
