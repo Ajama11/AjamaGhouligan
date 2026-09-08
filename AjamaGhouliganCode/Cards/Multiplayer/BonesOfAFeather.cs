@@ -26,7 +26,7 @@ public class BonesOfAFeather() : AjamaGhouliganCard(1,
     
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new SummonVar(3)
+        new SummonVar(2)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
@@ -55,7 +55,7 @@ public class BonesOfAFeather() : AjamaGhouliganCard(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Summon.UpgradeValueBy(2);
+        DynamicVars.Summon.UpgradeValueBy(1);
     }
 
     public async Task OnDisinter(CardModel card)

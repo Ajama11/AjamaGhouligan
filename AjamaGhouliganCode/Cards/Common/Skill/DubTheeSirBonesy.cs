@@ -24,7 +24,7 @@ public class DubTheeSirBonesy() : AjamaGhouliganCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        ..HalfSummon.MakeVars(6, 2),
+        ..HalfSummon.MakeVars(4, 3),
         new PattyCakeVar(4, false)
     ];
 

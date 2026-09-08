@@ -12,13 +12,13 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Common.Skill;
 
-public class LimitlessBones() : AjamaGhouliganCard(3,
+public class LimitlessBones() : AjamaGhouliganCard(2,
     CardType.Skill, CardRarity.Common,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        ..HalfSummon.MakeVars(2, 2)
+        ..HalfSummon.MakeVars(1, 2)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
@@ -39,6 +39,6 @@ public class LimitlessBones() : AjamaGhouliganCard(3,
 
     protected override void OnUpgrade()
     {
-        EnergyCost.UpgradeBy(-1);
+        DynamicVars.HalfSummonEmpty.UpgradeValueBy(1);
     }
 }
