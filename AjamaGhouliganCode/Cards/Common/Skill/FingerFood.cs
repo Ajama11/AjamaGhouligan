@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips;
 using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
@@ -24,7 +25,7 @@ public class FingerFood() : AjamaGhouliganCard(1,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new TreatVar(2),
-        new PowerVar<VigorPower>(3)
+        new PattyCakeVar(3, false)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
@@ -34,7 +35,7 @@ public class FingerFood() : AjamaGhouliganCard(1,
 
     public override BundledHoverTipManager MyBundles =>
     [
-        BundledHoverTipFactory.FromPower<VigorPower>()
+        new PattyCakeBundle(DynamicVars, false)
     ];
 
     protected override async Task OnPlay(
@@ -45,12 +46,7 @@ public class FingerFood() : AjamaGhouliganCard(1,
 
         await MyActions.CreateTreats(this);
 
-        if (Osty.IsReadyToParty(Owner))
-        {
-            await PowerCmd.Apply<VigorPower>(choiceContext, 
-                Owner.Osty!, DynamicVars.Power<VigorPower>().BaseValue,
-                Owner.Creature, this);
-        }
+        await MyActions.PattyCake(choiceContext, this);
     }
 
     protected override void OnUpgrade()

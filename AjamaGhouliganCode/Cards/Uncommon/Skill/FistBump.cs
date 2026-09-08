@@ -45,6 +45,6 @@ public class FistBump() : AjamaGhouliganCard(2,
     protected override void OnUpgrade()
     {
         DynamicVars.HalfSummonFilled.UpgradeValueBy(2);
-        DynamicVars.PattyCake.UpgradeValueBy(2);
+        DynamicVars.HalfSummonEmpty.UpgradeValueBy(2);
     }
 }
