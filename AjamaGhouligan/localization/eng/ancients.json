@@ -24,12 +24,16 @@
   "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.4-1r.ancient": "Promising. And yet...",
   "THE_ARCHITECT.talk.AJAMAGHOULIGAN-GHOULIGAN.4-attack": "Architect",
 
+  
   "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.0-0.char": "Hiya Neow!",
   "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.0-0.next": "Continue",
   "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.0-1.ancient.sfx": "event:/sfx/npcs/neow/neow_curious",
   "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.0-1.ancient": "[sine]....back.. again...?[/sine]",
   "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.0-1.next": "Continue",
-  "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.0-2.char": "You know how I get when I'm bored!",
+  "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.0-2.char": "I'm bored of the Capital! I wanna see what the upper floors of the Spire has to offer!",
+  "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.0-2.next": "Continue",
+  "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.0-3.ancient.sfx": "event:/sfx/npcs/neow/neow_sleepy",
+  "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.0-3.ancient": "[sine]....you.. ...won't like.... ..what... ....you find.....[/sine]",
 
   "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.1-0r.ancient.sfx": "event:/sfx/npcs/neow/neow_welcome",
   "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.1-0r.ancient": "[sine]....welcome.. back... troublemaker.....[/sine]",
@@ -39,12 +43,49 @@
   "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.2-1.ancient.sfx": "event:/sfx/npcs/neow/neow_curious",
   "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.2-1.ancient": "[sine]......?[/sine]",
   "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.2-1.next": "Open Up",
-  "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.2-2.char": "...why does the Architect know me? Why does [jitter]everyone[/jitter] know me?",
+  "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.2-2.char": "...why does the Architect know who I was? Why does [jitter]everyone[/jitter] know who I was?",
   "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.2-2.next": "Continue",
   "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.2-3.ancient.sfx": "event:/sfx/npcs/neow/neow_sleepy",
   "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.2-3.ancient": "[sine]...... .......... .......... ..................\n..you're.... better off.... ..not... ..knowing.....[/sine]",
-  
 
+
+  "DARV.talk.AJAMAGHOULIGAN-GHOULIGAN.0-0.ancient": "Well look who it is!\nI dig the new look!",
+  "DARV.talk.AJAMAGHOULIGAN-GHOULIGAN.0-0.next": "Question",
+  "DARV.talk.AJAMAGHOULIGAN-GHOULIGAN.0-1.char": "Have we met before?",
+
+  "DARV.talk.AJAMAGHOULIGAN-GHOULIGAN.1-0r.ancient": "Prank anyone good today?",
+
+  "DARV.talk.AJAMAGHOULIGAN-GHOULIGAN.2-0.char": "Everyone seems to know my past life. Why is that?",
+  "DARV.talk.AJAMAGHOULIGAN-GHOULIGAN.2-0.next": "Continue",
+  "DARV.talk.AJAMAGHOULIGAN-GHOULIGAN.2-1.ancient": "Err... considering her line of work, I'm 'fraid she might come back to life [sine]again[/sine] and take mine if I blab. Even if ya both are the same person.",
+
+
+  "NONUPEIPE.talk.AJAMAGHOULIGAN-GHOULIGAN.0-0.ancient": "[i][font_size=22]Guards surround the Ghouligan, weapons out.[/font_size][/i]",
+  "NONUPEIPE.talk.AJAMAGHOULIGAN-GHOULIGAN.0-0.next": "Surrender",
+  "NONUPEIPE.talk.AJAMAGHOULIGAN-GHOULIGAN.0-1.char": "[jitter]Wah?![/jitter]",
+  "NONUPEIPE.talk.AJAMAGHOULIGAN-GHOULIGAN.0-1.next": "Continue",
+  "NONUPEIPE.talk.AJAMAGHOULIGAN-GHOULIGAN.0-2.ancient": "...No, this doesn't seem to be one of her tricks. She seems to well and truly be gone. At ease, and come forth.",
+
+  "NONUPEIPE.talk.AJAMAGHOULIGAN-GHOULIGAN.1-0r.ancient": "What a joy it is to see you! Step forth and receive my power, Ghouligan.",
+
+  "NONUPEIPE.talk.AJAMAGHOULIGAN-GHOULIGAN.2-0.ancient": "You share her face, and yet you are nothing like her. What a relief!",
+  "NONUPEIPE.talk.AJAMAGHOULIGAN-GHOULIGAN.2-0.next": "Continue",
+  "NONUPEIPE.talk.AJAMAGHOULIGAN-GHOULIGAN.2-1.ancient": "Your pranks are a breath of fresh air compared to her... [jitter]atrocities.[/jitter]",
+
+
+  "PAEL.talk.AJAMAGHOULIGAN-GHOULIGAN.0-0.ancient": "[thinky_dots]Is your work with Father done yet? Remember to relax when you can...[/thinky_dots]",
+
+  "PAEL.talk.AJAMAGHOULIGAN-GHOULIGAN.1-0r.ancient": "[thinky_dots]It is good to see your malice replaced with mirth.\nTake a part of me and sleep...[/thinky_dots]",
+
+  "PAEL.talk.AJAMAGHOULIGAN-GHOULIGAN.2-0.char": "What was my work with your Father?",
+  "PAEL.talk.AJAMAGHOULIGAN-GHOULIGAN.2-0.next": "Continue",
+  "PAEL.talk.AJAMAGHOULIGAN-GHOULIGAN.2-1.ancient": "[thinky_dots]A secret with the Heart...[/thinky_dots]",
+  "PAEL.talk.AJAMAGHOULIGAN-GHOULIGAN.2-1.next": "Question",
+  "PAEL.talk.AJAMAGHOULIGAN-GHOULIGAN.2-2.char": "A secret?",
+  "PAEL.talk.AJAMAGHOULIGAN-GHOULIGAN.2-2.next": "Continue",
+  "PAEL.talk.AJAMAGHOULIGAN-GHOULIGAN.2-3.ancient": "[thinky_dots]I do not know more...\nI do not wish to know more...[/thinky_dots]",
+  
+  
   "OROBAS.talk.AJAMAGHOULIGAN-GHOULIGAN.0-0.ancient": "Death lady! Why here? Heart working??",
   "OROBAS.talk.AJAMAGHOULIGAN-GHOULIGAN.0-0.next": "Question",
   "OROBAS.talk.AJAMAGHOULIGAN-GHOULIGAN.0-1.char": "Heart?",
@@ -55,7 +96,7 @@
   "OROBAS.talk.AJAMAGHOULIGAN-GHOULIGAN.2-0.next": "Continue",
   "OROBAS.talk.AJAMAGHOULIGAN-GHOULIGAN.2-1.ancient": "Death lady is death lady! Mean before. But nice now!",
   "OROBAS.talk.AJAMAGHOULIGAN-GHOULIGAN.2-1.next": "Question",
-  "OROBAS.talk.AJAMAGHOULIGAN-GHOULIGAN.2-2.char": "Mean? What else can you tell me about who I was?",
+  "OROBAS.talk.AJAMAGHOULIGAN-GHOULIGAN.2-2.char": "Wait, what else can you tell me about who I was?!",
   "OROBAS.talk.AJAMAGHOULIGAN-GHOULIGAN.2-2.next": "Continue",
   "OROBAS.talk.AJAMAGHOULIGAN-GHOULIGAN.2-3.ancient": "Didn't like me!!",
   
@@ -70,5 +111,9 @@
 
   "VAKUU.talk.AJAMAGHOULIGAN-GHOULIGAN.2-0.char": "I've signed enough of your contracts, when will you tell me who I was?",
   "VAKUU.talk.AJAMAGHOULIGAN-GHOULIGAN.2-0.next": "Continue",
-  "VAKUU.talk.AJAMAGHOULIGAN-GHOULIGAN.2-1.ancient": "Later. It's retribution for what you [jitter]sought.[/jitter]"
+  "VAKUU.talk.AJAMAGHOULIGAN-GHOULIGAN.2-1.ancient": "[sine]Operation Heartbeat.[/sine]",
+  "VAKUU.talk.AJAMAGHOULIGAN-GHOULIGAN.2-1.next": "???",
+  "VAKUU.talk.AJAMAGHOULIGAN-GHOULIGAN.2-2.char": "Huh?",
+  "VAKUU.talk.AJAMAGHOULIGAN-GHOULIGAN.2-2.next": "Continue",
+  "VAKUU.talk.AJAMAGHOULIGAN-GHOULIGAN.2-3.ancient": "[i][font_size=22]Vakuu slides another contract forth.[/font_size][/i]"
 }
