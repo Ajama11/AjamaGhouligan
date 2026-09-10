@@ -582,9 +582,11 @@ public class MyActions
 
     public static async Task DisinterSelect(PlayerChoiceContext choiceContext, AjamaGhouliganCard sourceCard, bool upTo = false)
     {
+        LocString selectionPrompt = upTo ? MySelectionPrompts.DisinterUpTo : MySelectionPrompts.Disinter;
+        
         List<CardModel> disinterredCards = await PutSelect(choiceContext, sourceCard, 
             SepulchrePile.PileType, PileType.Hand, 
-            MySelectionPrompts.Disinter, 
+            selectionPrompt, 
             CardPilePosition.Bottom, 
             sourceCard.DynamicVars.Disinter.IntValue, 
             upTo);

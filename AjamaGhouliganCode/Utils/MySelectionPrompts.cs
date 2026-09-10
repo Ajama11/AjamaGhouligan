@@ -8,6 +8,7 @@ public class MySelectionPrompts
     public static LocString Bury => new ("card_selection", "AJAMAGHOULIGAN-TO_SEPULCHRE");
     public static LocString BuryUpTo => new ("card_selection", "AJAMAGHOULIGAN-TO_SEPULCHRE_UP_TO");
     public static LocString Disinter => new("card_selection", "AJAMAGHOULIGAN-FROM_SEPULCHRE");
+    public static LocString DisinterUpTo => new("card_selection", "AJAMAGHOULIGAN-FROM_SEPULCHRE_UP_TO");
     public static LocString HauntAndBury => new("card_selection", "AJAMAGHOULIGAN-TO_SEPULCHRE_HAUNT");
     public static LocString AddHauntedAndEntomb => new("card_selection", "AJAMAGHOULIGAN-ADD_HAUNTED_AND_ENTOMB");
 }
