@@ -23,7 +23,7 @@ public class Rejuvenate() : AjamaGhouliganCard(2,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new SummonVar(8),
-        new TreatVar(3, upgraded: IsUpgraded)
+        new TreatVar(3)
     ];
 
     protected override async Task OnPlay(
@@ -36,7 +36,7 @@ public class Rejuvenate() : AjamaGhouliganCard(2,
 
         await MyActions.CreateTreats(this, modifyCardsBeforePreview: list =>
         {
-            CardCmd.Upgrade(list, CardPreviewStyle.None);
+            if (IsUpgraded) CardCmd.Upgrade(list, CardPreviewStyle.None);
             return list;
         });
     }
@@ -44,5 +44,6 @@ public class Rejuvenate() : AjamaGhouliganCard(2,
     protected override void OnUpgrade()
     {
         DynamicVars.Summon.UpgradeValueBy(2);
+        DynamicVars.Treat.SetUpgraded(true);
     }
 }

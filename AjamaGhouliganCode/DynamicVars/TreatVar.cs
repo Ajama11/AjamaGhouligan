@@ -8,6 +8,11 @@ public class TreatVar(decimal baseValue, bool skipTooltip = false, bool upgraded
     public const string Key = "Treat";
     public bool SkipTooltip = skipTooltip;
     public bool Upgraded = upgraded;
+
+    public void SetUpgraded(bool upgraded)
+    {
+        Upgraded = upgraded;
+    }
 }
 
 public static class TreatVarExtension

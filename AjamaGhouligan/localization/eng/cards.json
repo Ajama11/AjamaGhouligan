@@ -125,7 +125,7 @@
   "AJAMAGHOULIGAN-PLAYTIME.description": "#Choose up to !C! card(s) in your [gold]Draw Pile[/gold] to [gold]Transform[/gold] into {Cards:plural:a random [gold]Treat[/gold]|random [gold]Treats[/gold]}.",
   "AJAMAGHOULIGAN-PLAYTIME.selectionScreenPrompt": "Choose up to {Amount} {Amount:plural:card|cards} to [gold]Transform[/gold] into {Amount:plural:a random [gold]Treat[/gold]|random [gold]Treats[/gold]}.",
   "AJAMAGHOULIGAN-REJUVENATE.title": "Rejuvenate",
-  "AJAMAGHOULIGAN-REJUVENATE.description": "#Next turn, [gold]Summon[/gold] !Summon!.\nAdd !Treat! random {IfUpgraded:show:[gold]Upgraded[/gold] }[gold]Treat(s)[/gold] into your [gold]Hand[/gold].",
+  "AJAMAGHOULIGAN-REJUVENATE.description": "#Next turn, [gold]Summon[/gold] !Summon!.\nAdd !Treat! random {IfUpgraded:show:[gold]Upgraded[/gold] }{Treat:plural:[gold]Treat[/gold]|[gold]Treats[/gold]} into your [gold]Hand[/gold].",
   "AJAMAGHOULIGAN-TRICK_AND_TREAT.title": "Trick and Treat",
   "AJAMAGHOULIGAN-TRICK_AND_TREAT.description": "#Apply !MisfortunePower! [gold]Misfortune[/gold] X times to ALL enemies.\n[gold]Summon[/gold] !Summon! X times.",
   "AJAMAGHOULIGAN-REVELRY.title": "Revelry",
