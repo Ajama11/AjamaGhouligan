@@ -30,7 +30,7 @@ public class Ghouligan : PlaceholderCharacterModel
     public override Color NameColor => Color;
     
     public override CharacterGender Gender => CharacterGender.Feminine;
-    public override int StartingHp => 69;
+    public override int StartingHp => 64;
 
     public override IEnumerable<CardModel> StartingDeck =>
     [

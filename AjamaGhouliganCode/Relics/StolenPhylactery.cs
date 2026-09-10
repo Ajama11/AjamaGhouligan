@@ -19,16 +19,14 @@ public class StolenPhylactery : AjamaGhouliganRelic
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        ..HalfSummon.MakeVars(6, 4),
-        new LoseDoomVar(1)
+        ..HalfSummon.MakeVars(6, 4)
     ];
 
     public override bool SpawnsPets => true;
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HalfSummon.DynamicTip(DynamicVars),
-        HoverTipFactory.FromPower<DoomPower>()
+        HalfSummon.DynamicTip(DynamicVars)
     ];
 
     public override async Task BeforeCombatStart()
@@ -37,15 +35,5 @@ public class StolenPhylactery : AjamaGhouliganRelic
             DynamicVars.HalfSummonFilled.IntValue,
             DynamicVars.HalfSummonEmpty.IntValue,
             new ThrowingPlayerChoiceContext());
-    }
-
-    public override async Task AfterPlayerTurnStartLate(PlayerChoiceContext choiceContext, Player player)
-    {
-        if (player != Owner) return;
-        if (!player.Creature.HasPower<DoomPower>()) return;
-        
-        Flash();
-
-        await MyActions.LoseDoom(Owner.Creature, DynamicVars.LoseDoom.IntValue, choiceContext);
     }
 }
