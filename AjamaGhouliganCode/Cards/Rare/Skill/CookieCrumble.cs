@@ -37,12 +37,13 @@ public class CookieCrumble() : AjamaGhouliganCard(1,
         }
     }
 
-    private bool HasBeenPlayed
+    public bool HasBeenPlayed
     {
         get
         {
-            return CombatManager.Instance.History.CardPlaysFinished.Any(e => e.CardPlay.Card == this);
+            return field || CombatManager.Instance.History.CardPlaysFinished.Any(e => e.CardPlay.Card == this);
         }
+        set;
     }
 
     private bool HaveEnoughCardsBeenPlayedThisTurn => CardsPlayedThisTurn(Owner) >= DynamicVars.Cards.IntValue;
