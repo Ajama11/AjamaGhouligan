@@ -17,7 +17,8 @@ public class GravediggerPower : AjamaGhouliganPower
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromCard<Dig>()
+        HoverTipFactory.FromCard<Dig>(),
+        HoverTipFactory.Static(MyEnums.Disinter)
     ];
 
     public override async Task BeforeHandDraw(Player player, PlayerChoiceContext choiceContext, ICombatState combatState)

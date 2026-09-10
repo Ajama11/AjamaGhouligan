@@ -27,7 +27,8 @@ public class Gravedigger() : AjamaGhouliganCard(2,
 
     public override BundledHoverTipManager MyBundles =>
     [
-        BundledHoverTipFactory.FromCard<Dig>()
+        BundledHoverTipFactory.FromCard<Dig>(),
+        BundledHoverTipFactory.Static(MyEnums.Disinter)
     ];
 
     protected override async Task OnPlay(
