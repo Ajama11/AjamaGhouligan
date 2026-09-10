@@ -65,7 +65,7 @@ public static class SpectreFormGlowPatch
 
         if (spectreFormPowers.Any(p => p.GetInternalData<SpectreFormPower.Data>().CardsLeft == 1))
         {
-            return new Color("ff79f0");
+            return new Color("fc77edfa");
         }
 
         return oldColor;
