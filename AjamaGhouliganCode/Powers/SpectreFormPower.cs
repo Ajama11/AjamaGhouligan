@@ -21,6 +21,8 @@ public class SpectreFormPower : AjamaGhouliganPower
 
     private const string NextCard = "NextCard";
     private const string Display = "Display";
+    
+    private CardModel? CardSource { get; set; }
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
@@ -36,11 +38,11 @@ public class SpectreFormPower : AjamaGhouliganPower
 
     public override Task AfterApplied(Creature? applier, CardModel? cardSource)
     {
-        int amount = Amount;
-        if (cardSource != null) amount++; // To account for the Power card, and also console or cross-mod shenanigans shouldn't have the +1
+        if (cardSource != null) CardSource = cardSource;
         
-        GetInternalData<Data>().CardsLeft = amount;
+        GetInternalData<Data>().CardsLeft = Amount;
         UpdateDisplayAmount();
+        
         return Task.CompletedTask;
     }
 
@@ -48,6 +50,14 @@ public class SpectreFormPower : AjamaGhouliganPower
     {
         if (cardPlay.IsAutoPlay) return Task.CompletedTask;
         if (cardPlay.Player.Creature != Owner) return Task.CompletedTask;
+        
+        if (CardSource != null && cardPlay.Card == CardSource)
+        {
+            // If another mod lets a Power card escape being removed from combat, this should only early return on the card's 1st play.
+            // I know Pengo's Tarot mod can, or used to, let any card return to the Hand once, and it works/worked on Powers.
+            CardSource = null;
+            return Task.CompletedTask;
+        }
 
         GetInternalData<Data>().CardsLeft--;
         UpdateDisplayAmount();
