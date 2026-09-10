@@ -21,7 +21,7 @@ public abstract class BaseTreat() : AjamaGhouliganCard(0,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new LoseDoomVar(2),
-        new HealVar(2),
+        new HealVar(1),
         ..TreatCanonicalVars
     ];
     
