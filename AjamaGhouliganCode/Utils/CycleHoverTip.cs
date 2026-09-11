@@ -22,7 +22,7 @@ public sealed class CycleHoverTip : IResolvingHoverTip
 
     public CycleHoverTip(
         IReadOnlyList<CardModel> cards,
-        double secondsPerCard = 1.25,
+        double secondsPerCard = 1.5,
         bool upgrade = false)
     {
         if (cards == null || cards.Count == 0)

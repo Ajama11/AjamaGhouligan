@@ -1,10 +1,17 @@
 using AjamaGhouligan.AjamaGhouliganCode.Cards.Token.Treats;
+using AjamaGhouligan.AjamaGhouliganCode.Character;
 using BaseLib.Patches.Content;
+using BaseLib.Patches.UI;
+using Godot;
+using MegaCrit.Sts2.Core.Assets;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.CommonUi;
+using MegaCrit.Sts2.Core.Runs;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Utils;
 
@@ -64,10 +71,17 @@ public class MyEnums
             CardCmd.Upgrade(treats, CardPreviewStyle.None);
         }
         
+        const string str = "AJAMAGHOULIGAN-TREATS";
+
+        LocString title = HoverTipFactory.L10NStatic(str + ".title");
+        LocString description = HoverTipFactory.L10NStatic(str + ".description");
+        
+        description.Add("energyPrefix", CustomEnergyIconPatches.GetEnergyColorName(ModelDb.CardPool<GhouliganCardPool>().Id));
+        
         return
         [
             new CycleHoverTip(treats),
-            HoverTipFactory.Static(Treats)
+            new HoverTip(title, description)
         ];
     }
 }

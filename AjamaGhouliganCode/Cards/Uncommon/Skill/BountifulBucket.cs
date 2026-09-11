@@ -24,7 +24,7 @@ public class BountifulBucket() : AjamaGhouliganCard(0,
     
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PattyCakeVar(2)
+        
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
@@ -35,7 +35,7 @@ public class BountifulBucket() : AjamaGhouliganCard(0,
     public override BundledHoverTipManager MyBundles =>
     [
         new TreatBundle(),
-        new PattyCakeBundle(DynamicVars)
+        new PattyCakeBundle(2)
     ];
 
     protected override async Task OnPlay(

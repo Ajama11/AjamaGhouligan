@@ -152,6 +152,11 @@ public abstract class AjamaGhouliganCard(int cost, CardType type, CardRarity rar
             {
                 bundles.Add(new GoofBundle());
             }
+            
+            if (DynamicVars.Values.Any(dv => dv is TreatVar { SkipTooltip: false }))
+            {
+                bundles.Add(new TreatBundle(DynamicVars.Treat.Upgraded));
+            }
 
             foreach (var dynVar in DynamicVars.Values)
             {
@@ -178,11 +183,6 @@ public abstract class AjamaGhouliganCard(int cost, CardType type, CardRarity rar
             if (DynamicVars.Values.Any(dv => dv is LoseDoomVar { SkipTooltip: false }))
             {
                 bundles.Add(BundledHoverTipFactory.FromPower<DoomPower>());
-            }
-            
-            if (DynamicVars.Values.Any(dv => dv is TreatVar { SkipTooltip: false }))
-            {
-                bundles.Add(new TreatBundle(DynamicVars.Treat.Upgraded));
             }
             
             #endregion
