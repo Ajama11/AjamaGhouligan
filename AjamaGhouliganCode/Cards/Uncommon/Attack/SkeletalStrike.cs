@@ -4,6 +4,7 @@ using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using BaseLib.Extensions;
 using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Audio.Debug;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -14,20 +15,21 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Uncommon.Attack;
 
-public class SkeletalStrike() : AjamaGhouliganCard(2,
+public class SkeletalStrike() : AjamaGhouliganCard(1,
     CardType.Attack, CardRarity.Uncommon,
     TargetType.AllEnemies)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new OstyDamageVar(7, ValueProp.Move),
-        new RepeatVar(2)
+        new OstyDamageVar(3, DamageProps.card),
+        new RepeatVar(3),
+        new PowerVar<SkeletalStrikePower>(2),
+        new SummonVar(2)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        MyEnums.Haunted,
-        MyEnums.Unfortunate
+        MyEnums.Haunted
     ];
     
     public override HashSet<CardTag> MyCanonicalTags =>
@@ -45,13 +47,16 @@ public class SkeletalStrike() : AjamaGhouliganCard(2,
                 .FromOsty(Owner.Osty!, this, play)
                 .WithHitCount(DynamicVars.Repeat.IntValue)
                 .TargetingAllOpponents(CombatState!)
-                .WithHitFx("vfx/vfx_attack_blunt", tmpSfx: "blunt_attack.mp3")
+                .WithHitFx(VfxCmd.heavyBluntPath, tmpSfx: TmpSfx.bluntAttack)
                 .Execute(choiceContext);
         }
+
+        var power = await CommonActions.ApplySelf<SkeletalStrikePower>(choiceContext, this);
+        power?.DynamicVars.Summon.BaseValue = DynamicVars.Summon.BaseValue;
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.OstyDamage.UpgradeValueBy(2);
+        DynamicVars.Repeat.UpgradeValueBy(1);
     }
 }

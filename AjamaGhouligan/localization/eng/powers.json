@@ -85,7 +85,7 @@
   "AJAMAGHOULIGAN-GRAVEDIGGER_POWER.smartDescription": "#At the start of your turn, add {Amount:plural:[blue]{}[/blue] [gold]Dig[/gold]|[blue]{}[/blue] [gold]Digs[/gold]} into your [gold]Hand[/gold].",
   "AJAMAGHOULIGAN-PAINTED_TUNNEL_POWER.title": "Painted Tunnel",
   "AJAMAGHOULIGAN-PAINTED_TUNNEL_POWER.description": "This turn, [gold]Misfortune[/gold] cannot be reduced.",
-  "AJAMAGHOULIGAN-PAINTED_TUNNEL_POWER.smartDescription": "{Amount:plural:This turn|For the next {} turns}, [gold]Misfortune[/gold] cannot be reduced.",
+  "AJAMAGHOULIGAN-PAINTED_TUNNEL_POWER.smartDescription": "{Amount:plural:This turn|For the next [blue]{}[/blue] turns}, [gold]Misfortune[/gold] cannot be reduced.",
   "AJAMAGHOULIGAN-WILD_RIDE_POWER.title": "Wild Ride",
   "AJAMAGHOULIGAN-WILD_RIDE_POWER.description": "[gold]Misfortune[/gold] no longer halves at the end of the turn, but reduces by [blue]1[/blue] when triggered.",
   "AJAMAGHOULIGAN-WILD_RIDE_POWER.smartDescription": "[gold]Misfortune[/gold] no longer halves at the end of the turn, but reduces by [blue]1[/blue] when triggered.",
@@ -114,5 +114,8 @@
   "AJAMAGHOULIGAN-FINGER_FLINGER_POWER.smartDescription": "#Whenever you [gold]Disinter[/gold] a card, play a [gold]Boop[/gold] on a random enemy{Amount:cond:==2? twice|>2? [blue]{}[/blue] times|}.",
   "AJAMAGHOULIGAN-BAKERS_HAND_POWER.title": "Baker's Hand",
   "AJAMAGHOULIGAN-BAKERS_HAND_POWER.description": "Whenever you gain [gold]Patty Cake[/gold], ALL allies gain that much [gold]Vigor[/gold].",
-  "AJAMAGHOULIGAN-BAKERS_HAND_POWER.smartDescription": "Whenever you gain [gold]Patty Cake[/gold], ALL allies gain {Amount:plural:|[blue]{}[/blue] times }that much [gold]Vigor[/gold]."
+  "AJAMAGHOULIGAN-BAKERS_HAND_POWER.smartDescription": "Whenever you gain [gold]Patty Cake[/gold], ALL allies gain {Amount:plural:|[blue]{}[/blue] times }that much [gold]Vigor[/gold].",
+  "AJAMAGHOULIGAN-SKELETAL_STRIKE_POWER.title": "Skeletal Strike",
+  "AJAMAGHOULIGAN-SKELETAL_STRIKE_POWER.description": "Whenever [gold]Osty[/gold] loses HP for the next [blue]2[/blue] turns, [gold]Summon[/gold] [blue]2[/blue].",
+  "AJAMAGHOULIGAN-SKELETAL_STRIKE_POWER.smartDescription": "Whenever [gold]Osty[/gold] loses HP {Amount:plural:this turn|for the next [blue]{}[/blue] turns}, [gold]Summon[/gold] [blue]{Summon}[/blue]."
 }

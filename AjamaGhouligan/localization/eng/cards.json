@@ -118,7 +118,7 @@
   "AJAMAGHOULIGAN-JESTER.title": "Jester",
   "AJAMAGHOULIGAN-JESTER.description": "#Whenever [gold]Osty[/gold] loses HP, gain !JesterPower! [gold]Goof[/gold] and add !JesterPower! [gold]Strike(s)[/gold] into your [gold]Sepulchre Pile[/gold].\n{JesterPower:plural:It costs|They cost} 0 {energyPrefix:energyIcons(1)} and {JesterPower:plural:gains|gain} [gold]Entomb[/gold].",
   "AJAMAGHOULIGAN-SKELETAL_STRIKE.title": "Skeletal Strike",
-  "AJAMAGHOULIGAN-SKELETAL_STRIKE.description": "#[gold]Osty[/gold] deals !OstyDamage! damage !Repeat! time(s) to ALL enemies.",
+  "AJAMAGHOULIGAN-SKELETAL_STRIKE.description": "#[gold]Osty[/gold] deals !OstyDamage! damage !Repeat! time(s) to ALL enemies.\nWhenever [gold]Osty[/gold] loses HP {SkeletalStrikePower:plural:this turn|for the next {} turns}, [gold]Summon[/gold] !Summon!.",
   "AJAMAGHOULIGAN-BEWITCH.title": "Bewitch",
   "AJAMAGHOULIGAN-BEWITCH.description": "#Add [gold]Unfortunate[/gold] to ALL cards in your [gold]Hand[/gold].",
   "AJAMAGHOULIGAN-PLAYTIME.title": "Playtime",
