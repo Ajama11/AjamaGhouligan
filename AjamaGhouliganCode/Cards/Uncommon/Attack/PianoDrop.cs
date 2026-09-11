@@ -40,7 +40,7 @@ public class PianoDrop() : AjamaGhouliganCard(2,
             .WithHitVfxSpawnedAtBase()
             .Execute(choiceContext);
 
-        await MyActions.Misfortune(choiceContext, CombatState!.HittableEnemies, this);
+        await MyActions.Misfortune(choiceContext, play.Target!, this);
 
         await MyActions.SelfDoom(choiceContext, this);
     }

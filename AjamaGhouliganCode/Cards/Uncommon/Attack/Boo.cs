@@ -1,15 +1,20 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips;
 using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Audio.Debug;
+using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Combat.History.Entries;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Monsters;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Nodes.HoverTips;
 using MegaCrit.Sts2.Core.ValueProps;
 
@@ -19,41 +24,51 @@ public class Boo() : AjamaGhouliganCard(2,
     CardType.Attack, CardRarity.Uncommon,
     TargetType.AnyEnemy)
 {
+    private const string Threshold = "Threshold";
+    private const string CalculatedTriggers = "CalculatedTriggers";
+    
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(3, ValueProp.Move),
-        new RepeatVar(4),
-        new BuryVar(2)
-    ];
-
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-        MyEnums.Unfortunate
+        new DamageVar(6, DamageProps.card),
+        new RepeatVar(2),
+        new IntVar(Threshold, 10),
+        ..MakeCalculatedVar(CalculatedTriggers, 0, (card, _) =>
+            Math.Floor(
+                CombatManager.Instance.History.Entries
+                    .OfType<PowerReceivedEntry>()
+                    .Where(e =>
+                        e.Power is DoomPower &&
+                        e.Applier == card.Owner.Creature &&
+                        e.Amount > 0)
+                    .Sum(e => e.Amount)
+                / card.DynamicVars[Threshold].BaseValue
+            ))
     ];
 
     public override BundledHoverTipManager MyBundles =>
     [
-        BundledHoverTipFactory.FromKeyword(MyEnums.Haunted)
+        new UnfortunateBundle()
     ];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        ArgumentNullException.ThrowIfNull(play.Target);
-
         await CommonActions.CardAttack(this, play,
                 DynamicVars.Repeat.IntValue,
-                "vfx/vfx_attack_blunt",
-                null,
-                "blunt_attack.mp3")
+                VfxCmd.dramaticStabPath,
+                tmpSfx: TmpSfx.heavyAttack)
             .Execute(choiceContext);
 
-        await MyActions.BuryRandomInPile(PileType.Draw, this, MyEnums.RandomBuryTargeting.PrioritizeHaunted);
+        await UnfortunateSingleton.Trigger(
+            CombatState!,
+            (int) ((CalculatedVar) DynamicVars[CalculatedTriggers]).Calculate(null),
+            choiceContext, play);
     }
 
     protected override void OnUpgrade()
     {
         DynamicVars.Repeat.UpgradeValueBy(1);
+        DynamicVars[Threshold].UpgradeValueBy(-2);
     }
 }
