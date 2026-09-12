@@ -2,6 +2,7 @@ using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
@@ -14,21 +15,11 @@ public class FemurFeverPower : AjamaGhouliganPower
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-    [
-        ..new HauntBundle().HoverTips,
-        HoverTipFactory.Static(MyEnums.Bury)
-    ];
-
-    public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    public override int ModifyCardPlayCount(CardModel card, Creature? target, int playCount)
     {
-        if (cardPlay.Player != Owner.Player) return;
-        if (!cardPlay.Card.Tags.Contains(CardTag.OstyAttack)) return;
-        
-        await CardPileCmd.ShuffleIfNecessary(choiceContext, Owner.Player);
+        if (card.Owner != Owner.Player) return playCount;
+        if (!card.Tags.Contains(CardTag.OstyAttack)) return playCount;
 
-        List<CardModel> topCards = Owner.Player.PlayerCombatState!.DrawPile.Cards.Take(Amount).ToList();
-
-        await MyActions.HauntAndBurySpecific(topCards);
+        return playCount + Amount;
     }
 }

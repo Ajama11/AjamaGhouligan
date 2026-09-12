@@ -30,12 +30,6 @@ public class FemurFever() : AjamaGhouliganCard(2,
         MyEnums.Grave
     ];
 
-    public override BundledHoverTipManager MyBundles =>
-    [
-        new HauntBundle(),
-        BundledHoverTipFactory.Static(MyEnums.Bury)
-    ];
-
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
@@ -47,6 +41,6 @@ public class FemurFever() : AjamaGhouliganCard(2,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Power<FemurFeverPower>().UpgradeValueBy(1);
+        AddKeyword(CardKeyword.Retain);
     }
 }
