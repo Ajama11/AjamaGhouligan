@@ -22,6 +22,9 @@ public class Conjuring() : AjamaGhouliganCard(0,
     TargetType.None)
 {
     protected override bool HasEnergyCostX => true;
+    
+    public static readonly SpireField<CardModel, bool> SelectedByAnotherConjuring =
+        new SpireField<CardModel, bool>(() => false).CopyOnClone();
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
@@ -39,15 +42,28 @@ public class Conjuring() : AjamaGhouliganCard(0,
         List<CardModel> cards = (await CommonActions.SelectCards(
             this, 
             new CardSelectorPrefs(SelectionScreenPrompt, 0, xValue),
-            choiceContext, SepulchrePile.PileType))
+            choiceContext, SepulchrePile.PileType, c => c != DupeOf && !SelectedByAnotherConjuring[c]))
             .ToList();
 
+        foreach (var conjuring in cards.OfType<Conjuring>())
+        {
+            SelectedByAnotherConjuring[conjuring] = true;
+        }
+        
         foreach (CardModel card in cards)
         {
             await CardCmd.AutoPlay(choiceContext, card.CreateDupe(Owner), null);
         }
+
+        if (!SelectedByAnotherConjuring[this])
+        {
+            foreach (var card in Owner.PlayerCombatState!.AllCards)
+            {
+                SelectedByAnotherConjuring[card] = false;
+            }
+        }
         
-        if (cards.Count > 0)
+        if (cards.Count > 0 && !IsDupe)
         {
             await CardCmd.Exhaust(choiceContext, this);
         }
