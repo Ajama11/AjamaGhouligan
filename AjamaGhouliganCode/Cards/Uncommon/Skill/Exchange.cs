@@ -20,6 +20,7 @@ public class Exchange() : AjamaGhouliganCard(0,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
+        ..HalfSummon.MakeVars(3, 2),
         new DisinterVar(2),
         new BuryVar(2)
     ];
@@ -28,6 +29,8 @@ public class Exchange() : AjamaGhouliganCard(0,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
+        await MyActions.HalfSummon(choiceContext, this);
+        
         await MyActions.DisinterSelect(choiceContext, this);
         
         await MyActions.SelectForBury(choiceContext, this);
@@ -35,6 +38,7 @@ public class Exchange() : AjamaGhouliganCard(0,
 
     protected override void OnUpgrade()
     {
+        DynamicVars.HalfSummonEmpty.UpgradeValueBy(2);
         DynamicVars.Disinter.UpgradeValueBy(1);
         DynamicVars.Bury.UpgradeValueBy(1);
     }

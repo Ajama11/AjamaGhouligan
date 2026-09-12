@@ -81,7 +81,7 @@
   "AJAMAGHOULIGAN-ETERNAL_SOULWICK.title": "Eternal Soulwick",
   "AJAMAGHOULIGAN-ETERNAL_SOULWICK.description": "#Apply !DoomPower! [gold]Doom[/gold] to yourself.\nGain [E?].",
   "AJAMAGHOULIGAN-EXCHANGE.title": "Exchange",
-  "AJAMAGHOULIGAN-EXCHANGE.description": "#[gold]Disinter[/gold] !Disinter! card(s).\n[gold]Bury[/gold] !Bury! card(s).",
+  "AJAMAGHOULIGAN-EXCHANGE.description": "#[gold]Half/-Summon[/gold] !HalfSummonFilled!/+!HalfSummonEmpty!.\n[gold]Disinter[/gold] !Disinter! card(s).\n[gold]Bury[/gold] !Bury! card(s).",
   "AJAMAGHOULIGAN-FOUL_TEA_PARTY.title": "Foul Tea Party",
   "AJAMAGHOULIGAN-FOUL_TEA_PARTY.description": "ALL enemies gain [gold]Poison[/gold] equal to their [gold]Misfortune[/gold].",
   "AJAMAGHOULIGAN-LATER_PROBLEM.title": "Later Problem",
