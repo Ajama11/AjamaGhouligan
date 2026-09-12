@@ -24,6 +24,7 @@ public class FingerFlingerPower : AjamaGhouliganPower, IOnDisinter
     public async Task OnDisinter(CardModel card)
     {
         if (Owner.Player == null) return;
+        if (card.Owner != Owner.Player) return;
         
         Flash();
 
