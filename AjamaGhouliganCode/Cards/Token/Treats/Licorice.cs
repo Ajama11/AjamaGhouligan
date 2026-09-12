@@ -11,16 +11,20 @@ namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Token.Treats;
 
 public class Licorice() : BaseTreat()
 {
-    public override IEnumerable<CardKeyword> TreatCanonicalKeywords =>
+    protected override IEnumerable<DynamicVar> TreatCanonicalVars =>
     [
-        MyEnums.Unfortunate
+        new PowerVar<MisfortunePower>(2)
     ];
 
     protected override async Task TreatOnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        if (IsUpgraded)
-            await UnfortunateSingleton.Trigger(CombatState!, 1, choiceContext, play);
+        await MyActions.Misfortune(choiceContext, CombatState!.HittableEnemies, this);
+    }
+
+    protected override void TreatOnUpgrade()
+    {
+        AddKeyword(MyEnums.Unfortunate);
     }
 }

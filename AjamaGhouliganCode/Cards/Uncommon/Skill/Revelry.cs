@@ -40,6 +40,7 @@ public class Revelry() : AjamaGhouliganCard(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Power<GoofPower>().UpgradeValueBy(1);
+        DynamicVars.Power<GoofPower>().UpgradeValueBy(2);
+        DynamicVars.Cards.UpgradeValueBy(1);
     }
 }

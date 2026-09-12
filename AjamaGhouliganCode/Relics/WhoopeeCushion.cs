@@ -21,14 +21,12 @@ public class WhoopeeCushion() : AjamaGhouliganRelic
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<GoofPower>(2),
-        new SurpriseVar(2)
+        new PowerVar<GoofPower>(4)
     ];
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.FromPower<GoofPower>(),
-        HoverTipFactory.FromCard<Surprise>(),
         HoverTipFactory.FromCard<Cavort>()
     ];
 
@@ -40,8 +38,5 @@ public class WhoopeeCushion() : AjamaGhouliganRelic
         
         await PowerCmd.Apply<GoofPower>(new ThrowingPlayerChoiceContext(), Owner.Creature,
             DynamicVars.Power<GoofPower>().BaseValue, Owner.Creature, null);
-
-        await MyActions.CreateSurprises(DynamicVars.Surprise.IntValue, Owner, Owner.Creature.CombatState!,
-            PileType.Discard, CardPilePosition.Bottom);
     }
 }

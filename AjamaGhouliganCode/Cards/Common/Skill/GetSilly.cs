@@ -53,6 +53,6 @@ public class GetSilly() : AjamaGhouliganCard(0,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Power<GoofPower>().UpgradeValueBy(1);
+        DynamicVars.Power<GoofPower>().UpgradeValueBy(2);
     }
 }

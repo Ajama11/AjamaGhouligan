@@ -28,7 +28,7 @@ public class ChaseSequence() : AjamaGhouliganCard(1,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new BlockVar(6, BlockProps.card),
-        new BlockVar(BlockNextTurn, 6, BlockProps.card),
+        new BlockVar(BlockNextTurn, 8, BlockProps.card),
         new CardsVar(1)
     ];
 

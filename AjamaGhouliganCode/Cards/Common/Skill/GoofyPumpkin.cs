@@ -57,6 +57,6 @@ public class GoofyPumpkin() : AjamaGhouliganCard(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Power<GoofPower>().UpgradeValueBy(2);
+        DynamicVars.Power<GoofPower>().UpgradeValueBy(3);
     }
 }
