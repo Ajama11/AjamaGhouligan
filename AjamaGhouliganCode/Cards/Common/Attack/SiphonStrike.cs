@@ -47,7 +47,7 @@ public class SiphonStrike() : AjamaGhouliganCard(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(3);
+        DynamicVars.Damage.UpgradeValueBy(2);
         DynamicVars.LoseDoom.UpgradeValueBy(2);
         DynamicVars.Heal.UpgradeValueBy(1);
     }

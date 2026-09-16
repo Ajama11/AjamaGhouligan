@@ -21,7 +21,7 @@ public class OnHand() : AjamaGhouliganCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(13, BlockProps.card),
+        new BlockVar(12, BlockProps.card),
         new HpLossVar(3)
     ];
 
