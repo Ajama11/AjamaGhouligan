@@ -3,6 +3,8 @@ using AjamaGhouligan.AjamaGhouliganCode.CardPiles;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
+using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Audio.Debug;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -20,7 +22,7 @@ public class ShovelBonk() : AjamaGhouliganCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(7, ValueProp.Move),
+        new DamageVar(7, DamageProps.card),
         new BuryVar(1)
     ];
 
@@ -34,16 +36,12 @@ public class ShovelBonk() : AjamaGhouliganCard(1,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        ArgumentNullException.ThrowIfNull(play.Target);
-
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this, play)
-            .Targeting(play.Target)
-            .WithHitFx("vfx/vfx_attack_blunt", tmpSfx: "blunt_attack.mp3")
+        await CommonActions.CardAttack(this, play,
+                vfx: VfxCmd.bluntPath, tmpSfx: TmpSfx.bluntAttack)
             .Execute(choiceContext);
 
         await MyActions.BuryRandomInPiles(
-            [PileType.Draw, PileType.Discard, PileType.Hand], 
+            [PileType.Draw, PileType.Discard], 
             this,
             MyEnums.RandomBuryTargeting.OnlyHaunted);
     }
