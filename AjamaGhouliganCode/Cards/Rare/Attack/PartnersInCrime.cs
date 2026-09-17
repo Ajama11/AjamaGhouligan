@@ -63,8 +63,10 @@ public class PartnersInCrime() : AjamaGhouliganCard(1,
         if (Owner.IsOstyAlive) await Hook.BeforeAttack(CombatState!, ostyFakeCommand);
 
         bool wasThereAtLeastOneOstyHit = false;
+        
+        var hitCount = ((CalculatedVar) DynamicVars[HitCount]).Calculate(null);
 
-        for (int i = 0; i < ((CalculatedVar) DynamicVars[HitCount]).Calculate(null); i++)
+        for (int i = 0; i < hitCount; i++)
         {
             await CreatureCmd.TriggerAnim(Owner.Creature,
                 ghouliganFakeCommand._attackerAnimName!, 0);
