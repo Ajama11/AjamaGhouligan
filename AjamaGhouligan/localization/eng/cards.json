@@ -22,7 +22,7 @@
   "AJAMAGHOULIGAN-OOPSIES.title": "Oopsies",
   "AJAMAGHOULIGAN-OOPSIES.description": "#Deal !D! damage.\nApply !MisfortunePower! [gold]Misfortune[/gold].\nTrigger [gold]Misfortune[/gold] !Repeat! time(s).",
   "AJAMAGHOULIGAN-SAFE_KEEPING.title": "Safe Keeping",
-  "AJAMAGHOULIGAN-SAFE_KEEPING.description": "#Gain !B! [gold]Block[/gold].\n[gold]Bury[/gold] !Bury! card(s).",
+  "AJAMAGHOULIGAN-SAFE_KEEPING.description": "#Gain !B! [gold]Block[/gold].\n[gold]Bury[/gold] !Bury! card(s).\nThe next time {Bury:plural:it is|they are} [gold]Disinterred[/gold], reduce {Bury:plural:its cost|their costs} by 1 {energyPrefix:energyIcons(1)} until played.",
   "AJAMAGHOULIGAN-AWOO.title": "Awoo",
   "AJAMAGHOULIGAN-AWOO.description": "#Deal !D! damage to ALL enemies.\nApply !MisfortunePower! [gold]Misfortune[/gold] to ALL enemies.",
   "AJAMAGHOULIGAN-BOOGEYMAN.title": "Boogeyman",

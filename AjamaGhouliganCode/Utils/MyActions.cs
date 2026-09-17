@@ -431,14 +431,14 @@ public class MyActions
         return selectedCards;
     }
     
-    public static async Task SelectForBury(PlayerChoiceContext choiceContext, AjamaGhouliganCard sourceCard, PileType from = PileType.Hand, bool upTo = false, int amountOverride = -1)
+    public static async Task<List<CardModel>> SelectForBury(PlayerChoiceContext choiceContext, AjamaGhouliganCard sourceCard, PileType from = PileType.Hand, bool upTo = false, int amountOverride = -1)
     {
         int amount = amountOverride == -1 ? sourceCard.DynamicVars.Bury.IntValue : amountOverride;
 
-        await SelectForBury(sourceCard, choiceContext, sourceCard.Owner, amount, from, upTo);
+        return await SelectForBury(sourceCard, choiceContext, sourceCard.Owner, amount, from, upTo);
     }
     
-    public static async Task SelectForBury(AbstractModel sourceModel, PlayerChoiceContext choiceContext, Player player, int amount, PileType from = PileType.Hand, bool upTo = false)
+    public static async Task<List<CardModel>> SelectForBury(AbstractModel sourceModel, PlayerChoiceContext choiceContext, Player player, int amount, PileType from = PileType.Hand, bool upTo = false)
     {
         CardSelectorPrefs prefs = upTo ?
             new CardSelectorPrefs(MySelectionPrompts.BuryUpTo, 0, amount) :
@@ -458,6 +458,8 @@ public class MyActions
         }
 
         await BurySpecific(cards);
+
+        return cards;
     }
 
     public static async Task SelfDoom(PlayerChoiceContext choiceContext, AjamaGhouliganCard sourceCard)
