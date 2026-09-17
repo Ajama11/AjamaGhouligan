@@ -1,5 +1,4 @@
 using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
-using AjamaGhouligan.AjamaGhouliganCode.CardMods;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
@@ -27,11 +26,6 @@ public class SafeKeeping() : AjamaGhouliganCard(1,
         new BuryVar(1)
     ];
 
-    public override BundledHoverTipManager MyBundles =>
-    [
-        BundledHoverTipFactory.Static(MyEnums.Disinter)
-    ];
-
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
@@ -42,7 +36,7 @@ public class SafeKeeping() : AjamaGhouliganCard(1,
 
         foreach (var card in cards)
         {
-            card.AddModifier<SafeKeepingMod>();
+            card.EnergyCost.AddUntilPlayed(-1);
         }
     }
 
