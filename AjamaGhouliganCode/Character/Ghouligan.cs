@@ -88,7 +88,12 @@ public class Ghouligan : PlaceholderCharacterModel
     public override string CustomCharacterSelectIconPath => "char_select_ghouligan.png".CharacterUiPath();
     public override string CustomCharacterSelectLockedIconPath => "char_select_char_name_locked.png".CharacterUiPath();
     public override string CustomMapMarkerPath => "map_marker_ghouligan.png".CharacterUiPath();
-    
+
+    public override string CustomArmRockTexturePath => "hands/rock.png".CharacterUiPath();
+    public override string CustomArmPaperTexturePath => "hands/paper.png".CharacterUiPath();
+    public override string CustomArmScissorsTexturePath => "hands/scissors.png".CharacterUiPath();
+    public override string CustomArmPointingTexturePath => "hands/point.png".CharacterUiPath();
+
     public override string CustomTrailPath =>
         "res://AjamaGhouligan/scenes/card_trail.tscn";
 
