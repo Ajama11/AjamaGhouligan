@@ -73,7 +73,7 @@ public class Surprise() : AjamaGhouliganCard(0,
         }
         
         SfxCmd.Play(FmodSfx.fire);
-        Rng.Chaotic.NextItem(Sounds)!.Play(pitchVariation: 0.1f);
+        Rng.Chaotic.NextItem(Sounds)!.Play(pitchVariation: 0.15f);
         
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(this, play)
