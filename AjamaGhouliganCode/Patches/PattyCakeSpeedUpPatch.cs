@@ -84,6 +84,6 @@ public static class PattyCakeSpeedUpPatch
 
     private static float ReplaceDuration(float original, PowerModel power)
     {
-        return power is PattyCakePower ? 0.05f : original;
+        return power is PattyCakePower ? 0.01f : original;
     }
 }
