@@ -89,6 +89,11 @@ public class SpectreFormPower : AjamaGhouliganPower
         InvokeDisplayAmountChanged();
         
         ((BoolVar) DynamicVars[NextCard]).BoolVal = data.CardsLeft == 1;
+
+        if (data.CardsLeft == 1)
+            StartPulsing();
+        else
+            StopPulsing();
     }
 
     protected override object InitInternalData() => new Data();
