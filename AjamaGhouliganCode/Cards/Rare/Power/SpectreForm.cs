@@ -12,6 +12,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.ValueProps;
 
@@ -26,11 +27,6 @@ public class SpectreForm() : AjamaGhouliganCard(3,
         new PowerVar<SpectreFormPower>(10)
     ];
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-        
-    ];
-
     public override BundledHoverTipManager MyBundles =>
     [
         BundledHoverTipFactory.FromKeyword(MyEnums.Haunted),
@@ -43,7 +39,14 @@ public class SpectreForm() : AjamaGhouliganCard(3,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "PowerUp", Owner.Character.PowerUpAnimDelay);
 
-        await CommonActions.ApplySelf<SpectreFormPower>(choiceContext, this);
+        SpectreFormPower power = (SpectreFormPower) ModelDb.Power<SpectreFormPower>()
+            .ToMutable();
+        
+        power.InitializeCardsLeft(DynamicVars.Power<SpectreFormPower>().IntValue);
+
+        await PowerCmd.Apply(choiceContext, power,
+            Owner.Creature, DynamicVars.Power<SpectreFormPower>().IntValue,
+            Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
