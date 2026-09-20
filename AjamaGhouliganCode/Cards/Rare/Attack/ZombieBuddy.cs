@@ -10,13 +10,13 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Rare.Attack;
 
-public class ZombieBuddy() : AjamaGhouliganCard(1,
+public class ZombieBuddy() : AjamaGhouliganCard(0,
     CardType.Attack, CardRarity.Rare,
     TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        ..MakeCalculatedDamage(3, static (card, _) => CombatManager.Instance.History.Entries.OfType<CardGeneratedEntry>().Count(e => e.Creator == card.Owner), 1),
+        ..MakeCalculatedDamage(0, static (card, _) => CombatManager.Instance.History.Entries.OfType<CardGeneratedEntry>().Count(e => e.Creator == card.Owner)),
         new CardsVar(1)
     ];
 
@@ -39,6 +39,6 @@ public class ZombieBuddy() : AjamaGhouliganCard(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.ExtraDamage.UpgradeValueBy(1);
+        DynamicVars.CalculationBase.UpgradeValueBy(3);
     }
 }

@@ -88,6 +88,6 @@ public class GimmeAHand() : AjamaGhouliganCard(1,
     {
         DynamicVars.HalfSummonFilled.UpgradeValueBy(1);
         DynamicVars.HalfSummonEmpty.UpgradeValueBy(1);
-        DynamicVars[Increase].UpgradeValueBy(5);
+        DynamicVars[Increase].UpgradeValueBy(4);
     }
 }

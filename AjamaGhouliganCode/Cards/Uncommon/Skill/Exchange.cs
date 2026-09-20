@@ -20,7 +20,7 @@ public class Exchange() : AjamaGhouliganCard(0,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        ..HalfSummon.MakeVars(3, 2),
+        ..HalfSummon.MakeVars(2, 2),
         new DisinterVar(2),
         new BuryVar(2)
     ];
