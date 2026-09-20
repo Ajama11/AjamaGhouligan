@@ -120,6 +120,6 @@
   "AJAMAGHOULIGAN-SKELETAL_STRIKE_POWER.description": "Whenever [gold]Osty[/gold] loses HP for the next [blue]2[/blue] turns, [gold]Summon[/gold] [blue]2[/blue].",
   "AJAMAGHOULIGAN-SKELETAL_STRIKE_POWER.smartDescription": "Whenever [gold]Osty[/gold] loses HP {Amount:plural:this turn|for the next [blue]{}[/blue] turns}, [gold]Summon[/gold] [blue]{Summon}[/blue].",
   "AJAMAGHOULIGAN-COOKIE_CRUMBLE_POWER.title": "Cookie Crumble",
-  "AJAMAGHOULIGAN-COOKIE_CRUMBLE_POWER.description": "The next time you play [blue]8[/blue] cards in a single turn, gain [blue]3[/blue] Max HP.",
-  "AJAMAGHOULIGAN-COOKIE_CRUMBLE_POWER.smartDescription": "#The next time you play [blue]{Amount}[/blue] cards in a single turn, gain [blue]{MaxHp}[/blue] Max HP.\n([blue]{Display.NumericValue}[/blue] card(s) left.)"
+  "AJAMAGHOULIGAN-COOKIE_CRUMBLE_POWER.description": "The next time you play [blue]8[/blue] cards or more in a turn, gain [blue]3[/blue] Max HP.",
+  "AJAMAGHOULIGAN-COOKIE_CRUMBLE_POWER.smartDescription": "#The next time you play [blue]{Amount}[/blue] cards or more in a turn, gain [blue]{MaxHp}[/blue] Max HP.\n([blue]{Display.NumericValue}[/blue] card(s) left.)"
 }

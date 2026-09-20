@@ -161,7 +161,7 @@
   "AJAMAGHOULIGAN-BONES_OF_A_FEATHER.title": "Bones of a Feather",
   "AJAMAGHOULIGAN-BONES_OF_A_FEATHER.description": "#ALL players [gold]Summon[/gold] !Summon!.\nWhen [gold]Disinterred[/gold], this card gains [gold]Haunted[/gold].",
   "AJAMAGHOULIGAN-COOKIE_CRUMBLE.title": "Cookie Crumble",
-  "AJAMAGHOULIGAN-COOKIE_CRUMBLE.description": "#The next time you play !C! cards in a single turn, gain !MaxHp! Max HP.",
+  "AJAMAGHOULIGAN-COOKIE_CRUMBLE.description": "#The next time you play !C! cards or more in a turn, gain !MaxHp! Max HP.",
   "AJAMAGHOULIGAN-HAND_OFF.title": "Hand Off",
   "AJAMAGHOULIGAN-HAND_OFF.description": "#[gold]Osty[/gold] deals !OstyDamage! damage to ALL enemies.\nIf [gold]Osty[/gold] is alive, gain !StrengthPower! [gold]Strength[/gold], and [gold]Osty[/gold] dies.",
   "AJAMAGHOULIGAN-DOPPELGANGER.title": "Doppelganger",
