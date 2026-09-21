@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -74,16 +75,16 @@ public class CookieCrumblePower : AjamaGhouliganPower
         }
     }
 
-    public override Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)
+    public override Task AfterEnergyReset(Player player)
     {
-        if (!participants.Contains(Owner)) return Task.CompletedTask;
+        if (player.Creature != Owner) return Task.CompletedTask;
         
         GetInternalData<Data>().CardsLeft = Amount;
         UpdateDisplayAmount();
         
         return Task.CompletedTask;
     }
-
+    
     public void UpdateDisplayAmount()
     {
         InvokeDisplayAmountChanged();
