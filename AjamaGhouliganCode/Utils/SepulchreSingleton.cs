@@ -73,22 +73,24 @@ public class SepulchreSingleton() : CustomSingletonModel(HookType.Combat)
         }
     }
 
-    public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    public override CardLocation ModifyCardPlayResultLocation(CardModel card, bool isAutoPlay, ResourceInfo resources,
+        CardLocation cardLocation)
     {
-        if (cardPlay.Card.Type != CardType.Power &&
-            cardPlay.Card.Keywords.Contains(MyEnums.Entomb) &&
-            !cardPlay.Card.Keywords.Contains(CardKeyword.Exhaust) &&
-            cardPlay.IsLastInSeries &&
-            !cardPlay.Card.IsDupe)
+        if (cardLocation.pileType is PileType.Exhaust or PileType.None) return cardLocation;
+        if (!card.Keywords.Contains(MyEnums.Entomb)) return cardLocation;
+
+        cardLocation.pileType = SepulchrePile.PileType;
+
+        return cardLocation;
+    }
+
+    public override async Task AfterModifyingCardPlayResultLocation(CardModel card, CardLocation cardLocation)
+    {
+        foreach (var model in card.CombatState!.IterateHookListeners())
         {
-            await CardPileCmd.Add(cardPlay.Card, SepulchrePile.PileType);
-            
-            foreach (var model in cardPlay.Card.CombatState!.IterateHookListeners())
-            {
-                if (model is not IOnBury onBuryModel) continue;
-                await onBuryModel.OnBury(cardPlay.Card, cardPlay);
-                model.InvokeExecutionFinished();
-            }
+            if (model is not IOnBury onBuryModel) continue;
+            await onBuryModel.OnBury(card);
+            model.InvokeExecutionFinished();
         }
     }
 

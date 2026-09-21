@@ -5,5 +5,5 @@ namespace AjamaGhouligan.AjamaGhouliganCode.Utils;
 
 public interface IOnBury
 {
-    public Task OnBury(CardModel card, CardPlay? play = null);
+    public Task OnBury(CardModel card);
 }

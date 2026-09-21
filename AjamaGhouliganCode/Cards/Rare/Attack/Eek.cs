@@ -7,6 +7,7 @@ using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using BaseLib.Extensions;
 using BaseLib.Patches.Features;
 using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Audio.Debug;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -25,6 +26,8 @@ public class Eek() : AjamaGhouliganCard(2,
     CustomTargetType.AllAttackingEnemies),
     IOnBury
 {
+    private bool WasAutoPlayedBecauseBuried { get; set; }
+    
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(21, ValueProp.Move),
@@ -47,21 +50,24 @@ public class Eek() : AjamaGhouliganCard(2,
         CardPlay play)
     {
         await CommonActions.CardAttack(this, play,
-                1,
-                "vfx/vfx_attack_blunt",
-                null,
-                "blunt_attack.mp3")
+                vfx: VfxCmd.rockShatterPath,
+                tmpSfx: TmpSfx.bluntAttack)
             .Execute(choiceContext);
 
         await CommonActions.Apply<WeakPower>(choiceContext, this, play);
     }
     
-    public async Task OnBury(CardModel card, CardPlay? play)
+    public async Task OnBury(CardModel card)
     {
         if (card != this) return;
-        if (play is { IsAutoPlay: true }) return;
 
-        await CardCmd.AutoPlay(new ThrowingPlayerChoiceContext(), this, null);
+        if (!WasAutoPlayedBecauseBuried)
+        {
+            WasAutoPlayedBecauseBuried = true;
+            await CardCmd.AutoPlay(new ThrowingPlayerChoiceContext(), this, null);
+        }
+
+        WasAutoPlayedBecauseBuried = false;
     }
 
     protected override void OnUpgrade()
