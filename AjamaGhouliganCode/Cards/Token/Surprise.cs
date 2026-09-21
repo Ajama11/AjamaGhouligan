@@ -31,6 +31,8 @@ public class Surprise() : AjamaGhouliganCard(0,
     TargetType.AllEnemies)
 {
     private const string CalculatedDraw = "CalculatedDraw";
+    
+    private bool ShouldDrawCards { get; set; }
 
     private static readonly ModSound[] Sounds = 
     [
@@ -82,7 +84,22 @@ public class Surprise() : AjamaGhouliganCard(0,
             .WithNoAttackerAnim()
             .Execute(choiceContext);
 
-        await CardPileCmd.Draw(choiceContext, ((CalculatedVar) DynamicVars[CalculatedDraw]).Calculate(null), Owner);
+        ShouldDrawCards = true;
+    }
+
+    // Doing it here instead of AfterCardPlayedLate to have the Exhaust animation play immediately instead of having a huge laggy wave of Exhaust animations after every Surprise finishes playing.
+    // And this fires before AfterCardExhausted, so the order of the card text is still accurate
+    public override async Task AfterCardChangedPilesLate(CardModel card, PileType oldPileType, AbstractModel? clonedBy)
+    {
+        if (card != this) return;
+        if (oldPileType != PileType.Play) return;
+        if (!ShouldDrawCards) return;
+        
+        await CardPileCmd.Draw(new BlockingPlayerChoiceContext(),
+            ((CalculatedVar) DynamicVars[CalculatedDraw]).Calculate(null), Owner);
+
+        // In case it escapes the Exhaust Pile somehow and then gets blocked by Normality or something
+        ShouldDrawCards = false; 
     }
 
     public override async Task AfterCardDrawn(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw)
