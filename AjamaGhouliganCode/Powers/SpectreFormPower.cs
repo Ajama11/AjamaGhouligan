@@ -1,5 +1,8 @@
+using AjamaGhouligan.AjamaGhouliganCode.CardPiles;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using BaseLib.Cards.Variables;
+using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
@@ -23,6 +26,7 @@ public class SpectreFormPower : AjamaGhouliganPower
     private const string Display = "Display";
     
     private CardModel? CardSource { get; set; }
+    private CardModel? CardToEntombImmediately { get; set; }
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
@@ -51,24 +55,30 @@ public class SpectreFormPower : AjamaGhouliganPower
         
         return Task.CompletedTask;
     }
-
-    public override Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    
+    public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (cardPlay.IsAutoPlay) return Task.CompletedTask;
-        if (cardPlay.Player.Creature != Owner) return Task.CompletedTask;
+        if (cardPlay.IsAutoPlay) return;
+        if (cardPlay.Player.Creature != Owner) return;
         
         if (CardSource != null && cardPlay.Card == CardSource)
         {
             // If another mod lets a Power card escape being removed from combat, this should only early return on the card's 1st play.
             // I know Pengo's Tarot mod can, or used to, let any card return to the Hand once, and it works/worked on Powers.
             CardSource = null;
-            return Task.CompletedTask;
+            return;
         }
 
-        GetInternalData<Data>().CardsLeft--;
-        UpdateDisplayAmount();
+        Data data = GetInternalData<Data>();
         
-        return Task.CompletedTask;
+        data.CardsLeft--;
+        UpdateDisplayAmount();
+
+        if (CardToEntombImmediately == cardPlay.Card)
+        {
+            await CardPileCmd.Add(cardPlay.Card, SepulchrePile.PileType);
+            CardToEntombImmediately = null;
+        }
     }
 
     public override Task BeforeCardPlayed(CardPlay cardPlay)
@@ -82,6 +92,7 @@ public class SpectreFormPower : AjamaGhouliganPower
         Flash();
         
         MyActions.GainsHauntedAndEntomb(cardPlay.Card, false);
+        CardToEntombImmediately = cardPlay.Card;
         
         data.CardsLeft = Amount + 1; // Immediately decremented and invokes display in AfterCardPlayed for the same card play
         
