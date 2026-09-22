@@ -23,8 +23,7 @@ public class Conjuring() : AjamaGhouliganCard(0,
 {
     protected override bool HasEnergyCostX => true;
     
-    public static readonly SpireField<CardModel, bool> SelectedByAnotherConjuring =
-        new SpireField<CardModel, bool>(() => false).CopyOnClone();
+    public bool SelectedByAnotherConjuring { get; set; }
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
@@ -40,14 +39,18 @@ public class Conjuring() : AjamaGhouliganCard(0,
         if (xValue == 0) return;
 
         List<CardModel> cards = (await CommonActions.SelectCards(
-            this, 
-            new CardSelectorPrefs(SelectionScreenPrompt, 0, xValue),
-            choiceContext, SepulchrePile.PileType, c => c != DupeOf && !SelectedByAnotherConjuring[c]))
+                this, 
+                new CardSelectorPrefs(SelectionScreenPrompt, 0, xValue),
+                choiceContext, SepulchrePile.PileType,
+                c => c != DupeOf && c is not Conjuring
+                {
+                    SelectedByAnotherConjuring: true
+                }))
             .ToList();
 
         foreach (var conjuring in cards.OfType<Conjuring>())
         {
-            SelectedByAnotherConjuring[conjuring] = true;
+            conjuring.SelectedByAnotherConjuring = true;
         }
         
         foreach (CardModel card in cards)
@@ -55,11 +58,11 @@ public class Conjuring() : AjamaGhouliganCard(0,
             await CardCmd.AutoPlay(choiceContext, card.CreateDupe(Owner), null);
         }
 
-        if (!SelectedByAnotherConjuring[this])
+        if (!SelectedByAnotherConjuring)
         {
-            foreach (var card in Owner.PlayerCombatState!.AllCards)
+            foreach (var conjuring in Owner.PlayerCombatState!.AllCards.OfType<Conjuring>())
             {
-                SelectedByAnotherConjuring[card] = false;
+                conjuring.SelectedByAnotherConjuring = false;
             }
         }
         
