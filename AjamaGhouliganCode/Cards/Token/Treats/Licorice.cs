@@ -13,7 +13,7 @@ public class Licorice() : BaseTreat()
 {
     protected override IEnumerable<DynamicVar> TreatCanonicalVars =>
     [
-        new PowerVar<MisfortunePower>(2)
+        new PowerVar<MisfortunePower>(3)
     ];
 
     protected override async Task TreatOnPlay(
