@@ -19,7 +19,7 @@ public class MilkChocolate() : BaseTreat()
 {
     protected override IEnumerable<DynamicVar> TreatCanonicalVars =>
     [
-        new SummonVar(5)
+        new SummonVar(4)
     ];
 
     protected override async Task TreatOnPlay(
@@ -31,6 +31,6 @@ public class MilkChocolate() : BaseTreat()
 
     protected override void TreatOnUpgrade()
     {
-        DynamicVars.Summon.UpgradeValueBy(3);
+        DynamicVars.Summon.UpgradeValueBy(2);
     }
 }
