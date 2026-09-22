@@ -36,7 +36,7 @@ public class UnfortunateSingleton() : CustomSingletonModel(HookType.Combat)
 
                 if (combatState.PlayerCreatures.Any(p => p.HasPower<WildRidePower>()))
                 {
-                    await PowerCmd.Decrement(misfortune);
+                    await PowerCmd.ModifyAmount(choiceContext, misfortune, -2, null, null);
                 }
             }
         }

@@ -2,6 +2,7 @@ using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
+using BaseLib.Extensions;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -25,7 +26,8 @@ public class DiscordantDitty() : AjamaGhouliganCard(0,
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        MyEnums.Haunted
+        MyEnums.Haunted,
+        MyEnums.Entomb
     ];
 
     protected override async Task OnPlay(
@@ -39,6 +41,6 @@ public class DiscordantDitty() : AjamaGhouliganCard(0,
 
     protected override void OnUpgrade()
     {
-        AddKeyword(MyEnums.Entomb);
+        DynamicVars.Power<MisfortunePower>().UpgradeValueBy(1);
     }
 }

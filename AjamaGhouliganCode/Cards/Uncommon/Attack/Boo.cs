@@ -25,14 +25,15 @@ public class Boo() : AjamaGhouliganCard(2,
     TargetType.AnyEnemy)
 {
     private const string Threshold = "Threshold";
-    private const string CalculatedTriggers = "CalculatedTriggers";
+    private const string CalculatedTimes = "CalculatedTimes";
     
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(6, DamageProps.card),
         new RepeatVar(2),
         new IntVar(Threshold, 10),
-        ..MakeCalculatedVar(CalculatedTriggers, 0, (card, _) =>
+        new PowerVar<MisfortunePower>(4),
+        ..MakeCalculatedVar(CalculatedTimes, 0, (card, _) =>
             Math.Floor(
                 CombatManager.Instance.History.Entries
                     .OfType<PowerReceivedEntry>()
@@ -60,10 +61,12 @@ public class Boo() : AjamaGhouliganCard(2,
                 tmpSfx: TmpSfx.heavyAttack)
             .Execute(choiceContext);
 
-        await UnfortunateSingleton.Trigger(
-            CombatState!,
-            (int) ((CalculatedVar) DynamicVars[CalculatedTriggers]).Calculate(null),
-            choiceContext, play);
+        int times = (int) ((CalculatedVar) DynamicVars[CalculatedTimes]).Calculate(null);
+        
+        for (int i = 0; i < times; i++)
+        {
+            await MyActions.Misfortune(choiceContext, play.Target!, this);
+        }
     }
 
     protected override void OnUpgrade()
