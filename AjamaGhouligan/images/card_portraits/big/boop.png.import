@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwe43j1k5nyad"
-path="res://.godot/imported/boop.png-e98e8c79cc39419b0635fe44e448c2a3.ctex"
+uid="uid://0y51bb38gl1l"
+path="res://.godot/imported/boop.png-0518c3d57571c67bc3001ec9acfed4c2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://AjamaGhouligan/images/card_portraits/big/beta/boop.png"
-dest_files=["res://.godot/imported/boop.png-e98e8c79cc39419b0635fe44e448c2a3.ctex"]
+source_file="res://AjamaGhouligan/images/card_portraits/big/boop.png"
+dest_files=["res://.godot/imported/boop.png-0518c3d57571c67bc3001ec9acfed4c2.ctex"]
 
 [params]
 
