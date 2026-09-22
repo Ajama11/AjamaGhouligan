@@ -15,13 +15,13 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Cards.Uncommon.Power;
 
-public class BoneVigil() : AjamaGhouliganCard(2,
+public class BoneVigil() : AjamaGhouliganCard(1,
     CardType.Power, CardRarity.Uncommon,
     TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<BoneVigilPower>(1)
+        new PowerVar<BoneVigilPower>(3)
     ];
 
     public override BundledHoverTipManager MyBundles =>
@@ -40,6 +40,6 @@ public class BoneVigil() : AjamaGhouliganCard(2,
 
     protected override void OnUpgrade()
     {
-        EnergyCost.UpgradeBy(-1);
+        DynamicVars.Power<BoneVigilPower>().UpgradeValueBy(1);
     }
 }

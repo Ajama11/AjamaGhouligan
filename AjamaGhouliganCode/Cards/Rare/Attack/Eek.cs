@@ -26,8 +26,6 @@ public class Eek() : AjamaGhouliganCard(2,
     CustomTargetType.AllAttackingEnemies),
     IOnBury
 {
-    private bool WasAutoPlayedBecauseBuried { get; set; }
-    
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(21, ValueProp.Move),
@@ -61,13 +59,7 @@ public class Eek() : AjamaGhouliganCard(2,
     {
         if (card != this) return;
 
-        if (!WasAutoPlayedBecauseBuried)
-        {
-            WasAutoPlayedBecauseBuried = true;
-            await CardCmd.AutoPlay(new ThrowingPlayerChoiceContext(), this, null);
-        }
-
-        WasAutoPlayedBecauseBuried = false;
+        await CardCmd.AutoPlay(new ThrowingPlayerChoiceContext(), this, null);
     }
 
     protected override void OnUpgrade()

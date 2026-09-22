@@ -84,16 +84,6 @@ public class SepulchreSingleton() : CustomSingletonModel(HookType.Combat)
         return cardLocation;
     }
 
-    public override async Task AfterModifyingCardPlayResultLocation(CardModel card, CardLocation cardLocation)
-    {
-        foreach (var model in card.CombatState!.IterateHookListeners())
-        {
-            if (model is not IOnBury onBuryModel) continue;
-            await onBuryModel.OnBury(card);
-            model.InvokeExecutionFinished();
-        }
-    }
-
     public static bool CanGainHaunted(CardModel card)
     {
         return !card.Keywords.Contains(CardKeyword.Unplayable) &&
