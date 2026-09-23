@@ -6,7 +6,7 @@ internal class Config : SimpleModConfig
 {
     public enum GoofAudio {Everyone, Self, Never}
     [ConfigHoverTip]
-    public static GoofAudio PlayGoofAudio { get; set; } = GoofAudio.Everyone;
+    public static GoofAudio PlayGoofAudio { get; set; } = GoofAudio.Self;
 
     [ConfigHoverTip]
     public static bool UseNecrobinderAttackAudio { get; set; } = false;
