@@ -38,6 +38,9 @@
   "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.1-0r.ancient.sfx": "event:/sfx/npcs/neow/neow_welcome",
   "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.1-0r.ancient": "[sine]....welcome.. back... troublemaker.....[/sine]",
 
+  "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.3-0r.ancient.sfx": "event:/sfx/npcs/neow/neow_curious",
+  "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.3-0r.ancient": "[sine]....the.. necrobinder... ..will... want.... ...her.. ..hand.... back.....[/sine]",
+
   "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.2-0.char": "[i][font_size=22]The Ghouligan deflates. Osty lays on her.[/font_size][/i]",
   "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.2-0.next": "Continue",
   "NEOW.talk.AJAMAGHOULIGAN-GHOULIGAN.2-1.ancient.sfx": "event:/sfx/npcs/neow/neow_curious",
