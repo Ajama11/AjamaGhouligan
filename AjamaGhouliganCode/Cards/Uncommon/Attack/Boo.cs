@@ -31,7 +31,7 @@ public class Boo() : AjamaGhouliganCard(2,
     [
         new DamageVar(6, DamageProps.card),
         new RepeatVar(2),
-        new IntVar(Threshold, 10),
+        new IntVar(Threshold, 8),
         new PowerVar<MisfortunePower>(4),
         ..MakeCalculatedVar(CalculatedTimes, 0, (card, _) =>
             Math.Floor(
@@ -72,6 +72,6 @@ public class Boo() : AjamaGhouliganCard(2,
     protected override void OnUpgrade()
     {
         DynamicVars.Repeat.UpgradeValueBy(1);
-        DynamicVars[Threshold].UpgradeValueBy(-2);
+        DynamicVars[Threshold].UpgradeValueBy(-3);
     }
 }
