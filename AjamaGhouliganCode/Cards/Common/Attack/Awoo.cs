@@ -2,6 +2,7 @@ using AjamaGhouligan.AjamaGhouliganCode.Cards;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
+using BaseLib.Extensions;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -39,6 +40,7 @@ public class Awoo() : AjamaGhouliganCard(1,
 
     protected override void OnUpgrade()
     {
+        DynamicVars.Power<MisfortunePower>().UpgradeValueBy(1);
         AddKeyword(MyEnums.Unfortunate);
     }
 }

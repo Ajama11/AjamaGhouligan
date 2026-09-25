@@ -24,7 +24,7 @@ public class Oopsies() : AjamaGhouliganCard(0,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(4, DamageProps.card),
-        new PowerVar<MisfortunePower>(3),
+        new PowerVar<MisfortunePower>(4),
         new RepeatVar(2)
     ];
 

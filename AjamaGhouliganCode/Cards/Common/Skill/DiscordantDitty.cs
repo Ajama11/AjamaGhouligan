@@ -21,7 +21,7 @@ public class DiscordantDitty() : AjamaGhouliganCard(0,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<MisfortunePower>(2)
+        new PowerVar<MisfortunePower>(3)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
