@@ -1,5 +1,6 @@
 using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips.Core;
 using AjamaGhouligan.AjamaGhouliganCode.Cards;
+using AjamaGhouligan.AjamaGhouliganCode.Cards.Rare.Attack;
 using AjamaGhouligan.AjamaGhouliganCode.DynamicVars;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
@@ -52,10 +53,24 @@ public class Cavort() : AjamaGhouliganCard(0,
         CardKeyword.Exhaust
     ];
     
-    public override BundledHoverTipManager MyBundles =>
-        Card != null ?
-            [BundledHoverTipFactory.FromCard(Card)] :
-            [];
+    public override BundledHoverTipManager MyBundles
+    {
+        get
+        {
+            BundledHoverTipManager list = [];
+            
+            if (Card != null)
+                list.Add(BundledHoverTipFactory.FromCard(Card));
+            
+            if (Pile is { Type: not PileType.Exhaust } &&
+                Card is ZombieBuddy { Card: not null } zombieBuddy)
+            {
+                list.Add(BundledHoverTipFactory.FromCard(zombieBuddy.Card));
+            }
+            
+            return list;
+        }
+    }
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
@@ -109,7 +124,10 @@ public class Cavort() : AjamaGhouliganCard(0,
 
     protected override void AddExtraArgsToDescription(LocString description)
     {
+        ZombieBuddy? zombieBuddy = Card as ZombieBuddy;
         description.Add("IsExhausted", IsExhausted);
+        description.Add("PlaysZombie", Card is ZombieBuddy);
+        description.Add("ZombieCard", zombieBuddy?.FormattedCardName ?? "");
     }
 
     protected override void OnUpgrade()
