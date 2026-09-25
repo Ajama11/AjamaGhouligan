@@ -49,9 +49,12 @@
   "AJAMAGHOULIGAN-NEUROPURGE_POWER.title": "Neuropurge",
   "AJAMAGHOULIGAN-NEUROPURGE_POWER.description": "At the start of your turn, apply [blue]5[/blue] [gold]Doom[/gold] to yourself.",
   "AJAMAGHOULIGAN-NEUROPURGE_POWER.smartDescription": "At the start of your turn, apply [blue]{Amount}[/blue] [gold]Doom[/gold] to yourself.",
-  "AJAMAGHOULIGAN-PRANKSTER_POWER.title": "Prankster",
-  "AJAMAGHOULIGAN-PRANKSTER_POWER.description": "Whenever you spend {energyPrefix:energyIcons(1)}, for each {energyPrefix:energyIcons(1)} spent, apply [blue]1[/blue] [gold]Misfortune[/gold] to ALL enemies and add [blue]1[/blue] [gold]Surprise[/gold] into your [gold]Discard Pile[/gold].",
-  "AJAMAGHOULIGAN-PRANKSTER_POWER.smartDescription": "#Whenever you spend {energyPrefix:energyIcons(1)}, for each {energyPrefix:energyIcons(1)} spent, apply [blue]{Amount}[/blue] [gold]Misfortune[/gold] to ALL enemies and add [blue]{Amount}[/blue] [gold]Surprise(s)[/gold] into your [gold]Discard Pile[/gold].",
+  "AJAMAGHOULIGAN-PRANKSTER_MISFORTUNE_POWER.title": "Prankster: Misfortune",
+  "AJAMAGHOULIGAN-PRANKSTER_MISFORTUNE_POWER.description": "Whenever you spend {energyPrefix:energyIcons(1)}, for each {energyPrefix:energyIcons(1)} spent, apply [blue]1[/blue] [gold]Misfortune[/gold] to ALL enemies.",
+  "AJAMAGHOULIGAN-PRANKSTER_MISFORTUNE_POWER.smartDescription": "#Whenever you spend {energyPrefix:energyIcons(1)}, for each {energyPrefix:energyIcons(1)} spent, apply [blue]{Amount}[/blue] [gold]Misfortune[/gold] to ALL enemies.",
+  "AJAMAGHOULIGAN-PRANKSTER_SURPRISE_POWER.title": "Prankster: Surprise",
+  "AJAMAGHOULIGAN-PRANKSTER_SURPRISE_POWER.description": "Whenever you spend {energyPrefix:energyIcons(1)}, for each {energyPrefix:energyIcons(1)} spent, add [blue]1[/blue] [gold]Surprise[/gold] into your [gold]Discard Pile[/gold].",
+  "AJAMAGHOULIGAN-PRANKSTER_SURPRISE_POWER.smartDescription": "#Whenever you spend {energyPrefix:energyIcons(1)}, for each {energyPrefix:energyIcons(1)} spent, add [blue]{Amount}[/blue] [gold]Surprise(s)[/gold] into your [gold]Discard Pile[/gold].",
   "AJAMAGHOULIGAN-TWINSIES_POWER.title": "Twinsies",
   "AJAMAGHOULIGAN-TWINSIES_POWER.description": "[gold]Bury[/gold] a copy of the first manually played card each turn.",
   "AJAMAGHOULIGAN-TWINSIES_POWER.smartDescription": "[gold]Bury[/gold] a copy of the first {Amount:plural:|[blue]{} [/blue]}manually played {Amount:plural:card|cards} each turn.",
@@ -121,5 +124,8 @@
   "AJAMAGHOULIGAN-SKELETAL_STRIKE_POWER.smartDescription": "Whenever [gold]Osty[/gold] loses HP {Amount:plural:this turn|for the next [blue]{}[/blue] turns}, [gold]Summon[/gold] [blue]{Summon}[/blue].",
   "AJAMAGHOULIGAN-COOKIE_CRUMBLE_POWER.title": "Cookie Crumble",
   "AJAMAGHOULIGAN-COOKIE_CRUMBLE_POWER.description": "The next time you play [blue]8[/blue] cards or more in a turn, gain [blue]3[/blue] Max HP.",
-  "AJAMAGHOULIGAN-COOKIE_CRUMBLE_POWER.smartDescription": "#The next time you play [blue]{Amount}[/blue] cards or more in a turn, gain [blue]{MaxHp}[/blue] Max HP.\n([blue]{Display.NumericValue}[/blue] card(s) left.)"
+  "AJAMAGHOULIGAN-COOKIE_CRUMBLE_POWER.smartDescription": "#The next time you play [blue]{Amount}[/blue] cards or more in a turn, gain [blue]{MaxHp}[/blue] Max HP.\n([blue]{Display.NumericValue}[/blue] card(s) left.)",
+  "AJAMAGHOULIGAN-BASE_PRANKSTER_POWER.title": "",
+  "AJAMAGHOULIGAN-BASE_PRANKSTER_POWER.description": "",
+  "AJAMAGHOULIGAN-BASE_PRANKSTER_POWER.smartDescription": ""
 }

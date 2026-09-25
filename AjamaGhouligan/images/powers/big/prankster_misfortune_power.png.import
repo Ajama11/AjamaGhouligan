@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d045a81u6i6n4"
-path="res://.godot/imported/prankster_power.png-39cbc741f18f308833f31fff1c2272c3.ctex"
+uid="uid://cmex8xh0sya5d"
+path="res://.godot/imported/prankster_misfortune_power.png-0829bd500bed47f2f780dea0694424cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://AjamaGhouligan/images/powers/prankster_power.png"
-dest_files=["res://.godot/imported/prankster_power.png-39cbc741f18f308833f31fff1c2272c3.ctex"]
+source_file="res://AjamaGhouligan/images/powers/big/prankster_misfortune_power.png"
+dest_files=["res://.godot/imported/prankster_misfortune_power.png-0829bd500bed47f2f780dea0694424cf.ctex"]
 
 [params]
 

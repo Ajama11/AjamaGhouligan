@@ -10,16 +10,10 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Powers;
 
-public class PranksterPower : AjamaGhouliganPower
+public abstract class BasePranksterPower : AjamaGhouliganPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
-
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-    [
-        HoverTipFactory.FromPower<MisfortunePower>(),
-        HoverTipFactory.FromCard<Surprise>()
-    ];
 
     public override Task BeforeCardPlayed(CardPlay cardPlay)
     {
@@ -57,19 +51,9 @@ public class PranksterPower : AjamaGhouliganPower
         await DoTheThing(choiceContext, cardPlay.Resources.EnergySpent, storedAmount);
     }
 
-    private async Task DoTheThing(PlayerChoiceContext choiceContext, int energySpent, int powerAmountOverride = -1)
+    protected virtual async Task DoTheThing(PlayerChoiceContext choiceContext, int energySpent, int powerAmountOverride = -1)
     {
-        int amount = powerAmountOverride == -1 ? Amount : powerAmountOverride;
-        
-        Flash();
-        
-        await PowerCmd.Apply<MisfortunePower>(choiceContext,
-            CombatState.HittableEnemies, 
-            amount * energySpent,
-            Owner, null);
-
-        await MyActions.CreateSurprises(amount * energySpent, Owner.Player!, CombatState,
-            PileType.Discard, CardPilePosition.Bottom, previewTime: 0.6f);
+        // The Thing that gets the Doing is now 2 Things and handled by inheritance
     }
 
     protected override object InitInternalData() => new Data();

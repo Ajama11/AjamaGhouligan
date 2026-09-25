@@ -22,7 +22,8 @@ public class Prankster() : AjamaGhouliganCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<PranksterPower>(2)
+        new PowerVar<PranksterMisfortunePower>(2),
+        new PowerVar<PranksterSurprisePower>(1)
     ];
 
     public override BundledHoverTipManager MyBundles =>
@@ -37,11 +38,13 @@ public class Prankster() : AjamaGhouliganCard(1,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "PowerUp", Owner.Character.PowerUpAnimDelay);
 
-        await CommonActions.ApplySelf<PranksterPower>(choiceContext, this);
+        await CommonActions.ApplySelf<PranksterMisfortunePower>(choiceContext, this);
+        
+        await CommonActions.ApplySelf<PranksterSurprisePower>(choiceContext, this);
     }
 
     protected override void OnUpgrade()
     {
-        EnergyCost.UpgradeBy(-1);
+        DynamicVars.Power<PranksterMisfortunePower>().UpgradeValueBy(1);
     }
 }
