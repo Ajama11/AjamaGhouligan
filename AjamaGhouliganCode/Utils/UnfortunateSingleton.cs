@@ -34,10 +34,9 @@ public class UnfortunateSingleton() : CustomSingletonModel(HookType.Combat)
                     misfortune.Amount, DamageProps.nonCardUnpowered,
                     cardPlay?.Card, cardPlay);
 
-                if (combatState.PlayerCreatures.Any(p => p.HasPower<WildRidePower>()))
-                {
-                    await PowerCmd.ModifyAmount(choiceContext, misfortune, -2, null, null);
-                }
+                await PowerCmd.ModifyAmount(choiceContext, misfortune,
+                    misfortune.DynamicVars[MisfortunePower.WhenTriggered].BaseValue, 
+                    null, null);
             }
         }
     }

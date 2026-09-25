@@ -6,12 +6,12 @@ namespace AjamaGhouligan.AjamaGhouliganCode.Powers;
 public class WildRidePower : AjamaGhouliganPower
 {
     public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.Single;
+    public override PowerStackType StackType => PowerStackType.Counter;
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.FromPower<MisfortunePower>()
     ];
 
-    // Behavior handled in MisfortunePower and UnfortunateSingleton
+    // Behavior handled in MisfortunePower
 }
