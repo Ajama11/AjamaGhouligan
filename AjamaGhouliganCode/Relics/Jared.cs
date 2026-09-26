@@ -44,8 +44,7 @@ public class Jared() : AjamaGhouliganRelic
             InvokeDisplayAmountChanged();
         }
     }
-
-    [SavedProperty]
+    
     public bool IsActivating
     {
         get;
