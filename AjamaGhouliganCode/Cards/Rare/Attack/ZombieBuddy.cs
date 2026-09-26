@@ -25,7 +25,7 @@ public class ZombieBuddy() : AjamaGhouliganCard(0,
             static (card, _) =>
                 card.Owner.PlayerCombatState?.AllCards.Count(
                     c => c is ZombieBuddy && c != card && !c.IsDupe) ?? 0,
-            4)
+            5)
     ];
     
     public string FormattedCardName = LocString.GetIfExists("cards", "AJAMAGHOULIGAN-ZOMBIE_BUDDY.nothing")?.GetRawText() ?? "nothing";
@@ -95,6 +95,6 @@ public class ZombieBuddy() : AjamaGhouliganCard(0,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.ExtraDamage.UpgradeValueBy(2);
+        DynamicVars.ExtraDamage.UpgradeValueBy(3);
     }
 }
