@@ -21,7 +21,7 @@ public class ZombieBuddy() : AjamaGhouliganCard(0,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DisplayVar<ZombieBuddy>("FormattedCardName", z => z.FormattedCardName),
-        ..MakeCalculatedDamage(6, 
+        ..MakeCalculatedDamage(8, 
             static (card, _) =>
                 card.Owner.PlayerCombatState?.AllCards.Count(
                     c => c is ZombieBuddy && c != card && !c.IsDupe) ?? 0,
