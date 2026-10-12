@@ -55,7 +55,7 @@ public class Surprise() : AjamaGhouliganCard(0,
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(6, DamageProps.card),
+        new DamageVar(5, DamageProps.card),
         ..MakeCalculatedVar(CalculatedDraw, 1, (card, _) => card.Owner.Creature.GetPowerAmount<KeepEmComingPower>())
     ];
 
