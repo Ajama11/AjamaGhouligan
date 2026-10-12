@@ -9,8 +9,8 @@ namespace AjamaGhouligan.AjamaGhouliganCode.Utils;
 
 public interface IResolvingHoverTip : IHoverTip
 {
-    IHoverTip ResolveHoverTip();
-    
+    IHoverTip? ResolveHoverTip();
+
     int ResolveVersion { get; }
 }
 
@@ -22,11 +22,13 @@ public sealed class CycleHoverTip : IResolvingHoverTip
 
     public CycleHoverTip(
         IReadOnlyList<CardModel> cards,
-        double secondsPerCard = 1.5,
+        double secondsPerCard = 1.25,
         bool upgrade = false)
     {
         if (cards == null || cards.Count == 0)
-            throw new ArgumentException("CycleHoverTip needs at least one card.", nameof(cards));
+            throw new ArgumentException(
+                "CycleHoverTip needs at least one card.",
+                nameof(cards));
 
         _cards = cards;
         _secondsPerCard = Math.Max(0.25, secondsPerCard);
@@ -38,7 +40,10 @@ public sealed class CycleHoverTip : IResolvingHoverTip
         get
         {
             double elapsedSeconds = Time.GetTicksMsec() / 1000.0;
-            return (int)(Math.Floor(elapsedSeconds / _secondsPerCard) % _cards.Count);
+
+            return (int)(
+                Math.Floor(elapsedSeconds / _secondsPerCard)
+                % _cards.Count);
         }
     }
 
@@ -46,7 +51,16 @@ public sealed class CycleHoverTip : IResolvingHoverTip
 
     public IHoverTip ResolveHoverTip()
     {
-        return HoverTipFactory.FromCard(_cards[CurrentIndex], _upgrade);
+        CardModel card = _cards[CurrentIndex];
+
+        if (_upgrade)
+        {
+            card = (CardModel)card.MutableClone();
+            card.UpgradeInternal();
+            card.FinalizeUpgradeInternal();
+        }
+
+        return new ResolvedDynamicCardHoverTip(card, this);
     }
 
     public string Id => "AJAMAGHOULIGAN-CYCLE_HOVER_TIP";
@@ -56,38 +70,10 @@ public sealed class CycleHoverTip : IResolvingHoverTip
     public AbstractModel? CanonicalModel => null;
 }
 
-public static class HoverTipResolver
+public sealed class ResolvedDynamicCardHoverTip(
+    CardModel card,
+    IResolvingHoverTip source)
+    : CardHoverTip(card)
 {
-    public static IHoverTip Resolve(IHoverTip tip)
-    {
-        return tip is IResolvingHoverTip resolving
-            ? resolving.ResolveHoverTip()
-            : tip;
-    }
-
-    public static List<IHoverTip> ResolveAll(IEnumerable<IHoverTip> tips)
-    {
-        return tips.Select(Resolve).ToList();
-    }
-
-    public static bool HasResolvingTip(IEnumerable<IHoverTip> tips)
-    {
-        return tips.Any(t => t is IResolvingHoverTip);
-    }
-
-    public static int GetVersionKey(IEnumerable<IHoverTip> tips)
-    {
-        unchecked
-        {
-            int hash = 17;
-
-            foreach (IHoverTip tip in tips)
-            {
-                if (tip is IResolvingHoverTip resolving)
-                    hash = hash * 31 + resolving.ResolveVersion;
-            }
-
-            return hash;
-        }
-    }
+    public IResolvingHoverTip Source { get; } = source;
 }

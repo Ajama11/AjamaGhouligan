@@ -57,20 +57,6 @@ public class MyEnums
     
     public static IEnumerable<IHoverTip> TreatHovers(bool upgraded = false)
     {
-        List<CardModel> treats = MyActions.CanonicalTreats;
-
-        if (upgraded)
-        {
-            treats = [];
-            
-            foreach (var canonicalTreat in MyActions.CanonicalTreats)
-            {
-                treats = [..treats, canonicalTreat.ToMutable()];
-            }
-            
-            CardCmd.Upgrade(treats, CardPreviewStyle.None);
-        }
-        
         const string str = "AJAMAGHOULIGAN-TREATS";
 
         LocString title = HoverTipFactory.L10NStatic(str + ".title");
@@ -80,7 +66,7 @@ public class MyEnums
         
         return
         [
-            new CycleHoverTip(treats),
+            new CycleHoverTip(MyActions.CanonicalTreats, 1.5, upgraded),
             new HoverTip(title, description)
         ];
     }
