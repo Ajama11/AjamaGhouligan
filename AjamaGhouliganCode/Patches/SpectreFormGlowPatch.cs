@@ -7,67 +7,58 @@ using MegaCrit.Sts2.Core.Nodes.Cards.Holders;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Patches;
 
-// From @halfocused in #sts2-modding, dev of Spire Enigmas
+// Adapted from Blizzare's The Electron
 
-[HarmonyPatch(typeof(NHandCardHolder), nameof(NHandCardHolder.UpdateCard))]
+[HarmonyPatch()]
 public static class SpectreFormGlowPatch
 {
-    [HarmonyTranspiler]
-    static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions, ILGenerator generator)
+    private static readonly Color LightGold = new ("ffeca6fa");
+    private static readonly Color Pink = new ("fc77edfa");
+    
+    [HarmonyPatch(typeof(NHandCardHolder), nameof(NHandCardHolder.UpdateCard))]
+    public static class NHandCardHolderUpdateCardPatch
     {
-        var codeMatcher = new CodeMatcher(instructions, generator);
+        [HarmonyPostfix]
+        private static void Postfix(NHandCardHolder __instance)
+        {
+            var card = __instance.CardNode?.Model;
+            if (card == null || !card.CanPlay() || card.ShouldGlowRed)
+                return;
 
-        codeMatcher.MatchStartForward(
-            new CodeMatch(OpCodes.Ldarg_0), //this
-            new CodeMatch(OpCodes.Call), //get_CardNode
-            new CodeMatch(OpCodes.Callvirt), //get_Model
-            new CodeMatch(OpCodes.Callvirt), //CanPlay()
-            new CodeMatch(OpCodes.Brtrue_S)
-
-        ).ThrowIfInvalid("Could not find card model check");
-
-        object getCardNodeMethod = codeMatcher.InstructionAt(1).operand;
-        object getModelMethod = codeMatcher.InstructionAt(2).operand;
-
-        //we advance late for the sake of setting those variables
-        codeMatcher.Advance(5);
-
-        codeMatcher.MatchStartForward(
-            new CodeMatch(OpCodes.Ldarg_0),
-            new CodeMatch(OpCodes.Call),
-            new CodeMatch(OpCodes.Callvirt),
-            new CodeMatch(OpCodes.Callvirt),
-
-            new CodeMatch(OpCodes.Ldarg_0),
-            new CodeMatch(OpCodes.Call),
-            new CodeMatch(OpCodes.Callvirt),
-            new CodeMatch(OpCodes.Ldsfld),
-            new CodeMatch(OpCodes.Callvirt) //set_Modulate
-        ).ThrowIfInvalid("Could not find glow color assignment");
-
-        codeMatcher.Advance(8);
-
-        codeMatcher.InsertAndAdvance(
-            new CodeInstruction(OpCodes.Ldarg_0), //this
-            new CodeInstruction(OpCodes.Call, getCardNodeMethod),
-            new CodeInstruction(OpCodes.Callvirt, getModelMethod),
-            #pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
-            CodeInstruction.Call(() => PossiblyTweakColor(default, default))
-            #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
-        );
-
-        return codeMatcher.Instructions();
+            if (ShouldGlowPink(card))
+            {
+                __instance.CardNode?.CardHighlight.Modulate = card.ShouldGlowGold ?
+                    LightGold :
+                    Pink;
+            }
+        }
     }
 
-    static Color PossiblyTweakColor(Color oldColor, CardModel cardModel)
+    [HarmonyPatch(typeof(NHandCardHolder), nameof(NHandCardHolder.Flash))]
+    public static class NHandCardHolderFlashPatch
     {
-        var spectreFormPowers = cardModel.Owner.Creature.Powers.Where(p => p is SpectreFormPower);
-
-        if (spectreFormPowers.Any(p => p.GetInternalData<SpectreFormPower.Data>().CardsLeft == 1))
+        [HarmonyPostfix]
+        private static void Postfix(NHandCardHolder __instance)
         {
-            return new Color("fc77edfa");
-        }
+            var card = __instance.CardNode?.Model;
+            if (card == null || !card.CanPlay() || card.ShouldGlowRed)
+                return;
 
-        return oldColor;
+            if (ShouldGlowPink(card))
+            {
+                __instance._flash.Modulate = card.ShouldGlowGold ?
+                    LightGold :
+                    Pink;
+            }
+        }
+    }
+    
+    static bool ShouldGlowPink(CardModel cardModel)
+    {
+        var spectreFormPowers = cardModel.Owner.Creature.Powers
+            .Where(p => p is SpectreFormPower);
+        
+        return spectreFormPowers.Any(p =>
+            p.GetInternalData<SpectreFormPower.Data>().CardsLeft == 1);
     }
 }
