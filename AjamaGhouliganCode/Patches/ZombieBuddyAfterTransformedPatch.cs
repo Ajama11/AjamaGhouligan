@@ -51,7 +51,7 @@ public static class ZombieBuddyAfterTransformedPatch
                 if (zombie.Card == original)
                 {
                     zombie.SetCardToTransform();
-                    MainFile.Logger.Warn($"A Zombie's target {original.Title} got transformed, so it is now targeting {zombie.Card?.Title}");
+                    // MainFile.Logger.Warn($"A Zombie's target {original.Title} got transformed, so it is now targeting {zombie.Card?.Title}");
                 }
             }
         }
