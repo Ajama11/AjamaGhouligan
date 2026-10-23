@@ -26,14 +26,14 @@ public partial class MainFile : Node
 
     public static void Initialize()
     {
-        Harmony harmony = new(ModId);
-
-        harmony.PatchAll();
-        
         var assembly = Assembly.GetExecutingAssembly();
+
+        ModConfigRegistry.Register(ModId, new Config());
+        
         Godot.Bridge.ScriptManagerBridge.LookupScriptsInAssembly(assembly);
         
-        ModConfigRegistry.Register(ModId, new Config());
+        Harmony harmony = new(ModId);
+        harmony.PatchAll(assembly);
         
         DescriptionOverrides.CustomizeDescriptionPost += (CardModel card, Creature? _, ref string description) =>
         {
