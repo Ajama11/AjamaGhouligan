@@ -21,7 +21,8 @@ public class TwinsiesPower : AjamaGhouliganPower, IHasSecondAmount
 
     public override Task BeforeCardPlayed(CardPlay cardPlay)
     {
-        if (cardPlay.Card.Owner.Creature != Owner) return Task.CompletedTask;
+        if (cardPlay.IsAutoPlay) return Task.CompletedTask;
+        if (cardPlay.Player.Creature != Owner) return Task.CompletedTask;
         
         GetInternalData<Data>().AmountsForPlayedCards.Add(cardPlay.Card, Amount);
         
