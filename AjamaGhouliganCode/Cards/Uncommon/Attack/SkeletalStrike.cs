@@ -22,7 +22,7 @@ public class SkeletalStrike() : AjamaGhouliganCard(1,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new OstyDamageVar(3, DamageProps.card),
-        new RepeatVar(3),
+        new RepeatVar(2),
         new PowerVar<SkeletalStrikePower>(2),
         new SummonVar(2)
     ];
