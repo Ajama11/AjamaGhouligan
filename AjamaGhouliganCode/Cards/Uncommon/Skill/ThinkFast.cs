@@ -17,7 +17,7 @@ public class ThinkFast() : AjamaGhouliganCard(1,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new SurpriseVar(2),
-        new (MoreSurprises, 2),
+        new (MoreSurprises, 1),
         new CardsVar(1)
     ];
 

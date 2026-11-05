@@ -21,8 +21,13 @@ public class Awoo() : AjamaGhouliganCard(1,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(7, ValueProp.Move),
-        new PowerVar<MisfortunePower>(3)
+        new DamageVar(6, DamageProps.card),
+        new PowerVar<MisfortunePower>(2)
+    ];
+
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        MyEnums.Unfortunate
     ];
 
     protected override async Task OnPlay(
@@ -40,7 +45,7 @@ public class Awoo() : AjamaGhouliganCard(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Power<MisfortunePower>().UpgradeValueBy(1);
-        AddKeyword(MyEnums.Unfortunate);
+        DynamicVars.Damage.UpgradeValueBy(1);
+        DynamicVars.Power<MisfortunePower>().UpgradeValueBy(2);
     }
 }

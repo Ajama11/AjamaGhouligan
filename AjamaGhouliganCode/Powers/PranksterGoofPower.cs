@@ -1,3 +1,4 @@
+using AjamaGhouligan.AjamaGhouliganCode.BundledHoverTips;
 using AjamaGhouligan.AjamaGhouliganCode.Cards.Token;
 using AjamaGhouligan.AjamaGhouliganCode.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -7,11 +8,11 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Powers;
 
-public class PranksterSurprisePower : BasePranksterPower
+public class PranksterGoofPower : BasePranksterPower
 {
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromCard<Surprise>()
+        ..new GoofBundle().HoverTips
     ];
     
     protected override async Task DoTheThing(PlayerChoiceContext choiceContext, int energySpent, int powerAmountOverride = -1)
@@ -19,9 +20,9 @@ public class PranksterSurprisePower : BasePranksterPower
         int amount = powerAmountOverride == -1 ? Amount : powerAmountOverride;
         
         Flash();
-        
-        await MyActions.CreateSurprises(
-            amount * energySpent, Owner.Player!, CombatState,
-            PileType.Discard, CardPilePosition.Bottom, previewTime: 0.6f);
+
+        await PowerCmd.Apply<GoofPower>(choiceContext, 
+            Owner, amount, 
+            Owner, null);
     }
 }

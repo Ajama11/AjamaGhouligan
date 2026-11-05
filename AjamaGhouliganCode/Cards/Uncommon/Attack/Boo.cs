@@ -32,7 +32,6 @@ public class Boo() : AjamaGhouliganCard(2,
         new DamageVar(6, DamageProps.card),
         new RepeatVar(2),
         new IntVar(Threshold, 8),
-        new PowerVar<MisfortunePower>(4),
         ..MakeCalculatedVar(CalculatedTimes, 0, (card, _) =>
             Math.Floor(
                 CombatManager.Instance.History.Entries
@@ -48,7 +47,7 @@ public class Boo() : AjamaGhouliganCard(2,
 
     public override BundledHoverTipManager MyBundles =>
     [
-        new UnfortunateBundle()
+        BundledHoverTipFactory.FromPower<MisfortunePower>()
     ];
 
     protected override async Task OnPlay(
@@ -62,11 +61,8 @@ public class Boo() : AjamaGhouliganCard(2,
             .Execute(choiceContext);
 
         int times = (int) ((CalculatedVar) DynamicVars[CalculatedTimes]).Calculate(null);
-        
-        for (int i = 0; i < times; i++)
-        {
-            await MyActions.Misfortune(choiceContext, play.Target!, this);
-        }
+
+        await UnfortunateSingleton.Trigger(CombatState!, times, choiceContext, play);
     }
 
     protected override void OnUpgrade()

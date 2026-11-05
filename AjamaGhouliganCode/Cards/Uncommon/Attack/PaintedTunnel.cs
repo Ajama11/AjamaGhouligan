@@ -52,6 +52,6 @@ public class PaintedTunnel() : AjamaGhouliganCard(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(3);
+        DynamicVars.Power<PaintedTunnelPower>().UpgradeValueBy(1);
     }
 }

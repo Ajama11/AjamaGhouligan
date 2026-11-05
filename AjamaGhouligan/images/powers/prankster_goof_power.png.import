@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d045a81u6i6n4"
-path="res://.godot/imported/prankster_surprise_power.png-f5bdd6610d06a8e0d34d96e90e1eb0f7.ctex"
+path="res://.godot/imported/prankster_goof_power.png-878201ddfd7578bcd8e910f431a09d95.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://AjamaGhouligan/images/powers/prankster_surprise_power.png"
-dest_files=["res://.godot/imported/prankster_surprise_power.png-f5bdd6610d06a8e0d34d96e90e1eb0f7.ctex"]
+source_file="res://AjamaGhouligan/images/powers/prankster_goof_power.png"
+dest_files=["res://.godot/imported/prankster_goof_power.png-878201ddfd7578bcd8e910f431a09d95.ctex"]
 
 [params]
 
