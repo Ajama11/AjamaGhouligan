@@ -22,6 +22,9 @@ public class PattyCakePower : AjamaGhouliganPower
 
     public override PowerInstanceType InstanceType => PowerInstanceType.Instanced;
 
+    public bool IsInPowerCmdApply;
+    protected override bool IsVisibleInternal => !IsInPowerCmdApply;
+
     private const string PassAmount = "PassAmount";
     private const string ShouldPass = "ShouldPass";
 

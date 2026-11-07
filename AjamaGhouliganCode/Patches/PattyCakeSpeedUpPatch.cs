@@ -1,89 +1,77 @@
-using System.Reflection;
-using System.Reflection.Emit;
 using AjamaGhouligan.AjamaGhouliganCode.Powers;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Nodes.Combat;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Patches;
 
-[HarmonyPatch(typeof(PowerCmd))]
+[HarmonyPatch]
 public static class PattyCakeSpeedUpPatch
 {
-    [HarmonyPatch(nameof(PowerCmd.Apply), MethodType.Async)]
-    [HarmonyPatch([
+    [HarmonyPatch(typeof(PowerCmd), nameof(PowerCmd.Apply), 
         typeof(PlayerChoiceContext),
         typeof(PowerModel),
         typeof(Creature),
         typeof(decimal),
         typeof(Creature),
         typeof(CardModel),
-        typeof(bool)
-    ])]
-    [HarmonyTranspiler]
-    private static List<CodeInstruction> ApplyPowerTranspiler(IEnumerable<CodeInstruction> instructions, ILGenerator generator)
+        typeof(bool))]
+    [HarmonyPrefix]
+    private static void ApplyPrefix(ref PowerModel power)
     {
-        MethodInfo replaceDuration = typeof(PattyCakeSpeedUpPatch).Method(nameof(ReplaceDuration));
-        
-        CodeMatcher matcher = new CodeMatcher(instructions)
-            .MatchStartForward([
-                new CodeMatch(OpCodes.Ldarg_0),   // 0: this
-                new CodeMatch(OpCodes.Ldfld),     // 1: Load power
-                new CodeMatch(OpCodes.Callvirt),  // 2: get_IsVisible()
-                new CodeMatch(OpCodes.Brfalse_S), // 3
-                new CodeMatch(OpCodes.Call),      // 4: get_Instance()
-                new CodeMatch(OpCodes.Callvirt),  // 5: get_IsInProgress()
-                new CodeMatch(OpCodes.Brfalse_S), // 6
-                new CodeMatch(OpCodes.Ldc_R4),    // 7: Load 0.1f
-                new CodeMatch(OpCodes.Ldc_R4),    // 8: Load 0.25f
-            ])
-            .ThrowIfInvalid("PattyCakeSpeedUpPatch ApplyPowerTranspiler could not find the correct position");
-        
-        var powerParameter = matcher.InstructionAt(1).operand;
+        if (power is not PattyCakePower pattyCake) return;
 
-        matcher.Advance(8) // In between 0.1f and 0.25f
-            .Insert([
-                new CodeInstruction(OpCodes.Ldarg_0),
-                new CodeInstruction(OpCodes.Ldfld, powerParameter),
-                new CodeInstruction(OpCodes.Call, replaceDuration)
-            ]);
+        pattyCake.IsInPowerCmdApply = true;
         
-        return matcher.InstructionEnumeration().ToList();
+        power = pattyCake;
+    }
+
+    [HarmonyPatch(typeof(NPowerContainer), nameof(NPowerContainer.Add))]
+    [HarmonyPrefix]
+    private static bool AddNPowerPrefix(NPowerContainer __instance, PowerModel power)
+    {
+        if (power is not PattyCakePower) return true;
+
+        NPower nPower = NPower.Create(power);
+        nPower.Container = __instance;
+        __instance._powerNodes.Add(nPower);
+        __instance.AddChildSafely(nPower);
+        __instance.UpdatePositions();
+        
+        return false;
     }
     
-    [HarmonyPatch(nameof(PowerCmd.Remove), MethodType.Async)]
-    [HarmonyPatch([typeof(PowerModel)])]
-    [HarmonyTranspiler]
-    private static List<CodeInstruction> RemovePowerTranspiler(IEnumerable<CodeInstruction> instructions, ILGenerator generator)
+    [HarmonyPatch(typeof(PowerCmd), nameof(PowerCmd.Apply), 
+        typeof(PlayerChoiceContext),
+        typeof(PowerModel),
+        typeof(Creature),
+        typeof(decimal),
+        typeof(Creature),
+        typeof(CardModel),
+        typeof(bool))]
+    [HarmonyPostfix]
+    private static void ApplyPostfix(ref PowerModel power)
     {
-        MethodInfo replaceDuration = typeof(PattyCakeSpeedUpPatch).Method(nameof(ReplaceDuration));
+        if (power is not PattyCakePower pattyCake) return;
         
-        CodeMatcher matcher = new CodeMatcher(instructions)
-            .MatchStartForward([
-                new CodeMatch(OpCodes.Ldarg_0),  // 0: this
-                new CodeMatch(OpCodes.Ldfld),    // 1: Load power
-                new CodeMatch(OpCodes.Callvirt), // 2: RemoveInternal()
-                new CodeMatch(OpCodes.Ldc_R4),   // 3: Load 0.2f
-                new CodeMatch(OpCodes.Ldc_R4),   // 4: Load 0.4f
-            ])
-            .ThrowIfInvalid("PattyCakeSpeedUpPatch RemovePowerTranspiler could not find the correct position");
+        pattyCake.IsInPowerCmdApply = false;
         
-        var powerParameter = matcher.InstructionAt(1).operand;
-
-        matcher.Advance(4) // In between 0.2f and 0.4f
-            .Insert([
-                new CodeInstruction(OpCodes.Ldarg_0),
-                new CodeInstruction(OpCodes.Ldfld, powerParameter),
-                new CodeInstruction(OpCodes.Call, replaceDuration)
-            ]);
-        
-        return matcher.InstructionEnumeration().ToList();
+        power = pattyCake;
     }
 
-    private static float ReplaceDuration(float original, PowerModel power)
+    [HarmonyPatch(typeof(PowerCmd), nameof(PowerCmd.Remove), typeof(PowerModel))]
+    [HarmonyPrefix]
+    private static bool RemovePrefix(ref Task __result, PowerModel? power)
     {
-        return power is PattyCakePower ? 0.01f : original;
+        if (power is not PattyCakePower) return true;
+
+        power.RemoveInternal();
+        __result = power.AfterRemoved(power.Owner);
+
+        return false;
     }
 }
