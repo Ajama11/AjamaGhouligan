@@ -341,7 +341,7 @@ public class MyActions
             if (isReviving) await Hook.AfterOstyRevived(combatState, osty);
         }
         
-        NCombatRoom.Instance?.GetCreatureNode(osty)?.OstyScaleToSize(osty.MaxHp, 0.75);
+        NCombatRoom.Instance?.GetCreatureNode(osty)?.ScaleAndPositionOsty(osty.MaxHp, 0.75);
         
         CombatManager.Instance.History.Summoned(combatState, filledValue, summoner);
         

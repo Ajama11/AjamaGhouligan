@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Monsters;
 
 namespace AjamaGhouligan.AjamaGhouliganCode.Powers;
@@ -32,7 +33,7 @@ public class SkeletalStrikePower : AjamaGhouliganPower
         await DoTheThing();
     }
     
-    public override async Task AfterDeath(PlayerChoiceContext choiceContext, Creature creature, bool wasRemovalPrevented, float deathAnimLength)
+    public override async Task AfterDeath(PlayerChoiceContext choiceContext, Creature creature, CardModel? source, bool wasRemovalPrevented, float deathAnimLength)
     {
         if (creature.Monster is not Osty || creature.PetOwner != Owner.Player || Owner.Player == null) return;
         
