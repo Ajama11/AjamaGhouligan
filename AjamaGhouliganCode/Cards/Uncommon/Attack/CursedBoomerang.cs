@@ -26,7 +26,7 @@ public class CursedBoomerang() : AjamaGhouliganCard(0,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(3, DamageProps.card),
-        new RepeatVar(3)
+        new HitCountVar(3)
     ];
 
     public override BundledHoverTipManager MyBundles =>
@@ -41,7 +41,7 @@ public class CursedBoomerang() : AjamaGhouliganCard(0,
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(this, play)
             .TargetingRandomOpponents(CombatState!)
-            .WithHitCount(DynamicVars.Repeat.IntValue)
+            .WithHitCount(DynamicVars.HitCount.IntValue)
             .WithHitFx(VfxCmd.slashPath)
             .Execute(choiceContext);
     }
@@ -62,6 +62,6 @@ public class CursedBoomerang() : AjamaGhouliganCard(0,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Repeat.UpgradeValueBy(1);
+        DynamicVars.HitCount.UpgradeValueBy(1);
     }
 }

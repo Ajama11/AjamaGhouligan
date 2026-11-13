@@ -22,7 +22,7 @@ public class ThumbWar() : AjamaGhouliganCard(1,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new OstyDamageVar(2, ValueProp.Move),
-        new RepeatVar(4),
+        new HitCountVar(4),
         new PowerVar<GoofPower>(2),
         new SummonVar(1)
     ];
@@ -46,7 +46,7 @@ public class ThumbWar() : AjamaGhouliganCard(1,
             await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue)
                 .FromOsty(Owner.Osty!, this, play)
                 .Targeting(play.Target)
-                .WithHitCount(DynamicVars.Repeat.IntValue)
+                .WithHitCount(DynamicVars.HitCount.IntValue)
                 .WithAttackerAnim("attack_poke", 0.3f)
                 .WithHitFx("vfx/vfx_attack_blunt", tmpSfx: "blunt_attack.mp3")
                 .Execute(choiceContext);

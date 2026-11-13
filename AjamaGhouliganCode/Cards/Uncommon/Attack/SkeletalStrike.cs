@@ -22,7 +22,7 @@ public class SkeletalStrike() : AjamaGhouliganCard(1,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new OstyDamageVar(3, DamageProps.card),
-        new RepeatVar(2),
+        new HitCountVar(2),
         new PowerVar<SkeletalStrikePower>(2),
         new SummonVar(2)
     ];
@@ -45,7 +45,7 @@ public class SkeletalStrike() : AjamaGhouliganCard(1,
         {
             await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue)
                 .FromOsty(Owner.Osty!, this, play)
-                .WithHitCount(DynamicVars.Repeat.IntValue)
+                .WithHitCount(DynamicVars.HitCount.IntValue)
                 .TargetingAllOpponents(CombatState!)
                 .WithHitFx(VfxCmd.heavyBluntPath, tmpSfx: TmpSfx.bluntAttack)
                 .Execute(choiceContext);
@@ -57,6 +57,6 @@ public class SkeletalStrike() : AjamaGhouliganCard(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Repeat.UpgradeValueBy(1);
+        DynamicVars.HitCount.UpgradeValueBy(1);
     }
 }

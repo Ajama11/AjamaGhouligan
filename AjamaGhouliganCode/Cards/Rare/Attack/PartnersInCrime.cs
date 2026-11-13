@@ -32,14 +32,18 @@ public class PartnersInCrime() : AjamaGhouliganCard(1,
     TargetType.AnyEnemy)
 {
     private const string Threshold = "Threshold";
-    private const string HitCount = "HitCount";
+    private const string CalculatedHits = "CalculatedHits";
     
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(2, DamageProps.card),
         new OstyDamageVar(2, DamageProps.card),
         new IntVar(Threshold, 10),
-        ..MakeCalculatedVar(HitCount, 2, (card, _) =>
+        // ..MakeCalculatedVar(CalculatedHits, 2, (card, _) =>
+        //     Math.Floor(card.Owner.Osty?.MaxHp / card.DynamicVars[Threshold].BaseValue ?? 0)),
+        new CalculationBaseVar(2),
+        new CalculationExtraVar(1),
+        new CalculatedHitCountVar(CalculatedHits).WithMultiplier((card, _) =>
             Math.Floor(card.Owner.Osty?.MaxHp / card.DynamicVars[Threshold].BaseValue ?? 0))
     ];
 
@@ -64,7 +68,9 @@ public class PartnersInCrime() : AjamaGhouliganCard(1,
 
         bool wasThereAtLeastOneOstyHit = false;
         
-        var hitCount = ((CalculatedVar) DynamicVars[HitCount]).Calculate(null);
+        var hitCount = ((CalculatedVar) DynamicVars[CalculatedHits]).Calculate(null);
+
+        hitCount = Hook.ModifyAttackHitCount(CombatState!, ghouliganFakeCommand, (int) hitCount);
 
         for (int i = 0; i < hitCount; i++)
         {
