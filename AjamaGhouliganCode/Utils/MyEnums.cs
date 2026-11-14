@@ -66,7 +66,7 @@ public class MyEnums
         
         return
         [
-            new CycleHoverTip(MyActions.CanonicalTreats, 1.5, upgraded),
+            // new CycleHoverTip(MyActions.CanonicalTreats, 1.5, upgraded),
             new HoverTip(title, description)
         ];
     }
