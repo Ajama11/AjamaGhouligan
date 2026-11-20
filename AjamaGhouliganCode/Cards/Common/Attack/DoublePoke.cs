@@ -36,17 +36,19 @@ public class DoublePoke() : AjamaGhouliganCard(1,
             vfx: VfxCmd.bluntPath,
             tmpSfx: TmpSfx.bluntAttack);
         
-        AttackCommand ostyFakeCommand = DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue)
-            .FromOsty(Owner.Osty!, this, play)
-            .WithAttackerAnim("attack_poke", 0.3f)
-            .WithHitFx(
-                vfx: VfxCmd.bluntPath,
-                tmpSfx: TmpSfx.bluntAttack);
+        AttackCommand? ostyFakeCommand = null;
+        if (Owner.IsOstyAlive)
+            ostyFakeCommand = DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue)
+                .FromOsty(Owner.Osty!, this, play)
+                .WithAttackerAnim("attack_poke", 0.3f)
+                .WithHitFx(
+                    vfx: VfxCmd.bluntPath,
+                    tmpSfx: TmpSfx.bluntAttack);
         
         AttackContext attackContext =
             await AttackCommand.CreateContextAsync(CombatState!, choiceContext, play);
 
-        if (Owner.IsOstyAlive) await Hook.BeforeAttack(CombatState!, ostyFakeCommand);
+        if (Owner.IsOstyAlive) await Hook.BeforeAttack(CombatState!, ostyFakeCommand!);
         
         await CreatureCmd.TriggerAnim(Owner.Creature,
             ghouliganFakeCommand._attackerAnimName!, ghouliganFakeCommand._attackerAnimDelay);
@@ -61,7 +63,7 @@ public class DoublePoke() : AjamaGhouliganCard(1,
         if (!Osty.CheckMissingWithAnim(Owner))
         {
             await CreatureCmd.TriggerAnim(Owner.Osty!,
-                ostyFakeCommand._attackerAnimName!, ostyFakeCommand._attackerAnimDelay);
+                ostyFakeCommand!._attackerAnimName!, ostyFakeCommand._attackerAnimDelay);
             NDebugAudioManager.Instance?.Play(ostyFakeCommand.TmpHitSfx!);
             VfxCmd.PlayOnCreatureCenter(play.Target!, ostyFakeCommand.HitVfx!);
                 
@@ -76,7 +78,7 @@ public class DoublePoke() : AjamaGhouliganCard(1,
         {
             // ReSharper disable PossibleMultipleEnumeration
             attackContext.AddHit(ostyHit);
-            ostyFakeCommand._results.Add(ostyHit.ToList());
+            ostyFakeCommand!._results.Add(ostyHit.ToList());
             // ReSharper restore PossibleMultipleEnumeration
         }
         
@@ -84,7 +86,7 @@ public class DoublePoke() : AjamaGhouliganCard(1,
 
         if (ostyHit != null)
         {
-            CombatManager.Instance.History.CreatureAttacked(CombatState!, ostyFakeCommand.Attacker!,
+            CombatManager.Instance.History.CreatureAttacked(CombatState!, ostyFakeCommand!.Attacker!,
                 ostyFakeCommand._results.SelectMany(r => r).ToList());
             
             await Hook.AfterAttack(CombatState!, choiceContext, ostyFakeCommand);

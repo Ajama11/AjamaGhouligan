@@ -54,17 +54,19 @@ public class PartnersInCrime() : AjamaGhouliganCard(1,
         AttackCommand ghouliganFakeCommand = CommonActions.CardAttack(this, play,
             tmpSfx: TmpSfx.bluntAttack)
             .WithHitVfxNode(t => NStabVfx.Create(t, true, VfxColor.Green)!);
-        
-        AttackCommand ostyFakeCommand = DamageCmd.Attack(1)
-            .FromOsty(Owner.Osty!, this, play)
-            .WithHitFx(
-                vfx: VfxCmd.thrashPath, 
-                tmpSfx: TmpSfx.heavyAttack);
+
+        AttackCommand? ostyFakeCommand = null;
+        if (Owner.IsOstyAlive)
+            ostyFakeCommand = DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue)
+                .FromOsty(Owner.Osty!, this, play)
+                .WithHitFx(
+                    vfx: VfxCmd.thrashPath, 
+                    tmpSfx: TmpSfx.heavyAttack);
 
         AttackContext attackContext =
             await AttackCommand.CreateContextAsync(CombatState!, choiceContext, play);
         
-        if (Owner.IsOstyAlive) await Hook.BeforeAttack(CombatState!, ostyFakeCommand);
+        if (Owner.IsOstyAlive) await Hook.BeforeAttack(CombatState!, ostyFakeCommand!);
 
         bool wasThereAtLeastOneOstyHit = false;
         
@@ -87,7 +89,7 @@ public class PartnersInCrime() : AjamaGhouliganCard(1,
             if (!Osty.CheckMissingWithAnim(Owner))
             {
                 await CreatureCmd.TriggerAnim(Owner.Osty!,
-                    ostyFakeCommand._attackerAnimName!, 0);
+                    ostyFakeCommand!._attackerAnimName!, 0);
                 NDebugAudioManager.Instance?.Play(ostyFakeCommand.TmpHitSfx!);
                 VfxCmd.PlayOnCreatureCenter(play.Target!, ostyFakeCommand.HitVfx!);
                 
@@ -102,7 +104,7 @@ public class PartnersInCrime() : AjamaGhouliganCard(1,
             {
                 // ReSharper disable PossibleMultipleEnumeration
                 attackContext.AddHit(ostyHit);
-                ostyFakeCommand._results.Add(ostyHit.ToList());
+                ostyFakeCommand!._results.Add(ostyHit.ToList());
                 // ReSharper restore PossibleMultipleEnumeration
 
                 wasThereAtLeastOneOstyHit = true;
@@ -113,7 +115,7 @@ public class PartnersInCrime() : AjamaGhouliganCard(1,
         
         if (wasThereAtLeastOneOstyHit)
         {
-            CombatManager.Instance.History.CreatureAttacked(CombatState!, ostyFakeCommand.Attacker!,
+            CombatManager.Instance.History.CreatureAttacked(CombatState!, ostyFakeCommand!.Attacker!,
                 ostyFakeCommand._results.SelectMany(r => r).ToList());
             
             await Hook.AfterAttack(CombatState!, choiceContext, ostyFakeCommand);
